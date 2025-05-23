@@ -1,0 +1,61 @@
+% ========== COVER7: PROFESSIONAL DESIGN ==========
+% Cover-specific dependencies
+\usetikzlibrary{positioning,calc}
+
+
+
+% Minimalist Professional Cover Design
+\begin{tikzpicture}[remember picture,overlay]
+    % Clean white background
+    \fill[white] (current page.north west) rectangle (current page.south east);
+    
+    % Simple vertical line accent
+    \fill[accent, opacity=0.9] 
+        ([xshift=1in]current page.north west) rectangle 
+        ([xshift=1.2in]current page.south west);
+    
+    % Thin horizontal line at top
+    \draw[accent, line width=0.5pt] 
+        ([xshift=1.5in, yshift=-1.5in]current page.north west) -- 
+        ([xshift=-1in, yshift=-1.5in]current page.north east);
+    
+    % Company name
+    \node[anchor=west, font=\large\bfseries\sffamily, color=primary] 
+        at ([xshift=1.5in, yshift=-1in]current page.north west) {\CompanyPlaceholder};
+    
+    % Document title - modern and clean
+    \node[anchor=west, font=\Huge\bfseries\sffamily, color=primary] 
+        at ([xshift=1.5in, yshift=-3in]current page.north west) {\TitlePlaceholder};
+    
+    % Subtitle
+    \node[anchor=west, font=\large\sffamily, color=secondary] 
+        at ([xshift=1.5in, yshift=-3.5in]current page.north west) {\SubtitlePlaceholder};
+    
+    % Author info with minimal styling
+    \node[anchor=west, font=\normalsize\sffamily, color=secondary] 
+        at ([xshift=1.5in, yshift=-4.5in]current page.north west) {
+            \begin{tabular}{@{}ll@{}}
+                \textbf{Author:} & \AuthorPlaceholder \\
+                \textbf{Date:} & \DatePlaceholder \\
+                \textbf{Contact:} & \ContactPlaceholder \\
+                \textbf{Version:} & \VersionPlaceholder \\
+            \end{tabular}
+        };
+    
+    % Thin accent line before footer
+    \draw[secondary, line width=0.3pt] 
+        ([xshift=1.5in, yshift=1in]current page.south west) -- 
+        ([xshift=-1in, yshift=1in]current page.south east);
+    
+    % Minimal footer text
+    \node[anchor=west, font=\small\sffamily, color=secondary] 
+        at ([xshift=1.5in, yshift=0.7in]current page.south west) {
+            \copyright\ \the\year\ \CompanyPlaceholder. All rights reserved.
+        };
+    
+    % Version number in corner
+    \node[anchor=east, font=\small\sffamily, color=secondary] 
+        at ([xshift=-1in, yshift=0.7in]current page.south east) {
+            v\VersionPlaceholder
+        };
+\end{tikzpicture}

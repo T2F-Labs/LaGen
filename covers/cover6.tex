@@ -1,0 +1,95 @@
+% ========== COVER6: CREATIVE GRADIENT DESIGN ==========
+% Cover-specific dependencies
+\usetikzlibrary{positioning,shapes,decorations.pathmorphing,patterns,calc,fadings}
+
+% Provide placeholder commands if not already defined
+\providecommand{\SummaryPlaceholder}{\SummaryTextPlaceholder}
+\providecommand{\TaglinePlaceholder}{CREATIVE}
+
+% Creative Gradient Cover Design
+\begin{tikzpicture}[remember picture,overlay]
+    % Background gradient effect
+    \shade[top color=accent!50, bottom color=lightaccent!10] 
+        (current page.north west) rectangle (current page.south east);
+    
+    % Abstract pattern elements - decorative circles
+    \foreach \i in {1,...,20} {
+        \pgfmathsetmacro{\xpos}{rand*20-5}
+        \pgfmathsetmacro{\ypos}{rand*20-10}
+        \pgfmathsetmacro{\radius}{rand*1.5+0.2}
+        \pgfmathsetmacro{\opac}{rand*0.4}
+        \fill[white, opacity=\opac] (\xpos,\ypos) circle (\radius);
+    }
+    
+    % Curved decorative element
+    \draw[white, line width=4pt, opacity=0.7, rounded corners=15pt] 
+        ([xshift=0.5in, yshift=-2in]current page.north west) -- 
+        ([xshift=3in, yshift=-2.5in]current page.north west) -- 
+        ([xshift=6in, yshift=-2in]current page.north west);
+    
+    % Title - with drop shadow effect
+    \node[anchor=north, font=\Huge\bfseries\sffamily, text=white, 
+          drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.3}] 
+        at ([yshift=-3.5in]current page.north) {\TitlePlaceholder};
+    
+    % Subtitle
+    \node[anchor=north, font=\large\sffamily, text=white, opacity=0.9] 
+        at ([yshift=-4in]current page.north) {\SubtitlePlaceholder};
+    
+    % Creative wave pattern below title
+    \draw[white, line width=2.5pt, 
+          decoration={snake, amplitude=4pt, segment length=25pt}, 
+          decorate, opacity=0.7] 
+        ([xshift=2in, yshift=-4.5in]current page.north west) -- 
+        ([xshift=-2in, yshift=-4.5in]current page.north east);
+    
+    % Summary text box with modern styling
+    \node[anchor=north] at ([yshift=-5.5in]current page.north) {
+        \begin{tcolorbox}[
+            enhanced,
+            opacityback=0.7,
+            opacityframe=0.3,
+            colback=white,
+            colframe=white,
+            coltext=primary,
+            boxrule=1pt,
+            arc=10pt,
+            left=20pt,
+            right=20pt,
+            top=15pt,
+            bottom=15pt,
+            width=0.7\paperwidth,
+            drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt}
+        ]
+        \SummaryPlaceholder
+        \end{tcolorbox}
+    };
+    
+    % Author info
+    \node[anchor=north, font=\large\bfseries\sffamily, text=white, 
+          drop shadow={shadow xshift=1pt, shadow yshift=-1pt, opacity=0.3}] 
+        at ([yshift=-7in]current page.north) {\AuthorPlaceholder};
+    
+    % Date
+    \node[anchor=north, font=\large\sffamily, text=white, opacity=0.8] 
+        at ([yshift=-7.3in]current page.north) {\DatePlaceholder};
+    
+    % Document information
+    \node[anchor=north, font=\small\sffamily, text=white, opacity=0.7] 
+        at ([yshift=-7.7in]current page.north) {
+        \textbf{VERSION:} \VersionPlaceholder \quad
+        \textbf{CLASSIFICATION:} \ClassificationPlaceholder
+    };
+    
+    % Creative circular page indicator at bottom
+    \fill[white, opacity=0.8] ([yshift=1.2in]current page.south) circle (0.5in);
+    \node[font=\Large\bfseries\sffamily, color=accent] 
+        at ([yshift=1.2in]current page.south) {\TaglinePlaceholder};
+    
+    % Additional decorative elements
+    \foreach \i in {0,60,...,300} {
+        \draw[white, line width=1pt, opacity=0.6] 
+            ([yshift=1.2in, shift={(\i:0.7in)}]current page.south) -- 
+            ([yshift=1.2in, shift={(\i:0.9in)}]current page.south);
+    }
+\end{tikzpicture}

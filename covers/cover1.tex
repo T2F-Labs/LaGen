@@ -1,31 +1,6 @@
-\documentclass[a4paper,11pt]{article}
-
-% Pass geometry options before loading the package through config.tex
-\PassOptionsToPackage{margin=0pt, paperwidth=210mm, paperheight=297mm}{geometry}
-
-% Import base configuration
-\input{config.tex}
-
-% ========== COVER-SPECIFIC OVERRIDES ==========
-% Additional TikZ libraries needed for this cover
+% ========== COVER1: MODERN GRADIENT DESIGN ==========
+% Cover-specific dependencies
 \usetikzlibrary{positioning,shapes.geometric,decorations.pathmorphing,shadows.blur,backgrounds,calc}
-
-% ========== PLACEHOLDER COMMANDS ==========
-\newcommand{\TitlePlaceholder}{YOUR TITLE HERE}
-\newcommand{\SummaryTitlePlaceholder}{YOUR SUMMARY TITLE HERE}
-\newcommand{\SummaryTextPlaceholder}{Your summary text goes here.}
-\newcommand{\PlatformsList}{PlatformOne, PlatformTwo, PlatformThree}
-\newcommand{\FocusList}{FocusItemOne, FocusItemTwo, FocusItemThree, FocusItemFour}
-\newcommand{\AuthorPlaceholder}{Author Name}
-\newcommand{\DatePlaceholder}{Date Here}
-\newcommand{\ClassificationPlaceholder}{Classification}
-\newcommand{\DistributionPlaceholder}{Distribution List}
-\newcommand{\VersionPlaceholder}{Version Number}
-\newcommand{\StatusPlaceholder}{Document Status}
-
-% ========== FULL COVERAGE COVER PAGE ==========
-\begin{document}
-\thispagestyle{empty}
 
 % Background gradient and shapes
 \begin{tikzpicture}[remember picture,overlay]
@@ -117,6 +92,4 @@
     \node[anchor=center, opacity=0.05] at (current page.center) {
         \textcolor{white}{\fontsize{120}{140}\selectfont\bfseries\sffamily \TitlePlaceholder}
     };
-\end{tikzpicture}
-
-\end{document}
+\end{tikzpicture} 

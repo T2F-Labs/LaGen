@@ -1,16 +1,9 @@
-\documentclass[a4paper,11pt]{article}
-
-% Import base configuration
-\input{config.tex}
-
-% ========== COVER-SPECIFIC PACKAGES AND OVERRIDES ==========
-% Additional TikZ libraries needed for this cover
+% ========== COVER2: MINIMAL CIRCLE DESIGN ==========
+% Cover-specific dependencies
 \usetikzlibrary{positioning,shapes.geometric,decorations.pathmorphing}
+\usepackage{fp}
 
-% Additional packages needed for this cover
-\usepackage{fp} % for \fpeval
-
-% ========== ENHANCED COVER PAGE ELEMENTS ==========
+% Define cover2 specific commands
 \newcommand{\coverrule}{%
     \begin{center}
     \begin{tikzpicture}
@@ -75,11 +68,7 @@
     center
 }
 
-% ========== DOCUMENT BEGIN ==========
-\begin{document}
-
-\thispagestyle{empty}
-
+% Cover 2 content
 \vspace*{0.5in}
 
 % Decorative circle element
@@ -97,45 +86,45 @@
 
 \vspace{0.4in}
 
-% Placeholder title and subtitle
-\covertitle{\texttt{\textbackslash TitlePlaceholder}}
+% Title and subtitle
+\covertitle{\TitlePlaceholder}
 
 \vspace{0.2in}
 \coverrule
 \vspace{0.3in}
 
-\coversubtitle{\texttt{\textbackslash SubtitlePlaceholder}}
+\coversubtitle{\SubtitlePlaceholder}
 
 \vspace{0.6in}
 
 \begin{coverinfobox}
-\textbf{\large \texttt{\textbackslash SummaryTitlePlaceholder}}
+\textbf{\large \SummaryTitlePlaceholder}
 
 \vspace{8pt}
 
-\texttt{\textbackslash SummaryTextPlaceholder}
+\SummaryTextPlaceholder
 
 \vspace{8pt}
 
 \textbf{Key Focus Areas:}
 \begin{itemize}
-    \item \texttt{\textbackslash FocusItemOne}
-    \item \texttt{\textbackslash FocusItemTwo}
-    \item \texttt{\textbackslash FocusItemThree}
-    \item \texttt{\textbackslash FocusItemFour}
+    \item \FocusItemOne
+    \item \FocusItemTwo
+    \item \FocusItemThree
+    \item \FocusItemFour
 \end{itemize}
 \end{coverinfobox}
 
 \vspace{0.8in}
 
-\coverauthor{\texttt{\textbackslash AuthorPlaceholder}}
+\coverauthor{\AuthorPlaceholder}
 
 \vspace{0.2in}
 
 \begin{center}
 \color{accent}
 \fontsize{16}{20}\selectfont\bfseries\sffamily
-\texttt{\textbackslash DatePlaceholder}
+\DatePlaceholder
 \end{center}
 
 \vfill
@@ -154,10 +143,8 @@
 \begin{classificationbox}
 \centering
 \footnotesize\sffamily
-\textbf{Document Classification:} \texttt{\textbackslash ClassificationPlaceholder}\\
-\textbf{Distribution:} \texttt{\textbackslash DistributionPlaceholder}\\
-\textbf{Version:} \texttt{\textbackslash VersionPlaceholder} \quad 
-\textbf{Classification:} \texttt{\textbackslash ClassificationLevelPlaceholder}
-\end{classificationbox}
-
-\end{document}
+\textbf{Document Classification:} \ClassificationPlaceholder\\
+\textbf{Distribution:} \DistributionPlaceholder\\
+\textbf{Version:} \VersionPlaceholder \quad 
+\textbf{Classification:} \ClassificationLevelPlaceholder
+\end{classificationbox} 
