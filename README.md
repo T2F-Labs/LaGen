@@ -5,7 +5,7 @@
 ![Jinja2](https://img.shields.io/badge/Jinja2-B41717?style=for-the-badge&logo=jinja&logoColor=white)
 ![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-A powerful system for generating professional LaTeX documents programmatically using Python and Jinja2 templating.
+A powerful system for generating professional LaTeX documents programmatically using Python and Jinja2 templating, with enhanced typography and formatting capabilities.
 
 ## 📋 Overview
 
@@ -15,6 +15,7 @@ This project provides a flexible template system that lets you generate beautifu
 - Generating documentation with consistent formatting
 - Automating the production of academic papers
 - Creating professional white papers and technical documents
+- Producing multi-page tables and complex mathematical content
 
 ## ✨ Key Features
 
@@ -27,6 +28,12 @@ This project provides a flexible template system that lets you generate beautifu
 - **Flexible References**: Generate bibliographies automatically
 - **Beautiful Tables**: Styled tables with colored headers and alternating rows
 - **Code Highlighting**: Syntax highlighting for multiple programming languages
+- **Multi-page Tables**: Support for tables that span multiple pages
+- **Advanced Math**: Professional mathematical typesetting with AMS packages
+- **Units & Numbers**: Proper formatting of units and numbers with siunitx
+- **Brand Consistency**: Letterspacing and font scaling for brand names
+- **Better Page Control**: Enhanced float placement and management
+- **Professional Pagination**: "Page X of Y" numbering and advanced headers/footers
 
 ## 🔧 Installation
 
@@ -53,6 +60,10 @@ data = {
     "title": "Project Analysis Report",
     "author": "Jane Smith",
     "executive_summary": "This report analyzes the performance of our recent project...",
+    "company_name": "Lagen",
+    "document_version": "1.0.3",
+    "document_status": "Final",
+    "document_classification": "Internal Use",
     "sections": [
         {
             "level": 1,
@@ -88,9 +99,94 @@ with open('output.tex', 'w') as f:
 xelatex output.tex
 ```
 
-## 📚 Documentation
+## 📚 Advanced Features
 
-For full documentation of all template features and options, see [INSTRUCTIONS.md](INSTRUCTIONS.md).
+### Professional Typography and Branding
+
+Use our enhanced typography features to maintain brand consistency:
+
+```latex
+% Define your brand elements
+\newcommand{\companyName}{Lagen}
+\newcommand{\companyTagline}{Professional Document Systems}
+
+% Use the brand elements in text with proper letterspacing
+Our \brandname{\companyName} system helps you...
+The \productname{Lagen Documentation System} provides...
+```
+
+### Multi-page Tables
+
+Create tables that span across multiple pages with consistent headers:
+
+```latex
+\begin{longtable}{p{2cm}p{4cm}p{3cm}p{4cm}}
+\caption{Project Timeline and Milestones} \\
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Date}} &
+\textcolor{headertext}{\textbf{Milestone}} &
+\textcolor{headertext}{\textbf{Responsible}} &
+\textcolor{headertext}{\textbf{Deliverables}} \\
+\toprule
+\endfirsthead
+
+% Header for continuation pages
+\multicolumn{4}{c}{\tablename\ \thetable{} -- continued from previous page} \\
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Date}} &
+\textcolor{headertext}{\textbf{Milestone}} &
+\textcolor{headertext}{\textbf{Responsible}} &
+\textcolor{headertext}{\textbf{Deliverables}} \\
+\toprule
+\endhead
+
+% Footer for all pages except the last
+\midrule \multicolumn{4}{r}{Continued on next page} \\
+\endfoot
+
+% Footer for the last page
+\bottomrule
+\endlastfoot
+
+% Table contents
+2023-01-15 & Project Initiation & Project Manager & Project charter \\
+% Additional rows...
+\end{longtable}
+```
+
+### Professional Numerical and Unit Formatting
+
+Format measurements consistently with proper units:
+
+```latex
+The battery capacity is \SI{5000}{\milli\ampere\hour}
+The budget is \SI{2500000}{\USD} for the first phase
+```
+
+### Enhanced Column Types
+
+Use predefined column types for better table formatting:
+
+```latex
+\begin{tabular}{L{3cm}C{5cm}R{2cm}N}
+% L = left-aligned with specified width
+% C = centered with specified width
+% R = right-aligned with specified width
+% N = right-aligned, automatically sized (for numbers)
+\end{tabular}
+```
+
+### Mathematical Typesetting
+
+Create professional-looking equations with advanced math packages:
+
+```latex
+\begin{align}
+E &= mc^2 \\
+F &= G\frac{m_1 m_2}{r^2} \\
+\nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t}
+\end{align}
+```
 
 ## 📖 Examples
 
@@ -99,16 +195,21 @@ The repository includes example data structures and their output PDFs:
 - `examples/simple_report.py` - Basic report with sections and subsections
 - `examples/data_analysis.py` - Data analysis report with tables and charts
 - `examples/technical_document.py` - Technical document with code samples and algorithms
+- `examples/multi_page_tables.py` - Report with tables spanning multiple pages
+- `examples/mathematical_report.py` - Document with advanced mathematical content
 
 ## 📂 Project Structure
 
 ```
 .
-├── latex_template.tex.jinja  # Main template file
-├── config.tex               # LaTeX configuration and styling
-├── examples/                # Example Python data and output PDFs
-├── INSTRUCTIONS.md          # Detailed documentation
-└── README.md                # This file
+├── latex_template.tex         # Main template file
+├── config.tex                 # LaTeX configuration and styling
+├── covers/                    # Optional cover page designs
+│   ├── cover1.tex             # Modern cover design
+│   └── cover2.tex             # Traditional cover design
+├── examples/                  # Example Python data and output PDFs
+├── INSTRUCTIONS.md            # Detailed documentation
+└── README.md                  # This file
 ```
 
 ## 🖨️ Output Examples
@@ -116,10 +217,12 @@ The repository includes example data structures and their output PDFs:
 The template produces professionally styled documents with elements like:
 
 - Title page with document metadata
+- Optional cover pages with branding
 - Executive summary in a styled box
 - Table of contents with proper formatting
 - Section headings with optional drop caps
-- Professional tables with colored headers
+- Multi-page professional tables
+- Mathematical equations and formulas with proper spacing
 - Callout boxes for important information
 - Code listings with syntax highlighting
 - Algorithm descriptions with proper mathematical notation
@@ -133,14 +236,9 @@ You can customize the look and feel of your documents by modifying `config.tex`.
 - Fonts and typography
 - Spacing and layout
 - Special environment styling
-
-## 🔍 Advanced Features
-
-- **Bibliography Support**: Automatic bibliography generation with BibTeX
-- **Custom Boxes**: Several styled box types for different content needs
-- **Algorithm Layout**: Professional algorithm display with pseudocode
-- **Icon Integration**: FontAwesome icons in callout boxes
-- **Cross-referencing**: Smart referencing of sections, figures, and tables
+- Mathematical styling and number formatting
+- Table layouts and designs
+- Header and footer formatting
 
 ## 🤝 Contributing
 

@@ -7,6 +7,14 @@
 % Options: none (default), 1, 2, etc. - numbers correspond to cover files in covers directory
 \newcommand{\covertype}{none}
 
+% ========== BRAND IDENTITY SETTINGS ==========
+% Customize these to match your organization's branding
+\newcommand{\companyName}{Lagen}
+\newcommand{\companyTagline}{Professional Document Systems}
+\newcommand{\documentVersion}{1.0.3}
+\newcommand{\documentStatus}{Final Release}
+\newcommand{\documentClassification}{Internal Use}
+
 % Import all configuration and styling from config.tex
 \input{config.tex}
 
@@ -27,17 +35,17 @@
         \usetikzlibrary{positioning,shapes.geometric,decorations.pathmorphing,shadows.blur,backgrounds,calc}
         
         % Define placeholder commands if not already defined
-        \providecommand{\TitlePlaceholder}{YOUR TITLE HERE}
-        \providecommand{\SummaryTitlePlaceholder}{YOUR SUMMARY TITLE HERE}
-        \providecommand{\SummaryTextPlaceholder}{Your summary text goes here.}
-        \providecommand{\PlatformsList}{PlatformOne, PlatformTwo, PlatformThree}
-        \providecommand{\FocusList}{FocusItemOne, FocusItemTwo, FocusItemThree, FocusItemFour}
-        \providecommand{\AuthorPlaceholder}{Author Name}
-        \providecommand{\DatePlaceholder}{Date Here}
-        \providecommand{\ClassificationPlaceholder}{Classification}
-        \providecommand{\DistributionPlaceholder}{Distribution List}
-        \providecommand{\VersionPlaceholder}{Version Number}
-        \providecommand{\StatusPlaceholder}{Document Status}
+        \providecommand{\TitlePlaceholder}{\@title}
+        \providecommand{\SummaryTitlePlaceholder}{Executive Summary}
+        \providecommand{\SummaryTextPlaceholder}{This document provides comprehensive information on our latest research and development efforts.}
+        \providecommand{\PlatformsList}{Web, Mobile, Desktop, Cloud}
+        \providecommand{\FocusList}{Performance, Scalability, Security, Usability}
+        \providecommand{\AuthorPlaceholder}{\@author}
+        \providecommand{\DatePlaceholder}{\@date}
+        \providecommand{\ClassificationPlaceholder}{\documentClassification}
+        \providecommand{\DistributionPlaceholder}{All Departments}
+        \providecommand{\VersionPlaceholder}{\documentVersion}
+        \providecommand{\StatusPlaceholder}{\documentStatus}
         
         % Background gradient and shapes
         \begin{tikzpicture}[remember picture,overlay]
@@ -210,20 +218,20 @@
         }
         
         % Define placeholder commands if not already defined
-        \providecommand{\TitlePlaceholder}{YOUR TITLE HERE}
-        \providecommand{\SubtitlePlaceholder}{YOUR SUBTITLE HERE}
-        \providecommand{\SummaryTitlePlaceholder}{YOUR SUMMARY TITLE HERE}
-        \providecommand{\SummaryTextPlaceholder}{Your summary text goes here.}
-        \providecommand{\FocusItemOne}{Focus Item One}
-        \providecommand{\FocusItemTwo}{Focus Item Two}
-        \providecommand{\FocusItemThree}{Focus Item Three}
-        \providecommand{\FocusItemFour}{Focus Item Four}
-        \providecommand{\AuthorPlaceholder}{Author Name}
-        \providecommand{\DatePlaceholder}{Date Here}
-        \providecommand{\ClassificationPlaceholder}{Classification}
-        \providecommand{\DistributionPlaceholder}{Distribution List}
-        \providecommand{\VersionPlaceholder}{Version Number}
-        \providecommand{\ClassificationLevelPlaceholder}{Classification Level}
+        \providecommand{\TitlePlaceholder}{\@title}
+        \providecommand{\SubtitlePlaceholder}{Professional documentation system}
+        \providecommand{\SummaryTitlePlaceholder}{Executive Summary}
+        \providecommand{\SummaryTextPlaceholder}{This document provides comprehensive information on our latest research and development efforts.}
+        \providecommand{\FocusItemOne}{Technical Excellence}
+        \providecommand{\FocusItemTwo}{User Experience}
+        \providecommand{\FocusItemThree}{Scalability}
+        \providecommand{\FocusItemFour}{Market Advantage}
+        \providecommand{\AuthorPlaceholder}{\@author}
+        \providecommand{\DatePlaceholder}{\@date}
+        \providecommand{\ClassificationPlaceholder}{\documentClassification}
+        \providecommand{\DistributionPlaceholder}{All Departments}
+        \providecommand{\VersionPlaceholder}{\documentVersion}
+        \providecommand{\ClassificationLevelPlaceholder}{Confidential}
         
         % Cover 2 content
         \vspace*{0.5in}
@@ -318,7 +326,7 @@
 % ========== EXECUTIVE SUMMARY BOX ==========
 % Instructions: Replace with your document summary or overview
 \begin{infobox}
-This is an executive summary or document overview section. Replace this placeholder text with a brief summary of your document's purpose and key points.
+\textbf{From \brandname{\companyName}}: This document demonstrates the advanced typesetting capabilities of our \productname{Lagen} documentation system. It showcases professional formatting features including multi-page tables, enhanced column types, advanced mathematical typesetting, and sophisticated branding controls.
 \end{infobox}
 
 \vfill
@@ -326,9 +334,9 @@ This is an executive summary or document overview section. Replace this placehol
 % Instructions: Replace with your document's classification information
 \begin{center}
 \color{textgray}\footnotesize\sffamily
-\textbf{Document Classification:} Internal/Public/Confidential\\
-\textbf{Distribution:} Target Audience Description\\
-\textbf{Version:} 1.0 \quad \textbf{Pages:} \pageref{LastPage}
+\textbf{Document Classification:} \documentClassification\\
+\textbf{Distribution:} All Departments\\
+\textbf{Version:} \documentVersion \quad \textbf{Pages:} \pageref{LastPage}
 \end{center}
 
 \newpage
@@ -341,15 +349,18 @@ This is an executive summary or document overview section. Replace this placehol
 % ========== MAIN CONTENT SECTIONS ==========
 
 \section{Content Demonstration}
+\label{sec:demonstration}
 % Instructions: Replace with your first major section title
 
 \lettrine[lines=3, loversize=0.1]{T}{his} demonstrates a drop cap at the beginning of a section using the lettrine package. It adds an elegant typographic touch to your document. The rest of this paragraph shows how the text wraps around the large initial letter.
 
-This is placeholder text for your main content. Replace with actual content.
+This document now features \nameref{sec:tables} spanning multiple pages, proper formatting of units like \SI{42}{\kilo\watt\hour} or \SI{1.25}{\USD}, and advanced mathematical typesetting with $\displaystyle\int_{0}^{\infty} e^{-x^2} dx = \frac{\sqrt{\pi}}{2}$.
 
 \subsection{Advanced Typography Features}
 
 \needspace{4\baselineskip}
+Our branding is consistent with \brandname{\companyName} and \productname{Lagen Documentation System} appearing throughout the document. 
+
 Here we demonstrate quotation handling with csquotes: "This is properly formatted as a quotation with smart quotes." Notice how the quotes are properly curled rather than using straight quotes.
 
 \begin{displayquote}
@@ -358,7 +369,7 @@ This is a block quotation that shows proper indentation and formatting. It's use
 
 \subsection{Cross-References and Citations}
 
-This section demonstrates intelligent cross-referencing. You can refer to \vref{sec:boxes} for more information.
+This section demonstrates intelligent cross-referencing. You can refer to Section~\ref{sec:boxes} for box demonstrations, or Section~\nameref{sec:tables} for table examples.
 
 \needspace{4\baselineskip}
 For bibliography management, you can cite sources like \texttt{\textbackslash cite\{example\}} and have them automatically formatted based on your chosen citation style.\footnote{Requires a .bib file and proper setup with biblatex and biber.}
@@ -383,9 +394,95 @@ This demonstrates how to organize content using subsections.
 This shows a third-level heading for detailed organization.
 
 \section{Table Examples}
+\label{sec:tables}
 % Instructions: This section demonstrates modern table formatting
 
-This section shows how to create professional-looking tables with color and styling.
+This section shows how to create professional-looking tables with color and styling, now with multi-page support and enhanced column types.
+
+\subsection{Enhanced Table Examples}
+
+The following demonstrates a table with custom column types and multirow capabilities:
+
+\begin{table}[htbp]
+\caption{Advanced Table Formatting}
+\centering
+\rowcolors{2}{rowalt}{white}
+\begin{tabular}{L{2.5cm}C{4cm}R{2cm}N}
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Category}} &
+\textcolor{headertext}{\textbf{Description}} &
+\textcolor{headertext}{\textbf{Value}} &
+\textcolor{headertext}{\textbf{Progress}} \\
+\toprule
+\multirow{2}{*}{Development} & Initial framework design & \SI{15000}{\USD} & 95\% \\
+ & Component integration & \SI{8500}{\USD} & 45\% \\
+\midrule
+\multirow{3}{*}{Testing} & Unit testing framework & \SI{4200}{\USD} & 100\% \\
+ & Integration testing & \SI{6300}{\USD} & 60\% \\
+ & Performance testing & \SI{5500}{\USD} & 30\% \\
+\midrule
+Deployment & Cloud infrastructure & \SI{12000}{\USD} & 15\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Multi-page Table Example}
+
+Here's an example of a table that can span multiple pages:
+
+\begin{longtable}{p{2cm}p{4cm}p{3cm}p{4cm}}
+\caption{Multi-page Project Timeline and Milestones} \\
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Date}} &
+\textcolor{headertext}{\textbf{Milestone}} &
+\textcolor{headertext}{\textbf{Responsible}} &
+\textcolor{headertext}{\textbf{Deliverables}} \\
+\toprule
+\endfirsthead
+
+\multicolumn{4}{c}{\tablename\ \thetable{} -- continued from previous page} \\
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Date}} &
+\textcolor{headertext}{\textbf{Milestone}} &
+\textcolor{headertext}{\textbf{Responsible}} &
+\textcolor{headertext}{\textbf{Deliverables}} \\
+\toprule
+\endhead
+
+\midrule \multicolumn{4}{r}{Continued on next page} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+2023-01-15 & Project Initiation & Project Manager & Project charter, stakeholder register \\
+\rowcolor{rowalt}
+2023-02-01 & Requirements Gathering & Business Analyst & Requirements document, user stories \\
+2023-02-15 & System Architecture & Solution Architect & Architecture document, technology stack \\
+\rowcolor{rowalt}
+2023-03-01 & Design Phase Completion & Design Team & UI/UX designs, wireframes \\
+2023-03-15 & Development Sprint 1 & Development Team & Core functionality implementation \\
+\rowcolor{rowalt}
+2023-04-01 & Development Sprint 2 & Development Team & Feature set 1 completion \\
+2023-04-15 & Development Sprint 3 & Development Team & Feature set 2 completion \\
+\rowcolor{rowalt}
+2023-05-01 & Alpha Testing & QA Team & Test reports, bug tracking \\
+2023-05-15 & Beta Release & Release Manager & Beta deployment, user feedback \\
+\rowcolor{rowalt}
+2023-06-01 & User Acceptance Testing & QA Team & UAT report, sign-off documents \\
+2023-06-15 & Performance Optimization & Performance Engineer & Optimization report, benchmarks \\
+\rowcolor{rowalt}
+2023-07-01 & Security Audit & Security Team & Security assessment, vulnerability report \\
+2023-07-15 & Documentation & Technical Writer & User manual, API documentation \\
+\rowcolor{rowalt}
+2023-08-01 & Final QA & QA Team & Final test report, release readiness \\
+2023-08-15 & Production Deployment & DevOps Team & Deployment checklist, monitoring setup \\
+\rowcolor{rowalt}
+2023-09-01 & Post-Launch Support & Support Team & Support plan, escalation procedures \\
+2023-09-15 & Project Review & Project Manager & Lessons learned, project closure report \\
+\end{longtable}
+
+\subsection{Data Analysis Table}
 
 \begin{tcolorbox}[colback=cardbg, colframe=frameborder, coltitle=white,
     fonttitle=\bfseries, title=📊 Data Analysis Results,
@@ -413,29 +510,32 @@ This section shows how to create professional-looking tables with color and styl
 
 \end{tcolorbox}
 
-\vspace{1cm}
+\section{Mathematical Examples}
+\label{sec:math}
 
-% A simpler table example using the same styling
-\begin{table}[htbp]
-\caption{Quarterly Revenue Comparison}
-\centering
-\rowcolors{2}{rowalt}{white}
-\begin{tabular}{lrrr}
-\rowcolor{headerbg}
-\textcolor{headertext}{\textbf{Quarter}} & 
-\textcolor{headertext}{\textbf{2021}} & 
-\textcolor{headertext}{\textbf{2022}} & 
-\textcolor{headertext}{\textbf{\% Change}} \\
-\toprule
-Q1 & \$245,000 & \$267,000 & +9.0\% \\
-Q2 & \$312,000 & \$348,000 & +11.5\% \\
-Q3 & \$298,000 & \$310,000 & +4.0\% \\
-Q4 & \$340,000 & \$392,000 & +15.3\% \\
-\midrule
-\textbf{Total} & \$1,195,000 & \$1,317,000 & +10.2\% \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsection{Equation Examples}
+
+The enhanced math support allows for beautifully typeset equations:
+
+\begin{align}
+E &= mc^2 \\
+F &= G\frac{m_1 m_2}{r^2} \\
+\nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t}
+\end{align}
+
+\subsection{Units and Numbers}
+
+With the siunitx package, we can consistently format units:
+
+\begin{itemize}
+    \item The battery capacity is \SI{5000}{\milli\ampere\hour}
+    \item The system requires \SI{240}{\volt} power
+    \item The project will take approximately \SI{3.5}{\year} to complete
+    \item The budget is \SI{2500000}{\USD} for the first phase
+    \item Normal room temperature is \SI{20}{\celsius}
+    \item The server processes \SI{5.2}{\giga\byte} of data per minute
+\end{itemize}
+
 \section{Pseudocode and Algorithms}
 \label{sec:algorithms}
 
@@ -461,200 +561,6 @@ Here is a simple algorithm example using the algorithm2e package:
 	\Return{$Y$}\;
 	\caption{Basic Optimization Algorithm}
 \end{algorithm}
-
-\subsection{Complex Algorithm with Functions}
-
-A more complex algorithm with function definitions:
-
-\begin{algorithm}[H]
-	\SetAlgoLined
-	\SetKwFunction{FMain}{GradientDescent}
-	\SetKwFunction{FCalc}{CalculateGradient}
-	\SetKwFunction{FUpdate}{UpdateParameters}
-	\SetKwProg{Fn}{Function}{:}{}
-	
-	\Fn{\FMain{$\theta_0$, $\alpha$, $\text{maxIter}$, $\epsilon$}}{
-		$\theta \gets \theta_0$\;
-		$\text{iter} \gets 0$\;
-		$\text{converged} \gets \text{false}$\;
-		
-		\While{$\text{iter} < \text{maxIter}$ \textbf{and} $\text{not}$ $\text{converged}$}{
-			$g \gets$ \FCalc{$\theta$}\;
-			\If{$\|g\| < \epsilon$}{
-				$\text{converged} \gets \text{true}$\;
-			}
-			\Else{
-				$\theta \gets$ \FUpdate{$\theta$, $g$, $\alpha$}\;
-				$\text{iter} \gets \text{iter} + 1$\;
-			}
-		}
-		\Return{$\theta$}\;
-	}
-	\caption{Gradient Descent Optimization}
-\end{algorithm}
-
-\subsection{Pseudocode with Mathematical Notation}
-
-Pseudocode can include mathematical notation for clarity:
-
-\begin{algorithm}[H]
-	\SetAlgoLined
-	\KwIn{Training data $\{(x_i, y_i)\}_{i=1}^n$, learning rate $\eta$, iterations $T$}
-	\KwOut{Model parameters $\mathbf{w}$}
-	
-	Initialize $\mathbf{w} \gets \mathbf{0}$\;
-	\For{$t = 1$ \KwTo $T$}{
-		Compute loss: $\mathcal{L}(\mathbf{w}) = \frac{1}{n}\sum_{i=1}^n (y_i - \mathbf{w}^T x_i)^2$\;
-		Compute gradient: $\nabla \mathcal{L}(\mathbf{w}) = -\frac{2}{n}\sum_{i=1}^n x_i(y_i - \mathbf{w}^T x_i)$\;
-		Update parameters: $\mathbf{w} \gets \mathbf{w} - \eta \nabla \mathcal{L}(\mathbf{w})$\;
-	}
-	\Return{$\mathbf{w}$}\;
-	\caption{Linear Regression with Gradient Descent}
-\end{algorithm}
-
-\section{Code Blocks with Syntax Highlighting}
-
-\subsection{Python Code Example}
-
-\begin{lstlisting}[language=Python, caption=Data Processing in Python, label=lst:python]
-import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
-
-def preprocess_data(data_path, test_size=0.2, random_state=42):
-    """
-    Load and preprocess data for machine learning.
-    
-    Parameters:
-    -----------
-    data_path : str
-        Path to the CSV data file
-    test_size : float
-        Proportion of data to use for testing
-    random_state : int
-        Random seed for reproducibility
-        
-    Returns:
-    --------
-    X_train, X_test, y_train, y_test : numpy arrays
-        Processed training and testing data
-    """
-    # Load the data
-    df = pd.read_csv(data_path)
-    
-    # Handle missing values
-    df.fillna(df.mean(), inplace=True)
-    
-    # Split features and target
-    X = df.drop('target', axis=1).values
-    y = df['target'].values
-    
-    # Split into training and testing sets
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=test_size, random_state=random_state
-    )
-    
-    return X_train, X_test, y_train, y_test
-\end{lstlisting}
-
-\subsection{C++ Code Example}
-
-\begin{lstlisting}[language=C++, caption=Efficient Matrix Multiplication, label=lst:cpp]
-#include <iostream>
-#include <vector>
-#include <chrono>
-
-// Efficient matrix multiplication implementation
-std::vector<std::vector<double>> matrix_multiply(
-    const std::vector<std::vector<double>>& A,
-    const std::vector<std::vector<double>>& B) {
-    
-    int n = A.size();
-    int m = A[0].size();
-    int p = B[0].size();
-    
-    // Initialize result matrix with zeros
-    std::vector<std::vector<double>> C(n, std::vector<double>(p, 0.0));
-    
-    // Perform matrix multiplication
-    for (int i = 0; i < n; ++i) {
-        for (int k = 0; k < m; ++k) {
-            for (int j = 0; j < p; ++j) {
-                C[i][j] += A[i][k] * B[k][j];
-            }
-        }
-    }
-    
-    return C;
-}
-
-int main() {
-    // Create example matrices
-    std::vector<std::vector<double>> A = {{1, 2}, {3, 4}};
-    std::vector<std::vector<double>> B = {{5, 6}, {7, 8}};
-    
-    // Measure execution time
-    auto start = std::chrono::high_resolution_clock::now();
-    auto C = matrix_multiply(A, B);
-    auto end = std::chrono::high_resolution_clock::now();
-    
-    // Print result
-    std::cout << "Result matrix:" << std::endl;
-    for (const auto& row : C) {
-        for (double val : row) {
-            std::cout << val << " ";
-        }
-        std::cout << std::endl;
-    }
-    
-    // Print execution time
-    std::chrono::duration<double, std::milli> duration = end - start;
-    std::cout << "Execution time: " << duration.count() << " ms" << std::endl;
-    
-    return 0;
-}
-\end{lstlisting}
-
-\subsection{SQL Code Example}
-
-\begin{lstlisting}[language=SQL, caption=Database Query for Analytics, label=lst:sql]
--- Complex SQL query for data analytics
-WITH monthly_revenue AS (
-    SELECT
-        DATE_TRUNC('month', order_date) AS month,
-        SUM(order_total) AS revenue,
-        COUNT(DISTINCT customer_id) AS unique_customers
-    FROM orders
-    WHERE order_date >= '2022-01-01'
-    GROUP BY DATE_TRUNC('month', order_date)
-),
-customer_segments AS (
-    SELECT
-        customer_id,
-        CASE
-            WHEN lifetime_value > 10000 THEN 'Premium'
-            WHEN lifetime_value > 5000 THEN 'Gold'
-            WHEN lifetime_value > 1000 THEN 'Silver'
-            ELSE 'Bronze'
-        END AS segment
-    FROM customers
-)
-
-SELECT
-    mr.month,
-    mr.revenue,
-    mr.unique_customers,
-    SUM(CASE WHEN cs.segment = 'Premium' THEN 1 ELSE 0 END) AS premium_customers,
-    SUM(CASE WHEN cs.segment = 'Gold' THEN 1 ELSE 0 END) AS gold_customers,
-    SUM(CASE WHEN cs.segment = 'Silver' THEN 1 ELSE 0 END) AS silver_customers,
-    SUM(CASE WHEN cs.segment = 'Bronze' THEN 1 ELSE 0 END) AS bronze_customers,
-    ROUND(mr.revenue / mr.unique_customers, 2) AS average_order_value
-FROM monthly_revenue mr
-JOIN orders o ON DATE_TRUNC('month', o.order_date) = mr.month
-JOIN customer_segments cs ON o.customer_id = cs.customer_id
-GROUP BY mr.month, mr.revenue, mr.unique_customers
-ORDER BY mr.month;
-\end{lstlisting}
 
 \section{Advanced Box Types}
 \label{sec:boxes}
