@@ -1,0 +1,512 @@
+\documentclass[a4paper,11pt]{article}
+
+% Import all configuration and styling from config.tex
+\input{config.tex}
+
+% ========== DOCUMENT BEGIN ==========
+\begin{document}
+
+% ========== TITLE PAGE ==========
+% Instructions: This creates the title page automatically
+\maketitle
+\thispagestyle{empty}
+
+% ========== EXECUTIVE SUMMARY BOX ==========
+% Instructions: Replace with your document summary or overview
+\begin{infobox}
+This is an executive summary or document overview section. Replace this placeholder text with a brief summary of your document's purpose and key points.
+\end{infobox}
+
+\vfill
+% ========== DOCUMENT CLASSIFICATION ==========
+% Instructions: Replace with your document's classification information
+\begin{center}
+\color{textgray}\footnotesize\sffamily
+\textbf{Document Classification:} Internal/Public/Confidential\\
+\textbf{Distribution:} Target Audience Description\\
+\textbf{Version:} 1.0 \quad \textbf{Pages:} \pageref{LastPage}
+\end{center}
+
+\newpage
+
+% ========== TABLE OF CONTENTS ==========
+% Instructions: This generates automatically based on your sections
+\tableofcontents
+\newpage
+
+% ========== MAIN CONTENT SECTIONS ==========
+
+\section{Content Demonstration}
+% Instructions: Replace with your first major section title
+
+\lettrine[lines=3, loversize=0.1]{T}{his} demonstrates a drop cap at the beginning of a section using the lettrine package. It adds an elegant typographic touch to your document. The rest of this paragraph shows how the text wraps around the large initial letter.
+
+This is placeholder text for your main content. Replace with actual content.
+
+\subsection{Advanced Typography Features}
+
+\needspace{4\baselineskip}
+Here we demonstrate quotation handling with csquotes: "This is properly formatted as a quotation with smart quotes." Notice how the quotes are properly curled rather than using straight quotes.
+
+\begin{displayquote}
+This is a block quotation that shows proper indentation and formatting. It's useful for longer quotes that deserve special emphasis or visual distinction from the main text.
+\end{displayquote}
+
+\subsection{Cross-References and Citations}
+
+This section demonstrates intelligent cross-referencing. You can refer to \vref{sec:boxes} for more information.
+
+\needspace{4\baselineskip}
+For bibliography management, you can cite sources like \texttt{\textbackslash cite\{example\}} and have them automatically formatted based on your chosen citation style.\footnote{Requires a .bib file and proper setup with biblatex and biber.}
+
+\subsection{Subsection Example}
+% Instructions: Use subsections to organize content within main sections
+
+This demonstrates how to organize content using subsections.
+
+\begin{itemize}
+    \item This is a first-level bullet point
+    \item This is another bullet point with nested items:
+    \begin{itemize}
+        \item This is a second-level bullet point
+        \item This is another second-level bullet point
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Nested Subsection}
+% Instructions: Use subsubsections for further detail within subsections
+
+This shows a third-level heading for detailed organization.
+
+\section{Table Examples}
+% Instructions: This section demonstrates modern table formatting
+
+This section shows how to create professional-looking tables with color and styling.
+
+\begin{tcolorbox}[colback=cardbg, colframe=frameborder, coltitle=white,
+    fonttitle=\bfseries, title=📊 Data Analysis Results,
+    enhanced, boxrule=0.5pt, arc=4pt, left=10pt, right=10pt, top=8pt, bottom=8pt,
+    attach boxed title to top left={xshift=10pt, yshift=-2mm},
+    boxed title style={colback=accent, arc=2pt}
+]
+
+\rowcolors{2}{rowalt}{white}
+
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash\bfseries}X >{\raggedright\arraybackslash}X c c}
+    \rowcolor{headerbg}
+    \textcolor{headertext}{Category} &
+    \textcolor{headertext}{Description} &
+    \textcolor{headertext}{Value} &
+    \textcolor{headertext}{Status} \\
+    \toprule
+    Project A & Implementation phase & 95\% & Complete  \\
+    Project B & Analysis phase & 45\% & In progress \\
+    Project C & Planning phase & 20\% & Started \\
+    Project D & Testing phase & 80\% & Advanced \\
+    Project E & Deployment phase & 10\% & Initial \\
+    \bottomrule
+\end{tabularx}
+
+\end{tcolorbox}
+
+\vspace{1cm}
+
+% A simpler table example using the same styling
+\begin{table}[htbp]
+\caption{Quarterly Revenue Comparison}
+\centering
+\rowcolors{2}{rowalt}{white}
+\begin{tabular}{lrrr}
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Quarter}} & 
+\textcolor{headertext}{\textbf{2021}} & 
+\textcolor{headertext}{\textbf{2022}} & 
+\textcolor{headertext}{\textbf{\% Change}} \\
+\toprule
+Q1 & \$245,000 & \$267,000 & +9.0\% \\
+Q2 & \$312,000 & \$348,000 & +11.5\% \\
+Q3 & \$298,000 & \$310,000 & +4.0\% \\
+Q4 & \$340,000 & \$392,000 & +15.3\% \\
+\midrule
+\textbf{Total} & \$1,195,000 & \$1,317,000 & +10.2\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+\section{Pseudocode and Algorithms}
+\label{sec:algorithms}
+
+\subsection{Basic Algorithm Example}
+
+Here is a simple algorithm example using the algorithm2e package:
+
+\begin{algorithm}[H]
+	\SetAlgoLined
+	\KwData{Input data $X$, parameters $\alpha$, $\beta$}
+	\KwResult{Optimized output $Y$}
+	Initialize $Y \gets \emptyset$\;
+	\For{each element $x \in X$}{
+		$y \gets \text{Process}(x, \alpha)$\;
+		\If{$y > \beta$}{
+			$Y \gets Y \cup \{y\}$\;
+		}
+		\Else{
+			$y \gets \text{AlternativeProcess}(x)$\;
+			$Y \gets Y \cup \{y\}$\;
+		}
+	}
+	\Return{$Y$}\;
+	\caption{Basic Optimization Algorithm}
+\end{algorithm}
+
+\subsection{Complex Algorithm with Functions}
+
+A more complex algorithm with function definitions:
+
+\begin{algorithm}[H]
+	\SetAlgoLined
+	\SetKwFunction{FMain}{GradientDescent}
+	\SetKwFunction{FCalc}{CalculateGradient}
+	\SetKwFunction{FUpdate}{UpdateParameters}
+	\SetKwProg{Fn}{Function}{:}{}
+	
+	\Fn{\FMain{$\theta_0$, $\alpha$, $\text{maxIter}$, $\epsilon$}}{
+		$\theta \gets \theta_0$\;
+		$\text{iter} \gets 0$\;
+		$\text{converged} \gets \text{false}$\;
+		
+		\While{$\text{iter} < \text{maxIter}$ \textbf{and} $\text{not}$ $\text{converged}$}{
+			$g \gets$ \FCalc{$\theta$}\;
+			\If{$\|g\| < \epsilon$}{
+				$\text{converged} \gets \text{true}$\;
+			}
+			\Else{
+				$\theta \gets$ \FUpdate{$\theta$, $g$, $\alpha$}\;
+				$\text{iter} \gets \text{iter} + 1$\;
+			}
+		}
+		\Return{$\theta$}\;
+	}
+	\caption{Gradient Descent Optimization}
+\end{algorithm}
+
+\subsection{Pseudocode with Mathematical Notation}
+
+Pseudocode can include mathematical notation for clarity:
+
+\begin{algorithm}[H]
+	\SetAlgoLined
+	\KwIn{Training data $\{(x_i, y_i)\}_{i=1}^n$, learning rate $\eta$, iterations $T$}
+	\KwOut{Model parameters $\mathbf{w}$}
+	
+	Initialize $\mathbf{w} \gets \mathbf{0}$\;
+	\For{$t = 1$ \KwTo $T$}{
+		Compute loss: $\mathcal{L}(\mathbf{w}) = \frac{1}{n}\sum_{i=1}^n (y_i - \mathbf{w}^T x_i)^2$\;
+		Compute gradient: $\nabla \mathcal{L}(\mathbf{w}) = -\frac{2}{n}\sum_{i=1}^n x_i(y_i - \mathbf{w}^T x_i)$\;
+		Update parameters: $\mathbf{w} \gets \mathbf{w} - \eta \nabla \mathcal{L}(\mathbf{w})$\;
+	}
+	\Return{$\mathbf{w}$}\;
+	\caption{Linear Regression with Gradient Descent}
+\end{algorithm}
+
+\section{Code Blocks with Syntax Highlighting}
+
+\subsection{Python Code Example}
+
+\begin{lstlisting}[language=Python, caption=Data Processing in Python, label=lst:python]
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+
+def preprocess_data(data_path, test_size=0.2, random_state=42):
+    """
+    Load and preprocess data for machine learning.
+    
+    Parameters:
+    -----------
+    data_path : str
+        Path to the CSV data file
+    test_size : float
+        Proportion of data to use for testing
+    random_state : int
+        Random seed for reproducibility
+        
+    Returns:
+    --------
+    X_train, X_test, y_train, y_test : numpy arrays
+        Processed training and testing data
+    """
+    # Load the data
+    df = pd.read_csv(data_path)
+    
+    # Handle missing values
+    df.fillna(df.mean(), inplace=True)
+    
+    # Split features and target
+    X = df.drop('target', axis=1).values
+    y = df['target'].values
+    
+    # Split into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=test_size, random_state=random_state
+    )
+    
+    return X_train, X_test, y_train, y_test
+\end{lstlisting}
+
+\subsection{C++ Code Example}
+
+\begin{lstlisting}[language=C++, caption=Efficient Matrix Multiplication, label=lst:cpp]
+#include <iostream>
+#include <vector>
+#include <chrono>
+
+// Efficient matrix multiplication implementation
+std::vector<std::vector<double>> matrix_multiply(
+    const std::vector<std::vector<double>>& A,
+    const std::vector<std::vector<double>>& B) {
+    
+    int n = A.size();
+    int m = A[0].size();
+    int p = B[0].size();
+    
+    // Initialize result matrix with zeros
+    std::vector<std::vector<double>> C(n, std::vector<double>(p, 0.0));
+    
+    // Perform matrix multiplication
+    for (int i = 0; i < n; ++i) {
+        for (int k = 0; k < m; ++k) {
+            for (int j = 0; j < p; ++j) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    
+    return C;
+}
+
+int main() {
+    // Create example matrices
+    std::vector<std::vector<double>> A = {{1, 2}, {3, 4}};
+    std::vector<std::vector<double>> B = {{5, 6}, {7, 8}};
+    
+    // Measure execution time
+    auto start = std::chrono::high_resolution_clock::now();
+    auto C = matrix_multiply(A, B);
+    auto end = std::chrono::high_resolution_clock::now();
+    
+    // Print result
+    std::cout << "Result matrix:" << std::endl;
+    for (const auto& row : C) {
+        for (double val : row) {
+            std::cout << val << " ";
+        }
+        std::cout << std::endl;
+    }
+    
+    // Print execution time
+    std::chrono::duration<double, std::milli> duration = end - start;
+    std::cout << "Execution time: " << duration.count() << " ms" << std::endl;
+    
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{SQL Code Example}
+
+\begin{lstlisting}[language=SQL, caption=Database Query for Analytics, label=lst:sql]
+-- Complex SQL query for data analytics
+WITH monthly_revenue AS (
+    SELECT
+        DATE_TRUNC('month', order_date) AS month,
+        SUM(order_total) AS revenue,
+        COUNT(DISTINCT customer_id) AS unique_customers
+    FROM orders
+    WHERE order_date >= '2022-01-01'
+    GROUP BY DATE_TRUNC('month', order_date)
+),
+customer_segments AS (
+    SELECT
+        customer_id,
+        CASE
+            WHEN lifetime_value > 10000 THEN 'Premium'
+            WHEN lifetime_value > 5000 THEN 'Gold'
+            WHEN lifetime_value > 1000 THEN 'Silver'
+            ELSE 'Bronze'
+        END AS segment
+    FROM customers
+)
+
+SELECT
+    mr.month,
+    mr.revenue,
+    mr.unique_customers,
+    SUM(CASE WHEN cs.segment = 'Premium' THEN 1 ELSE 0 END) AS premium_customers,
+    SUM(CASE WHEN cs.segment = 'Gold' THEN 1 ELSE 0 END) AS gold_customers,
+    SUM(CASE WHEN cs.segment = 'Silver' THEN 1 ELSE 0 END) AS silver_customers,
+    SUM(CASE WHEN cs.segment = 'Bronze' THEN 1 ELSE 0 END) AS bronze_customers,
+    ROUND(mr.revenue / mr.unique_customers, 2) AS average_order_value
+FROM monthly_revenue mr
+JOIN orders o ON DATE_TRUNC('month', o.order_date) = mr.month
+JOIN customer_segments cs ON o.customer_id = cs.customer_id
+GROUP BY mr.month, mr.revenue, mr.unique_customers
+ORDER BY mr.month;
+\end{lstlisting}
+
+\section{Advanced Box Types}
+\label{sec:boxes}
+% Instructions: Examples of how to use the three types of callout boxes
+
+Here are examples of different types of callout boxes:
+
+\begin{successbox}
+\textbf{Success Box:} Use this for highlighting positive outcomes or important accomplishments.
+\end{successbox}
+
+\begin{alertbox}
+\textbf{Alert Box:} Use this for important cautions or critical information.
+\end{alertbox}
+
+\begin{infobox}[title=Information Box with Title]
+This demonstrates an information box with a title. Use for supplementary information.
+\end{infobox}
+
+\subsection{Icon-Enhanced Boxes}
+
+The awesomebox package provides boxes with built-in icons:
+
+\awesomebox[violet]{2pt}{\faInfo}{violet}{This is a note with an icon. It's useful for additional information that deserves attention.}
+
+\awesomebox[teal]{2pt}{\faLightbulb}{teal}{This is a tip with an icon. It provides helpful suggestions or shortcuts.}
+
+\awesomebox[orange]{2pt}{\faExclamationTriangle}{orange}{This is a warning with an icon. It alerts readers to potential issues or mistakes.}
+
+\awesomebox[red]{2pt}{\faExclamationCircle}{red}{This is a caution with an icon. It emphasizes important concerns.}
+
+\awesomebox[blue]{2pt}{\faInfoCircle}{blue}{This is an important box with an icon. It highlights critical information.}
+
+\subsection{Logo-Enhanced Boxes}
+
+The bclogo package offers boxes with logos:
+
+\bclogo[logo=\bcattention]{This box has an attention logo to alert readers to something important.}
+
+\bclogo[logo=\bcquestion]{This box has a question logo for FAQs or exploration questions.}
+
+\bclogo[logo=\bccrayon]{This box has a crayon logo that might be used for creative exercises or notes.}
+
+\section{Code Listings and Algorithms}
+
+\subsection{Code Snippets with Syntax Highlighting}
+
+Here's an example of code with syntax highlighting using the listings package:
+
+\begin{lstlisting}[language=Python, caption=Sample Python Code]
+# This is a comment
+def hello_world():
+    """Docstring for function"""
+    print("Hello, world!")
+    return True
+
+# Call the function
+result = hello_world()
+if result:
+    print("Function executed successfully")
+\end{lstlisting}
+
+% Uncomment this if you have minted package configured
+% \begin{minted}[frame=single, framesep=8pt]{javascript}
+% // This is a comment
+% function helloWorld() {
+%   // Print a message
+%   console.log("Hello, world!");
+%   return true;
+% }
+% 
+% // Call the function
+% const result = helloWorld();
+% if (result) {
+%   console.log("Function executed successfully");
+% }
+% \end{minted}
+
+\subsection{Algorithm Description}
+
+Here's an example of an algorithm description using the algorithm2e package:
+
+\begin{algorithm}[H]
+\caption{Sample Algorithm}
+\SetAlgoLined
+\KwData{Input data $X$}
+\KwResult{Output result $Y$}
+Initialize parameters\;
+\For{each element in $X$}{
+    Process the element\;
+    \If{condition is met}{
+        Perform special operation\;
+    }
+    Update intermediate results\;
+}
+Calculate final result $Y$\;
+\Return{$Y$}\;
+\end{algorithm}
+
+\section{List Examples}
+% Instructions: Examples of different list types
+
+\subsection{Bullet Point Lists}
+% Instructions: Standard bullet points for unordered information
+
+\begin{itemize}
+    \item \textbf{First point:} Explanation with emphasized beginning.
+    
+    \item \textbf{Second point:} Another example with supporting detail.
+\end{itemize}
+
+\subsection{Numbered Lists}
+% Instructions: Use enumerate environment for ordered/sequential information
+
+\begin{enumerate}
+    \item \textbf{First step:} Explanation of the first step in a process.
+    
+    \item \textbf{Second step:} Details about the second step or item.
+\end{enumerate}
+
+\section{Analysis Example}
+
+This section shows how to structure content with multiple levels.
+
+\begin{infobox}[title=Key Points]
+\textbf{Point 1:} First key point\\
+\textbf{Point 2:} Second key point\\
+\textbf{Point 3:} Third key point
+\end{infobox}
+
+\section{References}
+% Instructions: Section for citations and resources
+
+% Example bibliography entries for demonstration
+\begin{filecontents*}{example.bib}
+@article{example2023,
+  author = {Smith, John},
+  title = {Example Title},
+  year = {2023},
+  journal = {Journal of Examples},
+  volume = {10},
+  number = {2},
+  pages = {100--120}
+}
+\end{filecontents*}
+% Note: In a real document, you would place biblatex entries in a separate .bib file
+
+\textbf{References:}
+\begin{itemize}
+    \item \href{https://example.com/source1}{Reference 1 - Brief Description}
+    \item \href{https://example.com/source2}{Reference 2 - Brief Description}
+\end{itemize}
+
+% Uncomment to print bibliography when you have a .bib file
+% \printbibliography[heading=bibintoc, title={Bibliography}]
+
+% Instructions: This label is used for page counting in the footer
+\label{LastPage}
+\end{document}

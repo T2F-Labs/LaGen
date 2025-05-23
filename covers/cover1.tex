@@ -1,0 +1,122 @@
+\documentclass[a4paper,11pt]{article}
+
+% Pass geometry options before loading the package through config.tex
+\PassOptionsToPackage{margin=0pt, paperwidth=210mm, paperheight=297mm}{geometry}
+
+% Import base configuration
+\input{config.tex}
+
+% ========== COVER-SPECIFIC OVERRIDES ==========
+% Additional TikZ libraries needed for this cover
+\usetikzlibrary{positioning,shapes.geometric,decorations.pathmorphing,shadows.blur,backgrounds,calc}
+
+% ========== PLACEHOLDER COMMANDS ==========
+\newcommand{\TitlePlaceholder}{YOUR TITLE HERE}
+\newcommand{\SummaryTitlePlaceholder}{YOUR SUMMARY TITLE HERE}
+\newcommand{\SummaryTextPlaceholder}{Your summary text goes here.}
+\newcommand{\PlatformsList}{PlatformOne, PlatformTwo, PlatformThree}
+\newcommand{\FocusList}{FocusItemOne, FocusItemTwo, FocusItemThree, FocusItemFour}
+\newcommand{\AuthorPlaceholder}{Author Name}
+\newcommand{\DatePlaceholder}{Date Here}
+\newcommand{\ClassificationPlaceholder}{Classification}
+\newcommand{\DistributionPlaceholder}{Distribution List}
+\newcommand{\VersionPlaceholder}{Version Number}
+\newcommand{\StatusPlaceholder}{Document Status}
+
+% ========== FULL COVERAGE COVER PAGE ==========
+\begin{document}
+\thispagestyle{empty}
+
+% Background gradient and shapes
+\begin{tikzpicture}[remember picture,overlay]
+    \fill[top color=primary, bottom color=primary!80] (current page.north west) rectangle (current page.south east);
+    \fill[accent!20, opacity=0.3] (current page.north east) -- ++(-8cm,0) -- ++(0,-12cm) -- ++(8cm,0) -- cycle;
+    \fill[lightaccent!15, opacity=0.4] (current page.south west) -- ++(6cm,0) -- ++(0,10cm) -- ++(-6cm,0) -- cycle;
+    \fill[accent!25, opacity=0.5] ([xshift=3cm, yshift=-5cm]current page.north east) circle (4cm);
+    \fill[lightaccent!20, opacity=0.6] ([xshift=-4cm, yshift=6cm]current page.south west) circle (3cm);
+    \foreach \x in {-10,-8,...,30} {
+        \foreach \y in {-20,-18,...,35} {
+            \fill[white, opacity=0.03] (\x,\y) circle (0.5mm);
+        }
+    }
+\end{tikzpicture}
+
+% Content overlay
+\begin{tikzpicture}[remember picture,overlay]
+    % Title Section
+    \node[anchor=north, yshift=-3cm] at (current page.north) {
+        \begin{minipage}{0.85\paperwidth}
+            \centering
+            \begin{spacing}{3.5}
+                \textcolor{white}{\fontsize{36}{60}\selectfont\bfseries\sffamily \TitlePlaceholder}
+            \end{spacing}
+        \end{minipage}
+    };
+
+    % Summary Box
+    \node[anchor=center, yshift=1cm] at (current page.center) {
+        \begin{minipage}{0.75\paperwidth}
+            \begin{tcolorbox}[
+                colback=secondary, opacityback=0.45,
+                colframe=accent!60, opacityframe=0.45,
+                coltext=white, boxrule=1pt, arc=8pt,
+                left=25pt, right=25pt, top=20pt, bottom=20pt,
+                enhanced, drop shadow, borderline={2pt}{0pt}{accent!60}
+            ]
+            \centering
+            \textcolor{white!95}{\fontsize{14}{18}\selectfont\bfseries\sffamily \SummaryTitlePlaceholder}
+            \vspace{12pt}
+            \begin{spacing}{1.5}
+                \textcolor{white!95}{\fontsize{12}{16}\selectfont\sffamily \SummaryTextPlaceholder}
+            \end{spacing}
+            \vspace{16pt}
+            \begin{minipage}{0.48\textwidth}
+                \textcolor{accent!80}{\fontsize{11}{14}\selectfont\bfseries\sffamily PLATFORMS ANALYZED}
+                \textcolor{white!90}{\fontsize{10}{13}\selectfont\sffamily
+                \PlatformsList
+                }
+            \end{minipage}
+            \hfill
+            \begin{minipage}{0.48\textwidth}
+                \textcolor{accent!80}{\fontsize{11}{14}\selectfont\bfseries\sffamily KEY FOCUS AREAS}
+                \textcolor{white!90}{\fontsize{10}{13}\selectfont\sffamily
+                \FocusList
+                }
+            \end{minipage}
+            \end{tcolorbox}
+        \end{minipage}
+    };
+    
+    % Footer Section
+    \node[anchor=south, yshift=2.5cm] at (current page.south) {
+        \begin{minipage}{0.85\paperwidth}
+            \centering
+            \textcolor{white!90}{\fontsize{16}{20}\selectfont\bfseries\sffamily \AuthorPlaceholder}
+            \vspace{0.4cm}
+            
+            \textcolor{accent!60}{\fontsize{14}{18}\selectfont\sffamily \DatePlaceholder}
+            \vspace{0.8cm}
+            \begin{tcolorbox}[
+                colback=secondary, opacityback=0.45,
+                colframe=accent!60, opacityframe=0.45,
+                coltext=white!90, boxrule=1pt, arc=4pt,
+                left=20pt, right=20pt, top=12pt, bottom=12pt,
+                width=0.7\paperwidth, center
+            ]
+            \centering
+            \fontsize{10}{12}\selectfont\sffamily
+            \textbf{DOCUMENT CLASSIFICATION:} \ClassificationPlaceholder \quad
+            \textbf{DISTRIBUTION:} \DistributionPlaceholder
+            \\
+            \textbf{VERSION:} \VersionPlaceholder \quad \textbf{STATUS:} \StatusPlaceholder
+            \end{tcolorbox}
+        \end{minipage}
+    };
+    
+    % Watermark
+    \node[anchor=center, opacity=0.05] at (current page.center) {
+        \textcolor{white}{\fontsize{120}{140}\selectfont\bfseries\sffamily \TitlePlaceholder}
+    };
+\end{tikzpicture}
+
+\end{document}
