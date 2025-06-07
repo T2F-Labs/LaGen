@@ -24,6 +24,7 @@ This guide explains the features and usage of the `config.tex` file, which provi
 - [Title Page](#title-page)
 - [Document Metadata](#document-metadata)
 - [Advanced Image Handling](#advanced-image-handling)
+- [Document Templates](#document-templates)
 
 ## Font and Encoding
 
@@ -1374,6 +1375,148 @@ Sets document information for PDF properties and title page.
 \author{Author Name}
 \date{January 1, 2023} % Specific date or \today
 ```
+
+## Document Templates
+
+### Overview
+
+The LaTeX configuration includes a set of professional document templates that provide ready-to-use designs for various document types. These templates integrate with the branding system to create visually consistent and professionally styled documents.
+
+### Available Templates
+
+#### Template 1: Modern Geometric Design
+
+A sleek, modern template featuring geometric patterns and a professional cover page. Ideal for project proposals, whitepapers, and technical reports.
+
+**Key Features:**
+- Dynamic geometric background using brand colors
+- Professionally styled cover page
+- Custom table styling with brand colors
+- Footer with brand color accents
+
+```latex
+\input{config.tex}
+\input{templates/template1.tex}
+
+% Generate cover page
+\templateOneCover{MAIN TITLE}{Subtitle}{Year}{Recipient}{Preparer}
+
+% Apply table styling (optional)
+\templateOneTable
+```
+
+#### Template 2: Corporate Sidebar Design
+
+A professional corporate template featuring a colored sidebar and subtle patterns for official business documents. Perfect for business reports, strategic analyses, and formal presentations.
+
+**Key Features:**
+- Elegant sidebar with brand color
+- Subtle pattern in the content area
+- Professional cover page
+- Custom table styling with brand colors
+
+```latex
+\input{config.tex}
+\input{templates/template2.tex}
+
+% Generate cover page
+\templateTwoCover{MAIN TITLE}{Subtitle}{Year}{Recipient}{Preparer}
+
+% Apply table styling (optional)
+\templateTwoTable
+```
+
+#### Template 3: Minimal Elegant Design
+
+A clean, minimalist template with subtle gradients and thin lines for a sophisticated appearance. Ideal for annual reports, academic papers, and formal documentation.
+
+**Key Features:**
+- Subtle gradient background
+- Elegant corner flourishes
+- Thin line decorations
+- Sophisticated cover page
+
+```latex
+\input{config.tex}
+\input{templates/template3.tex}
+
+% Generate cover page
+\templateThreeCover{MAIN TITLE}{Subtitle}{Year}{Recipient}{Preparer}
+
+% Apply table styling (optional)
+\templateThreeTable
+```
+
+### Using Templates
+
+Each template can be easily integrated into your documents following these steps:
+
+1. **Include the configuration files:**
+   ```latex
+   \documentclass[11pt,a4paper]{article}
+   \usepackage[margin=0.8in]{geometry}
+   
+   % Load the core configuration with brand colors
+   \input{config.tex}
+   
+   % Load your chosen template
+   \input{templates/template1.tex}  % Choose one template
+   ```
+
+2. **Generate the cover page** using the template's macro:
+   ```latex
+   \begin{document}
+   
+   % Create the cover page
+   \templateOneCover{PROJECT TITLE}{Project Description}{2024}{Recipient}{Author}
+   
+   % Rest of your document...
+   ```
+
+3. **Apply table styling** (optional) for consistent tables:
+   ```latex
+   % Apply table styling
+   \templateOneTable
+   
+   \begin{center}
+   \begin{tabularx}{\textwidth}{|X|X|X|}
+   \hline
+   \textbf{Header 1} & \textbf{Header 2} & \textbf{Header 3} \\
+   \hline
+   Content 1 & Content 2 & Content 3 \\
+   \hline
+   \end{tabularx}
+   \end{center}
+   ```
+
+### Example Documents
+
+The package includes example documents that demonstrate how to use each template:
+
+- `example_use_template1.tex` - Shows Template 1 in use
+- `example_use_template2.tex` - Shows Template 2 in use
+- `example_use_template3.tex` - Shows Template 3 in use
+
+### Template Customization
+
+You can customize the appearance of the templates by modifying your brand colors:
+
+1. Edit the primary brand colors in `brand_colors.tex`
+2. The template will automatically use your custom brand colors
+
+For more advanced customization, you can:
+
+1. Copy a template file to create your own variant
+2. Modify the background, cover page, and styling elements
+3. Use it in your document with `\input{your_custom_template.tex}`
+
+### Required Packages
+
+The templates require these additional LaTeX packages (loaded automatically):
+
+- `tikz`: For drawing geometric elements and patterns
+- `eso-pic`: For background designs
+- `tabularx`: For enhanced table handling
 
 ---
 
