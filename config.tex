@@ -269,10 +269,10 @@
 \newcommand{\pdt}[1]{\frac{\partial #1}{\partial t}}
 
 % Vector calculus operators
-\newcommand{\grad}{\nabla}
-\newcommand{\divg}{\nabla \cdot}
-\newcommand{\curl}{\nabla \times}
-\newcommand{\lapl}{\nabla^2}
+\providecommand{\grad}{\nabla}
+\providecommand{\divg}{\nabla \cdot}
+\providecommand{\curl}{\nabla \times}
+\providecommand{\lapl}{\nabla^2}
 
 % Enhanced formatting for vectors and matrices
 \newcommand{\vect}[1]{\mathbf{#1}}
@@ -282,18 +282,18 @@
 % Probability and statistics notation
 \newcommand{\prob}[1]{\mathrm{P}\left(#1\right)}
 \newcommand{\E}[1]{\mathrm{E}\left[#1\right]}
-\newcommand{\var}[1]{\mathrm{Var}\left(#1\right)}
+\renewcommand{\var}[1]{\mathrm{Var}\left(#1\right)}
 \newcommand{\cov}[1]{\mathrm{Cov}\left(#1\right)}
 \newcommand{\normal}{\mathcal{N}}
 \newcommand{\uniform}{\mathcal{U}}
 
 % Specialized math operators
-\DeclareMathOperator{\tr}{tr}
-\DeclareMathOperator{\diag}{diag}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\sign}{sign}
-\DeclareMathOperator{\lcm}{lcm}
-\DeclareMathOperator{\gcd}{gcd}
+\providecommand{\tr}{\operatorname{tr}}
+\providecommand{\diag}{\operatorname{diag}}
+\providecommand{\rank}{\operatorname{rank}}
+\newcommand{\sign}{\operatorname{sign}}
+\providecommand{\lcm}{\operatorname{lcm}}
+\providecommand{\gcd}{\operatorname{gcd}}
 
 % Box commands for important equations
 \newcommand{\boxedeq}[1]{\begin{empheq}[box=\fbox]{equation}#1\end{empheq}}
@@ -565,8 +565,7 @@
 % Instructions: Professional image formatting with shapes and fallbacks
 
 % Required packages (graphicx should already be loaded)
-\usepackage{graphicx}
-\usepackage{adjustbox}
+\usepackage[export,graphics,graphicx]{adjustbox} % Load with options to avoid conflicts
 \usepackage{varwidth}
 
 % Create a box to use as a fallback for missing images
