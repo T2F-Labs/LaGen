@@ -11,7 +11,10 @@
 \usepackage[table]{xcolor}
 % Professional letter spacing for brand names
 % \usepackage{letterspace} % Removed as fontspec will handle letterspacing
-\usepackage{microtype}
+
+% Load microtype with XeTeX compatibility options
+\usepackage[protrusion=true,expansion=false]{microtype}
+
 % Dynamic font scaling for brand consistency
 \usepackage{scalefnt}
 % Replace "Inter" with your preferred font family if needed
@@ -134,15 +137,20 @@
 
 % Microtype advanced settings
 \microtypesetup{
-    activate={true,nocompatibility},     % Activate protrusion and expansion
-    final,                               % Enable microtype even if draft mode
-    tracking=true,                       % Font tracking
-    kerning=true,                        % Font kerning
-    spacing=true,                        % Letter spacing
-    factor=1100,                         % Factor for enhanced protrusion
-    stretch=15,                          % Font expansion
-    shrink=15                            % Font compression
+    activate=true,           % Activate protrusion
+    final=true,              % Enable microtype even if draft mode
+    factor=1100              % Factor for enhanced protrusion
+    % All expansion/tracking/spacing features disabled via package options
 }
+
+% XeTeX-compatible alternative for letter spacing (instead of microtype's tracking)
+\newcommand{\letterspace}[2][100]{{\addfontfeatures{LetterSpace=#1}#2}}
+
+% Add note about XeTeX-specific alternatives
+% Note: With XeTeX, use fontspec features for advanced typography:
+% \addfontfeatures{LetterSpace=X} for letter spacing (X = value in 1/1000 em)
+% \addfontfeatures{Scale=X} for font scaling
+% \addfontfeatures{Kerning=X} for kerning (where X is "On" or "Off")
 
 % Control font features
 \newcommand{\withfeatures}[2]{{\addfontfeatures{#1}#2}}
@@ -634,7 +642,7 @@
 % Instructions: Professional image formatting with shapes and fallbacks
 
 % Required packages (graphicx should already be loaded)
-\usepackage[export,graphics,graphicx]{adjustbox} % Load with options to avoid conflicts
+\usepackage[export,graphics,noclipbox]{adjustbox} % Load without redefining \clipbox command
 \usepackage{varwidth}
 
 % Create a box to use as a fallback for missing images

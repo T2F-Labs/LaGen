@@ -124,9 +124,9 @@ The configuration provides comprehensive typography tools to fine-tune text appe
 
 ### Packages
 
-- `microtype`: Advanced typography refinements for character protrusion, font expansion, and kerning
+- `microtype`: Limited typography refinements for character protrusion (with XeTeX compatibility)
 - `parskip`: Paragraph spacing control
-- `fontspec`: Modern font handling with OpenType/TrueType support
+- `fontspec`: Modern font handling with OpenType/TrueType support (preferred for XeTeX/LuaTeX)
 - `soul`: Specialized text decoration (underlining, strikeout, spacing, etc.)
 - `ragged2e`: Enhanced text alignment options
 - `textcase`: Case transformation preserving special characters
@@ -159,12 +159,14 @@ The configuration provides comprehensive typography tools to fine-tune text appe
 \texthi[blue]{blue highlight}       % Colored highlight
 ```
 
-#### Letter Spacing (Tracking)
+#### Letter Spacing (Tracking) - XeTeX Compatible
 
 ```latex
-\wide{wider letter spacing}     % Expanded letter spacing
-\wider{very wide spacing}       % Extra expanded spacing  
-\narrow{condensed spacing}      % Condensed letter spacing
+\letterspace[50]{tighter letter spacing}    % Value in 1/1000 em (smaller values = tighter)
+\letterspace[150]{wider letter spacing}     % Value in 1/1000 em (larger values = wider)
+\wide{wider letter spacing}                 % Uses soul package (fallback)
+\wider{very wide spacing}                   % Uses soul package (fallback)
+\narrow{condensed spacing}                  % Uses soul package (fallback)
 ```
 
 #### Font Size Adjustments
@@ -197,10 +199,12 @@ The configuration provides comprehensive typography tools to fine-tune text appe
 \textshadow[blue]{Colored shadow text}
 ```
 
-#### Font Feature Control
+#### Font Feature Control (XeTeX-specific)
 
 ```latex
 \withfeatures{Color=red, Scale=1.2}{Special formatted text}
+\addfontfeatures{LetterSpace=120}  % XeTeX-native letter spacing
+\addfontfeatures{Scale=1.2}        % XeTeX-native font scaling
 ```
 
 #### Typography Fine-Tuning
@@ -210,7 +214,17 @@ The configuration includes several parameters to enhance text quality:
 - `\emergencystretch`: Additional stretch space for better justification
 - `\hyphenpenalty`: Controlled hyphenation frequency
 - `\clubpenalty` and `\widowpenalty`: Prevention of isolated lines
-- Advanced microtype settings for optimal character spacing and protrusion
+- Modified microtype settings for XeTeX compatibility
+
+### XeTeX Typography Notes
+
+When using XeTeX (which is required for advanced font features via fontspec), some microtype features are not available. Instead, use these fontspec alternatives:
+
+- For letter spacing: `\addfontfeatures{LetterSpace=X}` where X is value in 1/1000 em (100 = default)
+- For font scaling: `\addfontfeatures{Scale=X}` where X is scale factor (1.0 = normal)
+- For optical sizing: `\addfontfeatures{OpticalSize=X}` where X is point size
+
+The configuration provides the `\letterspace[X]{text}` command as a convenient XeTeX-compatible alternative to microtype's tracking feature.
 
 ### Tips for Professional Typography
 
@@ -218,9 +232,9 @@ The configuration includes several parameters to enhance text quality:
 - Apply text decorations sparingly for emphasis
 - Use `\textsm` and `\textlg` for subtle hierarchy without breaking document flow
 - Combine `\texthi` with accent colors for important information
-- Avoid overusing expanded tracking (`\wide`, `\wider`) as it can reduce readability in body text
+- For XeTeX, prefer fontspec features (`\addfontfeatures`) over soul-based spacing commands
 - Consider `\textshadow` for decorative headings only, not for body text
-- Fine-tune microtype settings for different fonts if needed
+- With XeTeX, rely on the font's native features through fontspec when possible
 
 ### Usage
 
@@ -229,7 +243,7 @@ The configuration includes several parameters to enhance text quality:
 \begin{quote}
     \setSpacingOneHalf
     \large\itshape
-    \wide{Typography is clarity. It is not about drawing attention to itself, 
+    \letterspace[130]{Typography is clarity. It is not about drawing attention to itself, 
     but about communicating a message with precision and beauty.}
     \normalfont\normalsize
     \hfill — \texthi[lightgray]{Design Expert}
@@ -239,6 +253,10 @@ The configuration includes several parameters to enhance text quality:
 Typography is not just about choosing fonts. It's about \textunderline{rhythm}, 
 \texthi{hierarchy}, and \textstrikeout{eliminating} distractions. Good typography 
 \textlg{amplifies} the message without calling attention to itself.
+
+% Using XeTeX-specific font features
+{\addfontfeatures{LetterSpace=80, Scale=1.05}
+Important text with tighter spacing and slight enlargement.}
 ```
 
 ## Advanced Text Features
