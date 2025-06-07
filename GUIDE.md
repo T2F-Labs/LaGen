@@ -287,53 +287,264 @@ Provides tools for sophisticated bibliography management and cross-referencing.
 
 ### Overview
 
-Provides comprehensive tools for typesetting mathematical content with precision and elegance.
+The configuration provides comprehensive mathematical typesetting capabilities for academic papers, textbooks, technical documentation, and scientific publications. It combines essential packages with advanced formatting options to ensure elegant and precise mathematical notation.
 
-### Packages
+### Core Packages
 
-- `amsmath`: Advanced math environments and commands
-- `amssymb`: Extended mathematical symbols
+- `amsmath`: Advanced mathematical environments and symbols
+- `amssymb`: Extended mathematical symbol collection
 - `fixmath`: Corrects typography issues in math mode
 - `siunitx`: Consistent formatting of numbers and units
+- `mathtools`: Enhanced mathematical tools and environments
+- `empheq`: Advanced equation highlighting and boxing
+- `cases`: Sophisticated case environments
+- `amsthm`: Theorem environments and styling
+- `stmaryrd`: Specialized mathematical symbols
+- `textcomp`: Text companion symbols
+- `physics`: Streamlined notation for physics
+- `tensor`: Support for tensor notation
+- `braket`: Quantum mechanics notation
+- `cancel`: Cross out terms in equations
 
 ### Features
 
-- **Math Environments**: Equations, align, gather, multline, etc.
-- **Symbol Collection**: Comprehensive mathematical symbols
-- **Unit Formatting**: Consistent and correct display of units
-- **Custom Units**: Predefined units (USD, hour, year)
+#### Theorem Environments
 
-### Usage
+Professional environments for mathematical statements with consistent styling:
 
 ```latex
-% Basic equation
-\begin{equation}
-  E = mc^2
-\end{equation}
+\begin{definition}
+  A prime number is a natural number greater than 1 that is not a product of two natural numbers other than 1 and itself.
+\end{definition}
 
-% Aligned equations
-\begin{align}
-  a &= b + c \\
-  d &= e + f
-\end{align}
+\begin{theorem}
+  There are infinitely many prime numbers.
+\end{theorem}
 
-% Numbers with units
-\SI{5.2}{\kilo\gram}
-\SI{42}{\metre\per\second}
-\SI{1500}{\USD}
-\SI{2.5}{\hour}
-\SI{3}{\year}
+\begin{lemma}
+  Supporting statement for the theorem.
+\end{lemma}
 
-% Define your own units
-\DeclareSIUnit\myunit{mu}
+\begin{corollary}
+  A direct consequence of the theorem.
+\end{corollary}
+
+\begin{proposition}
+  A formal statement to be proved.
+\end{proposition}
+
+\begin{example}
+  An illustrative example.
+\end{example}
+
+\begin{remark}
+  An observational comment.
+\end{remark}
+
+\begin{note}
+  Additional information or clarification.
+\end{note}
 ```
 
-### Tips for Mathematical Typesetting
+#### Mathematical Notation Shortcuts
 
-- Use `align` instead of `eqnarray` for aligned equations
-- Use `\text{}` for text within math mode
-- Use `\left( ... \right)` for automatically sized parentheses
-- Use the `siunitx` package consistently for all measurements and units
+##### Common Mathematical Sets
+
+```latex
+$\R$ - Real numbers
+$\C$ - Complex numbers
+$\N$ - Natural numbers
+$\Z$ - Integers
+$\Q$ - Rational numbers
+$\F$ - General field
+```
+
+##### Enhanced Derivatives and Differential Operators
+
+```latex
+$\d x$ - Differential of x (properly formatted)
+$\dt y$ - Time derivative of y
+$\dx y$ - Derivative of y with respect to x
+$\prt$ - Partial derivative symbol
+$\pdx{f}$ - Partial derivative of f with respect to x
+$\pdt{f}$ - Partial derivative of f with respect to t
+```
+
+##### Vector Calculus Operators
+
+```latex
+$\grad f$ - Gradient of function f
+$\divg \vec{F}$ - Divergence of vector field F
+$\curl \vec{F}$ - Curl of vector field F
+$\lapl f$ - Laplacian of function f
+```
+
+##### Enhanced Vector and Matrix Formatting
+
+```latex
+$\vect{v}$ - Vector v (bold formatting)
+$\mat{A}$ - Matrix A (bold formatting)
+$\mat{A}^\T$ - Matrix transpose
+```
+
+##### Probability and Statistics Notation
+
+```latex
+$\prob{X > 0}$ - Probability that X > 0
+$\E{X}$ - Expected value of X
+$\var{X}$ - Variance of X
+$\cov{X,Y}$ - Covariance of X and Y
+$\normal(\mu, \sigma^2)$ - Normal distribution
+$\uniform(a,b)$ - Uniform distribution
+```
+
+##### Specialized Math Operators
+
+```latex
+$\tr(\mat{A})$ - Trace of matrix A
+$\diag(\lambda_1, \lambda_2, \ldots)$ - Diagonal matrix
+$\rank(\mat{A})$ - Rank of matrix A
+$\sign(x)$ - Sign function
+$\lcm(a,b)$ - Least common multiple
+$\gcd(a,b)$ - Greatest common divisor
+```
+
+#### Enhanced Equation Display
+
+##### Boxed Equations
+
+```latex
+\boxedeq{E = mc^2}
+```
+
+Produces:
+
+$$\fbox{$E = mc^2$}$$
+
+##### Color-Boxed Equations
+
+```latex
+\colorboxedeq{mathred}{F = ma}
+\colorboxedeq{mathblue}{E = -\frac{d\Phi}{dt}}
+\colorboxedeq{mathgreen}{PV = nRT}
+```
+
+Produces equations with colored borders (red, blue, and green respectively).
+
+##### Physics Notation
+
+The `physics` package provides intuitive syntax for common physics notation:
+
+```latex
+\begin{align}
+\qty(\frac{1}{2}mv^2) &= \frac{1}{2}mv^2 \\
+\va{F} &= m\va{a} \\
+\pdv{E}{t} &= \frac{\partial E}{\partial t} \\
+\end{align}
+```
+
+##### Quantum Mechanics Notation
+
+```latex
+$\ket{\psi}$ - Quantum state ket
+$\bra{\phi}$ - Quantum state bra
+$\braket{\phi|\psi}$ - Inner product
+$\dyad{\psi}{\phi}$ - Outer product
+```
+
+#### Advanced Cases and Aligned Equations
+
+```latex
+\begin{empheq}[left=\empheqlbrace]{align}
+f(x) &= x^2 & \text{if } x \geq 0 \\
+     &= -x^2 & \text{if } x < 0
+\end{empheq}
+```
+
+### Units and Measurements
+
+The `siunitx` package ensures consistent formatting of numbers and units:
+
+```latex
+\SI{1.23e4}{\meter} - 12300 meters
+\SI{45}{\degree\celsius} - 45 degrees Celsius
+\SI{9.8}{\meter\per\second\squared} - Acceleration due to gravity
+\SI{1.602e-19}{\coulomb} - Elementary charge
+\SI{24.5}{\kilo\gram} - Mass in kilograms
+\SI{1520}{\USD} - Currency in US Dollars
+\SI{3.5}{\hour} - Time duration in hours
+\SI{2}{\year} - Period of time in years
+```
+
+### Tips for Professional Mathematical Typesetting
+
+- **Use proper typography**: Always use `\mathrm{d}` for differentials instead of the italic $d$.
+- **Consistent notation**: Use the provided macros for vectors, matrices, and operators.
+- **Equation spacing**: Use `\, \: \; \quad \qquad` for fine control of horizontal spacing.
+- **Vertical spacing**: Use `\\[5pt]` to add extra space between lines in multi-line equations.
+- **Equation labeling**: Label important equations with `\label{eq:name}` for referencing.
+- **Math fonts**: For multi-letter function names or text within equations, use `\text{}` or `\mathrm{}`.
+- **Enclose arguments**: For function arguments, use `\left(` and `\right)` for automatically sized parentheses.
+- **Equation boxes**: Use `\boxedeq{}` for emphasis of important equations.
+- **Color strategically**: Use colored boxes (`\colorboxedeq{}{}`) to categorize equations or highlight key results.
+
+### Examples of Advanced Usage
+
+#### Multi-line Equation with Alignment
+
+```latex
+\begin{align}
+\int_a^b f(x)\,\d x &= \left. F(x) \right|_{a}^{b} \\
+&= F(b) - F(a)
+\end{align}
+```
+
+#### Matrix with Highlighted Elements
+
+```latex
+\begin{pmatrix}
+\color{mathred}a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & \color{mathred}a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & \color{mathred}a_{nn}
+\end{pmatrix}
+```
+
+#### Tensor Equation with Physics Notation
+
+```latex
+\begin{align}
+R_{\mu\nu} - \frac{1}{2}R g_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4}T_{\mu\nu}
+\end{align}
+```
+
+#### Quantum Circuit Notation
+
+```latex
+\begin{align}
+\ket{0} \xrightarrow{\text{H}} \frac{1}{\sqrt{2}}(\ket{0}+\ket{1}) \xrightarrow{\text{CNOT}} \frac{1}{\sqrt{2}}(\ket{00}+\ket{11})
+\end{align}
+```
+
+#### Advanced Probability Example
+
+```latex
+\begin{align}
+\prob{X > \mu + 2\sigma} &= 1 - \Phi\left(\frac{\mu + 2\sigma - \mu}{\sigma}\right) \\
+&= 1 - \Phi(2) \\
+&\approx 0.0228
+\end{align}
+```
+
+#### System of Equations with Cases
+
+```latex
+\begin{empheq}[left=\empheqlbrace]{align}
+\frac{dx}{dt} &= \sigma(y-x) \\
+\frac{dy}{dt} &= x(\rho-z)-y \\
+\frac{dz}{dt} &= xy - \beta z
+\end{empheq}
+```
 
 ## Page Break Control
 

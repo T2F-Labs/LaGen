@@ -208,6 +208,97 @@
 \DeclareSIUnit\hour{h}
 \DeclareSIUnit\year{yr}
 
+% ========== ENHANCED MATHEMATICAL TYPESETTING ==========
+% Advanced math tools and additional environments
+\usepackage{mathtools}
+% Enhanced equation highlighting and boxes
+\usepackage{empheq}
+% Advanced cases environments
+\usepackage{cases}
+% Theorem environments for mathematical statements
+\usepackage{amsthm}
+% Advanced symbol sets
+\usepackage{stmaryrd}
+\usepackage{textcomp}
+% Physics notation package for differential operators, brackets, etc.
+\usepackage{physics}
+% Tensor notation
+\usepackage{tensor}
+% Quantum mechanics notation
+\usepackage{braket}
+% Cross out terms in equations
+\usepackage{cancel}
+
+% Theorem environments setup
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{note}{Note}[section]
+
+% Custom colors for math highlighting
+\definecolor{mathblue}{RGB}{0,82,155}
+\definecolor{mathred}{RGB}{204,0,0}
+\definecolor{mathgreen}{RGB}{0,128,0}
+\definecolor{mathpurple}{RGB}{128,0,128}
+
+% Common mathematical sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+
+% Enhanced derivatives and differential operators
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\dt}{\frac{\d}{\d t}}
+\newcommand{\dx}{\frac{\d}{\d x}}
+\newcommand{\dy}{\frac{\d}{\d y}}
+\newcommand{\dz}{\frac{\d}{\d z}}
+\newcommand{\prt}{\partial}
+\newcommand{\pdx}[1]{\frac{\partial #1}{\partial x}}
+\newcommand{\pdy}[1]{\frac{\partial #1}{\partial y}}
+\newcommand{\pdz}[1]{\frac{\partial #1}{\partial z}}
+\newcommand{\pdt}[1]{\frac{\partial #1}{\partial t}}
+
+% Vector calculus operators
+\newcommand{\grad}{\nabla}
+\newcommand{\divg}{\nabla \cdot}
+\newcommand{\curl}{\nabla \times}
+\newcommand{\lapl}{\nabla^2}
+
+% Enhanced formatting for vectors and matrices
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\T}{\mathsf{T}} % Transpose
+
+% Probability and statistics notation
+\newcommand{\prob}[1]{\mathrm{P}\left(#1\right)}
+\newcommand{\E}[1]{\mathrm{E}\left[#1\right]}
+\newcommand{\var}[1]{\mathrm{Var}\left(#1\right)}
+\newcommand{\cov}[1]{\mathrm{Cov}\left(#1\right)}
+\newcommand{\normal}{\mathcal{N}}
+\newcommand{\uniform}{\mathcal{U}}
+
+% Specialized math operators
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\gcd}{gcd}
+
+% Box commands for important equations
+\newcommand{\boxedeq}[1]{\begin{empheq}[box=\fbox]{equation}#1\end{empheq}}
+\newcommand{\colorboxedeq}[2]{\begin{empheq}[box={\fcolorbox{#1}{white}}]{equation}#2\end{empheq}}
+
 % ========== PAGE BREAK CONTROL ==========
 % Instructions: For better page break control
 \usepackage{afterpage}
