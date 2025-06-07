@@ -1,0 +1,59 @@
+% ========== BRAND COLORS ==========
+% Define your brand colors here to maintain consistent branding across your document
+% These colors will be used throughout the document for various elements
+
+% Primary Brand Colors - CUSTOMIZE THESE
+\definecolor{brandPrimary}{HTML}{2563EB}    % Primary brand color
+\definecolor{brandSecondary}{HTML}{4F46E5}  % Secondary brand color
+\definecolor{brandAccent}{HTML}{10B981}     % Accent color for highlights and emphasis
+
+% Text Colors - Derived from brand colors
+\definecolor{primary}{HTML}{0F172A}         % Main text color
+\definecolor{secondary}{HTML}{334155}       % Secondary text color
+\definecolor{accent}{HTML}{2563EB}          % Links and highlights (defaults to brandPrimary)
+
+% UI Element Colors - These should work well with your brand colors
+\definecolor{lightaccent}{HTML}{3B82F6}     % Lighter accent variant
+\definecolor{success}{HTML}{059669}         % Success/positive elements
+\definecolor{warning}{HTML}{D97706}         % Warning/attention elements
+\definecolor{background}{HTML}{F8FAFC}      % Light background for boxes
+\definecolor{border}{HTML}{E2E8F0}          % Borders and lines
+\definecolor{textgray}{HTML}{64748B}        % Muted text
+\definecolor{lightgray}{HTML}{F1F5F9}       % Table alternating rows
+
+% Code Colors
+\definecolor{codebg}{HTML}{F8F8F8}          % Code block background
+\definecolor{codecomment}{HTML}{6A737D}     % Code comments
+\definecolor{codestring}{HTML}{032F62}      % Code strings
+\definecolor{codekey}{HTML}{D73A49}         % Code keywords
+
+% Table Colors
+\definecolor{cardbg}{HTML}{F7F9FC}          % Card background color
+\definecolor{headerbg}{HTML}{4A90E2}        % Table header background (defaults to a shade of brandPrimary)
+\definecolor{headertext}{HTML}{FFFFFF}      % Text color for table headers
+\definecolor{rowalt}{HTML}{F1F4F9}          % Alternating row color
+\definecolor{frameborder}{HTML}{D3DCE6}     % Border color for frames
+
+% ========== COLOR CASCADE SYSTEM ==========
+% This automatically adjusts certain colors based on your brand colors
+% Uncomment and adjust these lines to automatically derive colors from your brand colors
+
+% Table header background from brand primary
+\colorlet{headerbg}{brandPrimary}
+
+% Accent color from brand primary
+\colorlet{accent}{brandPrimary}
+
+% Light accent as a lighter shade of brand primary
+\colorlet{lightaccent}{brandPrimary!75}
+
+% Success color from brand accent
+\colorlet{success}{brandAccent}
+
+% Border color from brand colors
+\colorlet{border}{brandPrimary!20}
+
+% Frame border from brand secondary
+\colorlet{frameborder}{brandSecondary!30}
+
+% ========== END COLOR CASCADE SYSTEM ========== 

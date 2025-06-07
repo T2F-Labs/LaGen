@@ -15,6 +15,9 @@
 % Load microtype with XeTeX compatibility options
 \usepackage[protrusion=true,expansion=false]{microtype}
 
+% Import brand colors before defining other styling
+\input{brand_colors.tex}
+
 % Dynamic font scaling for brand consistency
 \usepackage{scalefnt}
 % Replace "Inter" with your preferred font family if needed
@@ -58,21 +61,7 @@
 \usepackage{fixltx2e}
 
 % ========== COLORS ==========
-% Instructions: Modify these color definitions to match your brand/theme
-\definecolor{primary}{HTML}{0F172A}        % Main text color - change as needed
-\definecolor{secondary}{HTML}{334155}      % Secondary text color
-\definecolor{accent}{HTML}{2563EB}         % Links and highlights
-\definecolor{lightaccent}{HTML}{3B82F6}    % Lighter accent variant
-\definecolor{success}{HTML}{059669}        % Success/positive elements
-\definecolor{warning}{HTML}{D97706}        % Warning/attention elements
-\definecolor{background}{HTML}{F8FAFC}     % Light background for boxes
-\definecolor{border}{HTML}{E2E8F0}        % Borders and lines
-\definecolor{textgray}{HTML}{64748B}      % Muted text
-\definecolor{lightgray}{HTML}{F1F5F9}     % Table alternating rows
-\definecolor{codebg}{HTML}{F8F8F8}        % Code block background
-\definecolor{codecomment}{HTML}{6A737D}   % Code comments
-\definecolor{codestring}{HTML}{032F62}    % Code strings
-\definecolor{codekey}{HTML}{D73A49}       % Code keywords
+% Colors are now defined in brand_colors.tex
 
 % ========== TYPOGRAPHY ==========
 % Instructions: These settings control paragraph spacing and text optimization
@@ -623,12 +612,7 @@
 % Table styling
 \captionsetup{font=small, labelfont=bf, labelsep=colon}
 
-% Additional table colors
-\definecolor{cardbg}{HTML}{F7F9FC}
-\definecolor{headerbg}{HTML}{4A90E2}
-\definecolor{headertext}{HTML}{FFFFFF}
-\definecolor{rowalt}{HTML}{F1F4F9}
-\definecolor{frameborder}{HTML}{D3DCE6}
+% Additional table colors are now defined in brand_colors.tex
 
 % ========== CODE LISTINGS ==========
 % Instructions: For code syntax highlighting
