@@ -15,8 +15,57 @@
 % Load microtype with XeTeX compatibility options
 \usepackage[protrusion=true,expansion=false]{microtype}
 
-% Import brand colors before defining other styling
-\input{brand_colors.tex}
+% ========== COLORS ==========
+% Define default brand colors first (these will be used if brand_colors.tex is missing)
+
+% Default Primary Brand Colors
+\definecolor{brandPrimary}{HTML}{2563EB}    % Primary brand color
+\definecolor{brandSecondary}{HTML}{4F46E5}  % Secondary brand color
+\definecolor{brandAccent}{HTML}{10B981}     % Accent color for highlights and emphasis
+
+% Default Text Colors - Derived from brand colors
+\definecolor{primary}{HTML}{0F172A}         % Main text color
+\definecolor{secondary}{HTML}{334155}       % Secondary text color
+\definecolor{accent}{HTML}{2563EB}          % Links and highlights (defaults to brandPrimary)
+
+% Default UI Element Colors
+\definecolor{lightaccent}{HTML}{3B82F6}     % Lighter accent variant
+\definecolor{success}{HTML}{059669}         % Success/positive elements
+\definecolor{warning}{HTML}{D97706}         % Warning/attention elements
+\definecolor{background}{HTML}{F8FAFC}      % Light background for boxes
+\definecolor{border}{HTML}{E2E8F0}          % Borders and lines
+\definecolor{textgray}{HTML}{64748B}        % Muted text
+\definecolor{lightgray}{HTML}{F1F5F9}       % Table alternating rows
+
+% Default Code Colors
+\definecolor{codebg}{HTML}{F8F8F8}          % Code block background
+\definecolor{codecomment}{HTML}{6A737D}     % Code comments
+\definecolor{codestring}{HTML}{032F62}      % Code strings
+\definecolor{codekey}{HTML}{D73A49}         % Code keywords
+
+% Default Table Colors
+\definecolor{cardbg}{HTML}{F7F9FC}          % Card background color
+\definecolor{headerbg}{HTML}{4A90E2}        % Table header background
+\definecolor{headertext}{HTML}{FFFFFF}      % Text color for table headers
+\definecolor{rowalt}{HTML}{F1F4F9}          % Alternating row color
+\definecolor{frameborder}{HTML}{D3DCE6}     % Border color for frames
+
+% Default Color Cascade System
+\colorlet{headerbg}{brandPrimary}
+\colorlet{accent}{brandPrimary}
+\colorlet{lightaccent}{brandPrimary!75}
+\colorlet{success}{brandAccent}
+\colorlet{border}{brandPrimary!20}
+\colorlet{frameborder}{brandSecondary!30}
+
+% Try to import custom brand colors if the file exists
+% This will override the defaults defined above
+\IfFileExists{brand_colors.tex}{
+    \input{brand_colors.tex}
+    \typeout{^^J INFO: Loaded custom brand colors from brand_colors.tex^^J}
+}{
+    \typeout{^^J INFO: Using default brand colors (brand_colors.tex not found)^^J}
+}
 
 % Dynamic font scaling for brand consistency
 \usepackage{scalefnt}
@@ -59,9 +108,6 @@
 \usepackage{flafter}
 % Bug fixes for LaTeX kernel
 \usepackage{fixltx2e}
-
-% ========== COLORS ==========
-% Colors are now defined in brand_colors.tex
 
 % ========== TYPOGRAPHY ==========
 % Instructions: These settings control paragraph spacing and text optimization

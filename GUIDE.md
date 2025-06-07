@@ -98,13 +98,59 @@ Controls the overall document dimensions, margins, and spacing.
 
 ### Overview
 
-Defines a comprehensive color palette for consistent styling throughout your document.
+Defines a comprehensive color palette for consistent styling throughout your document. The system uses a brand color approach where all document elements derive their colors from a few primary brand colors.
+
+### Customizing Brand Colors
+
+#### Basic Usage
+
+The document uses a brand color system defined in `brand_colors.tex`. To customize colors:
+
+1. Edit the primary brand colors in `brand_colors.tex`:
+   ```latex
+   % Primary Brand Colors - CUSTOMIZE THESE
+   \definecolor{brandPrimary}{HTML}{2563EB}    % Primary brand color
+   \definecolor{brandSecondary}{HTML}{4F46E5}  % Secondary brand color
+   \definecolor{brandAccent}{HTML}{10B981}     % Accent color for highlights
+   ```
+
+2. The color cascade system will automatically update derived colors:
+   ```latex
+   % Color cascade example
+   \colorlet{accent}{brandPrimary}
+   \colorlet{lightaccent}{brandPrimary!75}
+   \colorlet{success}{brandAccent}
+   ```
+
+#### Advanced Customization
+
+For advanced color customization:
+
+1. Create your own `my_brand_colors.tex` file based on `brand_colors.tex`
+2. Edit all desired colors including derived colors
+3. Update `config.tex` to use your file:
+   ```latex
+   % In config.tex, replace:
+   \input{brand_colors.tex}
+   
+   % With:
+   \input{my_brand_colors.tex}
+   ```
+
+#### Fallback System
+
+The document includes a color fallback system:
+
+- If `brand_colors.tex` is missing, default colors will be used
+- If specific color definitions are missing in `brand_colors.tex`, their defaults will be used
+- Additional color definitions in `brand_colors.tex` will be applied but won't break the document
 
 ### Features
 
 - **Text Colors**: Primary, secondary, and accent colors
 - **Semantic Colors**: Success, warning, and background colors
 - **Functional Colors**: For tables, code blocks, and UI elements
+- **Brand-Driven Design**: All colors derive from a few key brand colors
 
 ### Usage
 
