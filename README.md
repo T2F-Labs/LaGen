@@ -34,6 +34,31 @@ This project provides a flexible template system that lets you generate beautifu
 - **Brand Consistency**: Letterspacing and font scaling for brand names
 - **Better Page Control**: Enhanced float placement and management
 - **Professional Pagination**: "Page X of Y" numbering and advanced headers/footers
+- **Advanced Image Handling**: Professional image formatting with shapes, fallbacks, and effects
+- **Comprehensive Lists**: Task lists, priority lists, and custom styling options
+- **Semantic Box Styling**: Info, alert, and success boxes with visual cues
+
+## 📖 Documentation
+
+This project includes comprehensive documentation to help you get the most out of the LaTeX template system:
+
+- **GUIDE.md**: [Complete LaTeX configuration guide](./GUIDE.md) with detailed explanations of all available features and usage examples
+- **dev.md**: Development guidelines for maintaining and extending the system
+- **INSTRUCTIONS.md**: Basic usage instructions and examples
+
+The [`GUIDE.md`](./GUIDE.md) file provides an extensive reference for all LaTeX configuration options available in `config.tex`, including:
+
+- Font and encoding options
+- Page layout settings
+- Color schemes and typography
+- Section styling and header/footer configuration
+- Advanced mathematical typesetting features
+- Box and callout styling
+- List formatting options
+- Table configuration
+- Code listing setup
+- Algorithm formatting
+- Advanced image handling with various shapes and styles
 
 ## 🔧 Installation
 
@@ -168,12 +193,12 @@ The budget is \SI{2500000}{\USD} for the first phase
 Use predefined column types for better table formatting:
 
 ```latex
-\begin{tabular}{L{3cm}C{5cm}R{2cm}N}
+\begin{tabularx}{\textwidth}{L{3cm}C{5cm}R{2cm}N}
 % L = left-aligned with specified width
 % C = centered with specified width
 % R = right-aligned with specified width
 % N = right-aligned, automatically sized (for numbers)
-\end{tabular}
+\end{tabularx}
 ```
 
 ### Mathematical Typesetting
@@ -186,6 +211,21 @@ E &= mc^2 \\
 F &= G\frac{m_1 m_2}{r^2} \\
 \nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t}
 \end{align}
+```
+
+### Advanced Image Handling
+
+Create professional image presentations with various shapes and styles:
+
+```latex
+% Image with rounded corners
+\roundedImage{images/profile.jpg}{4cm}{10pt}{Team Member}{Profile Not Available}
+
+% Circular image (perfect for profile pictures)
+\circularImage{images/avatar.png}{3cm}{CEO Portrait}{Avatar Not Available}
+
+% Image with drop shadow effect
+\shadowImage{images/product.jpg}{6cm}{Product Showcase}{Image Not Available}
 ```
 
 ## 📖 Examples
@@ -204,11 +244,13 @@ The repository includes example data structures and their output PDFs:
 .
 ├── latex_template.tex         # Main template file
 ├── config.tex                 # LaTeX configuration and styling
+├── GUIDE.md                   # Comprehensive LaTeX configuration guide
+├── dev.md                     # Development guidelines and standards
 ├── covers/                    # Optional cover page designs
 │   ├── cover1.tex             # Modern cover design
 │   └── cover2.tex             # Traditional cover design
 ├── examples/                  # Example Python data and output PDFs
-├── INSTRUCTIONS.md            # Detailed documentation
+├── INSTRUCTIONS.md            # Basic usage instructions
 └── README.md                  # This file
 ```
 
@@ -227,6 +269,8 @@ The template produces professionally styled documents with elements like:
 - Code listings with syntax highlighting
 - Algorithm descriptions with proper mathematical notation
 - Cross-references and proper citations
+- Professional image handling with various shapes and effects
+- Task and priority lists with custom styling
 
 ## ⚙️ Customization
 
@@ -239,6 +283,20 @@ You can customize the look and feel of your documents by modifying `config.tex`.
 - Mathematical styling and number formatting
 - Table layouts and designs
 - Header and footer formatting
+- Image presentation styles
+- List formatting and styling
+
+For detailed customization options, refer to the [comprehensive configuration guide](./GUIDE.md).
+
+## 🆕 Recent Updates
+
+- Added comprehensive `GUIDE.md` documentation for all LaTeX configuration options
+- Fixed package loading conflicts between `graphicx` and `adjustbox`
+- Enhanced image handling with various shapes, styles, and fallback mechanisms
+- Added development guidelines in `dev.md`
+- Improved tabular environments with compatibility fixes
+- Enhanced mathematical typesetting section with additional examples
+- Added custom list styles including task lists and priority indicators
 
 ## 🤝 Contributing
 
