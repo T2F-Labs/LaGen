@@ -1,0 +1,76 @@
+% ========== EXAMPLE BRAND COLORS THEME ==========
+% This file demonstrates how to create a custom theme by modifying brand colors
+% To use this theme, copy it to my_brand_colors.tex and update config.tex
+% to use \input{my_brand_colors.tex} instead of \input{brand_colors.tex}
+
+% ========== GREEN CORPORATE THEME ==========
+% This is an example theme with a green corporate color scheme
+
+% Primary Brand Colors - CUSTOMIZE THESE
+\definecolor{brandPrimary}{HTML}{0C6E4E}    % Dark green primary color
+\definecolor{brandSecondary}{HTML}{2C3E50}  % Dark blue-gray secondary color
+\definecolor{brandAccent}{HTML}{E67E22}     % Orange accent color for highlights
+
+% Text Colors - Customized for green theme
+\definecolor{primary}{HTML}{2C3E50}         % Dark blue-gray for main text
+\definecolor{secondary}{HTML}{34495E}       % Lighter blue-gray for secondary text
+\definecolor{accent}{HTML}{16A085}          % Teal for links and highlights
+
+% UI Element Colors - Customized for green theme
+\definecolor{lightaccent}{HTML}{27AE60}     % Light green variant
+\definecolor{success}{HTML}{2ECC71}         % Bright green for success elements
+\definecolor{warning}{HTML}{F39C12}         % Amber for warning elements
+\definecolor{background}{HTML}{F5FFF7}      % Very light green for backgrounds
+\definecolor{border}{HTML}{D0E9D6}          % Light green for borders
+\definecolor{textgray}{HTML}{7F8C8D}        % Medium gray for muted text
+\definecolor{lightgray}{HTML}{ECF0F1}       % Very light gray with slight green tint
+
+% Code Colors - Customized for green theme
+\definecolor{codebg}{HTML}{F9FFFA}          % Very light green background
+\definecolor{codecomment}{HTML}{7F8C8D}     % Gray-green for comments
+\definecolor{codestring}{HTML}{16A085}      % Teal for strings
+\definecolor{codekey}{HTML}{C0392B}         % Dark red for keywords
+
+% Table Colors - Customized for green theme
+\definecolor{cardbg}{HTML}{FBFEFC}          % Off-white with green tint
+\definecolor{headerbg}{HTML}{27AE60}        % Green header background
+\definecolor{headertext}{HTML}{FFFFFF}      % White text on green
+\definecolor{rowalt}{HTML}{EBF5EF}          % Light green alternate rows
+\definecolor{frameborder}{HTML}{D5E8DB}     % Light green frame border
+
+% ========== COLOR CASCADE SYSTEM ==========
+% This automatically adjusts certain colors based on brand colors
+% Comment out any of these if you prefer the explicit colors defined above
+
+% Table header background from brand primary
+\colorlet{headerbg}{brandPrimary!90}
+
+% Accent color relationship with brand color
+\colorlet{accent}{brandPrimary!90!white}
+
+% Light accent as a lighter shade of brand primary
+\colorlet{lightaccent}{brandPrimary!70!white}
+
+% Success color from brand accent with green shift
+\colorlet{success}{brandPrimary!80!white}
+
+% Border color from brand colors
+\colorlet{border}{brandPrimary!15!white}
+
+% Frame border from brand primary
+\colorlet{frameborder}{brandPrimary!25!white}
+
+% ========== END COLOR CASCADE SYSTEM ==========
+
+% ========== USAGE INSTRUCTIONS ==========
+% To use this theme:
+% 1. Copy this file to my_brand_colors.tex
+% 2. In config.tex, replace: \input{brand_colors.tex} 
+%    with: \input{my_brand_colors.tex}
+% 3. Compile your document to see the new theme
+%
+% To create your own theme:
+% 1. Modify the three primary brand colors (brandPrimary, brandSecondary, brandAccent)
+% 2. Test the auto-generated colors using the cascade system
+% 3. Fine-tune individual colors as needed
+% ========== END USAGE INSTRUCTIONS ========== 
