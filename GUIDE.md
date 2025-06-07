@@ -144,34 +144,34 @@ The configuration provides comprehensive typography tools to fine-tune text appe
 #### Line Spacing Controls
 
 ```latex
-\singlespacing      % Standard single spacing
-\onehalfspacing     % 1.5 line spacing
-\doublespacing      % Double line spacing
-\customspacing{1.2} % Custom line spacing factor
+\setSpacingSingle      % Standard single spacing
+\setSpacingOneHalf     % 1.5 line spacing
+\setSpacingDouble      % Double line spacing
+\customspacing{1.2}    % Custom line spacing factor
 ```
 
 #### Text Decoration
 
 ```latex
-\textul{underlined text}     % Underlined text
-\textst{strikethrough text}  % Strikethrough text
-\texthi{highlighted text}    % Yellow highlighted text
-\texthi[blue]{blue highlight}  % Colored highlight
+\textunderline{underlined text}     % Underlined text
+\textstrikeout{strikethrough text}  % Strikethrough text
+\texthi{highlighted text}           % Yellow highlighted text
+\texthi[blue]{blue highlight}       % Colored highlight
 ```
 
 #### Letter Spacing (Tracking)
 
 ```latex
 \wide{wider letter spacing}     % Expanded letter spacing
-\wider{very wide spacing}      % Extra expanded spacing  
-\narrow{condensed spacing}     % Condensed letter spacing
+\wider{very wide spacing}       % Extra expanded spacing  
+\narrow{condensed spacing}      % Condensed letter spacing
 ```
 
 #### Font Size Adjustments
 
 ```latex
-\smaller{reduced size text}    % Relatively smaller text
-\larger{increased size text}   % Relatively larger text
+\textsm{reduced size text}      % Relatively smaller text
+\textlg{increased size text}    % Relatively larger text
 ```
 
 #### Case Transformation
@@ -214,9 +214,9 @@ The configuration includes several parameters to enhance text quality:
 
 ### Tips for Professional Typography
 
-- Use `\onehalfspacing` for improved readability in documents with dense text
+- Use `\setSpacingOneHalf` for improved readability in documents with dense text
 - Apply text decorations sparingly for emphasis
-- Use `\smaller` and `\larger` for subtle hierarchy without breaking document flow
+- Use `\textsm` and `\textlg` for subtle hierarchy without breaking document flow
 - Combine `\texthi` with accent colors for important information
 - Avoid overusing expanded tracking (`\wide`, `\wider`) as it can reduce readability in body text
 - Consider `\textshadow` for decorative headings only, not for body text
@@ -227,7 +227,7 @@ The configuration includes several parameters to enhance text quality:
 ```latex
 % Create professional pull quotes
 \begin{quote}
-    \onehalfspacing
+    \setSpacingOneHalf
     \large\itshape
     \wide{Typography is clarity. It is not about drawing attention to itself, 
     but about communicating a message with precision and beauty.}
@@ -236,9 +236,9 @@ The configuration includes several parameters to enhance text quality:
 \end{quote}
 
 % Create emphasis in paragraphs
-Typography is not just about choosing fonts. It's about \textul{rhythm}, 
-\texthi{hierarchy}, and \textst{eliminating} distractions. Good typography 
-\larger{amplifies} the message without calling attention to itself.
+Typography is not just about choosing fonts. It's about \textunderline{rhythm}, 
+\texthi{hierarchy}, and \textstrikeout{eliminating} distractions. Good typography 
+\textlg{amplifies} the message without calling attention to itself.
 ```
 
 ## Advanced Text Features

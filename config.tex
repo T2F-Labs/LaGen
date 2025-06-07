@@ -75,26 +75,24 @@
 % Instructions: These settings control paragraph spacing and text optimization
 \usepackage{microtype}  % Advanced typography refinements
 \usepackage{parskip}    % Paragraph spacing control
-\usepackage{fontspec}   % Advanced font features (for XeTeX/LuaTeX)
 \usepackage{soul}       % Underlining, strikeout, spacing, etc.
 \usepackage{ragged2e}   % Better text alignment
 \usepackage{textcase}   % Advanced case changing
-\usepackage{relsize}    % Relative font sizing
-\usepackage{setspace}   % Line spacing control
+\usepackage{relsize}    % Relative font size adjustments
 
 % Basic paragraph settings
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{8pt plus 2pt minus 1pt}
 
 % Customizable line spacing commands
-\newcommand{\singlespacing}{\setstretch{1.0}}
-\newcommand{\onehalfspacing}{\setstretch{1.5}}
-\newcommand{\doublespacing}{\setstretch{2.0}}
+\newcommand{\setSpacingSingle}{\setstretch{1.0}}
+\newcommand{\setSpacingOneHalf}{\setstretch{1.5}}
+\newcommand{\setSpacingDouble}{\setstretch{2.0}}
 \newcommand{\customspacing}[1]{\setstretch{#1}}
 
-% Text decoration commands
-\newcommand{\textul}[1]{\underline{#1}}         % Underlined text
-\newcommand{\textst}[1]{\st{#1}}                % Strikethrough text
+% Text decoration commands (with unique names)
+\newcommand{\textunderline}[1]{\underline{#1}}    % Underlined text
+\newcommand{\textstrikeout}[1]{\st{#1}}           % Strikethrough text
 \newcommand{\texthi}[2][yellow]{\colorbox{#1}{#2}}  % Highlighted text
 
 % Tracking (letter spacing) adjustments
@@ -102,9 +100,9 @@
 \newcommand{\wider}[1]{\sowide{#1}}          % Even wider spacing
 \newcommand{\narrow}[1]{\sonormal{#1}}       % Condensed letter spacing
 
-% Font size relative adjustments
-\newcommand{\smaller}[1]{\textsmaller{#1}}
-\newcommand{\larger}[1]{\textlarger{#1}}
+% Font size relative adjustments (avoiding conflict with relsize definitions)
+\newcommand{\textsm}[1]{\textsmaller{#1}}    % Smaller text (alternate name)
+\newcommand{\textlg}[1]{\textlarger{#1}}     % Larger text (alternate name)
 
 % Case transformation with preservation of special characters
 \newcommand{\uppercased}[1]{\MakeTextUppercase{#1}}
