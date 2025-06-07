@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,11pt,xetex]{article}
 
 % Load ifthen package for conditional compilation
 \usepackage{ifthen}
@@ -144,7 +144,7 @@ The following demonstrates a table with custom column types and multirow capabil
 \caption{Advanced Table Formatting}
 \centering
 \rowcolors{2}{rowalt}{white}
-\begin{tabular}{L{2.5cm}C{4cm}R{2cm}N}
+\begin{tabularx}{\textwidth}{L{2.5cm}C{4cm}R{2cm}>{\raggedleft\arraybackslash}X}
 \rowcolor{headerbg}
 \textcolor{headertext}{\textbf{Category}} &
 \textcolor{headertext}{\textbf{Description}} &
@@ -160,7 +160,7 @@ The following demonstrates a table with custom column types and multirow capabil
 \midrule
 Deployment & Cloud infrastructure & \SI{12000}{\USD} & 15\% \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \subsection{Multi-page Table Example}
@@ -361,20 +361,20 @@ if result:
 \end{lstlisting}
 
 % Uncomment this if you have minted package configured
-% \begin{minted}[frame=single, framesep=8pt]{javascript}
-% // This is a comment
-% function helloWorld() {
-%   // Print a message
-%   console.log("Hello, world!");
-%   return true;
-% }
-% 
-% // Call the function
-% const result = helloWorld();
-% if (result) {
-%   console.log("Function executed successfully");
-% }
-% \end{minted}
+\begin{minted}[frame=single, framesep=8pt]{javascript}
+// This is a comment
+function helloWorld() {
+  // Print a message
+  console.log("Hello, world!");
+  return true;
+}
+
+// Call the function
+const result = helloWorld();
+if (result) {
+  console.log("Function executed successfully");
+}
+\end{minted}
 
 \subsection{Algorithm Description}
 

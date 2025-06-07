@@ -10,7 +10,8 @@
 \usepackage{morefloats}
 \usepackage[table]{xcolor}
 % Professional letter spacing for brand names
-\usepackage{letterspace}
+% \usepackage{letterspace} % Removed as fontspec will handle letterspacing
+\usepackage{microtype}
 % Dynamic font scaling for brand consistency
 \usepackage{scalefnt}
 % Replace "Inter" with your preferred font family if needed
@@ -18,18 +19,20 @@
     UprightFont = *-Regular,
     BoldFont = *-SemiBold,
     ItalicFont = *-Italic,
-    BoldItalicFont = *-SemiBoldItalic
+    BoldItalicFont = *-SemiBoldItalic,
+    LetterSpace = 3.0 % Base letter spacing for the font
 ]
 \setsansfont{Inter}[
     UprightFont = *-Regular,
     BoldFont = *-SemiBold,
     ItalicFont = *-Italic,
-    BoldItalicFont = *-SemiBoldItalic
+    BoldItalicFont = *-SemiBoldItalic,
+    LetterSpace = 3.0 % Base letter spacing for the font
 ]
 
-% Define branded text macros with letterspacing
-\newcommand{\brandname}[1]{\textls[120]{\textsc{#1}}}
-\newcommand{\productname}[1]{\textls[80]{\textbf{#1}}}
+% Define branded text macros with letterspacing using fontspec
+\newcommand{\brandname}[1]{{\addfontfeatures{LetterSpace=12.0}\textsc{#1}}}
+\newcommand{\productname}[1]{{\addfontfeatures{LetterSpace=8.0}\textbf{#1}}}
 
 % ========== PAGE LAYOUT ==========
 % Instructions: Adjust measurements to change margins and spacing
@@ -123,7 +126,7 @@
 % Instructions: Replace "Your Document Title" and footer text with your content
 \usepackage{fancyhdr}
 \usepackage{lastpage} % For "Page X of Y" formatting
-\usepackage{scrlayer-scrpage} % Advanced header/footer customization
+% \usepackage{scrlayer-scrpage} % Removed to avoid conflicts with fancyhdr
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.5pt}
@@ -182,13 +185,6 @@
 \labelformat{equation}{Equation~#1}
 \labelformat{section}{Section~#1}
 
-% Instructions: cleveref must be loaded AFTER hyperref, nameref, and varioref
-\usepackage{cleveref}
-\crefname{figure}{Figure}{Figures}
-\crefname{table}{Table}{Tables}
-\crefname{equation}{Equation}{Equations}
-\crefname{section}{Section}{Sections}
-
 % ========== MATHEMATICAL TYPESETTING ==========
 % Essential enhanced math environments
 \usepackage{amsmath}
@@ -218,6 +214,13 @@
 
 % ========== BOXES AND CALLOUTS ==========
 % Instructions: Required TikZ libraries for shadows in boxes
+\usepackage{cleveref}
+% Instructions: cleveref must be loaded AFTER hyperref, nameref, and varioref
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\crefname{equation}{Equation}{Equations}
+\crefname{section}{Section}{Sections}
+
 \usepackage{tikz}
 \usetikzlibrary{shadows}
 
