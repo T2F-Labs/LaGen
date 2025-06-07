@@ -281,6 +281,8 @@
 % ========== LISTS ==========
 % Instructions: These settings control list appearance and spacing
 \usepackage{enumitem}
+
+% Basic list styling
 \setlist[itemize,1]{
     leftmargin=18pt,
     itemsep=3pt plus 1pt minus 1pt,
@@ -295,6 +297,106 @@
     topsep=3pt,
     label=\color{secondary}$\circ$
 }
+\setlist[itemize,3]{
+    leftmargin=14pt,
+    itemsep=1pt,
+    parsep=0pt,
+    topsep=2pt,
+    label=\color{textgray}{\scriptsize$\blacksquare$}
+}
+
+% Enhanced enumerate styling
+\setlist[enumerate,1]{
+    leftmargin=22pt,
+    itemsep=3pt plus 1pt minus 1pt,
+    parsep=0pt,
+    topsep=6pt plus 2pt minus 2pt,
+    label=\color{accent}\arabic*.
+}
+\setlist[enumerate,2]{
+    leftmargin=20pt,
+    itemsep=2pt,
+    parsep=0pt,
+    topsep=3pt,
+    label=\color{secondary}(\alph*)
+}
+\setlist[enumerate,3]{
+    leftmargin=18pt,
+    itemsep=1pt,
+    parsep=0pt,
+    topsep=2pt,
+    label=\color{textgray}\roman*.
+}
+
+% Description list styling
+\setlist[description]{
+    font=\normalfont\color{accent}\bfseries,
+    labelwidth=2cm,
+    leftmargin=2.5cm,
+    itemsep=4pt,
+    parsep=0pt
+}
+
+% Custom task lists with icons (requires fontawesome5)
+\newlist{tasklist}{itemize}{1}
+\setlist[tasklist]{
+    leftmargin=20pt,
+    label=\color{success}\faCheck,
+    itemsep=4pt,
+    parsep=2pt
+}
+
+\newlist{pendingtask}{itemize}{1}
+\setlist[pendingtask]{
+    leftmargin=20pt,
+    label=\color{warning}\faHourglass,
+    itemsep=4pt,
+    parsep=2pt
+}
+
+\newlist{failedtask}{itemize}{1}
+\setlist[failedtask]{
+    leftmargin=20pt,
+    label=\color{accent}\faTimes,
+    itemsep=4pt,
+    parsep=2pt
+}
+
+% Priority list environments
+\newlist{highpriority}{itemize}{1}
+\setlist[highpriority]{
+    leftmargin=20pt,
+    label=\color{accent}\faExclamationCircle,
+    itemsep=4pt
+}
+
+\newlist{mediumpriority}{itemize}{1}
+\setlist[mediumpriority]{
+    leftmargin=20pt,
+    label=\color{warning}\faExclamation,
+    itemsep=4pt
+}
+
+\newlist{lowpriority}{itemize}{1}
+\setlist[lowpriority]{
+    leftmargin=20pt,
+    label=\color{success}\faInfoCircle,
+    itemsep=4pt
+}
+
+% TikZ bullets for professional styling
+\newcommand{\tikzbullet}[1]{%
+    \tikz[baseline=-0.7ex]\node[circle,fill=#1,inner sep=1.5pt]{};%
+}
+
+% Compact and expanded list variants
+\newenvironment{compactlist}
+    {\begin{itemize}[nosep]}
+    {\end{itemize}}
+
+\newenvironment{expandedlist}
+    {\begin{itemize}[itemsep=8pt,parsep=4pt]}
+    {\end{itemize}}
 
 % ========== TABLES ==========
 % Instructions: Packages for professional table formatting
@@ -367,6 +469,189 @@
 % Load fontawesome and awesomebox for icon support
 \usepackage{fontawesome5}
 \usepackage{awesomebox}
+
+% ========== ADVANCED IMAGE HANDLING ==========
+% Instructions: Professional image formatting with shapes and fallbacks
+
+% Required packages (graphicx should already be loaded)
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{varwidth}
+
+% Create a box to use as a fallback for missing images
+\newsavebox{\imagefallbackbox}
+
+% Command for images with fallback text
+% Usage: \imageWithFallback[options]{path}{width}{alt-text}
+\newcommand{\imageWithFallback}[4][]{%
+  \begingroup
+  \sbox{\imagefallbackbox}{%
+    \begin{varwidth}{\textwidth}
+      \centering
+      \textcolor{textgray}{\textbf{#4}}
+    \end{varwidth}
+  }%
+  \IfFileExists{#2}{%
+    \includegraphics[#1,width=#3]{#2}%
+  }{%
+    \fcolorbox{border}{background}{%
+      \begin{minipage}[c][0.75\ht\imagefallbackbox][c]{#3}
+        \centering
+        \textcolor{textgray}{\faImage}\\[0.3em]
+        \usebox{\imagefallbackbox}
+      \end{minipage}%
+    }%
+  }%
+  \endgroup
+}
+
+% Rectangular image with optional border and caption
+% Usage: \rectImage[options]{path}{width}{caption}{alt-text}
+\newcommand{\rectImage}[5][]{%
+  \begin{figure}[htbp]
+    \centering
+    \fbox{\imageWithFallback[#1]{#2}{#3}{#5}}
+    \ifx&#4&%
+    \else
+      \caption{#4}
+    \fi
+  \end{figure}
+}
+
+% Rounded corner image
+% Usage: \roundedImage[options]{path}{width}{radius}{caption}{alt-text}
+\newcommand{\roundedImage}[6][]{%
+  \begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+      \node[inner sep=0pt] (image) {%
+        \imageWithFallback[#1]{#2}{#3}{#6}%
+      };
+      \begin{scope}
+        \clip[rounded corners=#4] (image.south west) rectangle (image.north east);
+        \node[inner sep=0pt] {\imageWithFallback[#1]{#2}{#3}{#6}};
+      \end{scope}
+    \end{tikzpicture}
+    \ifx&#5&%
+    \else
+      \caption{#5}
+    \fi
+  \end{figure}
+}
+
+% Circular image
+% Usage: \circularImage[options]{path}{diameter}{caption}{alt-text}
+\newcommand{\circularImage}[5][]{%
+  \begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+      \node[inner sep=0pt] (image) {%
+        \imageWithFallback[#1]{#2}{#3}{#5}%
+      };
+      \begin{scope}
+        \clip (image.center) circle (#3/2);
+        \node[inner sep=0pt] {\imageWithFallback[#1]{#2}{#3}{#5}};
+      \end{scope}
+    \end{tikzpicture}
+    \ifx&#4&%
+    \else
+      \caption{#4}
+    \fi
+  \end{figure}
+}
+
+% Image with drop shadow
+% Usage: \shadowImage[options]{path}{width}{caption}{alt-text}
+\newcommand{\shadowImage}[5][]{%
+  \begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+      \node[inner sep=0pt, drop shadow={shadow xshift=2pt, shadow yshift=-2pt, opacity=0.5}] {%
+        \imageWithFallback[#1]{#2}{#3}{#5}%
+      };
+    \end{tikzpicture}
+    \ifx&#4&%
+    \else
+      \caption{#4}
+    \fi
+  \end{figure}
+}
+
+% Frame image with customizable style
+% Usage: \framedImage[options]{path}{width}{frame-color}{caption}{alt-text}
+\newcommand{\framedImage}[6][]{%
+  \begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+      \node[inner sep=0pt] (image) {%
+        \imageWithFallback[#1]{#2}{#3}{#6}%
+      };
+      \draw[line width=2pt, color=#4] (image.south west) rectangle (image.north east);
+    \end{tikzpicture}
+    \ifx&#5&%
+    \else
+      \caption{#5}
+    \fi
+  \end{figure}
+}
+
+% Full-width responsive image
+% Usage: \fullwidthImage[options]{path}{height}{caption}{alt-text}
+\newcommand{\fullwidthImage}[5][]{%
+  \begin{figure}[htbp]
+    \centering
+    \makebox[\textwidth][c]{%
+      \imageWithFallback[#1,height=#3,width=\textwidth,keepaspectratio]{#2}{\textwidth}{#5}%
+    }
+    \ifx&#4&%
+    \else
+      \caption{#4}
+    \fi
+  \end{figure}
+}
+
+% Image with zoom effect on specific area
+% Usage: \zoomedImage[options]{path}{width}{zoom-x}{zoom-y}{zoom-width}{zoom-factor}{caption}{alt-text}
+\newcommand{\zoomedImage}[9][]{%
+  \begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+      \node[inner sep=0pt] (image) {%
+        \imageWithFallback[#1]{#2}{#3}{#9}%
+      };
+      \draw[red, thick] (#4,#5) rectangle ++(#6,#6);
+      \begin{scope}[shift={(5cm,0)}]
+        \draw[thick] (0,0) circle (1.5cm);
+        \clip (0,0) circle (1.5cm);
+        \node[inner sep=0pt] at (0,0) {%
+          \imageWithFallback[#1]{#2}{#3*#7}{#9}%
+        };
+      \end{scope}
+    \end{tikzpicture}
+    \ifx&#8&%
+    \else
+      \caption{#8}
+    \fi
+  \end{figure}
+}
+
+% Responsive image grid (2x2)
+% Usage: \imageGrid{path1}{path2}{path3}{path4}{grid-width}{caption}{alt-text}
+\newcommand{\imageGrid}[7]{%
+  \begin{figure}[htbp]
+    \centering
+    \begin{tabular}{cc}
+      \imageWithFallback[width=#5/2-4pt]{#1}{#5/2-4pt}{#7} &
+      \imageWithFallback[width=#5/2-4pt]{#2}{#5/2-4pt}{#7} \\
+      \imageWithFallback[width=#5/2-4pt]{#3}{#5/2-4pt}{#7} &
+      \imageWithFallback[width=#5/2-4pt]{#4}{#5/2-4pt}{#7} \\
+    \end{tabular}
+    \ifx&#6&%
+    \else
+      \caption{#6}
+    \fi
+  \end{figure}
+}
 
 % ========== TITLE PAGE ==========
 % Instructions: Controls the appearance of the title page
