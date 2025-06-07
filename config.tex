@@ -23,10 +23,23 @@
 \definecolor{brandSecondary}{HTML}{4F46E5}  % Secondary brand color
 \definecolor{brandAccent}{HTML}{10B981}     % Accent color for highlights and emphasis
 
+% Default Secondary Brand Colors
+\definecolor{brandTertiary}{HTML}{F97316}   % Tertiary brand color (e.g., for subsections)
+\definecolor{brandQuaternary}{HTML}{A855F7} % Quaternary brand color (optional)
+\definecolor{brandNeutral}{HTML}{64748B}    % Neutral brand color for supporting elements
+
 % Default Text Colors - Derived from brand colors
 \definecolor{primary}{HTML}{0F172A}         % Main text color
 \definecolor{secondary}{HTML}{334155}       % Secondary text color
 \definecolor{accent}{HTML}{2563EB}          % Links and highlights (defaults to brandPrimary)
+
+% Default Section Styling Colors
+\definecolor{sectionNumberColor}{HTML}{2563EB}       % Color for section numbers (1, 2, etc.)
+\definecolor{sectionTitleColor}{HTML}{0F172A}        % Color for section titles
+\definecolor{subsectionNumberColor}{HTML}{F97316}    % Color for subsection numbers (1.1, 1.2, etc.)
+\definecolor{subsectionTitleColor}{HTML}{F97316}     % Color for subsection titles
+\definecolor{subsubsectionNumberColor}{HTML}{10B981} % Color for subsubsection numbers (1.1.1, etc.)
+\definecolor{subsubsectionTitleColor}{HTML}{10B981}  % Color for subsubsection titles
 
 % Default UI Element Colors
 \definecolor{lightaccent}{HTML}{3B82F6}     % Lighter accent variant
@@ -57,6 +70,12 @@
 \colorlet{success}{brandAccent}
 \colorlet{border}{brandPrimary!20}
 \colorlet{frameborder}{brandSecondary!30}
+\colorlet{sectionNumberColor}{brandPrimary}
+\colorlet{sectionTitleColor}{primary}
+\colorlet{subsectionNumberColor}{brandTertiary}
+\colorlet{subsectionTitleColor}{brandTertiary}
+\colorlet{subsubsectionNumberColor}{brandAccent}
+\colorlet{subsubsectionTitleColor}{brandAccent}
 
 % Try to import custom brand colors if the file exists
 % This will override the defaults defined above
@@ -207,26 +226,52 @@
 \usepackage[all]{nowidow}
 \usepackage{needspace}
 
+% ========== DEFAULT SECTION STYLING COLORS ==========
+% These will be used if not defined in brand_colors.tex
+\definecolor{sectionNumberColor}{HTML}{2563EB}       % Color for section numbers (1, 2, etc.)
+\definecolor{sectionTitleColor}{HTML}{0F172A}        % Color for section titles
+\definecolor{subsectionNumberColor}{HTML}{F97316}    % Color for subsection numbers (1.1, 1.2, etc.)
+\definecolor{subsectionTitleColor}{HTML}{F97316}     % Color for subsection titles
+\definecolor{subsubsectionNumberColor}{HTML}{10B981} % Color for subsubsection numbers (1.1.1, etc.)
+\definecolor{subsubsectionTitleColor}{HTML}{10B981}  % Color for subsubsection titles
+
+% Default Secondary Brand Colors
+\definecolor{brandTertiary}{HTML}{F97316}   % Tertiary brand color (e.g., for subsections)
+\definecolor{brandQuaternary}{HTML}{A855F7} % Quaternary brand color (optional)
+\definecolor{brandNeutral}{HTML}{64748B}    % Neutral brand color for supporting elements
+
+% Try to import custom brand colors if the file exists
+% This will override the defaults defined above
+\IfFileExists{brand_colors.tex}{
+    \input{brand_colors.tex}
+    \typeout{^^J INFO: Loaded custom brand colors from brand_colors.tex^^J}
+}{
+    \typeout{^^J INFO: Using default brand colors (brand_colors.tex not found)^^J}
+}
+
+% Dynamic font scaling for brand consistency
+\usepackage{scalefnt}
+
 % ========== SECTION STYLING ==========
 % Instructions: Customize section headings appearance here
 \usepackage{titlesec}
 \titleformat{\section}
-    {\color{primary}\fontsize{16}{20}\bfseries\sffamily}
-    {\color{accent}\thesection}
+    {\color{sectionTitleColor}\fontsize{16}{20}\bfseries\sffamily}
+    {\color{sectionNumberColor}\thesection}
     {1em}
     {}
     [\vspace{2pt}\color{border}\hrule height 0.8pt\vspace{6pt}]
 
 \titleformat{\subsection}
-    {\color{secondary}\fontsize{14}{18}\bfseries\sffamily}
-    {\color{accent}\thesubsection}
+    {\color{subsectionTitleColor}\fontsize{14}{18}\bfseries\sffamily}
+    {\color{subsectionNumberColor}\thesubsection}
     {0.8em}
     {}
     [\vspace{4pt}]
 
 \titleformat{\subsubsection}
-    {\color{secondary}\fontsize{12}{16}\bfseries\sffamily}
-    {\color{accent}\thesubsubsection}
+    {\color{subsubsectionTitleColor}\fontsize{12}{16}\bfseries\sffamily}
+    {\color{subsubsectionNumberColor}\thesubsubsection}
     {0.6em}
     {}
 

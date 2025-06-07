@@ -122,6 +122,32 @@ The document uses a brand color system defined in `brand_colors.tex`. To customi
    \colorlet{success}{brandAccent}
    ```
 
+#### Section Styling Colors
+
+You can customize the colors of section numbers and titles for a professional branded look:
+
+```latex
+% Section Styling Colors
+\definecolor{sectionNumberColor}{HTML}{2563EB}       % Color for section numbers (1, 2, etc.)
+\definecolor{sectionTitleColor}{HTML}{0F172A}        % Color for section titles
+\definecolor{subsectionNumberColor}{HTML}{F97316}    % Color for subsection numbers (1.1, 1.2, etc.)
+\definecolor{subsectionTitleColor}{HTML}{F97316}     % Color for subsection titles
+\definecolor{subsubsectionNumberColor}{HTML}{10B981} % Color for subsubsection numbers
+\definecolor{subsubsectionTitleColor}{HTML}{10B981}  % Color for subsubsection titles
+```
+
+For automatic color generation based on your brand colors:
+
+```latex
+% Section styling color cascade
+\colorlet{sectionNumberColor}{brandPrimary}
+\colorlet{sectionTitleColor}{primary}
+\colorlet{subsectionNumberColor}{brandTertiary}
+\colorlet{subsectionTitleColor}{brandTertiary}
+\colorlet{subsubsectionNumberColor}{brandAccent}
+\colorlet{subsubsectionTitleColor}{brandAccent}
+```
+
 #### Advanced Customization
 
 For advanced color customization:
@@ -137,6 +163,14 @@ For advanced color customization:
    \input{my_brand_colors.tex}
    ```
 
+#### Color Scheme Examples
+
+The templates include multiple color scheme examples:
+
+1. **Default Blue Theme**: Professional blue-based color scheme
+2. **Green Corporate Theme**: Nature-inspired green scheme with orange accents
+3. **Custom Theme**: Create your own by modifying the brand color definitions
+
 #### Fallback System
 
 The document includes a color fallback system:
@@ -151,6 +185,7 @@ The document includes a color fallback system:
 - **Semantic Colors**: Success, warning, and background colors
 - **Functional Colors**: For tables, code blocks, and UI elements
 - **Brand-Driven Design**: All colors derive from a few key brand colors
+- **Section Styling**: Different colors for section/subsection numbers and titles
 
 ### Usage
 

@@ -11,10 +11,23 @@
 \definecolor{brandSecondary}{HTML}{2C3E50}  % Dark blue-gray secondary color
 \definecolor{brandAccent}{HTML}{E67E22}     % Orange accent color for highlights
 
+% Secondary Brand Colors - CUSTOMIZE THESE
+\definecolor{brandTertiary}{HTML}{E67E22}   % Orange tertiary color for subsections
+\definecolor{brandQuaternary}{HTML}{3498DB} % Blue quaternary color (optional)
+\definecolor{brandNeutral}{HTML}{7F8C8D}    % Neutral gray for supporting elements
+
 % Text Colors - Customized for green theme
 \definecolor{primary}{HTML}{2C3E50}         % Dark blue-gray for main text
 \definecolor{secondary}{HTML}{34495E}       % Lighter blue-gray for secondary text
 \definecolor{accent}{HTML}{16A085}          % Teal for links and highlights
+
+% Section Styling Colors - Match the document in the example
+\definecolor{sectionNumberColor}{HTML}{16A085}       % Teal color for section numbers (1, 2, etc.)
+\definecolor{sectionTitleColor}{HTML}{2C3E50}        % Dark blue-gray for section titles
+\definecolor{subsectionNumberColor}{HTML}{E67E22}    % Orange for subsection numbers (1.1, 1.2, etc.)
+\definecolor{subsectionTitleColor}{HTML}{E67E22}     % Orange for subsection titles
+\definecolor{subsubsectionNumberColor}{HTML}{27AE60} % Green for subsubsection numbers
+\definecolor{subsubsectionTitleColor}{HTML}{27AE60}  % Green for subsubsection titles
 
 % UI Element Colors - Customized for green theme
 \definecolor{lightaccent}{HTML}{27AE60}     % Light green variant
@@ -59,6 +72,14 @@
 
 % Frame border from brand primary
 \colorlet{frameborder}{brandPrimary!25!white}
+
+% Section styling color cascade - Comment these out if you prefer the explicit colors above
+% \colorlet{sectionNumberColor}{brandPrimary}
+% \colorlet{sectionTitleColor}{primary}
+% \colorlet{subsectionNumberColor}{brandTertiary}
+% \colorlet{subsectionTitleColor}{brandTertiary}
+% \colorlet{subsubsectionNumberColor}{brandAccent}
+% \colorlet{subsubsectionTitleColor}{brandAccent}
 
 % ========== END COLOR CASCADE SYSTEM ==========
 
