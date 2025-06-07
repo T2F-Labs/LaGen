@@ -73,10 +73,81 @@
 
 % ========== TYPOGRAPHY ==========
 % Instructions: These settings control paragraph spacing and text optimization
-\usepackage{microtype}
-\usepackage{parskip}
+\usepackage{microtype}  % Advanced typography refinements
+\usepackage{parskip}    % Paragraph spacing control
+\usepackage{fontspec}   % Advanced font features (for XeTeX/LuaTeX)
+\usepackage{soul}       % Underlining, strikeout, spacing, etc.
+\usepackage{ragged2e}   % Better text alignment
+\usepackage{textcase}   % Advanced case changing
+\usepackage{relsize}    % Relative font sizing
+\usepackage{setspace}   % Line spacing control
+
+% Basic paragraph settings
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{8pt plus 2pt minus 1pt}
+
+% Customizable line spacing commands
+\newcommand{\singlespacing}{\setstretch{1.0}}
+\newcommand{\onehalfspacing}{\setstretch{1.5}}
+\newcommand{\doublespacing}{\setstretch{2.0}}
+\newcommand{\customspacing}[1]{\setstretch{#1}}
+
+% Text decoration commands
+\newcommand{\textul}[1]{\underline{#1}}         % Underlined text
+\newcommand{\textst}[1]{\st{#1}}                % Strikethrough text
+\newcommand{\texthi}[2][yellow]{\colorbox{#1}{#2}}  % Highlighted text
+
+% Tracking (letter spacing) adjustments
+\newcommand{\wide}[1]{\so{#1}}               % Wider letter spacing
+\newcommand{\wider}[1]{\sowide{#1}}          % Even wider spacing
+\newcommand{\narrow}[1]{\sonormal{#1}}       % Condensed letter spacing
+
+% Font size relative adjustments
+\newcommand{\smaller}[1]{\textsmaller{#1}}
+\newcommand{\larger}[1]{\textlarger{#1}}
+
+% Case transformation with preservation of special characters
+\newcommand{\uppercased}[1]{\MakeTextUppercase{#1}}
+\newcommand{\lowercased}[1]{\MakeTextLowercase{#1}}
+
+% Special text styles
+\newcommand{\textshadow}[2][gray]{{%
+  \setlength{\fboxsep}{0pt}%
+  \colorbox{white}{%
+    \makebox[0pt][l]{\color{#1}#2}%
+    \makebox[0pt][l]{\hspace{0.2pt}\vspace{0.2pt}#2}%
+    \makebox[0pt][l]{\color{white}\hspace{0.4pt}\vspace{0.4pt}#2}%
+    \makebox[0pt][l]{\color{white}\hspace{0.6pt}\vspace{0.6pt}#2}%
+    #2%
+  }%
+}}
+
+% Text alignment with better justification
+\newcommand{\justifiedtext}{\justify}
+\newcommand{\leftalignedtext}{\raggedright}
+\newcommand{\rightalignedtext}{\raggedleft}
+\newcommand{\centeredtext}{\centering}
+
+% Typography fine-tuning
+\setlength{\emergencystretch}{3em}  % Helps with justification
+\hyphenpenalty=500                  % Reduce hyphenation
+\clubpenalty=10000                  % Prevent orphans (single line at bottom of page)
+\widowpenalty=10000                 % Prevent widows (single line at top of page)
+
+% Microtype advanced settings
+\microtypesetup{
+    activate={true,nocompatibility},     % Activate protrusion and expansion
+    final,                               % Enable microtype even if draft mode
+    tracking=true,                       % Font tracking
+    kerning=true,                        % Font kerning
+    spacing=true,                        % Letter spacing
+    factor=1100,                         % Factor for enhanced protrusion
+    stretch=15,                          % Font expansion
+    shrink=15                            % Font compression
+}
+
+% Control font features
+\newcommand{\withfeatures}[2]{{\addfontfeatures{#1}#2}}
 
 % ========== ADVANCED TEXT FEATURES ==========
 % Instructions: For elegant drop caps at section beginnings

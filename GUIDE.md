@@ -120,24 +120,125 @@ Defines a comprehensive color palette for consistent styling throughout your doc
 
 ### Overview
 
-Fine-tunes the spacing and appearance of text for improved readability.
+The configuration provides comprehensive typography tools to fine-tune text appearance for optimal readability and visual appeal. It combines both basic paragraph formatting and advanced text styling capabilities.
 
 ### Packages
 
-- `microtype`: Advanced typography adjustments
+- `microtype`: Advanced typography refinements for character protrusion, font expansion, and kerning
 - `parskip`: Paragraph spacing control
+- `fontspec`: Modern font handling with OpenType/TrueType support
+- `soul`: Specialized text decoration (underlining, strikeout, spacing, etc.)
+- `ragged2e`: Enhanced text alignment options
+- `textcase`: Case transformation preserving special characters
+- `relsize`: Relative font size adjustments
+- `setspace`: Precise line spacing control
 
 ### Features
 
+#### Basic Typography
+
 - Zero paragraph indentation with controlled spacing between paragraphs
-- Microtypography improvements for professional appearance
+- Fine-tuned microtypography for professional appearance
+- Hyphenation, widow, and orphan control
+
+#### Line Spacing Controls
+
+```latex
+\singlespacing      % Standard single spacing
+\onehalfspacing     % 1.5 line spacing
+\doublespacing      % Double line spacing
+\customspacing{1.2} % Custom line spacing factor
+```
+
+#### Text Decoration
+
+```latex
+\textul{underlined text}     % Underlined text
+\textst{strikethrough text}  % Strikethrough text
+\texthi{highlighted text}    % Yellow highlighted text
+\texthi[blue]{blue highlight}  % Colored highlight
+```
+
+#### Letter Spacing (Tracking)
+
+```latex
+\wide{wider letter spacing}     % Expanded letter spacing
+\wider{very wide spacing}      % Extra expanded spacing  
+\narrow{condensed spacing}     % Condensed letter spacing
+```
+
+#### Font Size Adjustments
+
+```latex
+\smaller{reduced size text}    % Relatively smaller text
+\larger{increased size text}   % Relatively larger text
+```
+
+#### Case Transformation
+
+```latex
+\uppercased{Preserves Special Characters}  % Better uppercase
+\lowercased{CONVERTS To lowercase}         % Better lowercase
+```
+
+#### Text Alignment
+
+```latex
+{\justifiedtext Text with both margins aligned evenly.}
+{\leftalignedtext Text aligned to the left margin only.}
+{\rightalignedtext Text aligned to the right margin only.}
+{\centeredtext Text centered between margins.}
+```
+
+#### Special Effects
+
+```latex
+\textshadow{Text with shadow effect}
+\textshadow[blue]{Colored shadow text}
+```
+
+#### Font Feature Control
+
+```latex
+\withfeatures{Color=red, Scale=1.2}{Special formatted text}
+```
+
+#### Typography Fine-Tuning
+
+The configuration includes several parameters to enhance text quality:
+
+- `\emergencystretch`: Additional stretch space for better justification
+- `\hyphenpenalty`: Controlled hyphenation frequency
+- `\clubpenalty` and `\widowpenalty`: Prevention of isolated lines
+- Advanced microtype settings for optimal character spacing and protrusion
+
+### Tips for Professional Typography
+
+- Use `\onehalfspacing` for improved readability in documents with dense text
+- Apply text decorations sparingly for emphasis
+- Use `\smaller` and `\larger` for subtle hierarchy without breaking document flow
+- Combine `\texthi` with accent colors for important information
+- Avoid overusing expanded tracking (`\wide`, `\wider`) as it can reduce readability in body text
+- Consider `\textshadow` for decorative headings only, not for body text
+- Fine-tune microtype settings for different fonts if needed
 
 ### Usage
 
-The settings work automatically, but you can adjust spacing:
-
 ```latex
-\setlength{\parskip}{10pt} % More space between paragraphs
+% Create professional pull quotes
+\begin{quote}
+    \onehalfspacing
+    \large\itshape
+    \wide{Typography is clarity. It is not about drawing attention to itself, 
+    but about communicating a message with precision and beauty.}
+    \normalfont\normalsize
+    \hfill — \texthi[lightgray]{Design Expert}
+\end{quote}
+
+% Create emphasis in paragraphs
+Typography is not just about choosing fonts. It's about \textul{rhythm}, 
+\texthi{hierarchy}, and \textst{eliminating} distractions. Good typography 
+\larger{amplifies} the message without calling attention to itself.
 ```
 
 ## Advanced Text Features
