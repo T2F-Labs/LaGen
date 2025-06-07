@@ -379,6 +379,45 @@
 % ========== PAGE BREAK CONTROL ==========
 % Instructions: For better page break control
 \usepackage{afterpage}
+\usepackage{needspace}
+\usepackage{flafter}
+\usepackage{placeins}
+
+% Advanced page break penalties for widow and orphan control
+\clubpenalty=10000      % Prevent orphans (single line at bottom of page)
+\widowpenalty=10000     % Prevent widows (single line at top of page)
+\displaywidowpenalty=10000  % Prevent widows in display equations
+\predisplaypenalty=10000    % Discourage breaks before display equations
+\postdisplaypenalty=1000    % Slightly discourage breaks after display equations
+\interlinepenalty=1000      % Discourage breaks within paragraphs
+
+% Float placement control
+\renewcommand{\topfraction}{0.85}      % Max fraction of page for floats at top
+\renewcommand{\bottomfraction}{0.75}   % Max fraction of page for floats at bottom
+\renewcommand{\textfraction}{0.15}     % Min fraction of page for text
+\renewcommand{\floatpagefraction}{0.7} % Min fraction of page for floats on float page
+\setcounter{topnumber}{3}              % Max number of floats at top of page
+\setcounter{bottomnumber}{2}           % Max number of floats at bottom of page
+\setcounter{totalnumber}{5}            % Max number of floats on a page
+
+% Custom page break commands
+\newcommand{\elegantbreak}{\vfill\pagebreak}                % Force break with balanced white space above
+\newcommand{\smartbreak}{\needspace{5\baselineskip}\par}    % Break if less than 5 lines remain
+\newcommand{\keepwithnext}[1]{\needspace{3\baselineskip}#1\par}  % Keep text with next paragraph
+\newcommand{\preventbreak}{\nobreak\hspace{0pt plus 0.1\textheight}\nobreak}  % Strongly discourage break
+\newcommand{\explicitbreak}{\penalty0\relax}  % Explicitly allow break point (renamed from allowbreak)
+
+% Section break control (prevent widows/orphans in section titles)
+\newcommand{\keepsection}[1]{%
+  \par\needspace{3\baselineskip}%
+  #1%
+}
+
+% Float barrier command (ensure all floats are processed before proceeding)
+\newcommand{\processfloats}{\FloatBarrier}
+
+% Page balancing for final page
+\newcommand{\balancelastpage}{\vfill}
 
 % ========== BOXES AND CALLOUTS ==========
 % Instructions: Required TikZ libraries for shadows in boxes

@@ -669,18 +669,126 @@ R_{\mu\nu} - \frac{1}{2}R g_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4}T_
 
 ### Overview
 
-Provides tools to control page breaks for better document flow.
+The configuration provides comprehensive page break control tools to achieve professional document layout and flow. It offers both automatic control mechanisms through penalty settings and manual control options through specialized commands.
 
 ### Packages
 
-- `afterpage`: Execute commands after the current page
+- `afterpage`: Execute commands after the current page completes
+- `needspace`: Conditionally break pages based on available space
+- `flafter`: Ensure floats appear after their references
+- `placeins`: Control float placement with barriers
 
-### Usage
+### Features
+
+#### Advanced Page Break Penalties
+
+The configuration includes carefully tuned penalty settings to prevent typographical issues:
+
+- **Widow and Orphan Prevention**: Eliminates single lines at page tops or bottoms
+- **Display Equation Controls**: Manages breaks around mathematical displays
+- **Paragraph Integrity**: Discourages breaks within paragraphs
 
 ```latex
-% Insert a page break after the current content finishes
-\afterpage{\clearpage}
+% These settings work automatically throughout your document
+\clubpenalty=10000      % Prevent orphans (single line at bottom of page)
+\widowpenalty=10000     % Prevent widows (single line at top of page)
 ```
+
+#### Float Placement Optimization
+
+Fine-tuned settings to control how figures and tables are positioned:
+
+```latex
+% Adjust these values to fine-tune float placement behavior
+\renewcommand{\topfraction}{0.85}    % More floats allowed at top
+\setcounter{topnumber}{3}            % Up to 3 floats at top of page
+```
+
+#### Custom Page Break Commands
+
+##### Basic Control Commands
+
+```latex
+% Force a page break with balanced white space
+\elegantbreak
+
+% Create a conditional page break if insufficient space remains
+\smartbreak
+
+% Process all pending floats before continuing
+\processfloats
+```
+
+##### Advanced Content Flow Control
+
+```latex
+% Keep a paragraph with the next one (prevents orphaned headings)
+\keepwithnext{Important section heading}
+
+% Strongly discourage a page break at a specific point
+\preventbreak
+
+% Explicitly allow a break at a specific point
+\allowbreak
+```
+
+##### Section Break Management
+
+```latex
+% Ensure a section title doesn't appear at the bottom of a page
+\keepsection{\section{My Important Section}}
+```
+
+#### Page Balancing
+
+```latex
+% Create an aesthetically balanced final page
+\balancelastpage
+```
+
+### Usage Examples
+
+#### Preventing Orphaned Headings
+
+```latex
+\keepwithnext{\subsection{Important Results}}
+This paragraph will stay with its heading, preventing the heading
+from appearing alone at the bottom of a page.
+```
+
+#### Conditional Page Breaking
+
+```latex
+\smartbreak
+This paragraph will start on a new page if there isn't enough room
+for at least 5 lines on the current page.
+```
+
+#### Float Management
+
+```latex
+% Describe several figures...
+\processfloats
+% Continue with text that should appear after the figures
+```
+
+#### Creating Elegant Chapter or Section Endings
+
+```latex
+% At the end of a chapter or major section:
+\elegantbreak
+```
+
+### Tips for Professional Page Breaking
+
+- **Use `\smartbreak` before critical content** that should not be split across pages
+- **Apply `\keepwithnext` for short section titles** to ensure they stay with their content
+- **Place `\processfloats` before crucial explanatory text** that references figures
+- **Avoid explicit `\newpage` or `\pagebreak` commands** when possible; prefer conditional breaks
+- **Reserve `\preventbreak` for keeping specific elements together** that have semantic relationships
+- **For complex documents, consider using `\balancelastpage` at the end of chapters** for visual consistency
+
+The goal of these page break controls is to guide the typesetting system rather than override it completely. The built-in algorithms are sophisticated, and these tools allow you to enhance their decisions while maintaining overall document quality.
 
 ## Boxes and Callouts
 
