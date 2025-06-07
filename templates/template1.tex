@@ -1,0 +1,101 @@
+% Template 1: Modern Geometric Design
+% This template provides a modern design with geometric patterns for backgrounds
+% and professionally styled cover page.
+
+% ========== TEMPLATE CONFIGURATION ==========
+% Load additional required packages for this template
+\usepackage{eso-pic}
+\usepackage{tikz}
+
+% ========== BACKGROUND DESIGN ==========
+% Define the background with geometric patterns using brand colors
+\AddToShipoutPictureBG{%
+  \begin{tikzpicture}[remember picture,overlay]
+    % Base background
+    \fill[background] (current page.north west) rectangle (current page.south east);
+    
+    % Large geometric shapes using brand colors
+    \fill[brandPrimary, opacity=0.15] 
+      (current page.north west) ++(2,-2) -- ++(6,0) -- ++(0,-4) -- ++(-3,2) -- cycle;
+    
+    \fill[brandSecondary, opacity=0.12] 
+      (current page.south east) ++(-4,3) circle (3);
+    
+    \fill[brandAccent, opacity=0.08] 
+      (current page.north east) ++(-1,-1) -- ++(-4,0) -- ++(2,-3) -- cycle;
+    
+    % Hexagonal pattern
+    \foreach \x in {0,1.5,...,15}
+      \foreach \y in {0,1.3,...,10}
+        \draw[brandPrimary, opacity=0.04, line width=0.3pt] 
+          (\x,\y) ++(0.5,0.3) -- ++(0.5,-0.3) -- ++(0,-0.6) -- 
+          ++(-0.5,-0.3) -- ++(-0.5,0.3) -- ++(0,0.6) -- cycle;
+    
+    % Diagonal lines
+    \foreach \i in {0,0.8,...,20}
+      \draw[brandSecondary, opacity=0.05, line width=0.5pt] 
+        (-2,\i) -- ++(25,-8);
+  \end{tikzpicture}%
+}
+
+% ========== FOOTER DESIGN ==========
+% Custom footer with brand color bars and page number
+\fancyfoot[C]{%
+  \begin{tikzpicture}
+    \fill[brandPrimary] (0,0) rectangle (0.5,0.1);
+    \fill[brandSecondary] (0.6,0) rectangle (1.1,0.1);
+    \fill[brandAccent] (1.2,0) rectangle (1.7,0.1);
+    \node[right, color=textgray] at (2,0.05) {\thepage};
+  \end{tikzpicture}
+}
+
+% ========== COVER PAGE MACRO ==========
+% Define a command for generating the cover page
+\newcommand{\templateOneCover}[5]{%
+  % #1: Document Title
+  % #2: Document Subtitle
+  % #3: Year
+  % #4: Submitted to
+  % #5: Prepared by
+  \begin{center}
+    \vspace*{1.5cm}
+    
+    % Geometric title design
+    \begin{tikzpicture}
+      % Background shapes for title
+      \fill[brandPrimary, opacity=0.2] (-3,0) rectangle (3,1.5);
+      \fill[brandSecondary, opacity=0.2] (-2.5,0.5) rectangle (2.5,2);
+      
+      \node[color=primary, font=\Huge\bfseries] at (0,1) {#1};
+    \end{tikzpicture}
+    
+    \vspace{1cm}
+    
+    {\LARGE\color{sectionNumberColor}\textbf{#2}}\\[0.5cm]
+    {\large\color{subsectionNumberColor}#3}\\[2cm]
+    
+    % Decorative elements
+    \begin{tikzpicture}
+      \foreach \i in {0,60,120,180,240,300}
+        \fill[rotate=\i, brandPrimary, opacity=0.6] (0,0) -- (1,0.2) -- (1.5,0) -- (1,-0.2) -- cycle;
+      
+      \fill[brandSecondary, opacity=0.8] (0,0) circle (0.8);
+      \fill[white] (0,0) circle (0.6);
+      \node[color=sectionNumberColor, font=\Large\bfseries] at (0,0) {#3};
+    \end{tikzpicture}
+    
+    \vspace{2cm}
+    
+    {\large\color{primary}Submitted to: #4}\\[0.3cm]
+    {\color{primary}Prepared by: #5}\\[0.3cm]
+    {\color{primary}Date: \today}
+  \end{center}
+  \newpage
+}
+
+% ========== TABLE STYLE ==========
+% Define the table style that uses brand colors
+\newcommand{\templateOneTable}{
+  \rowcolors{2}{lightgray}{white}
+  \arrayrulecolor{border}
+} 

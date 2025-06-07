@@ -1,0 +1,126 @@
+% Template 3: Minimal Elegant Design
+% This template provides a clean, elegant design with subtle gradients
+% and thin accent lines for a sophisticated, minimalist appearance.
+
+% ========== TEMPLATE CONFIGURATION ==========
+% Load additional required packages for this template
+\usepackage{eso-pic}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+% ========== BACKGROUND DESIGN ==========
+% Define a subtle, elegant background
+\AddToShipoutPictureBG{%
+  \begin{tikzpicture}[remember picture,overlay]
+    % Base background - subtle gradient
+    \shade[top color=background!98, bottom color=background] 
+      (current page.north west) rectangle (current page.south east);
+    
+    % Top border line
+    \draw[brandPrimary, line width=1pt] 
+      (current page.north west) ++(0,-0.8cm) -- ++(\paperwidth,0);
+      
+    % Bottom border line
+    \draw[brandPrimary, line width=1pt] 
+      (current page.south west) ++(0,0.8cm) -- ++(\paperwidth,0);
+      
+    % Elegant corner flourish (top right)
+    \draw[brandSecondary, line width=0.5pt] 
+      ($(current page.north east) + (-1.5,-0.5)$) .. controls +(0,0) and +(0.5,-0.5) .. 
+      ($(current page.north east) + (-0.5,-1.5)$);
+      
+    % Elegant corner flourish (bottom left)
+    \draw[brandSecondary, line width=0.5pt] 
+      ($(current page.south west) + (1.5,0.5)$) .. controls +(0,0) and +(-0.5,0.5) .. 
+      ($(current page.south west) + (0.5,1.5)$);
+      
+    % Subtle dots pattern
+    \foreach \i in {2,4,...,26}
+      \foreach \j in {2,4,...,18}
+        \fill[brandAccent, opacity=0.05] 
+          ($(current page.north west) + (\j,-\i)$) circle (0.05cm);
+  \end{tikzpicture}%
+}
+
+% ========== HEADER & FOOTER DESIGN ==========
+% Custom elegant header and footer
+\fancyhead[L]{%
+  \color{primary}\textbf{\small\rightmark}
+}
+\fancyhead[R]{%
+  \color{textgray}\small\thepage
+}
+\fancyfoot[C]{%
+  \begin{tikzpicture}
+    \draw[brandPrimary, line width=0.3pt] (-2,0) -- (2,0);
+    \fill[brandAccent] (0,0) circle (0.05cm);
+  \end{tikzpicture}
+}
+\renewcommand{\headrulewidth}{0pt}
+
+% ========== COVER PAGE MACRO ==========
+% Define a command for generating the elegant cover page
+\newcommand{\templateThreeCover}[5]{%
+  % #1: Document Title
+  % #2: Document Subtitle
+  % #3: Year
+  % #4: Submitted to
+  % #5: Prepared by
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture,overlay]
+    % Cover page gradient
+    \shade[top color=background!95, bottom color=background!85] 
+      (current page.north west) rectangle (current page.south east);
+    
+    % Elegant frame
+    \draw[brandPrimary, line width=1pt] 
+      ($(current page.north west) + (2.5,-2.5)$) rectangle 
+      ($(current page.south east) + (-2.5,2.5)$);
+      
+    % Corner decorations
+    \draw[brandSecondary, line width=0.5pt] 
+      ($(current page.north west) + (2.5,-2.5)$) -- ++(-0.5,0) -- ++(0,-0.5);
+    \draw[brandSecondary, line width=0.5pt] 
+      ($(current page.north east) + (-2.5,-2.5)$) -- ++(0.5,0) -- ++(0,-0.5);
+    \draw[brandSecondary, line width=0.5pt] 
+      ($(current page.south west) + (2.5,2.5)$) -- ++(-0.5,0) -- ++(0,0.5);
+    \draw[brandSecondary, line width=0.5pt] 
+      ($(current page.south east) + (-2.5,2.5)$) -- ++(0.5,0) -- ++(0,0.5);
+    
+    % Subtle accent line
+    \draw[brandAccent, line width=0.5pt] 
+      ($(current page.north west) + (5,-9)$) -- ++(10,0);
+    
+    % Title
+    \node[color=sectionNumberColor, font=\Huge\bfseries, align=center] 
+      at ($(current page.north) + (0,-7)$) {#1};
+      
+    % Subtitle
+    \node[color=subsectionNumberColor, font=\LARGE, align=center] 
+      at ($(current page.north) + (0,-9.5)$) {#2};
+    
+    % Year embellishment
+    \draw[brandPrimary, line width=1pt] 
+      ($(current page.south) + (0,7)$) circle (1.5cm);
+    \draw[brandPrimary, line width=0.5pt] 
+      ($(current page.south) + (0,7)$) circle (1.3cm);
+    \node[color=primary, font=\Large\bfseries] 
+      at ($(current page.south) + (0,7)$) {#3};
+    
+    % Document info
+    \node[color=primary, font=\large, align=center] 
+      at ($(current page.south) + (0,4)$) 
+      {Submitted to: \textit{#4}\\[0.3cm]
+       Prepared by: \textit{#5}\\[0.3cm]
+       \textit{\today}};
+  \end{tikzpicture}
+  \newpage
+}
+
+% ========== TABLE STYLE ==========
+% Define the table style with elegant, minimal styling
+\newcommand{\templateThreeTable}{
+  \arrayrulecolor{brandPrimary!30}
+  \setlength{\arrayrulewidth}{0.3pt}
+  \renewcommand{\arraystretch}{1.2}
+} 
