@@ -1,0 +1,120 @@
+% ========== USE CASE 3: Template 1 with Custom Content ==========
+% This demonstrates using Template 1 (Modern Geometric) with custom content
+% Shows how to integrate predefined templates with your own document structure
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{ifthen}
+
+% ========== MODULE CONFIGURATION ==========
+% Enable modules needed for rich content
+\newcommand{\EnableAdvancedTypography}{true}
+\newcommand{\EnableMathematics}{true}
+\newcommand{\EnableTables}{true}
+\newcommand{\EnableBoxes}{true}
+\newcommand{\EnableLists}{true}
+\newcommand{\EnableCode}{false}
+\newcommand{\EnableImages}{false}
+\newcommand{\EnableAlgorithms}{false}
+\newcommand{\EnableReferences}{false}
+
+% ========== LOAD CONFIGURATION ==========
+\input{config.tex}
+
+% ========== LOAD TEMPLATE ==========
+\input{templates/template1.tex}
+
+% ========== DOCUMENT BEGIN ==========
+\begin{document}
+
+% Use Template 1 cover page
+\templateOneCover{%
+  Advanced Analytics Platform%    Title
+}{%
+  Data-Driven Decision Making%    Subtitle
+}{%
+  2024%                          Year
+}{%
+  Tech Innovation Corp%          Submitted to
+}{%
+  Analytics Team%                Prepared by
+}
+
+\begin{infobox}[title=Template 1 Features]
+This document uses Template 1's modern geometric design with custom content. The template provides professional styling while allowing complete content flexibility.
+\end{infobox}
+
+\section{Project Overview}
+
+Our analytics platform revolutionizes how businesses process and interpret data. The system combines machine learning algorithms with intuitive visualization tools.
+
+\subsection{Key Features}
+
+\begin{enhancedlist}
+    \item Real-time data processing capabilities
+    \item Interactive dashboard with customizable widgets
+    \item Advanced statistical analysis tools
+    \item Automated report generation
+    \item Multi-source data integration
+\end{enhancedlist}
+
+\section{Technical Architecture}
+
+The platform is built on a microservices architecture that ensures scalability and maintainability.
+
+\subsection{Core Components}
+
+\begin{warningbox}
+\textbf{Performance Note:} The system requires minimum 16GB RAM for optimal performance with large datasets.
+\end{warningbox}
+
+\begin{table}[htbp]
+\caption{System Components}
+\centering
+\templateOneTable
+\begin{tabularx}{\textwidth}{L{4cm}C{3cm}X}
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Component}} &
+\textcolor{headertext}{\textbf{Technology}} &
+\textcolor{headertext}{\textbf{Purpose}} \\
+\toprule
+Data Ingestion & Apache Kafka & Stream processing and data collection \\
+Analytics Engine & Python/Pandas & Statistical analysis and ML processing \\
+Visualization & D3.js/React & Interactive charts and dashboards \\
+Database & PostgreSQL & Structured data storage and queries \\
+Cache Layer & Redis & Fast data retrieval and session management \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Implementation Timeline}
+
+\subsection{Phase 1: Foundation (Months 1-2)}
+\begin{itemize}
+    \item Infrastructure setup and database design
+    \item Core data ingestion pipeline development
+    \item Basic authentication and security implementation
+\end{itemize}
+
+\subsection{Phase 2: Analytics Core (Months 3-4)}
+\begin{itemize}
+    \item Statistical analysis engine development
+    \item Machine learning model integration
+    \item Data validation and quality assurance
+\end{itemize}
+
+\subsection{Phase 3: Visualization (Months 5-6)}
+\begin{itemize}
+    \item Dashboard framework implementation
+    \item Interactive chart library integration
+    \item User experience optimization
+\end{itemize}
+
+\begin{successbox}
+\textbf{Expected Outcome:} 40\% improvement in decision-making speed and 60\% reduction in manual reporting tasks.
+\end{successbox}
+
+\section{Conclusion}
+
+The analytics platform represents a significant advancement in data processing capabilities, combining modern technology with user-centric design principles.
+
+\end{document}

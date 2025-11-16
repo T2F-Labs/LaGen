@@ -1,0 +1,107 @@
+% ========== USE CASE 5: Template 3 Minimal Elegant ==========
+% This demonstrates using Template 3 (Minimal Elegant) for clean, sophisticated documents
+% Shows how minimal design can still leverage brand colors effectively
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{ifthen}
+
+% ========== MODULE CONFIGURATION ==========
+% Minimal modules for elegant, clean document
+\newcommand{\EnableAdvancedTypography}{true}
+\newcommand{\EnableMathematics}{true}
+\newcommand{\EnableTables}{true}
+\newcommand{\EnableBoxes}{true}
+\newcommand{\EnableLists}{false}
+\newcommand{\EnableCode}{false}
+\newcommand{\EnableImages}{false}
+\newcommand{\EnableAlgorithms}{false}
+\newcommand{\EnableReferences}{false}
+
+% ========== LOAD CONFIGURATION ==========
+\input{config.tex}
+
+% ========== LOAD TEMPLATE ==========
+\input{templates/template3.tex}
+
+% ========== DOCUMENT BEGIN ==========
+\begin{document}
+
+% Use Template 3 elegant cover page
+\templateThreeCover{%
+  Elegant Document Design%       Title
+}{%
+  Minimalist Approach%          Subtitle
+}{%
+  2024%                        Year
+}{%
+  Design Committee%            Submitted to
+}{%
+  Creative Director%           Prepared by
+}
+
+\begin{infobox}[title=Minimal Elegance]
+Template 3 demonstrates how minimal design principles can create sophisticated documents while maintaining brand consistency through subtle color applications.
+\end{infobox}
+
+\section{Design Philosophy}
+
+Minimalism in document design focuses on clarity, readability, and purposeful use of visual elements.
+
+\subsection{Core Principles}
+
+The elegant approach emphasizes:
+\begin{itemize}
+    \item Clean typography with ample whitespace
+    \item Subtle use of brand colors for accents
+    \item Sophisticated border and line treatments
+    \item Balanced composition and visual hierarchy
+\end{itemize}
+
+\section{Mathematical Elegance}
+
+Even mathematical content benefits from the minimal approach:
+
+\begin{equation}
+f(x) = \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+\end{equation}
+
+The template's clean styling ensures mathematical expressions remain the focus while brand colors provide subtle context.
+
+\section{Elegant Tables}
+
+\begin{table}[htbp]
+\caption{Design Comparison}
+\centering
+\templateThreeTable
+\begin{tabularx}{\textwidth}{L{4cm}C{3cm}X}
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Design Style}} &
+\textcolor{headertext}{\textbf{Complexity}} &
+\textcolor{headertext}{\textbf{Best Use Case}} \\
+\toprule
+Minimal Elegant & Low & Academic papers, reports \\
+Corporate Sidebar & Medium & Business presentations \\
+Modern Geometric & High & Marketing materials \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Subtle Brand Integration}
+
+Template 3 integrates brand colors through:
+\begin{itemize}
+    \item Thin accent lines using \textcolor{brandPrimary}{brandPrimary}
+    \item Corner flourishes in \textcolor{brandSecondary}{brandSecondary}
+    \item Dot patterns with \textcolor{brandAccent}{brandAccent} at low opacity
+    \item Table borders using brand color derivatives
+\end{itemize}
+
+\begin{warningbox}
+\textbf{Design Note:} The minimal approach uses brand colors sparingly but strategically for maximum impact.
+\end{warningbox}
+
+\section{Conclusion}
+
+Elegant minimalism proves that sophisticated design doesn't require complexity. Strategic use of brand colors within a clean framework creates documents that are both professional and memorable.
+
+\end{document}

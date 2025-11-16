@@ -1,0 +1,152 @@
+% ========== USE CASE 11: Business Report Configuration ==========
+% This demonstrates optimal configuration for business reports
+% Focus on tables, charts, and professional corporate styling
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{ifthen}
+
+% ========== MODULE CONFIGURATION ==========
+% BUSINESS SETUP - Optimized for corporate reports
+\newcommand{\EnableAdvancedTypography}{false}
+\newcommand{\EnableMathematics}{false}
+\newcommand{\EnableTables}{true}
+\newcommand{\EnableBoxes}{true}
+\newcommand{\EnableLists}{true}
+\newcommand{\EnableCode}{false}
+\newcommand{\EnableImages}{true}
+\newcommand{\EnableAlgorithms}{false}
+\newcommand{\EnableReferences}{false}
+
+% ========== LOAD CONFIGURATION ==========
+\input{config.tex}
+
+% ========== LOAD CORPORATE TEMPLATE ==========
+\input{templates/template2.tex}
+
+% ========== DOCUMENT BEGIN ==========
+\begin{document}
+
+% Use corporate cover
+\templateTwoCover{%
+  Q4 2024 Financial Report%      Title
+}{%
+  Executive Summary%             Subtitle
+}{%
+  2024%                         Year
+}{%
+  Board of Directors%           Submitted to
+}{%
+  Finance Department%           Prepared by
+}
+
+\begin{infobox}[title=Business Report Configuration]
+Optimized for corporate reports with tables, charts, professional styling, and executive-friendly formatting.
+\end{infobox}
+
+\section{Executive Summary}
+
+Our Q4 2024 performance demonstrates strong growth across key metrics, with revenue increasing 23\% year-over-year and market share expanding in core segments.
+
+\subsection{Key Performance Indicators}
+
+\begin{table}[htbp]
+\caption{Q4 2024 Financial Highlights}
+\centering
+\templateTwoTable
+\begin{tabularx}{\textwidth}{L{4cm}C{3cm}C{3cm}X}
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Metric}} &
+\textcolor{headertext}{\textbf{Q4 2024}} &
+\textcolor{headertext}{\textbf{Q4 2023}} &
+\textcolor{headertext}{\textbf{Change}} \\
+\toprule
+Revenue & \$45.2M & \$36.8M & +23\% \\
+Net Profit & \$8.1M & \$6.2M & +31\% \\
+Market Share & 18.5\% & 15.2\% & +3.3pp \\
+Customer Base & 125K & 98K & +28\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Market Analysis}
+
+\begin{enhancedlist}
+    \item Technology sector growth of 15\% annually
+    \item Increased demand for cloud solutions
+    \item Competitive landscape consolidation
+    \item Regulatory environment stabilization
+\end{enhancedlist}
+
+\begin{successbox}
+\textbf{Market Position:} We've successfully captured 18.5\% market share, positioning us as the third-largest player in our segment.
+\end{successbox}
+
+\section{Operational Performance}
+
+\subsection{Department Performance}
+
+\begin{table}[htbp]
+\caption{Departmental Efficiency Metrics}
+\centering
+\templateTwoTable
+\begin{tabularx}{\textwidth}{L{3cm}C{2.5cm}C{2.5cm}C{2.5cm}X}
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Department}} &
+\textcolor{headertext}{\textbf{Budget}} &
+\textcolor{headertext}{\textbf{Actual}} &
+\textcolor{headertext}{\textbf{Variance}} &
+\textcolor{headertext}{\textbf{Status}} \\
+\toprule
+Sales & \$12.5M & \$11.8M & -5.6\% & On target \\
+Marketing & \$8.2M & \$8.9M & +8.5\% & Over budget \\
+R\&D & \$15.1M & \$14.3M & -5.3\% & Under budget \\
+Operations & \$18.7M & \$17.9M & -4.3\% & On target \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Strategic Initiatives}
+
+\begin{warningbox}
+\textbf{Investment Required:} Digital transformation initiative requires additional \$5.2M investment in Q1 2025.
+\end{warningbox}
+
+Our strategic focus areas for 2025:
+\begin{enhancedlist}
+    \item Digital platform modernization
+    \item International market expansion
+    \item Sustainable operations implementation
+    \item Talent acquisition and retention
+\end{enhancedlist}
+
+\section{Risk Assessment}
+
+\begin{table}[htbp]
+\caption{Risk Matrix}
+\centering
+\templateTwoTable
+\begin{tabularx}{\textwidth}{L{4cm}C{2cm}C{2cm}X}
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Risk Factor}} &
+\textcolor{headertext}{\textbf{Probability}} &
+\textcolor{headertext}{\textbf{Impact}} &
+\textcolor{headertext}{\textbf{Mitigation Strategy}} \\
+\toprule
+Market volatility & Medium & High & Diversification strategy \\
+Regulatory changes & Low & Medium & Compliance monitoring \\
+Talent shortage & High & Medium & Enhanced retention programs \\
+Technology disruption & Medium & High & Innovation investment \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Recommendations}
+
+\begin{enhancedlist}
+    \item Accelerate digital transformation timeline
+    \item Increase R\&D budget by 12\% for innovation
+    \item Expand sales team in target markets
+    \item Implement sustainability metrics tracking
+\end{enhancedlist}
+
+\end{document}

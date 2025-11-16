@@ -1,0 +1,124 @@
+% ========== USE CASE 4: Template 2 with Brand Colors ==========
+% This demonstrates using Template 2 (Corporate Sidebar) with brand color customization
+% Shows how templates automatically use your brand colors for consistent styling
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{ifthen}
+
+% ========== MODULE CONFIGURATION ==========
+% Enable modules for professional corporate document
+\newcommand{\EnableAdvancedTypography}{true}
+\newcommand{\EnableMathematics}{false}
+\newcommand{\EnableTables}{true}
+\newcommand{\EnableBoxes}{true}
+\newcommand{\EnableLists}{true}
+\newcommand{\EnableCode}{false}
+\newcommand{\EnableImages}{false}
+\newcommand{\EnableAlgorithms}{false}
+\newcommand{\EnableReferences}{true}
+
+% ========== LOAD CONFIGURATION ==========
+\input{config.tex}
+
+% ========== LOAD TEMPLATE ==========
+\input{templates/template2.tex}
+
+% ========== DOCUMENT BEGIN ==========
+\begin{document}
+
+% Use Template 2 cover page with brand colors
+\templateTwoCover{%
+  Corporate Brand Guidelines%     Title
+}{%
+  Visual Identity Standards%     Subtitle
+}{%
+  2024%                         Year
+}{%
+  Marketing Department%         Submitted to
+}{%
+  Brand Strategy Team%          Prepared by
+}
+
+\begin{infobox}[title=Template 2 Brand Integration]
+This document demonstrates how Template 2 automatically integrates with your brand colors. The corporate sidebar design uses brandPrimary, brandSecondary, and brandAccent throughout.
+\end{infobox}
+
+\section{Brand Color Palette}
+
+Our corporate identity is built on a carefully selected color palette that reflects our values and market position.
+
+\subsection{Primary Brand Colors}
+
+\begin{table}[htbp]
+\caption{Brand Color Specifications}
+\centering
+\templateTwoTable
+\begin{tabularx}{\textwidth}{L{3cm}C{3cm}C{3cm}X}
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Color Name}} &
+\textcolor{headertext}{\textbf{Hex Code}} &
+\textcolor{headertext}{\textbf{Usage}} &
+\textcolor{headertext}{\textbf{Application}} \\
+\toprule
+\textcolor{brandPrimary}{\textbf{Brand Primary}} & \#2563EB & Headers, CTAs & Main brand elements \\
+\textcolor{brandSecondary}{\textbf{Brand Secondary}} & \#4F46E5 & Accents & Supporting elements \\
+\textcolor{brandAccent}{\textbf{Brand Accent}} & \#10B981 & Highlights & Success states, highlights \\
+\textcolor{brandTertiary}{\textbf{Brand Tertiary}} & \#F97316 & Warnings & Attention, subsections \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Color Usage Guidelines}
+
+\begin{enhancedlist}
+    \item \textcolor{brandPrimary}{\textbf{Primary Color}} - Use for main headings, primary buttons, and key brand elements
+    \item \textcolor{brandSecondary}{\textbf{Secondary Color}} - Apply to subheadings, secondary buttons, and decorative elements
+    \item \textcolor{brandAccent}{\textbf{Accent Color}} - Reserve for success messages, highlights, and call-to-action elements
+    \item \textcolor{brandTertiary}{\textbf{Tertiary Color}} - Utilize for warnings, subsection numbers, and attention-grabbing elements
+\end{enhancedlist}
+
+\section{Template Integration}
+
+Template 2's corporate design automatically leverages these brand colors:
+
+\begin{warningbox}
+\textbf{Automatic Integration:} The template reads colors from brand\_colors.tex and applies them consistently throughout the document design.
+\end{warningbox}
+
+\subsection{Sidebar Design}
+The left sidebar uses \textcolor{brandPrimary}{brandPrimary} at 15\% opacity for the background, creating a subtle corporate identity presence on every page.
+
+\subsection{Header Styling}
+The top bar utilizes full \textcolor{brandPrimary}{brandPrimary} color for strong brand presence, while maintaining readability with white text.
+
+\subsection{Table Styling}
+Tables automatically use \textcolor{brandPrimary}{brandPrimary} tones for headers and alternating row colors, ensuring brand consistency in data presentation.
+
+\section{Brand Compliance}
+
+\begin{successbox}
+\textbf{Compliance Achieved:} This template ensures 100\% brand compliance across all document elements while maintaining professional corporate aesthetics.
+\end{successbox}
+
+\subsection{Consistency Checklist}
+
+\begin{itemize}
+    \item Headers use primary brand color
+    \item Sidebar reflects brand identity
+    \item Tables maintain brand color scheme
+    \item Info boxes use appropriate brand colors
+    \item Footer elements align with brand guidelines
+\end{itemize}
+
+\section{Implementation Benefits}
+
+The Template 2 approach provides:
+\begin{enhancedlist}
+    \item Automatic brand color application
+    \item Professional corporate appearance
+    \item Consistent visual identity
+    \item Reduced design time
+    \item Brand guideline compliance
+\end{enhancedlist}
+
+\end{document}

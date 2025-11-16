@@ -1,0 +1,98 @@
+% ========== USE CASE 1: Cover with Custom Content ==========
+% This demonstrates using a custom cover design with your own content
+% without relying on templates - pure custom styling
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{ifthen}
+
+% ========== MODULE CONFIGURATION ==========
+% Minimal modules for cover page
+\newcommand{\EnableAdvancedTypography}{false}
+\newcommand{\EnableMathematics}{false}
+\newcommand{\EnableTables}{false}
+\newcommand{\EnableBoxes}{true}         % For info boxes
+\newcommand{\EnableLists}{false}
+\newcommand{\EnableCode}{false}
+\newcommand{\EnableImages}{false}
+\newcommand{\EnableAlgorithms}{false}
+\newcommand{\EnableReferences}{false}
+
+% ========== LOAD CONFIGURATION ==========
+\input{config.tex}
+
+% ========== CUSTOM COVER STYLING ==========
+\usepackage{eso-pic}
+\usepackage{tikz}
+
+% Custom cover page command
+\newcommand{\customCover}[5]{%
+  % #1: Main Title
+  % #2: Subtitle  
+  % #3: Author
+  % #4: Organization
+  % #5: Date
+  \thispagestyle{empty}
+  \begin{center}
+    \vspace*{2cm}
+    
+    % Custom title design
+    {\Huge\bfseries\color{primary}#1}\\[1cm]
+    {\LARGE\color{secondary}#2}\\[2cm]
+    
+    % Custom decorative element
+    \begin{tikzpicture}
+      \draw[primary, line width=2pt] (-3,0) -- (3,0);
+      \fill[accent] (0,0) circle (0.1cm);
+    \end{tikzpicture}
+    
+    \vspace{2cm}
+    
+    % Author and organization info
+    {\large\color{primary}\textbf{Author:} #3}\\[0.5cm]
+    {\large\color{primary}\textbf{Organization:} #4}\\[0.5cm]
+    {\large\color{primary}\textbf{Date:} #5}
+    
+    \vfill
+    
+    % Custom footer design
+    \begin{tikzpicture}
+      \draw[secondary, line width=1pt] (-4,0) rectangle (4,1);
+      \node[color=primary] at (0,0.5) {\textbf{Custom Document Design}};
+    \end{tikzpicture}
+  \end{center}
+  \newpage
+}
+
+% ========== DOCUMENT BEGIN ==========
+\begin{document}
+
+% Use custom cover
+\customCover{%
+  LaTeX Modular System%           Title
+}{%
+  Advanced Document Architecture% Subtitle  
+}{%
+  John Doe%                      Author
+}{%
+  Tech Solutions Inc%            Organization
+}{%
+  November 2024%                 Date
+}
+
+\begin{infobox}[title=Custom Cover Demo]
+This document demonstrates how to create a completely custom cover page without using predefined templates. You have full control over the styling and layout.
+\end{infobox}
+
+% ========== LOAD CONTENT SECTIONS ==========
+\input{content/01-introduction.tex}
+
+\section{Custom Cover Benefits}
+
+\begin{itemize}
+    \item Full creative control over design
+    \item No template dependencies
+    \item Lightweight compilation
+    \item Easy to modify and customize
+\end{itemize}
+
+\end{document}

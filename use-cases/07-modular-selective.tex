@@ -1,0 +1,105 @@
+% ========== USE CASE 7: Modular Loading - Selective Features ==========
+% This demonstrates selective module loading for balanced functionality and performance
+% Enables specific features based on document requirements
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{ifthen}
+
+% ========== MODULE CONFIGURATION ==========
+% SELECTIVE SETUP - Enable only needed features
+\newcommand{\EnableAdvancedTypography}{false}
+\newcommand{\EnableMathematics}{true}        % Enable for equations
+\newcommand{\EnableTables}{true}             % Enable for data presentation
+\newcommand{\EnableBoxes}{true}              % Enable for callouts
+\newcommand{\EnableLists}{true}              % Enable for enhanced lists
+\newcommand{\EnableCode}{false}              % Disable - not needed
+\newcommand{\EnableImages}{false}            % Disable - not needed
+\newcommand{\EnableAlgorithms}{false}        % Disable - not needed
+\newcommand{\EnableReferences}{false}        % Disable - not needed
+
+% ========== LOAD CONFIGURATION ==========
+\input{config.tex}
+
+% ========== DOCUMENT BEGIN ==========
+\begin{document}
+
+\title{Selective Module Loading}
+\author{LaTeX User}
+\date{\today}
+\maketitle
+
+\begin{infobox}[title=Selective Configuration]
+This document demonstrates selective module loading. Enabled: Mathematics, Tables, Boxes, Lists. Estimated compile time: 15-25 seconds.
+\end{infobox}
+
+\section{Mathematical Content}
+
+With mathematics module enabled, we can include complex equations:
+
+\begin{equation}
+\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}
+\end{equation}
+
+\begin{theorem}[Pythagorean Theorem]
+For a right triangle with legs of length $a$ and $b$, and hypotenuse of length $c$:
+\begin{equation}
+a^2 + b^2 = c^2
+\end{equation}
+\end{theorem}
+
+\section{Enhanced Lists}
+
+The lists module provides enhanced formatting:
+
+\begin{enhancedlist}
+    \item Primary feature with enhanced styling
+    \item Secondary feature with improved spacing
+    \item Tertiary feature with better visual hierarchy
+    \item Additional features with consistent formatting
+\end{enhancedlist}
+
+\section{Data Tables}
+
+With tables module enabled, we can create professional data presentations:
+
+\begin{table}[htbp]
+\caption{Performance Comparison}
+\centering
+\rowcolors{2}{rowalt}{white}
+\begin{tabularx}{\textwidth}{L{4cm}C{3cm}C{3cm}X}
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Configuration}} &
+\textcolor{headertext}{\textbf{Compile Time}} &
+\textcolor{headertext}{\textbf{Features}} &
+\textcolor{headertext}{\textbf{Use Case}} \\
+\toprule
+Basic & 8-12s & Minimal & Quick drafts \\
+Selective & 15-25s & Targeted & Balanced documents \\
+Full & 25-35s & Complete & Feature-rich documents \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Information Boxes}
+
+Various box types are available with the boxes module:
+
+\begin{successbox}
+\textbf{Success:} Selective loading provides the perfect balance between functionality and performance.
+\end{successbox}
+
+\begin{warningbox}
+\textbf{Warning:} Only enable modules you actually need to maintain optimal compilation speed.
+\end{warningbox}
+
+\section{Optimization Strategy}
+
+\begin{enhancedlist}
+    \item Analyze document requirements first
+    \item Enable only necessary modules
+    \item Test compilation time on target platform
+    \item Adjust module selection as needed
+    \item Document module choices for team consistency
+\end{enhancedlist}
+
+\end{document}

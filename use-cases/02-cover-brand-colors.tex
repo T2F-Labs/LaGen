@@ -1,0 +1,114 @@
+% ========== USE CASE 2: Cover with Brand Colors ==========
+% This demonstrates using brand colors extensively in a custom cover design
+% Shows how to leverage the brand color system for consistent branding
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{ifthen}
+
+% ========== MODULE CONFIGURATION ==========
+% Minimal modules for cover page
+\newcommand{\EnableAdvancedTypography}{false}
+\newcommand{\EnableMathematics}{false}
+\newcommand{\EnableTables}{false}
+\newcommand{\EnableBoxes}{true}         % For info boxes
+\newcommand{\EnableLists}{false}
+\newcommand{\EnableCode}{false}
+\newcommand{\EnableImages}{false}
+\newcommand{\EnableAlgorithms}{false}
+\newcommand{\EnableReferences}{false}
+
+% ========== LOAD CONFIGURATION ==========
+\input{config.tex}
+
+% ========== BRAND COLOR COVER STYLING ==========
+\usepackage{eso-pic}
+\usepackage{tikz}
+
+% Brand-colored cover page command
+\newcommand{\brandCover}[5]{%
+  % #1: Main Title
+  % #2: Subtitle  
+  % #3: Author
+  % #4: Organization
+  % #5: Date
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture,overlay]
+    % Brand color background
+    \fill[brandPrimary!10] (current page.north west) rectangle (current page.south east);
+    
+    % Brand color header bar
+    \fill[brandPrimary] (current page.north west) rectangle ([yshift=-2cm]current page.north east);
+    
+    % Brand accent decorative elements
+    \fill[brandAccent!80] ([xshift=15cm, yshift=-8cm]current page.north west) circle (4cm);
+    \fill[brandSecondary!60] ([xshift=3cm, yshift=-15cm]current page.north west) circle (2.5cm);
+    
+    % Title area with brand colors
+    \fill[white, opacity=0.95] ([xshift=3cm, yshift=-6cm]current page.north west) 
+      rectangle ++(12cm,6cm);
+    
+    % Title text with brand colors
+    \node[color=brandPrimary, font=\Huge\bfseries, text width=11cm, align=center] 
+      at ([xshift=9cm, yshift=-7.5cm]current page.north west) {#1};
+      
+    \node[color=brandSecondary, font=\LARGE, text width=11cm, align=center] 
+      at ([xshift=9cm, yshift=-9.5cm]current page.north west) {#2};
+    
+    % Brand color accent line
+    \fill[brandAccent] ([xshift=4cm, yshift=-10.5cm]current page.north west) 
+      rectangle ++(10cm,0.2cm);
+    
+    % Author info with brand colors
+    \node[color=brandPrimary, font=\large, align=center] 
+      at ([xshift=9cm, yshift=-18cm]current page.north west) 
+      {\textbf{Author:} \textcolor{brandSecondary}{#3}\\[0.3cm]
+       \textbf{Organization:} \textcolor{brandSecondary}{#4}\\[0.3cm]
+       \textbf{Date:} \textcolor{brandSecondary}{#5}};
+    
+    % Brand color footer
+    \fill[brandPrimary!20] ([yshift=2cm]current page.south west) 
+      rectangle (current page.south east);
+    
+    % Brand logo placeholder
+    \fill[brandPrimary] ([xshift=2cm, yshift=1cm]current page.south west) circle (0.8cm);
+    \fill[white] ([xshift=2cm, yshift=1cm]current page.south west) circle (0.6cm);
+    \node[color=brandPrimary, font=\Large\bfseries] 
+      at ([xshift=2cm, yshift=1cm]current page.south west) {B};
+  \end{tikzpicture}
+  \newpage
+}
+
+% ========== DOCUMENT BEGIN ==========
+\begin{document}
+
+% Use brand color cover
+\brandCover{%
+  Brand-Driven Design%           Title
+}{%
+  Consistent Visual Identity%    Subtitle  
+}{%
+  Jane Smith%                    Author
+}{%
+  Creative Agency Ltd%           Organization
+}{%
+  November 2024%                 Date
+}
+
+\begin{infobox}[title=Brand Color Integration]
+This document showcases how to use your brand colors (brandPrimary, brandSecondary, brandAccent) throughout the cover design for consistent visual identity.
+\end{infobox}
+
+% ========== LOAD CONTENT SECTIONS ==========
+\input{content/01-introduction.tex}
+
+\section{Brand Color System}
+
+The cover page uses:
+\begin{itemize}
+    \item \textcolor{brandPrimary}{\textbf{Brand Primary}} - Main elements and headers
+    \item \textcolor{brandSecondary}{\textbf{Brand Secondary}} - Supporting text and accents  
+    \item \textcolor{brandAccent}{\textbf{Brand Accent}} - Decorative elements and highlights
+    \item \textcolor{brandTertiary}{\textbf{Brand Tertiary}} - Additional styling options
+\end{itemize}
+
+\end{document}

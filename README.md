@@ -38,6 +38,27 @@ This project provides a flexible template system that lets you generate beautifu
 - **Comprehensive Lists**: Task lists, priority lists, and custom styling options
 - **Semantic Box Styling**: Info, alert, and success boxes with visual cues
 
+## 🧱 Content Structure
+Content lives in the `content/` directory and can be organized as chapters, standalone pages, or granular sections. Covers and templates define the shell of the document; your content files are independent and do not need to be part of the cover page.
+
+Typical patterns:
+- Chapters: `01-introduction.tex`, `02-methods.tex`, `03-results.tex`
+- Single pages/sections: `10-appendix-a.tex`, `20-acknowledgements.tex`
+
+How to include:
+```latex
+\begin{document}
+  % Cover (optional)
+  % \templateOneCover{...} or \customCover{...}
+
+  % Content loaded on its own pages
+  \input{content/01-introduction.tex}
+  \input{content/02-chapter.tex}
+  % or, to force page breaks between major units
+  \include{content/03-results} % uses its own .tex and inserts clear pages
+\end{document}
+```
+
 ## 📖 Documentation
 
 This project includes comprehensive documentation to help you get the most out of the LaTeX template system:

@@ -1,0 +1,147 @@
+% ========== USE CASE 8: Modular Loading - Full Features ==========
+% This demonstrates full module loading for feature-rich documents
+% All modules enabled for maximum functionality
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{ifthen}
+
+% ========== MODULE CONFIGURATION ==========
+% FULL SETUP - All modules enabled
+\newcommand{\EnableAdvancedTypography}{true}
+\newcommand{\EnableMathematics}{true}
+\newcommand{\EnableTables}{true}
+\newcommand{\EnableBoxes}{true}
+\newcommand{\EnableLists}{true}
+\newcommand{\EnableCode}{true}
+\newcommand{\EnableImages}{true}
+\newcommand{\EnableAlgorithms}{true}
+\newcommand{\EnableReferences}{true}
+
+% ========== LOAD CONFIGURATION ==========
+\input{config.tex}
+
+% ========== DOCUMENT BEGIN ==========
+\begin{document}
+
+\title{Full Feature Configuration}
+\author{LaTeX Expert}
+\date{\today}
+\maketitle
+
+\begin{infobox}[title=Full Configuration]
+This document showcases all available modules. Estimated compile time: 25-35 seconds. Best for comprehensive documents requiring all features.
+\end{infobox}
+
+\section{Advanced Typography}
+
+\dropcap{W}{ith} advanced typography enabled, we can use sophisticated text formatting including drop caps, advanced font features, and enhanced spacing.
+
+\section{Mathematical Excellence}
+
+Complex mathematical expressions with full theorem environments:
+
+\begin{theorem}[Fundamental Theorem of Calculus]
+If $f$ is continuous on $[a,b]$ and $F$ is an antiderivative of $f$, then:
+\begin{equation}
+\int_a^b f(x) \, dx = F(b) - F(a)
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The proof follows from the definition of the definite integral and the properties of antiderivatives.
+\end{proof}
+
+\section{Algorithm Presentation}
+
+\begin{algorithm}
+\caption{Binary Search Algorithm}
+\begin{algorithmic}[1]
+\Procedure{BinarySearch}{$A, n, x$}
+    \State $low \gets 1$
+    \State $high \gets n$
+    \While{$low \leq high$}
+        \State $mid \gets \lfloor(low + high)/2\rfloor$
+        \If{$A[mid] = x$}
+            \State \textbf{return} $mid$
+        \ElsIf{$A[mid] < x$}
+            \State $low \gets mid + 1$
+        \Else
+            \State $high \gets mid - 1$
+        \EndIf
+    \EndWhile
+    \State \textbf{return} $-1$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\section{Code Highlighting}
+
+\begin{lstlisting}[language=Python, caption=Python Example]
+def fibonacci(n):
+    """Calculate the nth Fibonacci number."""
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+# Example usage
+for i in range(10):
+    print(f"F({i}) = {fibonacci(i)}")
+\end{lstlisting}
+
+\section{Enhanced Tables}
+
+\begin{table}[htbp]
+\caption{Feature Comparison Matrix}
+\centering
+\rowcolors{2}{rowalt}{white}
+\begin{tabularx}{\textwidth}{L{3cm}C{2cm}C{2cm}C{2cm}X}
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Feature}} &
+\textcolor{headertext}{\textbf{Basic}} &
+\textcolor{headertext}{\textbf{Selective}} &
+\textcolor{headertext}{\textbf{Full}} &
+\textcolor{headertext}{\textbf{Description}} \\
+\toprule
+Typography & ✗ & ✗ & ✓ & Advanced font features \\
+Mathematics & ✗ & ✓ & ✓ & Equations and theorems \\
+Tables & ✗ & ✓ & ✓ & Professional data presentation \\
+Boxes & ✓ & ✓ & ✓ & Information callouts \\
+Lists & ✗ & ✓ & ✓ & Enhanced list formatting \\
+Code & ✗ & ✗ & ✓ & Syntax highlighting \\
+Images & ✗ & ✗ & ✓ & Advanced image handling \\
+Algorithms & ✗ & ✗ & ✓ & Pseudocode presentation \\
+References & ✗ & ✗ & ✓ & Bibliography management \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{All Box Types}
+
+\begin{successbox}
+\textbf{Success:} Full configuration provides access to all available features and styling options.
+\end{successbox}
+
+\begin{warningbox}
+\textbf{Warning:} Full feature loading increases compilation time but provides maximum flexibility.
+\end{warningbox}
+
+\begin{errorbox}
+\textbf{Error Prevention:} Always test compilation time on your target platform before finalizing configuration.
+\end{errorbox}
+
+\section{Enhanced Lists}
+
+\begin{enhancedlist}
+    \item Full typography support with advanced spacing
+    \item Mathematical expressions in list items: $\sum_{i=1}^n i = \frac{n(n+1)}{2}$
+    \item Code snippets: \texttt{config.enableAll()}
+    \item References to algorithms and figures
+    \item Multi-level nested structures with consistent styling
+\end{enhancedlist}
+
+\section{References and Citations}
+
+With the references module enabled, you can manage bibliographies and citations systematically for academic and professional documents.
+
+\end{document}

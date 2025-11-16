@@ -1,0 +1,136 @@
+% ========== USE CASE 9: Cover + Template Hybrid ==========
+% This demonstrates combining custom cover design with template styling
+% Shows how to mix custom covers with predefined template features
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{ifthen}
+
+% ========== MODULE CONFIGURATION ==========
+% Enable modules for hybrid approach
+\newcommand{\EnableAdvancedTypography}{true}
+\newcommand{\EnableMathematics}{false}
+\newcommand{\EnableTables}{true}
+\newcommand{\EnableBoxes}{true}
+\newcommand{\EnableLists}{true}
+\newcommand{\EnableCode}{false}
+\newcommand{\EnableImages}{false}
+\newcommand{\EnableAlgorithms}{false}
+\newcommand{\EnableReferences}{false}
+
+% ========== LOAD CONFIGURATION ==========
+\input{config.tex}
+
+% ========== LOAD TEMPLATE FOR BODY STYLING ==========
+\input{templates/template2.tex}
+
+% ========== CUSTOM COVER OVERRIDE ==========
+\usepackage{eso-pic}
+\usepackage{tikz}
+
+% Custom hybrid cover that uses template colors
+\newcommand{\hybridCover}[5]{%
+  % #1: Main Title
+  % #2: Subtitle  
+  % #3: Author
+  % #4: Organization
+  % #5: Date
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture,overlay]
+    % Use template 2's corporate colors but custom layout
+    \fill[brandPrimary!5] (current page.north west) rectangle (current page.south east);
+    
+    % Custom geometric header using template colors
+    \fill[brandPrimary] (current page.north west) rectangle ([yshift=-3cm]current page.north east);
+    \fill[brandSecondary!80] ([yshift=-3cm]current page.north west) rectangle ([yshift=-3.5cm]current page.north east);
+    
+    % Custom title area with template color scheme
+    \fill[white, opacity=0.95] ([xshift=4cm, yshift=-8cm]current page.north west) 
+      rectangle ++(12cm,5cm);
+    
+    % Brand-consistent title styling
+    \node[color=brandPrimary, font=\Huge\bfseries, text width=11cm, align=center] 
+      at ([xshift=10cm, yshift=-6.5cm]current page.north west) {#1};
+      
+    \node[color=brandSecondary, font=\LARGE, text width=11cm, align=center] 
+      at ([xshift=10cm, yshift=-8cm]current page.north west) {#2};
+    
+    % Custom decorative elements using template colors
+    \foreach \i in {0,45,90,135,180,225,270,315}
+      \fill[rotate around={\i:(2,2)}, brandAccent, opacity=0.3] 
+        ([xshift=2cm, yshift=-2cm]current page.north west) ellipse (0.5cm and 0.2cm);
+    
+    % Author info with hybrid styling
+    \node[color=primary, font=\large, align=center] 
+      at ([xshift=10cm, yshift=-15cm]current page.north west) 
+      {\textbf{Author:} \textcolor{brandSecondary}{#3}\\[0.3cm]
+       \textbf{Organization:} \textcolor{brandSecondary}{#4}\\[0.3cm]
+       \textbf{Date:} \textcolor{brandSecondary}{#5}};
+  \end{tikzpicture}
+  \newpage
+}
+
+% ========== DOCUMENT BEGIN ==========
+\begin{document}
+
+% Use custom hybrid cover
+\hybridCover{%
+  Hybrid Design Approach%        Title
+}{%
+  Custom Cover + Template Body%  Subtitle  
+}{%
+  Design Team%                   Author
+}{%
+  Innovation Lab%                Organization
+}{%
+  November 2024%                 Date
+}
+
+\begin{infobox}[title=Hybrid Approach]
+This document combines a custom cover design with Template 2's corporate body styling. The cover uses custom layout while maintaining template color consistency.
+\end{infobox}
+
+\section{Design Strategy}
+
+The hybrid approach allows maximum flexibility by combining:
+\begin{enhancedlist}
+    \item Custom cover page design for unique branding
+    \item Template body styling for consistent professional appearance
+    \item Shared color palette for visual coherence
+    \item Modular feature loading for optimal performance
+\end{enhancedlist}
+
+\section{Implementation Benefits}
+
+\begin{table}[htbp]
+\caption{Hybrid vs Pure Approaches}
+\centering
+\templateTwoTable
+\begin{tabularx}{\textwidth}{L{3cm}C{3cm}C{3cm}X}
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Approach}} &
+\textcolor{headertext}{\textbf{Flexibility}} &
+\textcolor{headertext}{\textbf{Consistency}} &
+\textcolor{headertext}{\textbf{Best For}} \\
+\toprule
+Pure Custom & High & Variable & Unique designs \\
+Pure Template & Low & High & Standard documents \\
+Hybrid & High & High & Branded corporate docs \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Color Harmony}
+
+The hybrid approach maintains color harmony by:
+\begin{itemize}
+    \item Using template color definitions
+    \item Applying custom layouts with consistent colors
+    \item Leveraging brand color cascade system
+    \item Ensuring visual continuity between cover and content
+\end{itemize}
+
+\begin{successbox}
+\textbf{Result:} Perfect balance between creative freedom and professional consistency.
+\end{successbox}
+
+\end{document}
