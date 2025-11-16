@@ -1,116 +1,24 @@
-% ========== FONT AND ENCODING ==========
+% ========== CORE CONFIGURATION ==========
+% Lightweight core configuration for basic LaTeX documents
+% ========== ESSENTIAL PACKAGES ==========
 % Instructions: These packages handle font setup and character encoding
 % Keep these as-is unless you need different fonts
 \usepackage{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{ifthen}
+\usepackage{geometry}
 \usepackage{fontspec}
 \usepackage{setspace}
 \usepackage{xcolor}
 \usepackage{morefloats}
 \usepackage[table]{xcolor}
-% Professional letter spacing for brand names
-% \usepackage{letterspace} % Removed as fontspec will handle letterspacing
+\usepackage[table]{xcolor}
+\ifdefined\pdftexversion
+  \usepackage{microtype}
+\fi
 
-% Load microtype with XeTeX compatibility options
-\usepackage[protrusion=true,expansion=false]{microtype}
-
-% ========== COLORS ==========
-% Define default brand colors first (these will be used if brand_colors.tex is missing)
-
-% Default Primary Brand Colors
-\definecolor{brandPrimary}{HTML}{2563EB}    % Primary brand color
-\definecolor{brandSecondary}{HTML}{4F46E5}  % Secondary brand color
-\definecolor{brandAccent}{HTML}{10B981}     % Accent color for highlights and emphasis
-
-% Default Secondary Brand Colors
-\definecolor{brandTertiary}{HTML}{F97316}   % Tertiary brand color (e.g., for subsections)
-\definecolor{brandQuaternary}{HTML}{A855F7} % Quaternary brand color (optional)
-\definecolor{brandNeutral}{HTML}{64748B}    % Neutral brand color for supporting elements
-
-% Default Text Colors - Derived from brand colors
-\definecolor{primary}{HTML}{0F172A}         % Main text color
-\definecolor{secondary}{HTML}{334155}       % Secondary text color
-\definecolor{accent}{HTML}{2563EB}          % Links and highlights (defaults to brandPrimary)
-
-% Default Section Styling Colors
-\definecolor{sectionNumberColor}{HTML}{2563EB}       % Color for section numbers (1, 2, etc.)
-\definecolor{sectionTitleColor}{HTML}{0F172A}        % Color for section titles
-\definecolor{subsectionNumberColor}{HTML}{F97316}    % Color for subsection numbers (1.1, 1.2, etc.)
-\definecolor{subsectionTitleColor}{HTML}{F97316}     % Color for subsection titles
-\definecolor{subsubsectionNumberColor}{HTML}{10B981} % Color for subsubsection numbers (1.1.1, etc.)
-\definecolor{subsubsectionTitleColor}{HTML}{10B981}  % Color for subsubsection titles
-
-% Default UI Element Colors
-\definecolor{lightaccent}{HTML}{3B82F6}     % Lighter accent variant
-\definecolor{success}{HTML}{059669}         % Success/positive elements
-\definecolor{warning}{HTML}{D97706}         % Warning/attention elements
-\definecolor{background}{HTML}{F8FAFC}      % Light background for boxes
-\definecolor{border}{HTML}{E2E8F0}          % Borders and lines
-\definecolor{textgray}{HTML}{64748B}        % Muted text
-\definecolor{lightgray}{HTML}{F1F5F9}       % Table alternating rows
-
-% Default Code Colors
-\definecolor{codebg}{HTML}{F8F8F8}          % Code block background
-\definecolor{codecomment}{HTML}{6A737D}     % Code comments
-\definecolor{codestring}{HTML}{032F62}      % Code strings
-\definecolor{codekey}{HTML}{D73A49}         % Code keywords
-
-% Default Table Colors
-\definecolor{cardbg}{HTML}{F7F9FC}          % Card background color
-\definecolor{headerbg}{HTML}{4A90E2}        % Table header background
-\definecolor{headertext}{HTML}{FFFFFF}      % Text color for table headers
-\definecolor{rowalt}{HTML}{F1F4F9}          % Alternating row color
-\definecolor{frameborder}{HTML}{D3DCE6}     % Border color for frames
-
-% Default Color Cascade System
-\colorlet{headerbg}{brandPrimary}
-\colorlet{accent}{brandPrimary}
-\colorlet{lightaccent}{brandPrimary!75}
-\colorlet{success}{brandAccent}
-\colorlet{border}{brandPrimary!20}
-\colorlet{frameborder}{brandSecondary!30}
-\colorlet{sectionNumberColor}{brandPrimary}
-\colorlet{sectionTitleColor}{primary}
-\colorlet{subsectionNumberColor}{brandTertiary}
-\colorlet{subsectionTitleColor}{brandTertiary}
-\colorlet{subsubsectionNumberColor}{brandAccent}
-\colorlet{subsubsectionTitleColor}{brandAccent}
-
-% Try to import custom brand colors if the file exists
-% This will override the defaults defined above
-\IfFileExists{brand_colors.tex}{
-    \input{brand_colors.tex}
-    \typeout{^^J INFO: Loaded custom brand colors from brand_colors.tex^^J}
-}{
-    \typeout{^^J INFO: Using default brand colors (brand_colors.tex not found)^^J}
-}
-
-% Dynamic font scaling for brand consistency
-\usepackage{scalefnt}
-% Replace "Inter" with your preferred font family if needed
-\setmainfont{Inter}[
-    UprightFont = *-Regular,
-    BoldFont = *-SemiBold,
-    ItalicFont = *-Italic,
-    BoldItalicFont = *-SemiBoldItalic,
-    LetterSpace = 3.0 % Base letter spacing for the font
-]
-\setsansfont{Inter}[
-    UprightFont = *-Regular,
-    BoldFont = *-SemiBold,
-    ItalicFont = *-Italic,
-    BoldItalicFont = *-SemiBoldItalic,
-    LetterSpace = 3.0 % Base letter spacing for the font
-]
-
-% Define branded text macros with letterspacing using fontspec
-\newcommand{\brandname}[1]{{\addfontfeatures{LetterSpace=12.0}\textsc{#1}}}
-\newcommand{\productname}[1]{{\addfontfeatures{LetterSpace=8.0}\textbf{#1}}}
-
-% ========== PAGE LAYOUT ==========
-% Instructions: Adjust measurements to change margins and spacing
-\usepackage{geometry}
+% ========== BASIC PAGE LAYOUT ==========
 \geometry{
     top=1.2in,
     bottom=1.2in,
@@ -121,821 +29,121 @@
     footskip=0.4in
 }
 
-% Better float placement control
-\usepackage{placeins}
-% Ensure floats appear after their references
-\usepackage{flafter}
-% Bug fixes for LaTeX kernel
-\usepackage{fixltx2e}
+% ========== BASIC COLORS ==========
+% Essential colors only - load brand_colors.tex if it exists
+\definecolor{primary}{HTML}{0F172A}
+\definecolor{secondary}{HTML}{334155}
+\definecolor{accent}{HTML}{2563EB}
+\definecolor{success}{HTML}{059669}
+\definecolor{warning}{HTML}{D97706}
+\definecolor{background}{HTML}{F8FAFC}
+\definecolor{border}{HTML}{E2E8F0}
+\definecolor{textgray}{HTML}{64748B}
 
-% ========== TYPOGRAPHY ==========
-% Instructions: These settings control paragraph spacing and text optimization
-\usepackage{microtype}  % Advanced typography refinements
-\usepackage{parskip}    % Paragraph spacing control
-\usepackage{soul}       % Underlining, strikeout, spacing, etc.
-\usepackage{ragged2e}   % Better text alignment
-\usepackage{textcase}   % Advanced case changing
-\usepackage{relsize}    % Relative font size adjustments
-
-% Basic paragraph settings
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{8pt plus 2pt minus 1pt}
-
-% Customizable line spacing commands
-\newcommand{\setSpacingSingle}{\setstretch{1.0}}
-\newcommand{\setSpacingOneHalf}{\setstretch{1.5}}
-\newcommand{\setSpacingDouble}{\setstretch{2.0}}
-\newcommand{\customspacing}[1]{\setstretch{#1}}
-
-% Text decoration commands (with unique names)
-\newcommand{\textunderline}[1]{\underline{#1}}    % Underlined text
-\newcommand{\textstrikeout}[1]{\st{#1}}           % Strikethrough text
-\newcommand{\texthi}[2][yellow]{\colorbox{#1}{#2}}  % Highlighted text
-
-% Tracking (letter spacing) adjustments
-\newcommand{\wide}[1]{\so{#1}}               % Wider letter spacing
-\newcommand{\wider}[1]{\sowide{#1}}          % Even wider spacing
-\newcommand{\narrow}[1]{\sonormal{#1}}       % Condensed letter spacing
-
-% Font size relative adjustments (avoiding conflict with relsize definitions)
-\newcommand{\textsm}[1]{\textsmaller{#1}}    % Smaller text (alternate name)
-\newcommand{\textlg}[1]{\textlarger{#1}}     % Larger text (alternate name)
-
-% Case transformation with preservation of special characters
-\newcommand{\uppercased}[1]{\MakeTextUppercase{#1}}
-\newcommand{\lowercased}[1]{\MakeTextLowercase{#1}}
-
-% Special text styles
-\newcommand{\textshadow}[2][gray]{{%
-  \setlength{\fboxsep}{0pt}%
-  \colorbox{white}{%
-    \makebox[0pt][l]{\color{#1}#2}%
-    \makebox[0pt][l]{\hspace{0.2pt}\vspace{0.2pt}#2}%
-    \makebox[0pt][l]{\color{white}\hspace{0.4pt}\vspace{0.4pt}#2}%
-    \makebox[0pt][l]{\color{white}\hspace{0.6pt}\vspace{0.6pt}#2}%
-    #2%
-  }%
-}}
-
-% Text alignment with better justification
-\newcommand{\justifiedtext}{\justify}
-\newcommand{\leftalignedtext}{\raggedright}
-\newcommand{\rightalignedtext}{\raggedleft}
-\newcommand{\centeredtext}{\centering}
-
-% Typography fine-tuning
-\setlength{\emergencystretch}{3em}  % Helps with justification
-\hyphenpenalty=500                  % Reduce hyphenation
-\clubpenalty=10000                  % Prevent orphans (single line at bottom of page)
-\widowpenalty=10000                 % Prevent widows (single line at top of page)
-
-% Microtype advanced settings
-\microtypesetup{
-    activate=true,           % Activate protrusion
-    final=true,              % Enable microtype even if draft mode
-    factor=1100              % Factor for enhanced protrusion
-    % All expansion/tracking/spacing features disabled via package options
-}
-
-% XeTeX-compatible alternative for letter spacing (instead of microtype's tracking)
-\newcommand{\letterspace}[2][100]{{\addfontfeatures{LetterSpace=#1}#2}}
-
-% Add note about XeTeX-specific alternatives
-% Note: With XeTeX, use fontspec features for advanced typography:
-% \addfontfeatures{LetterSpace=X} for letter spacing (X = value in 1/1000 em)
-% \addfontfeatures{Scale=X} for font scaling
-% \addfontfeatures{Kerning=X} for kerning (where X is "On" or "Off")
-
-% Control font features
-\newcommand{\withfeatures}[2]{{\addfontfeatures{#1}#2}}
-
-% ========== ADVANCED TEXT FEATURES ==========
-% Instructions: For elegant drop caps at section beginnings
-\usepackage{lettrine}
-% Configuration for lettrine (drop caps)
-\renewcommand{\LettrineFontHook}{\color{accent}\bfseries}
-\setcounter{DefaultLines}{3}
-\renewcommand{\DefaultLoversize}{0.1}
-\renewcommand{\DefaultLraise}{0}
-
-% Instructions: For proper quotation handling and formatting
-\usepackage[autostyle=true,german=quotes,english=american]{csquotes}
-\MakeOuterQuote{"}
-
-% Instructions: For better paragraph flow control
-\usepackage[all]{nowidow}
-\usepackage{needspace}
-
-% ========== DEFAULT SECTION STYLING COLORS ==========
-% These will be used if not defined in brand_colors.tex
-\definecolor{sectionNumberColor}{HTML}{2563EB}       % Color for section numbers (1, 2, etc.)
-\definecolor{sectionTitleColor}{HTML}{0F172A}        % Color for section titles
-\definecolor{subsectionNumberColor}{HTML}{F97316}    % Color for subsection numbers (1.1, 1.2, etc.)
-\definecolor{subsectionTitleColor}{HTML}{F97316}     % Color for subsection titles
-\definecolor{subsubsectionNumberColor}{HTML}{10B981} % Color for subsubsection numbers (1.1.1, etc.)
-\definecolor{subsubsectionTitleColor}{HTML}{10B981}  % Color for subsubsection titles
-
-% Default Secondary Brand Colors
-\definecolor{brandTertiary}{HTML}{F97316}   % Tertiary brand color (e.g., for subsections)
-\definecolor{brandQuaternary}{HTML}{A855F7} % Quaternary brand color (optional)
-\definecolor{brandNeutral}{HTML}{64748B}    % Neutral brand color for supporting elements
-
-% Try to import custom brand colors if the file exists
-% This will override the defaults defined above
+% Try to load brand colors if available
 \IfFileExists{brand_colors.tex}{
     \input{brand_colors.tex}
     \typeout{^^J INFO: Loaded custom brand colors from brand_colors.tex^^J}
 }{
-    \typeout{^^J INFO: Using default brand colors (brand_colors.tex not found)^^J}
+    \typeout{^^J INFO: Using basic colors (brand_colors.tex not found)^^J}
 }
 
-% Dynamic font scaling for brand consistency
-\usepackage{scalefnt}
+% ========== BASIC TYPOGRAPHY ==========
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt plus 2pt minus 1pt}
 
-% ========== SECTION STYLING ==========
-% Instructions: Customize section headings appearance here
+% Basic text commands
+\newcommand{\brandname}[1]{\textsc{#1}}
+\newcommand{\productname}[1]{\textbf{#1}}
+
+% ========== CONDITIONAL LOADING SYSTEM ==========
+% Define flags for optional features (set these before loading config-core.tex)
+\providecommand{\EnableAdvancedTypography}{false}
+\providecommand{\EnableMathematics}{false}
+\providecommand{\EnableTables}{false}
+\providecommand{\EnableBoxes}{false}
+\providecommand{\EnableLists}{false}
+\providecommand{\EnableCode}{false}
+\providecommand{\EnableImages}{false}
+\providecommand{\EnableAlgorithms}{false}
+\providecommand{\EnableReferences}{false}
+
+% Load additional modules based on flags
+\ifthenelse{\equal{\EnableAdvancedTypography}{true}}{
+    \input{modules/typography-advanced.tex}
+    \typeout{^^J INFO: Loaded advanced typography module^^J}
+}{}
+
+\ifthenelse{\equal{\EnableMathematics}{true}}{
+    \input{modules/mathematics.tex}
+    \typeout{^^J INFO: Loaded mathematics module^^J}
+}{}
+
+\ifthenelse{\equal{\EnableTables}{true}}{
+    \input{modules/tables.tex}
+    \typeout{^^J INFO: Loaded tables module^^J}
+}{}
+
+\ifthenelse{\equal{\EnableBoxes}{true}}{
+    \input{modules/boxes.tex}
+    \typeout{^^J INFO: Loaded boxes module^^J}
+}{}
+
+\ifthenelse{\equal{\EnableLists}{true}}{
+    \input{modules/lists.tex}
+    \typeout{^^J INFO: Loaded lists module^^J}
+}{}
+
+\ifthenelse{\equal{\EnableCode}{true}}{
+    \input{modules/code.tex}
+    \typeout{^^J INFO: Loaded code module^^J}
+}{}
+
+\ifthenelse{\equal{\EnableImages}{true}}{
+    \input{modules/images.tex}
+    \typeout{^^J INFO: Loaded images module^^J}
+}{}
+
+\ifthenelse{\equal{\EnableAlgorithms}{true}}{
+    \input{modules/algorithms.tex}
+    \typeout{^^J INFO: Loaded algorithms module^^J}
+}{}
+
+\ifthenelse{\equal{\EnableReferences}{true}}{
+    \input{modules/references.tex}
+    \typeout{^^J INFO: Loaded references module^^J}
+}{}
+
+% ========== BASIC SECTION STYLING ==========
 \usepackage{titlesec}
 \titleformat{\section}
-    {\color{sectionTitleColor}\fontsize{16}{20}\bfseries\sffamily}
-    {\color{sectionNumberColor}\thesection}
+    {\color{primary}\fontsize{16}{20}\bfseries\sffamily}
+    {\color{accent}\thesection}
     {1em}
     {}
     [\vspace{2pt}\color{border}\hrule height 0.8pt\vspace{6pt}]
 
 \titleformat{\subsection}
-    {\color{subsectionTitleColor}\fontsize{14}{18}\bfseries\sffamily}
-    {\color{subsectionNumberColor}\thesubsection}
+    {\color{primary}\fontsize{14}{18}\bfseries\sffamily}
+    {\color{accent}\thesubsection}
     {0.8em}
-    {}
-    [\vspace{4pt}]
-
-\titleformat{\subsubsection}
-    {\color{subsubsectionTitleColor}\fontsize{12}{16}\bfseries\sffamily}
-    {\color{subsubsectionNumberColor}\thesubsubsection}
-    {0.6em}
     {}
 
 \titlespacing*{\section}{0pt}{20pt plus 4pt minus 2pt}{8pt plus 2pt minus 2pt}
 \titlespacing*{\subsection}{0pt}{16pt plus 3pt minus 2pt}{6pt plus 2pt minus 1pt}
-\titlespacing*{\subsubsection}{0pt}{12pt plus 2pt minus 1pt}{4pt plus 1pt minus 1pt}
 
-% ========== HEADERS AND FOOTERS ==========
-% Instructions: Replace "Your Document Title" and footer text with your content
+% ========== BASIC HEADERS AND FOOTERS ==========
 \usepackage{fancyhdr}
-\usepackage{lastpage} % For "Page X of Y" formatting
-% \usepackage{scrlayer-scrpage} % Removed to avoid conflicts with fancyhdr
+\usepackage{lastpage}
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
 \fancyhead[L]{\color{textgray}\small\sffamily Your Document Title Here}
 \fancyhead[R]{\color{textgray}\small\sffamily\thepage}
-\fancyfoot[C]{\color{textgray}\footnotesize\sffamily Page \thepage{} of \pageref{LastPage} | Document Footer Text Here}
+\fancyfoot[C]{\color{textgray}\footnotesize\sffamily Page \thepage{} of \pageref{LastPage}}
 
-% ========== TABLE OF CONTENTS ==========
-% Instructions: These settings style the table of contents
-\usepackage{tocloft}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
-\setlength{\cftbeforesecskip}{6pt}
-\setlength{\cftbeforesubsecskip}{3pt}
-\renewcommand{\cftsecfont}{\color{primary}\bfseries\sffamily}
-\renewcommand{\cftsubsecfont}{\color{secondary}\sffamily}
-\renewcommand{\cftsecpagefont}{\color{accent}\bfseries\sffamily}
-\renewcommand{\cftsubsecpagefont}{\color{accent}\sffamily}
-
-% ========== ADVANCED REFERENCE MANAGEMENT ==========
-% Instructions: For sophisticated bibliography management
-\usepackage[
-    backend=biber,
-    style=authoryear,
-    sorting=nyt,
-    maxbibnames=99,
-    giveninits=true
-]{biblatex}
-% If you have a bibliography file, uncomment and specify it here:
-% \addbibresource{references.bib}
-
-% Instructions: For page-aware references and cross-references
-% IMPORTANT: the order matters! hyperref first, then nameref, then varioref, and cleveref LAST
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=accent,
-    urlcolor=lightaccent,
-    citecolor=accent,
-    filecolor=accent,
-    bookmarks=true,
-    bookmarksopen=true,
-    bookmarksnumbered=true,
-    pdfstartview=FitH,
-    pdfpagelayout=SinglePage,
-    pdftitle={Your PDF Title Here},
-    pdfauthor={Your Name Here},
-    pdfsubject={Document Subject Here},
-    pdfkeywords={keyword1, keyword2, keyword3}
-}
-\usepackage{nameref} % Reference section names, not just numbers
-\usepackage{varioref} % For page-aware references
-\labelformat{figure}{Figure~#1}
-\labelformat{table}{Table~#1}
-\labelformat{equation}{Equation~#1}
-\labelformat{section}{Section~#1}
-
-% ========== MATHEMATICAL TYPESETTING ==========
-% Essential enhanced math environments
-\usepackage{amsmath}
-% Extended mathematical symbol collection
-\usepackage{amssymb}
-% Fix common mathematical typography issues
-\usepackage{fixmath}
-% Proper formatting of numbers and units
-\usepackage{siunitx}
-
-% Configure siunitx for consistent number formatting
-\sisetup{
-    group-separator={,},
-    group-minimum-digits=4,
-    detect-weight=true,
-    detect-family=true
-}
-
-% Define common units and constants
-\DeclareSIUnit\USD{\$}
-\DeclareSIUnit\hour{h}
-\DeclareSIUnit\year{yr}
-
-% ========== ENHANCED MATHEMATICAL TYPESETTING ==========
-% Advanced math tools and additional environments
-\usepackage{mathtools}
-% Enhanced equation highlighting and boxes
-\usepackage{empheq}
-% Advanced cases environments
-\usepackage{cases}
-% Theorem environments for mathematical statements
-\usepackage{amsthm}
-% Advanced symbol sets
-\usepackage{stmaryrd}
-\usepackage{textcomp}
-% Physics notation package for differential operators, brackets, etc.
-\usepackage{physics}
-% Tensor notation
-\usepackage{tensor}
-% Quantum mechanics notation
-\usepackage{braket}
-% Cross out terms in equations
-\usepackage{cancel}
-
-% Theorem environments setup
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{example}{Example}[section]
-
-\theoremstyle{remark}
-\newtheorem{remark}{Remark}[section]
-\newtheorem{note}{Note}[section]
-
-% Custom colors for math highlighting
-\definecolor{mathblue}{RGB}{0,82,155}
-\definecolor{mathred}{RGB}{204,0,0}
-\definecolor{mathgreen}{RGB}{0,128,0}
-\definecolor{mathpurple}{RGB}{128,0,128}
-
-% Common mathematical sets
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\F}{\mathbb{F}}
-
-% Enhanced derivatives and differential operators
-\renewcommand{\d}{\mathrm{d}}
-\newcommand{\dt}{\frac{\d}{\d t}}
-\newcommand{\dx}{\frac{\d}{\d x}}
-\newcommand{\dy}{\frac{\d}{\d y}}
-\newcommand{\dz}{\frac{\d}{\d z}}
-\newcommand{\prt}{\partial}
-\newcommand{\pdx}[1]{\frac{\partial #1}{\partial x}}
-\newcommand{\pdy}[1]{\frac{\partial #1}{\partial y}}
-\newcommand{\pdz}[1]{\frac{\partial #1}{\partial z}}
-\newcommand{\pdt}[1]{\frac{\partial #1}{\partial t}}
-
-% Vector calculus operators
-\providecommand{\grad}{\nabla}
-\providecommand{\divg}{\nabla \cdot}
-\providecommand{\curl}{\nabla \times}
-\providecommand{\lapl}{\nabla^2}
-
-% Enhanced formatting for vectors and matrices
-\newcommand{\vect}[1]{\mathbf{#1}}
-\newcommand{\mat}[1]{\mathbf{#1}}
-\newcommand{\T}{\mathsf{T}} % Transpose
-
-% Probability and statistics notation
-\newcommand{\prob}[1]{\mathrm{P}\left(#1\right)}
-\newcommand{\E}[1]{\mathrm{E}\left[#1\right]}
-\renewcommand{\var}[1]{\mathrm{Var}\left(#1\right)}
-\newcommand{\cov}[1]{\mathrm{Cov}\left(#1\right)}
-\newcommand{\normal}{\mathcal{N}}
-\newcommand{\uniform}{\mathcal{U}}
-
-% Specialized math operators
-\providecommand{\tr}{\operatorname{tr}}
-\providecommand{\diag}{\operatorname{diag}}
-\providecommand{\rank}{\operatorname{rank}}
-\newcommand{\sign}{\operatorname{sign}}
-\providecommand{\lcm}{\operatorname{lcm}}
-\providecommand{\gcd}{\operatorname{gcd}}
-
-% Box commands for important equations
-\newcommand{\boxedeq}[1]{\begin{empheq}[box=\fbox]{equation}#1\end{empheq}}
-\newcommand{\colorboxedeq}[2]{\begin{empheq}[box={\fcolorbox{#1}{white}}]{equation}#2\end{empheq}}
-
-% ========== PAGE BREAK CONTROL ==========
-% Instructions: For better page break control
-\usepackage{afterpage}
-\usepackage{needspace}
-\usepackage{flafter}
-\usepackage{placeins}
-
-% Advanced page break penalties for widow and orphan control
-\clubpenalty=10000      % Prevent orphans (single line at bottom of page)
-\widowpenalty=10000     % Prevent widows (single line at top of page)
-\displaywidowpenalty=10000  % Prevent widows in display equations
-\predisplaypenalty=10000    % Discourage breaks before display equations
-\postdisplaypenalty=1000    % Slightly discourage breaks after display equations
-\interlinepenalty=1000      % Discourage breaks within paragraphs
-
-% Float placement control
-\renewcommand{\topfraction}{0.85}      % Max fraction of page for floats at top
-\renewcommand{\bottomfraction}{0.75}   % Max fraction of page for floats at bottom
-\renewcommand{\textfraction}{0.15}     % Min fraction of page for text
-\renewcommand{\floatpagefraction}{0.7} % Min fraction of page for floats on float page
-\setcounter{topnumber}{3}              % Max number of floats at top of page
-\setcounter{bottomnumber}{2}           % Max number of floats at bottom of page
-\setcounter{totalnumber}{5}            % Max number of floats on a page
-
-% Custom page break commands
-\newcommand{\elegantbreak}{\vfill\pagebreak}                % Force break with balanced white space above
-\newcommand{\smartbreak}{\needspace{5\baselineskip}\par}    % Break if less than 5 lines remain
-\newcommand{\keepwithnext}[1]{\needspace{3\baselineskip}#1\par}  % Keep text with next paragraph
-\newcommand{\preventbreak}{\nobreak\hspace{0pt plus 0.1\textheight}\nobreak}  % Strongly discourage break
-\newcommand{\explicitbreak}{\penalty0\relax}  % Explicitly allow break point (renamed from allowbreak)
-
-% Section break control (prevent widows/orphans in section titles)
-\newcommand{\keepsection}[1]{%
-  \par\needspace{3\baselineskip}%
-  #1%
-}
-
-% Float barrier command (ensure all floats are processed before proceeding)
-\newcommand{\processfloats}{\FloatBarrier}
-
-% Page balancing for final page
-\newcommand{\balancelastpage}{\vfill}
-
-% ========== BOXES AND CALLOUTS ==========
-% Instructions: Required TikZ libraries for shadows in boxes
-\usepackage{cleveref}
-% Instructions: cleveref must be loaded AFTER hyperref, nameref, and varioref
-\crefname{figure}{Figure}{Figures}
-\crefname{table}{Table}{Tables}
-\crefname{equation}{Equation}{Equations}
-\crefname{section}{Section}{Sections}
-
-\usepackage{tikz}
-\usetikzlibrary{shadows}
-
-% Instructions: Three types of callout boxes are defined below
-\usepackage[most]{tcolorbox}
-
-% Info box style - use for general information
-\newtcolorbox{infobox}{
-    colback=background,
-    colframe=accent,
-    coltext=primary,
-    boxrule=1pt,
-    arc=3pt,
-    left=12pt,
-    right=12pt,
-    top=8pt,
-    bottom=8pt,
-    enhanced,
-    drop shadow,
-    fonttitle=\bfseries\sffamily\color{accent},
-    title style={left color=accent!10, right color=accent!5},
-    attach boxed title to top left={xshift=8pt, yshift=-2pt}
-}
-
-% Alert box style - use for cautions and important notes
-\newtcolorbox{alertbox}{
-    colback=warning!5,
-    colframe=warning,
-    coltext=primary,
-    boxrule=1pt,
-    arc=3pt,
-    left=12pt,
-    right=12pt,
-    top=8pt,
-    bottom=8pt,
-    enhanced,
-    drop shadow
-}
-
-% Success box style - use for positive highlights
-\newtcolorbox{successbox}{
-    colback=success!5,
-    colframe=success,
-    coltext=primary,
-    boxrule=1pt,
-    arc=3pt,
-    left=12pt,
-    right=12pt,
-    top=8pt,
-    bottom=8pt,
-    enhanced,
-    drop shadow
-}
-
-% ========== LOGO-ENHANCED BOXES ==========
-\usepackage{bclogo}
-
-% ========== LISTS ==========
-% Instructions: These settings control list appearance and spacing
-\usepackage{enumitem}
-
-% Basic list styling
-\setlist[itemize,1]{
-    leftmargin=18pt,
-    itemsep=3pt plus 1pt minus 1pt,
-    parsep=0pt,
-    topsep=6pt plus 2pt minus 2pt,
-    label=\color{accent}$\bullet$
-}
-\setlist[itemize,2]{
-    leftmargin=16pt,
-    itemsep=2pt,
-    parsep=0pt,
-    topsep=3pt,
-    label=\color{secondary}$\circ$
-}
-\setlist[itemize,3]{
-    leftmargin=14pt,
-    itemsep=1pt,
-    parsep=0pt,
-    topsep=2pt,
-    label=\color{textgray}{\scriptsize$\blacksquare$}
-}
-
-% Enhanced enumerate styling
-\setlist[enumerate,1]{
-    leftmargin=22pt,
-    itemsep=3pt plus 1pt minus 1pt,
-    parsep=0pt,
-    topsep=6pt plus 2pt minus 2pt,
-    label=\color{accent}\arabic*.
-}
-\setlist[enumerate,2]{
-    leftmargin=20pt,
-    itemsep=2pt,
-    parsep=0pt,
-    topsep=3pt,
-    label=\color{secondary}(\alph*)
-}
-\setlist[enumerate,3]{
-    leftmargin=18pt,
-    itemsep=1pt,
-    parsep=0pt,
-    topsep=2pt,
-    label=\color{textgray}\roman*.
-}
-
-% Description list styling
-\setlist[description]{
-    font=\normalfont\color{accent}\bfseries,
-    labelwidth=2cm,
-    leftmargin=2.5cm,
-    itemsep=4pt,
-    parsep=0pt
-}
-
-% Custom task lists with icons (requires fontawesome5)
-\newlist{tasklist}{itemize}{1}
-\setlist[tasklist]{
-    leftmargin=20pt,
-    label=\color{success}\faCheck,
-    itemsep=4pt,
-    parsep=2pt
-}
-
-\newlist{pendingtask}{itemize}{1}
-\setlist[pendingtask]{
-    leftmargin=20pt,
-    label=\color{warning}\faHourglass,
-    itemsep=4pt,
-    parsep=2pt
-}
-
-\newlist{failedtask}{itemize}{1}
-\setlist[failedtask]{
-    leftmargin=20pt,
-    label=\color{accent}\faTimes,
-    itemsep=4pt,
-    parsep=2pt
-}
-
-% Priority list environments
-\newlist{highpriority}{itemize}{1}
-\setlist[highpriority]{
-    leftmargin=20pt,
-    label=\color{accent}\faExclamationCircle,
-    itemsep=4pt
-}
-
-\newlist{mediumpriority}{itemize}{1}
-\setlist[mediumpriority]{
-    leftmargin=20pt,
-    label=\color{warning}\faExclamation,
-    itemsep=4pt
-}
-
-\newlist{lowpriority}{itemize}{1}
-\setlist[lowpriority]{
-    leftmargin=20pt,
-    label=\color{success}\faInfoCircle,
-    itemsep=4pt
-}
-
-% TikZ bullets for professional styling
-\newcommand{\tikzbullet}[1]{%
-    \tikz[baseline=-0.7ex]\node[circle,fill=#1,inner sep=1.5pt]{};%
-}
-
-% Compact and expanded list variants
-\newenvironment{compactlist}
-    {\begin{itemize}[nosep]}
-    {\end{itemize}}
-
-\newenvironment{expandedlist}
-    {\begin{itemize}[itemsep=8pt,parsep=4pt]}
-    {\end{itemize}}
-
-% ========== TABLES ==========
-% Instructions: Packages for professional table formatting
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{caption}
-\usepackage{longtable} % Multi-page tables
-\usepackage{array} % Enhanced column types
-\usepackage{multirow} % Spanning multiple rows in tables
-
-% Define new column types for better table formatting
-\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
-\newcolumntype{N}{>{\raggedleft\arraybackslash}X} % Right-aligned number column
-
-% Table styling
-\captionsetup{font=small, labelfont=bf, labelsep=colon}
-
-% Additional table colors are now defined in brand_colors.tex
-
-% ========== CODE LISTINGS ==========
-% Instructions: For code syntax highlighting
-\usepackage{listings}
-\lstset{
-    basicstyle=\ttfamily\small,
-    backgroundcolor=\color{codebg},
-    commentstyle=\color{codecomment},
-    keywordstyle=\color{codekey}\bfseries,
-    stringstyle=\color{codestring},
-    numbers=left,
-    numberstyle=\tiny\color{textgray},
-    numbersep=10pt,
-    tabsize=4,
-    breaklines=true,
-    breakatwhitespace=false,
-    frame=single,
-    rulecolor=\color{border},
-    framesep=8pt,
-    showstringspaces=false
-}
-
-% Uncomment for advanced syntax highlighting with minted (requires Python)
-\usepackage{minted}
-\setminted{
-    style=default,
-    bgcolor=codebg,
-    linenos=true,
-    breaklines=true,
-    tabsize=4,
-    fontsize=\small,
-    frame=single,
-    framesep=8pt
-}
-
-% ========== ALGORITHMS ==========
-% Instructions: For pseudocode or process descriptions
-\usepackage[ruled,vlined]{algorithm2e}
-\SetAlgoLined
-\SetAlgoSkip{medskip}
-\SetAlFnt{\footnotesize\sffamily}
-\renewcommand{\algorithmcfname}{Algorithm}
-
-% ========== ICON BOXES ==========
-% Load fontawesome and awesomebox for icon support
-\usepackage{fontawesome5}
-\usepackage{awesomebox}
-
-% ========== ADVANCED IMAGE HANDLING ==========
-% Instructions: Professional image formatting with shapes and fallbacks
-
-% Required packages (graphicx should already be loaded)
-\usepackage[export,graphics,noclipbox]{adjustbox} % Load without redefining \clipbox command
-\usepackage{varwidth}
-
-% Create a box to use as a fallback for missing images
-\newsavebox{\imagefallbackbox}
-
-% Command for images with fallback text
-% Usage: \imageWithFallback[options]{path}{width}{alt-text}
-\newcommand{\imageWithFallback}[4][]{%
-  \begingroup
-  \sbox{\imagefallbackbox}{%
-    \begin{varwidth}{\textwidth}
-      \centering
-      \textcolor{textgray}{\textbf{#4}}
-    \end{varwidth}
-  }%
-  \IfFileExists{#2}{%
-    \includegraphics[#1,width=#3]{#2}%
-  }{%
-    \fcolorbox{border}{background}{%
-      \begin{minipage}[c][0.75\ht\imagefallbackbox][c]{#3}
-        \centering
-        \textcolor{textgray}{\faImage}\\[0.3em]
-        \usebox{\imagefallbackbox}
-      \end{minipage}%
-    }%
-  }%
-  \endgroup
-}
-
-% Rectangular image with optional border and caption
-% Usage: \rectImage[options]{path}{width}{caption}{alt-text}
-\newcommand{\rectImage}[5][]{%
-  \begin{figure}[htbp]
-    \centering
-    \fbox{\imageWithFallback[#1]{#2}{#3}{#5}}
-    \ifx&#4&%
-    \else
-      \caption{#4}
-    \fi
-  \end{figure}
-}
-
-% Rounded corner image
-% Usage: \roundedImage[options]{path}{width}{radius}{caption}{alt-text}
-\newcommand{\roundedImage}[6][]{%
-  \begin{figure}[htbp]
-    \centering
-    \begin{tikzpicture}
-      \node[inner sep=0pt] (image) {%
-        \imageWithFallback[#1]{#2}{#3}{#6}%
-      };
-      \begin{scope}
-        \clip[rounded corners=#4] (image.south west) rectangle (image.north east);
-        \node[inner sep=0pt] {\imageWithFallback[#1]{#2}{#3}{#6}};
-      \end{scope}
-    \end{tikzpicture}
-    \ifx&#5&%
-    \else
-      \caption{#5}
-    \fi
-  \end{figure}
-}
-
-% Circular image
-% Usage: \circularImage[options]{path}{diameter}{caption}{alt-text}
-\newcommand{\circularImage}[5][]{%
-  \begin{figure}[htbp]
-    \centering
-    \begin{tikzpicture}
-      \node[inner sep=0pt] (image) {%
-        \imageWithFallback[#1]{#2}{#3}{#5}%
-      };
-      \begin{scope}
-        \clip (image.center) circle (#3/2);
-        \node[inner sep=0pt] {\imageWithFallback[#1]{#2}{#3}{#5}};
-      \end{scope}
-    \end{tikzpicture}
-    \ifx&#4&%
-    \else
-      \caption{#4}
-    \fi
-  \end{figure}
-}
-
-% Image with drop shadow
-% Usage: \shadowImage[options]{path}{width}{caption}{alt-text}
-\newcommand{\shadowImage}[5][]{%
-  \begin{figure}[htbp]
-    \centering
-    \begin{tikzpicture}
-      \node[inner sep=0pt, drop shadow={shadow xshift=2pt, shadow yshift=-2pt, opacity=0.5}] {%
-        \imageWithFallback[#1]{#2}{#3}{#5}%
-      };
-    \end{tikzpicture}
-    \ifx&#4&%
-    \else
-      \caption{#4}
-    \fi
-  \end{figure}
-}
-
-% Frame image with customizable style
-% Usage: \framedImage[options]{path}{width}{frame-color}{caption}{alt-text}
-\newcommand{\framedImage}[6][]{%
-  \begin{figure}[htbp]
-    \centering
-    \begin{tikzpicture}
-      \node[inner sep=0pt] (image) {%
-        \imageWithFallback[#1]{#2}{#3}{#6}%
-      };
-      \draw[line width=2pt, color=#4] (image.south west) rectangle (image.north east);
-    \end{tikzpicture}
-    \ifx&#5&%
-    \else
-      \caption{#5}
-    \fi
-  \end{figure}
-}
-
-% Full-width responsive image
-% Usage: \fullwidthImage[options]{path}{height}{caption}{alt-text}
-\newcommand{\fullwidthImage}[5][]{%
-  \begin{figure}[htbp]
-    \centering
-    \makebox[\textwidth][c]{%
-      \imageWithFallback[#1,height=#3,width=\textwidth,keepaspectratio]{#2}{\textwidth}{#5}%
-    }
-    \ifx&#4&%
-    \else
-      \caption{#4}
-    \fi
-  \end{figure}
-}
-
-% Image with zoom effect on specific area
-% Usage: \zoomedImage[options]{path}{width}{zoom-x}{zoom-y}{zoom-width}{zoom-factor}{caption}{alt-text}
-\newcommand{\zoomedImage}[9][]{%
-  \begin{figure}[htbp]
-    \centering
-    \begin{tikzpicture}
-      \node[inner sep=0pt] (image) {%
-        \imageWithFallback[#1]{#2}{#3}{#9}%
-      };
-      \draw[red, thick] (#4,#5) rectangle ++(#6,#6);
-      \begin{scope}[shift={(5cm,0)}]
-        \draw[thick] (0,0) circle (1.5cm);
-        \clip (0,0) circle (1.5cm);
-        \node[inner sep=0pt] at (0,0) {%
-          \imageWithFallback[#1]{#2}{#3*#7}{#9}%
-        };
-      \end{scope}
-    \end{tikzpicture}
-    \ifx&#8&%
-    \else
-      \caption{#8}
-    \fi
-  \end{figure}
-}
-
-% Responsive image grid (2x2)
-% Usage: \imageGrid{path1}{path2}{path3}{path4}{grid-width}{caption}{alt-text}
-\newcommand{\imageGrid}[7]{%
-  \begin{figure}[htbp]
-    \centering
-    \begin{tabular}{cc}
-      \imageWithFallback[width=#5/2-4pt]{#1}{#5/2-4pt}{#7} &
-      \imageWithFallback[width=#5/2-4pt]{#2}{#5/2-4pt}{#7} \\
-      \imageWithFallback[width=#5/2-4pt]{#3}{#5/2-4pt}{#7} &
-      \imageWithFallback[width=#5/2-4pt]{#4}{#5/2-4pt}{#7} \\
-    \end{tabular}
-    \ifx&#6&%
-    \else
-      \caption{#6}
-    \fi
-  \end{figure}
-}
-
-% ========== TITLE PAGE ==========
-% Instructions: Controls the appearance of the title page
+% ========== DOCUMENT METADATA ==========
 \usepackage{titling}
 \pretitle{
     \begin{center}
@@ -955,8 +163,6 @@
 \predate{\begin{center}\color{textgray}\large\sffamily}
 \postdate{\end{center}\vspace{0.5in}}
 
-% ========== DOCUMENT METADATA ==========
-% Instructions: Replace with your actual document information
-\title{Your Main Document Title Here\\[0.3em]Optional Subtitle Goes Here}
-\author{Author Name or Organization}
-\date{\today} % This will show current date, or replace with specific date 
+\title{Your Document Title Here}
+\author{Author Name}
+\date{\today}

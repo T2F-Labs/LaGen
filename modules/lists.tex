@@ -1,0 +1,130 @@
+% ========== LISTS MODULE ==========
+% Load this module only when enhanced list features are needed
+
+% List customization package
+\usepackage{enumitem}
+
+% Basic list styling
+\setlist[itemize,1]{
+    leftmargin=18pt,
+    itemsep=3pt plus 1pt minus 1pt,
+    parsep=0pt,
+    topsep=6pt plus 2pt minus 2pt,
+    label=\color{accent}$\bullet$
+}
+\setlist[itemize,2]{
+    leftmargin=16pt,
+    itemsep=2pt,
+    parsep=0pt,
+    topsep=3pt,
+    label=\color{secondary}$\circ$
+}
+\setlist[itemize,3]{
+    leftmargin=14pt,
+    itemsep=1pt,
+    parsep=0pt,
+    topsep=2pt,
+    label=\color{textgray}{\scriptsize$\blacksquare$}
+}
+
+% Enhanced enumerate styling
+\setlist[enumerate,1]{
+    leftmargin=22pt,
+    itemsep=3pt plus 1pt minus 1pt,
+    parsep=0pt,
+    topsep=6pt plus 2pt minus 2pt,
+    label=\color{accent}\arabic*.
+}
+\setlist[enumerate,2]{
+    leftmargin=20pt,
+    itemsep=2pt,
+    parsep=0pt,
+    topsep=3pt,
+    label=\color{secondary}(\alph*)
+}
+\setlist[enumerate,3]{
+    leftmargin=18pt,
+    itemsep=1pt,
+    parsep=0pt,
+    topsep=2pt,
+    label=\color{textgray}\roman*.
+}
+
+% Description list styling
+\setlist[description]{
+    font=\normalfont\color{accent}\bfseries,
+    labelwidth=2cm,
+    leftmargin=2.5cm,
+    itemsep=4pt,
+    parsep=0pt
+}
+
+% TikZ bullets for professional styling
+\usepackage{tikz}
+\newcommand{\tikzbullet}[1]{%
+    \tikz[baseline=-0.7ex]\node[circle,fill=#1,inner sep=1.5pt]{};%
+}
+
+% Compact and expanded list variants
+\newenvironment{compactlist}
+    {\begin{itemize}[nosep]}
+    {\end{itemize}}
+
+\newenvironment{expandedlist}
+    {\begin{itemize}[itemsep=8pt,parsep=4pt]}
+    {\end{itemize}}
+
+% Task lists with icons (requires fontawesome5)
+\IfFileExists{fontawesome5.sty}{
+    \usepackage{fontawesome5}
+    
+    \newlist{tasklist}{itemize}{1}
+    \setlist[tasklist]{
+        leftmargin=20pt,
+        label=\color{success}\faCheck,
+        itemsep=4pt,
+        parsep=2pt
+    }
+    
+    \newlist{pendingtask}{itemize}{1}
+    \setlist[pendingtask]{
+        leftmargin=20pt,
+        label=\color{warning}\faHourglass,
+        itemsep=4pt,
+        parsep=2pt
+    }
+    
+    \newlist{failedtask}{itemize}{1}
+    \setlist[failedtask]{
+        leftmargin=20pt,
+        label=\color{accent}\faTimes,
+        itemsep=4pt,
+        parsep=2pt
+    }
+    
+    % Priority list environments
+    \newlist{highpriority}{itemize}{1}
+    \setlist[highpriority]{
+        leftmargin=20pt,
+        label=\color{accent}\faExclamationCircle,
+        itemsep=4pt
+    }
+    
+    \newlist{mediumpriority}{itemize}{1}
+    \setlist[mediumpriority]{
+        leftmargin=20pt,
+        label=\color{warning}\faExclamation,
+        itemsep=4pt
+    }
+    
+    \newlist{lowpriority}{itemize}{1}
+    \setlist[lowpriority]{
+        leftmargin=20pt,
+        label=\color{success}\faInfoCircle,
+        itemsep=4pt
+    }
+    
+    \typeout{^^J INFO: Loaded task and priority lists (fontawesome5)^^J}
+}{
+    \typeout{^^J WARNING: fontawesome5 not found, task lists unavailable^^J}
+}

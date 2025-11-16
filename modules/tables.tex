@@ -1,0 +1,27 @@
+% ========== TABLES MODULE ==========
+% Load this module only when advanced table features are needed
+
+% Table packages
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+
+% Define enhanced column types
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\newcolumntype{N}{>{\raggedleft\arraybackslash}X}
+
+% Table styling
+\captionsetup{font=small, labelfont=bf, labelsep=colon}
+
+% Additional table colors (if not already defined)
+\providecommand{\definecolor}[3]{}
+\definecolor{cardbg}{HTML}{F7F9FC}
+\definecolor{headerbg}{HTML}{4A90E2}
+\definecolor{headertext}{HTML}{FFFFFF}
+\definecolor{rowalt}{HTML}{F1F4F9}
+\definecolor{frameborder}{HTML}{D3DCE6}

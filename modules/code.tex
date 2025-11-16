@@ -1,0 +1,46 @@
+% ========== CODE MODULE ==========
+% Load this module only when code listings are needed
+
+% Code colors
+\definecolor{codebg}{HTML}{F8F8F8}
+\definecolor{codecomment}{HTML}{6A737D}
+\definecolor{codestring}{HTML}{032F62}
+\definecolor{codekey}{HTML}{D73A49}
+
+% Basic code listings
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebg},
+    commentstyle=\color{codecomment},
+    keywordstyle=\color{codekey}\bfseries,
+    stringstyle=\color{codestring},
+    numbers=left,
+    numberstyle=\tiny\color{textgray},
+    numbersep=10pt,
+    tabsize=4,
+    breaklines=true,
+    breakatwhitespace=false,
+    frame=single,
+    rulecolor=\color{border},
+    framesep=8pt,
+    showstringspaces=false
+}
+
+% Advanced syntax highlighting with minted (optional)
+\IfFileExists{minted.sty}{
+    \usepackage{minted}
+    \setminted{
+        style=default,
+        bgcolor=codebg,
+        linenos=true,
+        breaklines=true,
+        tabsize=4,
+        fontsize=\small,
+        frame=single,
+        framesep=8pt
+    }
+    \typeout{^^J INFO: Loaded advanced syntax highlighting (minted)^^J}
+}{
+    \typeout{^^J WARNING: minted package not found, using basic listings only^^J}
+}

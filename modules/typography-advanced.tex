@@ -1,0 +1,96 @@
+% ========== ADVANCED TYPOGRAPHY MODULE ==========
+% Load this module only when advanced typography features are needed
+
+% Advanced typography packages
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{soul}
+\usepackage{ragged2e}
+\usepackage{textcase}
+\usepackage{relsize}
+\usepackage{scalefnt}
+\usepackage{lettrine}
+\usepackage[autostyle=true,german=quotes,english=american]{csquotes}
+\usepackage[all]{nowidow}
+\usepackage{needspace}
+
+% Font setup with Inter (if available)
+\IfFontExistsTF{Inter}{
+    \setmainfont{Inter}[
+        UprightFont = *-Regular,
+        BoldFont = *-SemiBold,
+        ItalicFont = *-Italic,
+        BoldItalicFont = *-SemiBoldItalic,
+        LetterSpace = 3.0
+    ]
+    \setsansfont{Inter}[
+        UprightFont = *-Regular,
+        BoldFont = *-SemiBold,
+        ItalicFont = *-Italic,
+        BoldItalicFont = *-SemiBoldItalic,
+        LetterSpace = 3.0
+    ]
+}{
+    \typeout{^^J WARNING: Inter font not found, using default fonts^^J}
+}
+
+% Enhanced brand text macros
+\renewcommand{\brandname}[1]{{\addfontfeatures{LetterSpace=12.0}\textsc{#1}}}
+\renewcommand{\productname}[1]{{\addfontfeatures{LetterSpace=8.0}\textbf{#1}}}
+
+% Line spacing commands
+\newcommand{\setSpacingSingle}{\setstretch{1.0}}
+\newcommand{\setSpacingOneHalf}{\setstretch{1.5}}
+\newcommand{\setSpacingDouble}{\setstretch{2.0}}
+\newcommand{\customspacing}[1]{\setstretch{#1}}
+
+% Text decoration commands
+\newcommand{\textunderline}[1]{\underline{#1}}
+\newcommand{\textstrikeout}[1]{\st{#1}}
+\newcommand{\texthi}[2][yellow]{\colorbox{#1}{#2}}
+
+% Letter spacing adjustments
+\newcommand{\wide}[1]{\so{#1}}
+\newcommand{\wider}[1]{\sowide{#1}}
+\newcommand{\narrow}[1]{\sonormal{#1}}
+\newcommand{\letterspace}[2][100]{{\addfontfeatures{LetterSpace=#1}#2}}
+
+% Font size adjustments
+\newcommand{\textsm}[1]{\textsmaller{#1}}
+\newcommand{\textlg}[1]{\textlarger{#1}}
+
+% Case transformation
+\newcommand{\uppercased}[1]{\MakeTextUppercase{#1}}
+\newcommand{\lowercased}[1]{\MakeTextLowercase{#1}}
+
+% Text alignment
+\newcommand{\justifiedtext}{\justify}
+\newcommand{\leftalignedtext}{\raggedright}
+\newcommand{\rightalignedtext}{\raggedleft}
+\newcommand{\centeredtext}{\centering}
+
+% Drop cap configuration
+\renewcommand{\LettrineFontHook}{\color{accent}\bfseries}
+\setcounter{DefaultLines}{3}
+\renewcommand{\DefaultLoversize}{0.1}
+\renewcommand{\DefaultLraise}{0}
+
+% Typography fine-tuning
+\setlength{\emergencystretch}{3em}
+\hyphenpenalty=500
+\clubpenalty=10000
+\widowpenalty=10000
+
+% Microtype setup
+\microtypesetup{
+    activate=true,
+    final=true,
+    factor=1100
+}
+
+% Smart quotes setup
+\MakeOuterQuote{"}
+
+% Font feature control
+\newcommand{\withfeatures}[2]{{\addfontfeatures{#1}#2}}

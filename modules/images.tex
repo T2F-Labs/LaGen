@@ -1,0 +1,116 @@
+% ========== IMAGES MODULE ==========
+% Load this module only when advanced image features are needed
+
+% Image packages
+\usepackage{graphicx}
+\usepackage[export,graphics,noclipbox]{adjustbox}
+\usepackage{varwidth}
+\usepackage{tikz}
+
+% Create fallback box for missing images
+\newsavebox{\imagefallbackbox}
+
+% Command for images with fallback text
+\newcommand{\imageWithFallback}[4][]{%
+  \begingroup
+  \sbox{\imagefallbackbox}{%
+    \begin{varwidth}{\textwidth}
+      \centering
+      \textcolor{textgray}{\textbf{#4}}
+    \end{varwidth}
+  }%
+  \IfFileExists{#2}{%
+    \includegraphics[#1,width=#3]{#2}%
+  }{%
+    \fcolorbox{border}{background}{%
+      \begin{minipage}[c][0.75\ht\imagefallbackbox][c]{#3}
+        \centering
+        \textcolor{textgray}{\faImage}\\[0.3em]
+        \usebox{\imagefallbackbox}
+      \end{minipage}%
+    }%
+  }%
+  \endgroup
+}
+
+% Rectangular image with border
+\newcommand{\rectImage}[5][]{%
+  \begin{figure}[htbp]
+    \centering
+    \fbox{\imageWithFallback[#1]{#2}{#3}{#5}}
+    \ifx&#4&%
+    \else
+      \caption{#4}
+    \fi
+  \end{figure}
+}
+
+% Rounded corner image
+\newcommand{\roundedImage}[6][]{%
+  \begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+      \node[inner sep=0pt] (image) {%
+        \imageWithFallback[#1]{#2}{#3}{#6}%
+      };
+      \begin{scope}
+        \clip[rounded corners=#4] (image.south west) rectangle (image.north east);
+        \node[inner sep=0pt] {\imageWithFallback[#1]{#2}{#3}{#6}};
+      \end{scope}
+    \end{tikzpicture}
+    \ifx&#5&%
+    \else
+      \caption{#5}
+    \fi
+  \end{figure}
+}
+
+% Circular image
+\newcommand{\circularImage}[5][]{%
+  \begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+      \node[inner sep=0pt] (image) {%
+        \imageWithFallback[#1]{#2}{#3}{#5}%
+      };
+      \begin{scope}
+        \clip (image.center) circle (#3/2);
+        \node[inner sep=0pt] {\imageWithFallback[#1]{#2}{#3}{#5}};
+      \end{scope}
+    \end{tikzpicture}
+    \ifx&#4&%
+    \else
+      \caption{#4}
+    \fi
+  \end{figure}
+}
+
+% Image with drop shadow
+\newcommand{\shadowImage}[5][]{%
+  \begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+      \node[inner sep=0pt, drop shadow={shadow xshift=2pt, shadow yshift=-2pt, opacity=0.5}] {%
+        \imageWithFallback[#1]{#2}{#3}{#5}%
+      };
+    \end{tikzpicture}
+    \ifx&#4&%
+    \else
+      \caption{#4}
+    \fi
+  \end{figure}
+}
+
+% Full-width responsive image
+\newcommand{\fullwidthImage}[5][]{%
+  \begin{figure}[htbp]
+    \centering
+    \makebox[\textwidth][c]{%
+      \imageWithFallback[#1,height=#3,width=\textwidth,keepaspectratio]{#2}{\textwidth}{#5}%
+    }
+    \ifx&#4&%
+    \else
+      \caption{#4}
+    \fi
+  \end{figure}
+}

@@ -1,0 +1,76 @@
+% ========== BOXES MODULE ==========
+% Load this module only when callout boxes are needed
+
+% Required packages
+\usepackage{tikz}
+\usetikzlibrary{shadows}
+\usepackage[most]{tcolorbox}
+
+% Info box style - use for general information
+\newtcolorbox{infobox}{
+    colback=background,
+    colframe=accent,
+    coltext=primary,
+    boxrule=1pt,
+    arc=3pt,
+    left=12pt,
+    right=12pt,
+    top=8pt,
+    bottom=8pt,
+    enhanced,
+    drop shadow,
+    fonttitle=\bfseries\sffamily\color{accent},
+    title style={left color=accent!10, right color=accent!5},
+    attach boxed title to top left={xshift=8pt, yshift=-2pt}
+}
+
+% Alert box style - use for cautions and important notes
+\newtcolorbox{alertbox}{
+    colback=warning!5,
+    colframe=warning,
+    coltext=primary,
+    boxrule=1pt,
+    arc=3pt,
+    left=12pt,
+    right=12pt,
+    top=8pt,
+    bottom=8pt,
+    enhanced,
+    drop shadow
+}
+
+% Success box style - use for positive highlights
+\newtcolorbox{successbox}{
+    colback=success!5,
+    colframe=success,
+    coltext=primary,
+    boxrule=1pt,
+    arc=3pt,
+    left=12pt,
+    right=12pt,
+    top=8pt,
+    bottom=8pt,
+    enhanced,
+    drop shadow
+}
+
+% Icon-enhanced boxes (optional - loads fontawesome and awesomebox)
+\IfFileExists{fontawesome5.sty}{
+    \usepackage{fontawesome5}
+    \IfFileExists{awesomebox.sty}{
+        \usepackage{awesomebox}
+        \typeout{^^J INFO: Loaded icon-enhanced boxes (fontawesome5 + awesomebox)^^J}
+    }{
+        \typeout{^^J WARNING: awesomebox package not found, icon boxes unavailable^^J}
+    }
+}{
+    \typeout{^^J WARNING: fontawesome5 package not found, icon boxes unavailable^^J}
+}
+
+% Logo-enhanced boxes (optional - loads bclogo)
+\IfFileExists{bclogo.sty}{
+    \usepackage{bclogo}
+    \typeout{^^J INFO: Loaded logo-enhanced boxes (bclogo)^^J}
+}{
+    \typeout{^^J WARNING: bclogo package not found, logo boxes unavailable^^J}
+}

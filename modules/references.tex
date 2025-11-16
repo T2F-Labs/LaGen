@@ -1,0 +1,42 @@
+% ========== REFERENCES MODULE ==========
+% Load this module only when advanced references are needed
+
+% Reference management packages
+\usepackage[
+    backend=biber,
+    style=authoryear,
+    sorting=nyt,
+    maxbibnames=99,
+    giveninits=true
+]{biblatex}
+
+% Hyperref and cross-references (order matters!)
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    urlcolor=accent,
+    citecolor=accent,
+    filecolor=accent,
+    bookmarks=true,
+    bookmarksopen=true,
+    bookmarksnumbered=true,
+    pdfstartview=FitH,
+    pdfpagelayout=SinglePage
+}
+
+\usepackage{nameref}
+\usepackage{varioref}
+\usepackage{cleveref}
+
+% Label formats
+\labelformat{figure}{Figure~#1}
+\labelformat{table}{Table~#1}
+\labelformat{equation}{Equation~#1}
+\labelformat{section}{Section~#1}
+
+% Cleveref names
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\crefname{equation}{Equation}{Equations}
+\crefname{section}{Section}{Sections}
