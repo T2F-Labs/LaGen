@@ -1,0 +1,20 @@
+% ========== TABLES SECTION ==========
+\section{Professional Tables}
+
+\begin{table}[htbp]
+\caption{Performance Comparison}
+\centering
+\rowcolors{2}{rowalt}{white}
+\begin{tabularx}{\textwidth}{L{3cm}C{3cm}R{2cm}X}
+\rowcolor{headerbg}
+\textcolor{headertext}{\textbf{Configuration}} &
+\textcolor{headertext}{\textbf{Compile Time}} &
+\textcolor{headertext}{\textbf{Memory}} &
+\textcolor{headertext}{\textbf{Features}} \\
+\toprule
+Original config.tex & 45-60s & High & All features \\
+Core only & 8-12s & Low & Basic features \\
+Selective modules & 15-25s & Medium & Selected features \\
+\bottomrule
+\end{tabularx}
+\end{table}

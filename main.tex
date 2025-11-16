@@ -1,10 +1,11 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage{ifthen}
 
-% ========== ADVANCED USAGE EXAMPLE ==========
-% This example shows selective module loading based on document needs
-% Enable only the features you actually use to optimize compilation time
+% ========== MAIN DOCUMENT ENTRY POINT ==========
+% This is the main entry point that loads configurations and content separately
+% Modify the module flags below to enable only the features you need
 
+% ========== MODULE CONFIGURATION ==========
 % Enable specific modules (set to true only for features you need)
 \newcommand{\EnableAdvancedTypography}{true}
 \newcommand{\EnableMathematics}{true}
@@ -16,9 +17,10 @@
 \newcommand{\EnableAlgorithms}{false}   % Not needed for this document
 \newcommand{\EnableReferences}{false}   % Not needed for this document
 
-% Load the core configuration with selected modules
+% ========== LOAD CONFIGURATION ==========
 \input{config.tex}
 
+% ========== DOCUMENT BEGIN ==========
 \begin{document}
 
 \maketitle
@@ -27,56 +29,10 @@
 This document demonstrates selective module loading. Only the features actually used are loaded, reducing compilation time while maintaining full functionality where needed.
 \end{infobox}
 
-\section{Advanced Typography}
-
-\lettrine[lines=3]{T}{his} document demonstrates advanced typography features including drop caps, enhanced spacing, and professional text formatting.
-
-Here we show \brandname{Company Name} and \productname{Product Name} with proper letter spacing.
-
-\subsection{Mathematical Content}
-
-Since we enabled mathematics, we can use advanced equations:
-
-\begin{align}
-E &= mc^2 \\
-F &= G\frac{m_1 m_2}{r^2} \\
-\nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t}
-\end{align}
-
-We can also format units properly: \SI{42}{\kilo\watt\hour} and \SI{1.25}{\USD}.
-
-\section{Professional Tables}
-
-\begin{table}[htbp]
-\caption{Performance Comparison}
-\centering
-\rowcolors{2}{rowalt}{white}
-\begin{tabularx}{\textwidth}{L{3cm}C{3cm}R{2cm}X}
-\rowcolor{headerbg}
-\textcolor{headertext}{\textbf{Configuration}} &
-\textcolor{headertext}{\textbf{Compile Time}} &
-\textcolor{headertext}{\textbf{Memory}} &
-\textcolor{headertext}{\textbf{Features}} \\
-\toprule
-Original config.tex & 45-60s & High & All features \\
-Core only & 8-12s & Low & Basic features \\
-Selective modules & 15-25s & Medium & Selected features \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\begin{alertbox}
-\textbf{Important:} Only enable modules you actually need in your document to maintain optimal performance on Overleaf's free plan.
-\end{alertbox}
-
-\section{Conclusion}
-
-This modular approach allows you to:
-\begin{itemize}
-    \item Reduce compilation time significantly
-    \item Use only needed features
-    \item Maintain compatibility with Overleaf free plan
-    \item Keep full functionality when required
-\end{itemize}
+% ========== LOAD CONTENT SECTIONS ==========
+\input{content/01-introduction.tex}
+\input{content/02-mathematics.tex}
+\input{content/03-tables.tex}
+\input{content/04-conclusion.tex}
 
 \end{document}
