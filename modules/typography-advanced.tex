@@ -4,7 +4,10 @@
 % Advanced typography packages
 \usepackage{fontspec}
 \usepackage{setspace}
-\usepackage{microtype}
+% Only load microtype for pdfTeX (not XeTeX/LuaTeX)
+\ifdefined\pdftexversion
+    \usepackage{microtype}
+\fi
 \usepackage{soul}
 \usepackage{ragged2e}
 \usepackage{textcase}
@@ -82,12 +85,14 @@
 \clubpenalty=10000
 \widowpenalty=10000
 
-% Microtype setup
-\microtypesetup{
-    activate=true,
-    final=true,
-    factor=1100
-}
+% Microtype setup (only for pdfTeX)
+\ifdefined\pdftexversion
+    \microtypesetup{
+        activate=true,
+        final=true,
+        factor=1100
+    }
+\fi
 
 % Smart quotes setup
 \MakeOuterQuote{"}

@@ -3,28 +3,319 @@
 
 % ========== MAIN DOCUMENT ENTRY POINT ==========
 % This is the main entry point that loads configurations and content separately
-% Modify the module flags below to enable only the features you need
+% Modify the settings below to customize your document
+%
+% QUICK START:
+% 1. Choose a template OR cover (uncomment one line below)
+% 2. Customize the cover content variables
+% 3. Enable/disable modules based on your needs
+% 4. Compile with: xelatex main.tex
+
+% ========== TEMPLATE AND COVER CONFIGURATION ==========
+% 
+% IMPORTANT: Choose ONLY ONE option below!
+%
+% Templates provide both cover page AND document styling (backgrounds, headers, etc.)
+% Covers provide ONLY the cover page without affecting document styling
+%
+% If you're unsure, start with a template - they provide the most complete experience.
+
+% ========== OPTION 1: TEMPLATES (Recommended) ==========
+% Templates include professional cover pages + document styling
+% Uncomment EXACTLY ONE template line below:
+%
+% \def\UseTemplate{template1}  % Modern geometric design - Great for tech/marketing docs
+% \def\UseTemplate{template2}  % Corporate sidebar design - Perfect for business reports  
+% \def\UseTemplate{template3}  % Minimal elegant design - Ideal for academic papers
+%
+% Template Features:
+% - template1: Geometric patterns, modern colors, dynamic backgrounds
+% - template2: Professional sidebar, corporate styling, structured layout
+% - template3: Clean minimal design, elegant typography, academic focus
+
+% ========== OPTION 2: STANDALONE COVERS ==========
+% Use ONLY if you want a cover page without template styling
+% Uncomment EXACTLY ONE cover line below (ONLY if no template selected above):
+%
+% \def\UseCover{cover1}   % Modern gradient design - Colorful and dynamic
+\def\UseCover{cover2}   % Professional layout - Clean business style
+% \def\UseCover{cover3}   % Clean minimal design - Simple and elegant
+% \def\UseCover{cover4}   % Corporate style - Formal business appearance
+% \def\UseCover{cover5}   % Academic format - Traditional academic layout
+% \def\UseCover{cover6}   % Creative design - Artistic and unique
+% \def\UseCover{cover7}   % Technical report - Engineering/technical focus
+% \def\UseCover{cover8}   % Elegant filigree design - Ornate academic style
+% \def\UseCover{cover9}   % Modern minimalist design - Clean and simple
+% \def\UseCover{cover10}  % Contemporary blocks design - Colorful geometric
+%
+% Note: Covers only affect the first page. The rest of your document will use basic styling.
+%
+% SPECIAL REQUIREMENTS:
+% - Cover1: Requires TikZ libraries (positioning, shapes.geometric, decorations.pathmorphing, shadows.blur, backgrounds, calc)
+% - Cover2: Requires fp package for mathematical calculations
+% - Cover3: Requires TikZ libraries (positioning, shapes, decorations.pathmorphing, patterns, calc)
+% - Cover4: Requires datetime2 package and TikZ libraries (positioning, shapes, decorations.pathmorphing, calc)
+% - Cover5: Requires datetime2 package and TikZ libraries (positioning, shapes, decorations.pathmorphing, patterns, calc)
+% - Cover6: Requires TikZ libraries (positioning, shapes, decorations.pathmorphing, patterns, calc, fadings)
+% - Cover7: Requires TikZ libraries (positioning, calc)
+%
+% All required packages are automatically loaded by config.tex when covers are used.
+
+% ========== COVER CONTENT CUSTOMIZATION ==========
+% These variables are used by both templates and covers
+% Customize them to match your document:
+%
+\newcommand{\CoverTitle}{Your Document Title}        % Main title on cover page
+\newcommand{\CoverSubtitle}{Document Subtitle}       % Subtitle/description
+\newcommand{\CoverYear}{2024}                        % Year or date
+\newcommand{\CoverRecipient}{Recipient Name}         % Who is this document for?
+\newcommand{\CoverPreparer}{Author Name}             % Who created this document?
+%
+% Example for a business report:
+% \newcommand{\CoverTitle}{Q4 2024 Sales Analysis}
+% \newcommand{\CoverSubtitle}{Regional Performance Review}
+% \newcommand{\CoverYear}{December 2024}
+% \newcommand{\CoverRecipient}{Executive Team}
+% \newcommand{\CoverPreparer}{Sales Analytics Department}
+
+% ========== ADVANCED COVER CUSTOMIZATION ==========
+% Some covers support additional customization options.
+% Uncomment and modify these if you want to override the defaults:
+%
+% For Cover3 (Modern Corporate):
+% \renewcommand{\CompanyPlaceholder}{Your Company Name}
+% \renewcommand{\DepartmentPlaceholder}{Your Department}
+%
+% For Cover4 (Academic):
+% \renewcommand{\InstitutionPlaceholder}{Your Institution}
+% \renewcommand{\AbstractPlaceholder}{Your abstract text here...}
+% \renewcommand{\KeywordsPlaceholder}{keyword1, keyword2, keyword3}
+%
+% For Cover5 (Technical Blueprint):
+% \renewcommand{\DocumentIDPlaceholder}{DOC-2024-001}
+% \renewcommand{\RevisionPlaceholder}{B}
+%
+% For Cover7 (Professional):
+% \renewcommand{\ContactPlaceholder}{your.email@company.com}
+%
+% NOTE: This system uses \def to ensure proper template/cover selection.
+% If you get compilation errors, ensure only ONE template OR cover is uncommented.
 
 % ========== MODULE CONFIGURATION ==========
-% Enable specific modules (set to true only for features you need)
-\newcommand{\EnableAdvancedTypography}{true}
-\newcommand{\EnableMathematics}{true}
-\newcommand{\EnableTables}{true}
-\newcommand{\EnableBoxes}{true}
-\newcommand{\EnableLists}{false}        % Not needed for this document
-\newcommand{\EnableCode}{false}         % Not needed for this document
-\newcommand{\EnableImages}{false}       % Not needed for this document
-\newcommand{\EnableAlgorithms}{false}   % Not needed for this document
-\newcommand{\EnableReferences}{false}   % Not needed for this document
+% 
+% Modules are optional LaTeX packages that add specific features to your document.
+% Enable ONLY the modules you actually need to keep compilation fast and clean.
+%
+% PERFORMANCE TIP: Each enabled module increases compilation time:
+% - Basic (4 modules): 8-12 seconds
+% - Selective (6-7 modules): 15-25 seconds  
+% - Full (all modules): 25-35 seconds
+%
+% Set to 'true' to enable, 'false' to disable:
+
+\newcommand{\EnableAdvancedTypography}{true}   % Drop caps, advanced fonts, letter spacing
+                                               % Use for: Professional documents, marketing materials
+                                               
+\newcommand{\EnableMathematics}{true}          % Equations, theorems, mathematical symbols
+                                               % Use for: Academic papers, technical documents, research
+                                               
+\newcommand{\EnableTables}{true}               % Enhanced table formatting, colors, multi-page tables
+                                               % Use for: Data reports, comparisons, structured information
+                                               
+\newcommand{\EnableBoxes}{true}                % Info boxes, alerts, callouts, warnings
+                                               % Use for: Almost all documents (highly recommended)
+                                               
+\newcommand{\EnableLists}{false}               % Enhanced lists, task lists, priority indicators
+                                               % Use for: Project plans, checklists, structured content
+                                               
+\newcommand{\EnableCode}{false}                % Syntax highlighting, code blocks, programming examples
+                                               % Use for: Technical documentation, programming guides
+                                               
+\newcommand{\EnableImages}{false}              % Advanced image handling, positioning, effects
+                                               % Use for: Visual documents, reports with graphics
+                                               
+\newcommand{\EnableAlgorithms}{false}          % Pseudocode, algorithm formatting, flowcharts
+                                               % Use for: Computer science papers, technical specifications
+                                               
+\newcommand{\EnableReferences}{false}          % Bibliography, citations, cross-references
+                                               % Use for: Academic papers, research documents
+%
+% COMMON COMBINATIONS:
+%
+% Academic Paper:
+% Mathematics=true, References=true, Algorithms=true, Boxes=true
+%
+% Business Report:  
+% Tables=true, Boxes=true, Images=true, AdvancedTypography=true
+%
+% Technical Documentation:
+% Code=true, Mathematics=true, Tables=true, Boxes=true
+%
+% Quick Draft:
+% Boxes=true (minimal setup for fast compilation)
 
 % ========== LOAD CONFIGURATION ==========
+% This loads the core LaTeX configuration and all enabled modules
+% DO NOT MODIFY - this handles all the complex package loading
 \input{config.tex}
+
+% ========== LOAD TEMPLATE OR COVER ==========
+% Automatically load the selected template (if any)
+% Templates provide additional styling and cover page commands
+
+% First, undefine any existing UseTemplate to avoid conflicts
+\let\UseTemplate\undefined
+
+\ifdefined\UseTemplate
+    \typeout{^^J DEBUG: UseTemplate is defined as: \UseTemplate ^^J}
+    \ifthenelse{\equal{\UseTemplate}{template1}}{
+        \typeout{^^J DEBUG: Loading template1.tex ^^J}
+        \input{templates/template1.tex}
+    }{}
+    \ifthenelse{\equal{\UseTemplate}{template2}}{
+        \typeout{^^J DEBUG: Loading template2.tex ^^J}
+        \input{templates/template2.tex}
+    }{}
+    \ifthenelse{\equal{\UseTemplate}{template3}}{
+        \typeout{^^J DEBUG: Loading template3.tex ^^J}
+        \input{templates/template3.tex}
+    }{}
+\else
+    \typeout{^^J DEBUG: UseTemplate is NOT defined ^^J}
+\fi
+
+% ========== DOCUMENT METADATA ==========
+% Standard LaTeX document information
+% This is used for the default \maketitle command and PDF metadata
+\title{\CoverTitle}
+\author{\CoverPreparer}
+\date{\today}
 
 % ========== DOCUMENT BEGIN ==========
 \begin{document}
 
-\maketitle
+% ========== COVER PAGE GENERATION ==========
+% This section automatically generates the appropriate cover page
+% based on your template/cover selection above
 
+\ifdefined\UseTemplate
+    \typeout{^^J DEBUG: In cover generation - UseTemplate is defined as: \UseTemplate ^^J}
+    % TEMPLATE MODE: Use template-specific cover page commands
+    % Each template provides its own cover page styling and layout
+    \ifthenelse{\equal{\UseTemplate}{template1}}{
+        \typeout{^^J DEBUG: Calling templateOneCover ^^J}
+        \templateOneCover{\CoverTitle}{\CoverSubtitle}{\CoverYear}{\CoverRecipient}{\CoverPreparer}
+    }{}
+    \ifthenelse{\equal{\UseTemplate}{template2}}{
+        \typeout{^^J DEBUG: Calling templateTwoCover ^^J}
+        \templateTwoCover{\CoverTitle}{\CoverSubtitle}{\CoverYear}{\CoverRecipient}{\CoverPreparer}
+    }{}
+    \ifthenelse{\equal{\UseTemplate}{template3}}{
+        \typeout{^^J DEBUG: Calling templateThreeCover ^^J}
+        \templateThreeCover{\CoverTitle}{\CoverSubtitle}{\CoverYear}{\CoverRecipient}{\CoverPreparer}
+    }{}
+\else
+    \ifdefined\UseCover
+        \typeout{^^J DEBUG: UseCover is defined as: \UseCover ^^J}
+        % COVER MODE: Use standalone cover page without template styling
+        \begin{titlepage}
+        % Define ALL placeholders that cover files expect to find
+        % Basic placeholders (used by all covers)
+        \providecommand{\TitlePlaceholder}{\CoverTitle}
+        \providecommand{\SubtitlePlaceholder}{\CoverSubtitle}
+        \providecommand{\AuthorPlaceholder}{\CoverPreparer}
+        \providecommand{\DatePlaceholder}{\today}
+        \providecommand{\VersionPlaceholder}{1.0}
+        \providecommand{\ClassificationPlaceholder}{Internal Use}
+        
+        % Cover1 specific placeholders (Modern Gradient Design)
+        \providecommand{\SummaryTitlePlaceholder}{\CoverSubtitle}
+        \providecommand{\SummaryTextPlaceholder}{This document provides comprehensive analysis and insights for strategic decision making.}
+        \providecommand{\PlatformsList}{• Analysis Platform\\ • Research Tools\\ • Data Sources}
+        \providecommand{\FocusList}{• Key Insights\\ • Strategic Analysis\\ • Recommendations}
+        \providecommand{\DistributionPlaceholder}{Restricted}
+        \providecommand{\StatusPlaceholder}{Final}
+        
+        % Cover2 specific placeholders (Minimal Circle Design)
+        \providecommand{\FocusItemOne}{Strategic Planning}
+        \providecommand{\FocusItemTwo}{Market Analysis}
+        \providecommand{\FocusItemThree}{Risk Assessment}
+        \providecommand{\FocusItemFour}{Implementation}
+        \providecommand{\ClassificationLevelPlaceholder}{Confidential}
+        
+        % Cover3 specific placeholders (Modern Corporate Design)
+        \providecommand{\CompanyPlaceholder}{Your Company Name}
+        \providecommand{\DepartmentPlaceholder}{Research \& Development}
+        
+        % Cover4 specific placeholders (Elegant Academic Design)
+        \providecommand{\InstitutionPlaceholder}{University Research Institute}
+        \providecommand{\AbstractPlaceholder}{This document presents a comprehensive analysis of the latest developments in our field. It examines key aspects and proposes innovative solutions to address current challenges.}
+        \providecommand{\KeywordsPlaceholder}{research, analysis, innovation, methodology, results}
+        
+        % Cover5 specific placeholders (Technical Blueprint Design)
+        \providecommand{\DocumentIDPlaceholder}{DOC-2024-001}
+        \providecommand{\RevisionPlaceholder}{A}
+        
+        % Cover6 specific placeholders (Creative Gradient Design)
+        \providecommand{\SummaryPlaceholder}{\SummaryTextPlaceholder}
+        \providecommand{\TaglinePlaceholder}{INNOVATIVE}
+        
+        % Cover7 specific placeholders (Professional Design)
+        \providecommand{\ContactPlaceholder}{contact@company.com}
+        
+        % Load the selected cover with proper conditional handling
+        \ifthenelse{\equal{\UseCover}{cover1}}{
+            \typeout{^^J DEBUG: Loading cover1.tex ^^J}
+            \input{covers/cover1.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover2}}{
+            \typeout{^^J DEBUG: Loading cover2.tex ^^J}
+            \input{covers/cover2.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover3}}{
+            \typeout{^^J DEBUG: Loading cover3.tex ^^J}
+            \input{covers/cover3.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover4}}{
+            \typeout{^^J DEBUG: Loading cover4.tex ^^J}
+            \input{covers/cover4.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover5}}{
+            \typeout{^^J DEBUG: Loading cover5.tex ^^J}
+            \input{covers/cover5.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover6}}{
+            \typeout{^^J DEBUG: Loading cover6.tex ^^J}
+            \input{covers/cover6.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover7}}{
+            \typeout{^^J DEBUG: Loading cover7.tex ^^J}
+            \input{covers/cover7.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover8}}{
+            \typeout{^^J DEBUG: Loading cover8.tex ^^J}
+            \input{covers/cover8.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover9}}{
+            \typeout{^^J DEBUG: Loading cover9.tex ^^J}
+            \input{covers/cover9.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover10}}{
+            \typeout{^^J DEBUG: Loading cover10.tex ^^J}
+            \input{covers/cover10.tex}
+        }{}
+        \end{titlepage}
+        \newpage
+    \else
+        \typeout{^^J DEBUG: UseCover is NOT defined ^^J}
+        % DEFAULT MODE: Use basic LaTeX title page
+        % This creates a simple, centered title page using \maketitle
+        \maketitle
+    \fi
+\fi
+
+% ========== DOCUMENT CONTENT BEGINS HERE ==========
+% This info box demonstrates that the Boxes module is working
 \begin{infobox}[title=Performance Optimization]
 This document demonstrates selective module loading. Only the features actually used are loaded, reducing compilation time while maintaining full functionality where needed.
 \end{infobox}

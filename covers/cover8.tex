@@ -1,0 +1,161 @@
+% ========== COVER8: ELEGANT FILIGREE DESIGN ==========
+% Cover-specific dependencies
+\usetikzlibrary{positioning,shapes,decorations.pathmorphing,patterns,calc}
+
+% Elegant border with filigree
+\begin{tikzpicture}[remember picture,overlay]
+% Double line border using brand colors
+\draw[line width=2pt,primary] ([xshift=0.8cm,yshift=-0.8cm]current page.north west) rectangle ([xshift=-0.8cm,yshift=0.8cm]current page.south east);
+\draw[line width=0.8pt,accent] ([xshift=1cm,yshift=-1cm]current page.north west) rectangle ([xshift=-1cm,yshift=1cm]current page.south east);
+
+% Decorative corner flourishes using TikZ patterns
+\foreach \corner/\xshift/\yshift/\rotation in {
+    north west/2cm/-2cm/0,
+    north east/-2cm/-2cm/90,
+    south west/2cm/2cm/270,
+    south east/-2cm/2cm/180
+} {
+    \begin{scope}[shift={([xshift=\xshift,yshift=\yshift]current page.\corner)}, rotate=\rotation]
+        \draw[line width=1.5pt,primary,fill=primary!20] 
+            (0,0) -- (0.8,0.3) -- (1.2,0) -- (0.8,-0.3) -- cycle;
+        \draw[line width=1pt,accent,fill=accent!15] 
+            (0.2,0) -- (0.6,0.2) -- (0.8,0) -- (0.6,-0.2) -- cycle;
+    \end{scope}
+}
+
+% Top and bottom center ornaments
+\begin{scope}[shift={([yshift=-1.2cm]current page.north)}]
+    \draw[line width=2pt,accent,fill=accent!10] 
+        (-1.5,0) .. controls (-1,0.3) and (-0.5,0.3) .. (0,0) .. controls (0.5,0.3) and (1,0.3) .. (1.5,0)
+        .. controls (1,-0.2) and (0.5,-0.2) .. (0,0) .. controls (-0.5,-0.2) and (-1,-0.2) .. (-1.5,0);
+\end{scope}
+
+\begin{scope}[shift={([yshift=1.2cm]current page.south)}]
+    \draw[line width=2pt,accent,fill=accent!10] 
+        (-1.5,0) .. controls (-1,-0.3) and (-0.5,-0.3) .. (0,0) .. controls (0.5,-0.3) and (1,-0.3) .. (1.5,0)
+        .. controls (1,0.2) and (0.5,0.2) .. (0,0) .. controls (-0.5,0.2) and (-1,0.2) .. (-1.5,0);
+\end{scope}
+\end{tikzpicture}
+
+% Institutional Information with decorative divider
+\begin{center}
+\vspace{2cm}
+{\Large\textbf{\CompanyPlaceholder}}\\[0.2cm]
+
+% Decorative divider using TikZ
+\begin{tikzpicture}
+    \draw[line width=1pt,accent] (-2,0) -- (2,0);
+    \fill[primary] (-0.3,0) circle (0.1);
+    \fill[accent] (0,0) circle (0.08);
+    \fill[primary] (0.3,0) circle (0.1);
+\end{tikzpicture}\\[0.2cm]
+
+{\large \DepartmentPlaceholder}\\[0.1cm]
+{\normalsize Research \& Development Division}
+\end{center}
+
+\vspace{1.2cm}
+
+% Document Type with elegant frame
+\begin{center}
+\begin{tikzpicture}
+    \node[ellipse, draw=primary, thick, fill=primary!15, minimum width=6cm, minimum height=1.8cm] 
+        {\Large\textbf{\SubtitlePlaceholder}};
+    
+    % Side decorative elements
+    \begin{scope}[shift={(-3.5,0)}]
+        \draw[line width=1pt,accent,fill=accent!20] 
+            (0,0) -- (0.4,0.2) -- (0.6,0) -- (0.4,-0.2) -- cycle;
+    \end{scope}
+    \begin{scope}[shift={(3.5,0)}]
+        \draw[line width=1pt,accent,fill=accent!20] 
+            (0,0) -- (-0.4,0.2) -- (-0.6,0) -- (-0.4,-0.2) -- cycle;
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\vspace{1.5cm}
+
+% Project Title with elegant frame
+\begin{center}
+\begin{tcolorbox}[colback=primary!5,colframe=primary,width=0.9\textwidth,arc=15pt,boxrule=2pt]
+\begin{center}
+% Top ornament
+\begin{tikzpicture}
+    \draw[line width=1.5pt,accent,fill=accent!15] 
+        (-0.75,0) .. controls (-0.5,0.2) and (-0.25,0.2) .. (0,0) .. controls (0.25,0.2) and (0.5,0.2) .. (0.75,0)
+        .. controls (0.5,-0.1) and (0.25,-0.1) .. (0,0) .. controls (-0.25,-0.1) and (-0.5,-0.1) .. (-0.75,0);
+\end{tikzpicture}\\[0.2cm]
+
+{\huge\textbf{\textcolor{primary}{\TitlePlaceholder}}}\\[0.2cm]
+
+% Bottom ornament
+\begin{tikzpicture}
+    \draw[line width=1.5pt,accent,fill=accent!15] 
+        (-0.75,0) .. controls (-0.5,-0.2) and (-0.25,-0.2) .. (0,0) .. controls (0.25,-0.2) and (0.5,-0.2) .. (0.75,0)
+        .. controls (0.5,0.1) and (0.25,0.1) .. (0,0) .. controls (-0.25,0.1) and (-0.5,0.1) .. (-0.75,0);
+\end{tikzpicture}
+\end{center}
+\end{tcolorbox}
+\end{center}
+
+\vspace{1.3cm}
+
+% Author Information with ornate frame
+\begin{center}
+\begin{tikzpicture}
+    \node[draw=primary,thick,rounded corners=10pt,fill=background,text width=8cm,align=center,minimum height=3cm] {
+        \textbf{\large Document Information:}\\[0.3cm]
+        \textbf{\AuthorPlaceholder}\\
+        Document ID: \DocumentIDPlaceholder\\[0.3cm]
+        \textit{Prepared: \DatePlaceholder}
+    };
+    
+    % Decorative side elements
+    \begin{scope}[shift={(-5,0)}]
+        \draw[line width=1.5pt,accent,fill=accent!20] 
+            (0,-1) -- (0.5,-0.5) -- (0.5,0.5) -- (0,1) -- (-0.3,0.5) -- (-0.3,-0.5) -- cycle;
+    \end{scope}
+    \begin{scope}[shift={(5,0)}]
+        \draw[line width=1.5pt,accent,fill=accent!20] 
+            (0,-1) -- (-0.5,-0.5) -- (-0.5,0.5) -- (0,1) -- (0.3,0.5) -- (0.3,-0.5) -- cycle;
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\vspace{1cm}
+
+% Classification Information
+\begin{center}
+\begin{tabularx}{0.85\textwidth}{|X|X|}
+\hline
+\multicolumn{2}{|c|}{\cellcolor{primary!20}\textbf{\large Document Details}} \\
+\hline
+\textbf{Classification:} & \textbf{Version:} \\
+\ClassificationPlaceholder & \VersionPlaceholder \\
+\hline
+\textbf{Distribution:} & \textbf{Status:} \\
+\DistributionPlaceholder & \StatusPlaceholder \\
+\hline
+\end{tabularx}
+\end{center}
+
+\vfill
+
+% Footer with elegant frame
+\begin{center}
+\begin{tikzpicture}
+    \node[draw=accent,thick,fill=accent!15,rounded corners=5pt,minimum width=10cm,minimum height=1cm] 
+        {\textbf{Confidential Document - \CompanyPlaceholder}};
+    
+    % Corner decorations
+    \foreach \x in {-5.5, 5.5} {
+        \begin{scope}[shift={(\x,0)}]
+            \draw[line width=1pt,primary,fill=primary!20] 
+                (0,0) -- (0.2,0.15) -- (0.3,0) -- (0.2,-0.15) -- cycle;
+        \end{scope}
+    }
+\end{tikzpicture}
+\end{center}
+
+\vspace{1cm}

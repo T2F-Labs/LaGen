@@ -1,0 +1,672 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, positioning, decorations.pathmorphing, decorations.markings}
+\usepackage{fontspec}
+\usepackage{tcolorbox}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{eso-pic}
+\usepackage{transparent}
+\usepackage{pgfornament}
+\usepackage{decorule}
+
+% Custom colors
+\definecolor{primaryblue}{RGB}{0,102,204}
+\definecolor{secondaryblue}{RGB}{51,153,255}
+\definecolor{darkgray}{RGB}{64,64,64}
+\definecolor{lightgray}{RGB}{240,240,240}
+\definecolor{accentgreen}{RGB}{0,153,102}
+\definecolor{goldaccent}{RGB}{184,134,11}
+\definecolor{burgundy}{RGB}{128,0,32}
+
+\begin{document}
+
+% ========== TITLE PAGE 1: ORNATE CLASSICAL BORDER ==========
+\begin{titlepage}
+\newgeometry{margin=0.8in}
+
+% Ornate border frame
+\begin{tikzpicture}[remember picture,overlay]
+% Outer decorative border
+\draw[line width=3pt,primaryblue] ([xshift=0.5cm,yshift=-0.5cm]current page.north west) rectangle ([xshift=-0.5cm,yshift=0.5cm]current page.south east);
+\draw[line width=1pt,goldaccent] ([xshift=0.7cm,yshift=-0.7cm]current page.north west) rectangle ([xshift=-0.7cm,yshift=0.7cm]current page.south east);
+
+% Corner ornaments
+\node at ([xshift=1.5cm,yshift=-1.5cm]current page.north west) {\pgfornament[width=1cm,color=primaryblue]{61}};
+\node at ([xshift=-1.5cm,yshift=-1.5cm]current page.north east) {\pgfornament[width=1cm,color=primaryblue,symmetry=v]{61}};
+\node at ([xshift=1.5cm,yshift=1.5cm]current page.south west) {\pgfornament[width=1cm,color=primaryblue,symmetry=h]{61}};
+\node at ([xshift=-1.5cm,yshift=1.5cm]current page.south east) {\pgfornament[width=1cm,color=primaryblue,symmetry=c]{61}};
+
+% Side decorative elements
+\node at ([xshift=1cm]current page.west) {\pgfornament[width=0.8cm,color=goldaccent]{88}};
+\node at ([xshift=-1cm]current page.east) {\pgfornament[width=0.8cm,color=goldaccent,symmetry=v]{88}};
+\end{tikzpicture}
+
+% Header with logos
+\begin{minipage}[t]{0.45\textwidth}
+\includegraphics[width=0.8\textwidth]{university-logo.jpeg}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\raggedleft
+\includegraphics[width=0.8\textwidth]{college-logo.jpeg}
+\end{minipage}
+
+\vspace{1cm}
+
+% Decorative line
+\begin{center}
+\pgfornament[width=8cm,color=primaryblue]{88}
+\end{center}
+
+\vspace{0.5cm}
+
+% Institutional Information
+\begin{center}
+{\Large\textbf{UNIVERSITY OF OXFORD}}\\[0.3cm]
+{\large Faculty of Engineering and Computer Science}\\[0.2cm]
+{\normalsize Department of Computer Science}
+\end{center}
+
+\vspace{1cm}
+
+% Document Type with ornamental frame
+\begin{center}
+\begin{tikzpicture}
+\node[draw=primaryblue,thick,rounded corners=15pt,fill=primaryblue!10,text width=7cm,align=center,minimum height=1.2cm] {\Large\textbf{Final Year Project Report}};
+\node at (0,0.8) {\pgfornament[width=0.5cm,color=goldaccent]{75}};
+\node at (0,-0.8) {\pgfornament[width=0.5cm,color=goldaccent]{76}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1.5cm}
+
+% Project Title with decorative elements
+\begin{center}
+\pgfornament[width=2cm,color=primaryblue]{75}\\[0.3cm]
+{\Huge\textbf{\textcolor{primaryblue}{AI-Powered Healthcare\\Management System}}}\\[0.3cm]
+\pgfornament[width=2cm,color=primaryblue]{76}
+\end{center}
+
+\vspace{1.8cm}
+
+% Student Information
+\begin{center}
+\begin{tcolorbox}[colback=lightgray!30,colframe=primaryblue,width=0.8\textwidth,arc=10pt,boxrule=2pt]
+\begin{center}
+\textbf{\Large Team Members:}\\[0.5cm]
+\textbf{Sarah Johnson} - ID: 2021-CS-001\\[0.2cm]
+\textbf{Michael Chen} - ID: 2021-CS-002\\[0.2cm]
+\textbf{Emma Williams} - ID: 2021-CS-003\\[0.5cm]
+\textit{Level 4 – Academic Year 2025/2026}
+\end{center}
+\end{tcolorbox}
+\end{center}
+
+\vspace{1cm}
+
+% Supervisor Information
+\begin{center}
+\begin{tabular}{@{}c@{}}
+\textbf{\large Supervisor:}\\[0.3cm]
+\textbf{Dr. Robert Anderson}\\
+Professor, Department of Computer Science\\[0.5cm]
+\textbf{External Supervisor:}\\
+\textbf{Ms. Lisa Thompson}\\
+Senior Software Engineer, TechCorp Ltd.
+\end{tabular}
+\end{center}
+
+\vfill
+
+% Course Information with decorative frame
+\begin{center}
+\begin{tikzpicture}
+\node[draw=goldaccent,thick,fill=goldaccent!10,text width=8cm,align=center,minimum height=0.8cm] {\textbf{Course: Advanced Software Engineering (CSE-401)}};
+\end{tikzpicture}
+\end{center}
+
+\end{titlepage}
+
+\restoregeometry
+
+% ========== TITLE PAGE 2: ELEGANT FILIGREE BORDER ==========
+\begin{titlepage}
+\newgeometry{margin=0.8in}
+
+% Elegant border with filigree
+\begin{tikzpicture}[remember picture,overlay]
+% Double line border
+\draw[line width=2pt,burgundy] ([xshift=0.8cm,yshift=-0.8cm]current page.north west) rectangle ([xshift=-0.8cm,yshift=0.8cm]current page.south east);
+\draw[line width=0.8pt,burgundy] ([xshift=1cm,yshift=-1cm]current page.north west) rectangle ([xshift=-1cm,yshift=1cm]current page.south east);
+
+% Decorative corner flourishes
+\node at ([xshift=2cm,yshift=-2cm]current page.north west) {\pgfornament[width=1.5cm,color=burgundy]{63}};
+\node at ([xshift=-2cm,yshift=-2cm]current page.north east) {\pgfornament[width=1.5cm,color=burgundy,symmetry=v]{63}};
+\node at ([xshift=2cm,yshift=2cm]current page.south west) {\pgfornament[width=1.5cm,color=burgundy,symmetry=h]{63}};
+\node at ([xshift=-2cm,yshift=2cm]current page.south east) {\pgfornament[width=1.5cm,color=burgundy,symmetry=c]{63}};
+
+% Top and bottom center ornaments
+\node at ([yshift=-1.2cm]current page.north) {\pgfornament[width=3cm,color=goldaccent]{71}};
+\node at ([yshift=1.2cm]current page.south) {\pgfornament[width=3cm,color=goldaccent]{72}};
+\end{tikzpicture}
+
+% Header with logos
+\begin{minipage}[t]{0.4\textwidth}
+\includegraphics[width=0.9\textwidth]{university-logo.jpeg}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+\raggedleft
+\includegraphics[width=0.9\textwidth]{college-logo.jpeg}
+\end{minipage}
+
+\vspace{1cm}
+
+% Institutional Information with decorative divider
+\begin{center}
+{\Large\textbf{CAMBRIDGE UNIVERSITY}}\\[0.2cm]
+\pgfornament[width=4cm,color=burgundy]{88}\\[0.2cm]
+{\large School of Engineering}\\[0.1cm]
+{\normalsize Department of Electrical Engineering}
+\end{center}
+
+\vspace{1.2cm}
+
+% Document Type
+\begin{center}
+\begin{tikzpicture}
+\node[ellipse, draw=burgundy, thick, fill=burgundy!15, minimum width=6cm, minimum height=1.8cm] {\Large\textbf{Internship Report}};
+\node at (-3.5,0) {\pgfornament[width=0.8cm,color=goldaccent]{57}};
+\node at (3.5,0) {\pgfornament[width=0.8cm,color=goldaccent,symmetry=v]{57}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1.5cm}
+
+% Project Title
+\begin{center}
+\begin{tcolorbox}[colback=burgundy!5,colframe=burgundy,width=0.9\textwidth,arc=15pt,boxrule=2pt]
+\begin{center}
+\pgfornament[width=1.5cm,color=goldaccent]{75}\\[0.2cm]
+{\huge\textbf{\textcolor{burgundy}{Renewable Energy Grid\\Integration System}}}\\[0.2cm]
+\pgfornament[width=1.5cm,color=goldaccent]{76}
+\end{center}
+\end{tcolorbox}
+\end{center}
+
+\vspace{1.3cm}
+
+% Student Information with ornate frame
+\begin{center}
+\begin{tikzpicture}
+\node[draw=burgundy,thick,rounded corners=10pt,fill=lightgray!20,text width=8cm,align=center,minimum height=3cm] {
+\textbf{\large Student Information:}\\[0.3cm]
+\textbf{Alexander Rodriguez}\\
+Student ID: EE-2021-045\\[0.3cm]
+\textit{Level 4 – Academic Year 2025/2026}
+};
+% Decorative side elements
+\node at (-5,0) {\pgfornament[width=1cm,color=goldaccent]{71}};
+\node at (5,0) {\pgfornament[width=1cm,color=goldaccent,symmetry=v]{71}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1cm}
+
+% Supervisor Information
+\begin{center}
+\begin{tabularx}{0.85\textwidth}{|X|X|}
+\hline
+\multicolumn{2}{|c|}{\cellcolor{burgundy!20}\textbf{\large Supervision}} \\
+\hline
+\textbf{Academic Supervisor:} & \textbf{Industry Supervisor:} \\
+Dr. Jennifer Park & Mr. David Kim \\
+Associate Professor & Lead Engineer \\
+Dept. of Electrical Engineering & GreenTech Solutions \\
+\hline
+\end{tabularx}
+\end{center}
+
+\vfill
+
+% Course Information
+\begin{center}
+\begin{tikzpicture}
+\node[draw=goldaccent,thick,fill=goldaccent!15,rounded corners=5pt,minimum width=10cm,minimum height=1cm] {\textbf{Course: Industrial Internship (EE-498)}};
+\end{tikzpicture}
+\end{center}
+
+\end{titlepage}
+
+\restoregeometry
+
+% ========== TITLE PAGE 3: ROYAL MANUSCRIPT STYLE ==========
+\begin{titlepage}
+\newgeometry{margin=0.7in}
+
+% Royal manuscript border
+\begin{tikzpicture}[remember picture,overlay]
+% Multiple nested borders
+\draw[line width=4pt,primaryblue] ([xshift=0.3cm,yshift=-0.3cm]current page.north west) rectangle ([xshift=-0.3cm,yshift=0.3cm]current page.south east);
+\draw[line width=1pt,goldaccent] ([xshift=0.5cm,yshift=-0.5cm]current page.north west) rectangle ([xshift=-0.5cm,yshift=0.5cm]current page.south east);
+\draw[line width=2pt,burgundy] ([xshift=0.7cm,yshift=-0.7cm]current page.north west) rectangle ([xshift=-0.7cm,yshift=0.7cm]current page.south east);
+
+% Elaborate corner decorations
+\node at ([xshift=1.8cm,yshift=-1.8cm]current page.north west) {\pgfornament[width=2cm,color=primaryblue]{61}};
+\node at ([xshift=-1.8cm,yshift=-1.8cm]current page.north east) {\pgfornament[width=2cm,color=primaryblue,symmetry=v]{61}};
+\node at ([xshift=1.8cm,yshift=1.8cm]current page.south west) {\pgfornament[width=2cm,color=primaryblue,symmetry=h]{61}};
+\node at ([xshift=-1.8cm,yshift=1.8cm]current page.south east) {\pgfornament[width=2cm,color=primaryblue,symmetry=c]{61}};
+
+% Side ornamental panels
+\node at ([xshift=1.2cm,yshift=3cm]current page.west) {\pgfornament[width=1.2cm,color=goldaccent]{63}};
+\node at ([xshift=1.2cm,yshift=-3cm]current page.west) {\pgfornament[width=1.2cm,color=goldaccent,symmetry=h]{63}};
+\node at ([xshift=-1.2cm,yshift=3cm]current page.east) {\pgfornament[width=1.2cm,color=goldaccent,symmetry=v]{63}};
+\node at ([xshift=-1.2cm,yshift=-3cm]current page.east) {\pgfornament[width=1.2cm,color=goldaccent,symmetry=c]{63}};
+\end{tikzpicture}
+
+% Royal header with logos
+\textcolor{white}{
+\begin{minipage}[t]{0.45\textwidth}
+\includegraphics[width=0.8\textwidth]{university-logo.jpeg}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\raggedleft
+\includegraphics[width=0.8\textwidth]{college-logo.jpeg}
+\end{minipage}
+}
+
+\vspace{0.8cm}
+
+% Institutional Information with royal styling
+\begin{center}
+\pgfornament[width=6cm,color=primaryblue]{88}\\[0.3cm]
+{\LARGE\textbf{\textcolor{primaryblue}{HARVARD UNIVERSITY}}}\\[0.2cm]
+{\Large\textcolor{burgundy}{School of Business}}\\[0.1cm]
+{\large\textcolor{darkgray}{Department of Strategic Management}}\\[0.3cm]
+\pgfornament[width=4cm,color=goldaccent]{75}
+\end{center}
+
+\vspace{1cm}
+
+% Document Type with royal treatment
+\begin{center}
+\begin{tikzpicture}
+\node[draw=burgundy,line width=2pt,rounded corners=20pt,fill=burgundy!10,text width=8cm,align=center,minimum height=1.8cm] {\Large\textbf{Master's Thesis}};
+\node at (-4.5,0) {\pgfornament[width=1cm,color=goldaccent]{71}};
+\node at (4.5,0) {\pgfornament[width=1cm,color=goldaccent,symmetry=v]{71}};
+\node at (0,1.2) {\pgfornament[width=1cm,color=primaryblue]{75}};
+\node at (0,-1.2) {\pgfornament[width=1cm,color=primaryblue]{76}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1.2cm}
+
+% Project Title with manuscript styling
+\begin{center}
+\begin{tcolorbox}[colback=lightgray!15,colframe=primaryblue,width=0.95\textwidth,arc=20pt,boxrule=3pt]
+\begin{center}
+\pgfornament[width=2.5cm,color=goldaccent]{71}\\[0.2cm]
+{\LARGE\textbf{Strategic Leadership in\\Digital Transformation:\\A Multi-Case Study Analysis}}\\[0.2cm]
+\pgfornament[width=2.5cm,color=goldaccent]{72}
+\end{center}
+\end{tcolorbox}
+\end{center}
+
+\vspace{1.2cm}
+
+% Student Information with royal frame
+\begin{center}
+\begin{tikzpicture}
+\node[draw=burgundy,line width=2pt,rounded corners=15pt,fill=burgundy!5,text width=10cm,align=center,minimum height=2.5cm] {
+\textbf{\Large Candidate:}\\[0.3cm]
+\textbf{Victoria Sterling}\\
+Student ID: MBA-2023-156\\[0.2cm]
+Master of Business Administration\\
+\textit{Academic Year 2025/2026}
+};
+% Royal decorative elements
+\node at (-6,0) {\pgfornament[width=1.2cm,color=goldaccent]{63}};
+\node at (6,0) {\pgfornament[width=1.2cm,color=goldaccent,symmetry=v]{63}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1cm}
+
+% Supervisor Information
+\begin{center}
+\begin{tabular}{cc}
+\begin{tabular}{|c|}
+\hline
+\cellcolor{primaryblue!20}
+\textbf{\large Primary Supervisor} \\
+\textbf{Prof. Dr. Charles Windsor} \\
+Department of Strategic Management \\
+Harvard Business School \\
+\hline
+\end{tabular}
+&
+\qquad
+\begin{tabular}{|c|}
+\hline
+\cellcolor{goldaccent!20}
+\textbf{\large External Advisor} \\
+\textbf{Dr. Margaret Cambridge} \\
+Senior Partner \\
+Boston Consulting Group \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{center}
+
+\vfill
+
+% Course Information with royal footer
+\begin{center}
+\begin{tikzpicture}
+\node[draw=goldaccent,line width=2pt,fill=goldaccent!15,rounded corners=10pt,minimum width=12cm,minimum height=1.2cm] {\textbf{Course: Strategic Management Capstone (SM-899)}};
+\node at (-7,0) {\pgfornament[width=0.8cm,color=burgundy]{57}};
+\node at (7,0) {\pgfornament[width=0.8cm,color=burgundy,symmetry=v]{57}};
+\end{tikzpicture}
+\end{center}
+
+\end{titlepage}
+
+\restoregeometry
+
+% ========== TITLE PAGE 4: ACADEMIC ILLUMINATED MANUSCRIPT ==========
+\begin{titlepage}
+\newgeometry{margin=0.8in}
+
+% Illuminated manuscript border
+\AddToShipoutPictureBG{%
+\begin{tikzpicture}[remember picture,overlay]
+% Gradient parchment background
+\shade[top color=lightgray!30,bottom color=lightgray!10] 
+      (current page.north west) rectangle (current page.south east);
+      
+% Ornate border framework
+\draw[line width=5pt,primaryblue,rounded corners=5pt] ([xshift=0.4cm,yshift=-0.4cm]current page.north west) rectangle ([xshift=-0.4cm,yshift=0.4cm]current page.south east);
+\draw[line width=2pt,goldaccent] ([xshift=0.6cm,yshift=-0.6cm]current page.north west) rectangle ([xshift=-0.6cm,yshift=0.6cm]current page.south east);
+\draw[line width=1pt,burgundy] ([xshift=0.8cm,yshift=-0.8cm]current page.north west) rectangle ([xshift=-0.8cm,yshift=0.8cm]current page.south east);
+
+% Illuminated corner initials
+\node at ([xshift=2cm,yshift=-2cm]current page.north west) {\pgfornament[width=2.5cm,color=primaryblue]{71}};
+\node at ([xshift=-2cm,yshift=-2cm]current page.north east) {\pgfornament[width=2.5cm,color=primaryblue,symmetry=v]{71}};
+\node at ([xshift=2cm,yshift=2cm]current page.south west) {\pgfornament[width=2.5cm,color=primaryblue,symmetry=h]{71}};
+\node at ([xshift=-2cm,yshift=2cm]current page.south east) {\pgfornament[width=2.5cm,color=primaryblue,symmetry=c]{71}};
+
+% Medieval border decorations
+\node at ([yshift=-1.5cm]current page.north) {\pgfornament[width=4cm,color=goldaccent]{63}};
+\node at ([yshift=1.5cm]current page.south) {\pgfornament[width=4cm,color=goldaccent,symmetry=h]{63}};
+\end{tikzpicture}
+}
+
+% Header with logos
+\begin{minipage}[t]{0.4\textwidth}
+\includegraphics[width=0.85\textwidth]{university-logo.jpeg}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+\raggedleft
+\includegraphics[width=0.85\textwidth]{college-logo.jpeg}
+\end{minipage}
+
+\vspace{0.8cm}
+
+% Institutional Information with illuminated styling
+\begin{center}
+\pgfornament[width=8cm,color=primaryblue]{88}\\[0.4cm]
+{\Huge\textbf{\textcolor{primaryblue}{PRINCETON}}}\\
+{\LARGE\textbf{\textcolor{primaryblue}{UNIVERSITY}}}\\[0.3cm]
+\pgfornament[width=5cm,color=goldaccent]{75}\\[0.2cm]
+{\Large Faculty of Engineering and Applied Science}\\[0.1cm]
+{\large Department of Computer Science}\\[0.3cm]
+\pgfornament[width=3cm,color=burgundy]{76}
+\end{center}
+
+\vspace{1cm}
+
+% Document Type with illuminated frame
+\begin{center}
+\begin{tikzpicture}
+\node[draw=burgundy,line width=3pt,rounded corners=25pt,fill=burgundy!8,text width=9cm,align=center,minimum height=2cm] {\Large\textbf{Doctoral Dissertation}};
+\node at (-5.5,0) {\pgfornament[width=1.5cm,color=goldaccent]{63}};
+\node at (5.5,0) {\pgfornament[width=1.5cm,color=goldaccent,symmetry=v]{63}};
+\node at (0,1.3) {\pgfornament[width=2cm,color=primaryblue]{61}};
+\node at (0,-1.3) {\pgfornament[width=2cm,color=primaryblue,symmetry=h]{61}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1.3cm}
+
+% Project Title with manuscript illumination
+\begin{center}
+\begin{tcolorbox}[colback=white!85,colframe=primaryblue,width=0.92\textwidth,arc=25pt,boxrule=3pt]
+\begin{center}
+\pgfornament[width=3cm,color=goldaccent]{71}\\[0.3cm]
+{\huge\textbf{Quantum Computing Applications\\in Cryptographic Security:\\Theory and Implementation}}\\[0.3cm]
+\pgfornament[width=3cm,color=goldaccent]{72}
+\end{center}
+\end{tcolorbox}
+\end{center}
+
+\vspace{1.5cm}
+
+% Student Information with illuminated border
+\begin{center}
+\begin{tikzpicture}
+\node[draw=primaryblue,line width=2pt,rounded corners=20pt,fill=lightgray!15,text width=9cm,align=center,minimum height=3cm] {
+\textbf{\Large Doctoral Candidate:}\\[0.4cm]
+\textbf{\large Dr. Jonathan Mitchell}\\
+Student ID: PhD-2022-134\\[0.3cm]
+\textit{Doctoral Program – Year 4}\\
+\textit{Academic Year 2025/2026}
+};
+% Decorative manuscript elements
+\node at (-6,0) {\pgfornament[width=1.5cm,color=burgundy]{71}};
+\node at (6,0) {\pgfornament[width=1.5cm,color=burgundy,symmetry=v]{71}};
+\node at (0,2) {\pgfornament[width=1cm,color=goldaccent]{75}};
+\node at (0,-2) {\pgfornament[width=1cm,color=goldaccent]{76}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1.2cm}
+
+% Supervisor Information with academic styling
+\begin{center}
+\begin{tabular}{@{}c@{}}
+\textbf{\large Dissertation Committee:}\\[0.5cm]
+\begin{tabular}{cc}
+\textbf{Primary Advisor:} & \textbf{Secondary Advisor:} \\
+Prof. Eleanor Blackwood & Dr. Marcus Thompson \\
+Professor of Computer Science & Associate Professor \\
+Princeton University & MIT \\
+\\
+\multicolumn{2}{c}{\textbf{External Examiner:}} \\
+\multicolumn{2}{c}{Prof. Catherine Yale} \\
+\multicolumn{2}{c}{Stanford University}
+\end{tabular}
+\end{tabular}
+\end{center}
+
+\vfill
+
+% Course Information with manuscript footer
+\begin{center}
+\begin{tikzpicture}
+\node[draw=goldaccent,line width=2pt,fill=goldaccent!12,rounded corners=15pt,minimum width=11cm,minimum height=1.5cm] {\textbf{Research Focus: Quantum Information and Cybersecurity}};
+\node at (-6.5,0) {\pgfornament[width=1cm,color=primaryblue]{57}};
+\node at (6.5,0) {\pgfornament[width=1cm,color=primaryblue,symmetry=v]{57}};
+\end{tikzpicture}
+\end{center>
+
+\end{titlepage}
+
+\restoregeometry
+
+% ========== TITLE PAGE 5: MODERN LUXURY BORDER ==========
+\begin{titlepage}
+\newgeometry{margin=0.7in}
+
+% Luxury border design
+\begin{tikzpicture}[remember picture,overlay]
+% Layered luxury borders
+\draw[line width=6pt,primaryblue] ([xshift=0.2cm,yshift=-0.2cm]current page.north west) rectangle ([xshift=-0.2cm,yshift=0.2cm]current page.south east);
+\draw[line width=1pt,goldaccent] ([xshift=0.4cm,yshift=-0.4cm]current page.north west) rectangle ([xshift=-0.4cm,yshift=0.4cm]current page.south east);
+\draw[line width=3pt,burgundy] ([xshift=0.6cm,yshift=-0.6cm]current page.north west) rectangle ([xshift=-0.6cm,yshift=0.6cm]current page.south east);
+\draw[line width=1pt,goldaccent] ([xshift=0.8cm,yshift=-0.8cm]current page.north west) rectangle ([xshift=-0.8cm,yshift=0.8cm]current page.south east);
+
+% Luxury corner embellishments
+\node at ([xshift=2.2cm,yshift=-2.2cm]current page.north west) {\pgfornament[width=3cm,color=primaryblue]{63}};
+\node at ([xshift=-2.2cm,yshift=-2.2cm]current page.north east) {\pgfornament[width=3cm,color=primaryblue,symmetry=v]{63}};
+\node at ([xshift=2.2cm,yshift=2.2cm]current page.south west) {\pgfornament[width=3cm,color=primaryblue,symmetry=h]{63}};
+\node at ([xshift=-2.2cm,yshift=2.2cm]current page.south east) {\pgfornament[width=3cm,color=primaryblue,symmetry=c]{63}};
+
+% Luxury side ornaments
+\node at ([xshift=1.5cm,yshift=4cm]current page.west) {\pgfornament[width=2cm,color=goldaccent]{71}};
+\node at ([xshift=1.5cm,yshift=-4cm]current page.west) {\pgfornament[width=2cm,color=goldaccent,symmetry=h]{71}};
+\node at ([xshift=-1.5cm,yshift=4cm]current page.east) {\pgfornament[width=2cm,color=goldaccent,symmetry=v]{71}};
+\node at ([xshift=-1.5cm,yshift=-4cm]current page.east) {\pgfornament[width=2cm,color=goldaccent,symmetry=c]{71}};
+
+% Top and bottom luxury ornaments
+\node at ([yshift=-1.8cm]current page.north) {\pgfornament[width=5cm,color=burgundy]{88}};
+\node at ([yshift=1.8cm]current page.south) {\pgfornament[width=5cm,color=burgundy]{88}};
+\end{tikzpicture}
+
+% Logos with luxury treatment
+\begin{minipage}[t]{0.45\textwidth}
+\includegraphics[width=0.8\textwidth]{university-logo.jpeg}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\raggedleft
+\includegraphics[width=0.8\textwidth]{college-logo.jpeg}
+\end{minipage}
+
+\vspace{0.8cm}
+
+% Luxury divider
+\begin{center}
+\pgfornament[width=10cm,color=primaryblue]{88}
+\end{center}
+
+\vspace{0.5cm}
+
+% Institutional Information with luxury styling
+\begin{center}
+{\LARGE\textbf{\textcolor{primaryblue}{YALE UNIVERSITY}}}\\[0.3cm]
+\pgfornament[width=6cm,color=goldaccent]{75}\\[0.2cm]
+{\Large\textcolor{burgundy}{School of Engineering \& Applied Science}}\\[0.1cm]
+{\large\textcolor{darkgray}{Department of Mechanical Engineering}}\\[0.3cm]
+\pgfornament[width=4cm,color=burgundy]{76}
+\end{center}
+
+\vspace{0.8cm}
+
+% Document Type with luxury frame
+\begin{center}
+\begin{tikzpicture}
+\node[draw=burgundy,line width=4pt,rounded corners=30pt,fill=burgundy!8,text width=10cm,align=center,minimum height=2.2cm] {\Large\textbf{Senior Design Project Report}};
+\node at (-6,0) {\pgfornament[width=1.8cm,color=goldaccent]{63}};
+\node at (6,0) {\pgfornament[width=1.8cm,color=goldaccent,symmetry=v]{63}};
+\node at (0,1.5) {\pgfornament[width=2.5cm,color=primaryblue]{61}};
+\node at (0,-1.5) {\pgfornament[width=2.5cm,color=primaryblue,symmetry=h]{61}};
+\end{tikzpicture}
+\end{center>
+
+\vspace{1cm}
+
+% Project Title with luxury illumination
+\begin{center}
+\begin{tcolorbox}[colback=lightgray!12,colframe=primaryblue,width=0.94\textwidth,arc=30pt,boxrule=4pt]
+\begin{center}
+\pgfornament[width=4cm,color=goldaccent]{71}\\[0.4cm]
+{\LARGE\textbf{\textcolor{burgundy}{Advanced Robotics for\\Precision Manufacturing:\\Design and Implementation}}}\\[0.4cm]
+\pgfornament[width=4cm,color=goldaccent]{72}
+\end{center}
+\end{tcolorbox>
+\end{center>
+
+\vspace{1.2cm}
+
+% Team Information with luxury grid
+\begin{center}
+\textbf{\Large Team Members:}\\[0.5cm]
+\begin{tikzpicture}
+\node[draw=primaryblue,line width=2pt,rounded corners=15pt,fill=primaryblue!5,text width=11cm,align=center,minimum height=4cm] {
+\begin{tabular}{|c|c|}
+\hline
+\rowcolor{primaryblue!15}
+\textbf{Name} & \textbf{Student ID} \\
+\hline
+Daniel Zhang & ME-2021-234 \\
+\hline
+Isabella Rodriguez & ME-2021-156 \\
+\hline
+Marcus Johnson & ME-2021-298 \\
+\hline
+Sophia Chen & ME-2021-177 \\
+\hline
+\end{tabular}\\[0.3cm]
+\textit{\large Level 4 – Academic Year 2025/2026}
+};
+% Luxury decorative elements around team info
+\node at (-6.5,0) {\pgfornament[width=1.5cm,color=goldaccent]{71}};
+\node at (6.5,0) {\pgfornament[width=1.5cm,color=goldaccent,symmetry=v]{71}};
+\end{tikzpicture}
+\end{center>
+
+\vspace{1cm}
+
+% Supervisor Information with luxury treatment
+\begin{center>
+\begin{tabular}{cc}
+\begin{tikzpicture}
+\node[draw=burgundy,line width=2pt,rounded corners=20pt,fill=burgundy!8,text width=6cm,align=center,minimum height=3.5cm] {
+\textbf{Faculty Advisor:}\\[0.3cm]
+\textbf{Prof. Dr. Elizabeth Morgan}\\[0.2cm]
+Department of Mechanical\\Engineering\\[0.2cm]
+Yale University
+};
+\node at (0,2.2) {\pgfornament[width=1cm,color=goldaccent]{75}};
+\node at (0,-2.2) {\pgfornament[width=1cm,color=goldaccent]{76}};
+\end{tikzpicture}
+&
+\quad
+\begin{tikzpicture}
+\node[draw=accentgreen,line width=2pt,rounded corners=20pt,fill=accentgreen!8,text width=6cm,align=center,minimum height=3.5cm] {
+\textbf{Industry Mentor:}\\[0.3cm]
+\textbf{Mr. Robert Kim}\\[0.2cm]
+Senior Robotics Engineer\\[0.2cm]
+Boston Dynamics
+};
+\node at (0,2.2) {\pgfornament[width=1cm,color=goldaccent]{75}};
+\node at (0,-2.2) {\pgfornament[width=1cm,color=goldaccent]{76}};
+\end{tikzpicture}
+\end{tabular}
+\end{center>
+
+\vfill
+
+% Course Information with luxury footer
+\begin{center>
+\begin{tikzpicture}
+\node[draw=goldaccent,line width=3pt,fill=goldaccent!15,rounded corners=20pt,minimum width=13cm,minimum height=1.8cm] {\textbf{\large Course: Mechanical Engineering Design Capstone (MENG 402)}};
+\node at (-7.5,0) {\pgfornament[width=1.2cm,color=primaryblue]{57}};
+\node at (7.5,0) {\pgfornament[width=1.2cm,color=primaryblue,symmetry=v]{57}};
+\node at (0,1.2) {\pgfornament[width=2cm,color=burgundy]{61}};
+\node at (0,-1.2) {\pgfornament[width=2cm,color=burgundy,symmetry=h]{61}};
+\end{tikzpicture>
+\end{center>
+
+\end{titlepage}
+
+\restoregeometry
+
+\end{document>

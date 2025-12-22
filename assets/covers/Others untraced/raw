@@ -1,0 +1,318 @@
+\documentclass[11pt,a4paper]{article}
+
+% ========== CORE PACKAGES ==========
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{
+    top=1.5in,
+    bottom=1.2in,
+    left=1in,
+    right=1in,
+    headheight=60pt,
+    headsep=0.4in,
+    footskip=0.5in
+}
+
+% ========== FONTS AND TYPOGRAPHY ==========
+\usepackage{fontspec}
+\usepackage{microtype}
+\setmainfont{Inter}[
+    UprightFont = *-Regular,
+    BoldFont = *-SemiBold,
+    ItalicFont = *-Italic,
+    BoldItalicFont = *-SemiBoldItalic
+]
+
+% ========== COLORS ==========
+\usepackage{xcolor}
+\definecolor{primary}{HTML}{1e293b}
+\definecolor{secondary}{HTML}{64748b}
+\definecolor{accent}{HTML}{3b82f6}
+\definecolor{lightaccent}{HTML}{60a5fa}
+\definecolor{success}{HTML}{10b981}
+\definecolor{warning}{HTML}{f59e0b}
+\definecolor{background}{HTML}{f8fafc}
+\definecolor{border}{HTML}{e2e8f0}
+
+% ========== GRAPHICS AND TIKZ ==========
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,decorations.pathmorphing,patterns,calc}
+\usepackage{graphicx}
+
+% ========== ADVANCED HEADERS/FOOTERS ==========
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{datetime2}
+
+% ========== PAGE BACKGROUNDS ==========
+\usepackage{eso-pic}
+\usepackage{atbegshi}
+
+% ========== CUSTOM COMMANDS ==========
+\newcommand{\companyname}{ACME Corporation}
+\newcommand{\documenttitle}{Professional Document}
+\newcommand{\authornameheader}{John Doe}
+\newcommand{\departmentname}{Engineering Department}
+
+% ========== STYLE 1: MODERN CORPORATE ==========
+\fancypagestyle{corporate}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+    
+    \fancyhead[L]{%
+        \begin{tikzpicture}[remember picture, overlay]
+            % Header background
+            \fill[accent!10] (current page.north west) rectangle ([yshift=-80pt]current page.north east);
+            \fill[accent] (current page.north west) rectangle ([yshift=-5pt]current page.north east);
+            
+            % Company name
+            \node[anchor=west, font=\Large\bfseries\sffamily, color=primary] 
+                at ([xshift=1in, yshift=-35pt]current page.north west) {\companyname};
+            
+            % Document title
+            \node[anchor=west, font=\large\sffamily, color=secondary] 
+                at ([xshift=1in, yshift=-55pt]current page.north west) {\documenttitle};
+        \end{tikzpicture}
+    }
+    
+    \fancyfoot[C]{%
+        \begin{tikzpicture}[remember picture, overlay]
+            % Footer background
+            \fill[background] (current page.south west) rectangle ([yshift=60pt]current page.south east);
+            \draw[border, line width=1pt] ([yshift=60pt]current page.south west) -- ([yshift=60pt]current page.south east);
+            
+            % Page number
+            \node[font=\large\bfseries\sffamily, color=accent] 
+                at ([yshift=30pt]current page.south) {\thepage\ of \pageref{LastPage}};
+        \end{tikzpicture}
+    }
+}
+
+% ========== STYLE 2: ELEGANT ACADEMIC ==========
+\fancypagestyle{academic}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+    
+    \fancyhead[L]{%
+        \begin{tikzpicture}[remember picture, overlay]
+            % Decorative border
+            \draw[primary, line width=2pt] 
+                ([xshift=1in, yshift=-20pt]current page.north west) -- 
+                ([xshift=-1in, yshift=-20pt]current page.north east);
+            \draw[accent, line width=1pt] 
+                ([xshift=1in, yshift=-22pt]current page.north west) -- 
+                ([xshift=-1in, yshift=-22pt]current page.north east);
+            
+            % Title and author
+            \node[anchor=west, font=\Large\bfseries, color=primary] 
+                at ([xshift=1in, yshift=-40pt]current page.north west) {\documenttitle};
+            \node[anchor=east, font=\large\itshape, color=secondary] 
+                at ([xshift=-1in, yshift=-40pt]current page.north east) {\authornameheader};
+        \end{tikzpicture}
+    }
+    
+    \fancyfoot[C]{%
+        \begin{tikzpicture}[remember picture, overlay]
+            % Decorative elements
+            \foreach \x in {0,0.5,...,10} {
+                \fill[accent!30, opacity=0.6] ([xshift=\x cm, yshift=40pt]current page.south west) circle (1.5pt);
+            }
+            
+            % Page information
+            \node[font=\footnotesize\sffamily, color=secondary] 
+                at ([yshift=20pt]current page.south) {Page \thepage\ | \today};
+        \end{tikzpicture}
+    }
+}
+
+% ========== STYLE 3: TECHNICAL BLUEPRINT ==========
+\fancypagestyle{technical}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+    
+    \fancyhead[L]{%
+        \begin{tikzpicture}[remember picture, overlay]
+            % Grid pattern background
+            \fill[primary!5] (current page.north west) rectangle ([yshift=-70pt]current page.north east);
+            
+            % Grid lines
+            \foreach \x in {0,0.5,...,21} {
+                \draw[primary!20, line width=0.2pt] 
+                    ([xshift=\x cm]current page.north west) -- ([xshift=\x cm, yshift=-70pt]current page.north west);
+            }
+            \foreach \y in {0,0.5,...,5} {
+                \draw[primary!20, line width=0.2pt] 
+                    ([yshift=-\y*14pt]current page.north west) -- ([yshift=-\y*14pt]current page.north east);
+            }
+            
+            % Technical border
+            \draw[primary, line width=3pt] 
+                ([xshift=10pt, yshift=-10pt]current page.north west) rectangle 
+                ([xshift=-10pt, yshift=-60pt]current page.north east);
+            
+            % Content
+            \node[anchor=west, font=\Large\bfseries\ttfamily, color=primary] 
+                at ([xshift=30pt, yshift=-30pt]current page.north west) {\documenttitle};
+            \node[anchor=west, font=\small\ttfamily, color=secondary] 
+                at ([xshift=30pt, yshift=-45pt]current page.north west) {REV: 1.0 | DEPT: \departmentname};
+        \end{tikzpicture}
+    }
+    
+    \fancyfoot[C]{%
+        \begin{tikzpicture}[remember picture, overlay]
+            % Technical footer frame
+            \draw[primary, line width=2pt] 
+                ([xshift=50pt, yshift=15pt]current page.south west) rectangle 
+                ([xshift=-50pt, yshift=45pt]current page.south east);
+            
+            % Corner markers
+            \foreach \corner in {south west, south east} {
+                \draw[accent, line width=1pt] 
+                    ([xshift=50pt, yshift=15pt]current page.\corner) -- ++(10pt,0) -- ++(0,10pt);
+                \draw[accent, line width=1pt] 
+                    ([xshift=-50pt, yshift=15pt]current page.\corner) -- ++(-10pt,0) -- ++(0,10pt);
+            }
+            
+            % Page and date info
+            \node[font=\small\bfseries\ttfamily, color=primary] 
+                at ([yshift=30pt]current page.south) {[\thepage/\pageref{LastPage}] - \DTMnow};
+        \end{tikzpicture}
+    }
+}
+
+% ========== STYLE 4: CREATIVE GRADIENT ==========
+\fancypagestyle{creative}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+    
+    \fancyhead[L]{%
+        \begin{tikzpicture}[remember picture, overlay]
+            % Gradient background effect
+            \shade[left color=accent!30, right color=lightaccent!10] 
+                (current page.north west) rectangle ([yshift=-80pt]current page.north east);
+            
+            % Curved decorative element
+            \draw[accent, line width=3pt, rounded corners=15pt] 
+                ([xshift=1in, yshift=-25pt]current page.north west) -- 
+                ([xshift=3in, yshift=-35pt]current page.north west) -- 
+                ([xshift=5in, yshift=-25pt]current page.north west);
+            
+            % Modern typography
+            \node[anchor=west, font=\Huge\bfseries\sffamily, color=white, 
+                  text=primary, opacity=0.9] 
+                at ([xshift=1in, yshift=-50pt]current page.north west) {\documenttitle};
+        \end{tikzpicture}
+    }
+    
+    \fancyfoot[C]{%
+        \begin{tikzpicture}[remember picture, overlay]
+            % Wave pattern
+            \draw[accent, line width=2pt, decoration={snake, amplitude=2pt, segment length=10pt}, decorate] 
+                ([xshift=2in, yshift=35pt]current page.south west) -- 
+                ([xshift=-2in, yshift=35pt]current page.south east);
+            
+            % Circular page indicator
+            \fill[accent] ([yshift=20pt]current page.south) circle (15pt);
+            \node[font=\large\bfseries\sffamily, color=white] 
+                at ([yshift=20pt]current page.south) {\thepage};
+        \end{tikzpicture}
+    }
+}
+
+% ========== STYLE 5: MINIMALIST PROFESSIONAL ==========
+\fancypagestyle{minimal}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+    
+    \fancyhead[L]{%
+        \begin{tikzpicture}[remember picture, overlay]
+            % Simple line accent
+            \draw[accent, line width=4pt] 
+                ([xshift=1in]current page.north west) -- ([xshift=1in, yshift=-1in]current page.north west);
+            
+            % Clean typography
+            \node[anchor=west, font=\large\bfseries\sffamily, color=primary] 
+                at ([xshift=1.3in, yshift=-30pt]current page.north west) {\companyname};
+            \node[anchor=west, font=\normalsize\sffamily, color=secondary] 
+                at ([xshift=1.3in, yshift=-50pt]current page.north west) {\documenttitle};
+        \end{tikzpicture}
+    }
+    
+    \fancyfoot[C]{%
+        \begin{tikzpicture}[remember picture, overlay]
+            % Minimal footer line
+            \draw[secondary, line width=0.5pt] 
+                ([xshift=2in, yshift=40pt]current page.south west) -- 
+                ([xshift=-2in, yshift=40pt]current page.south east);
+            
+            % Simple page number
+            \node[font=\small\sffamily, color=secondary] 
+                at ([yshift=25pt]current page.south) {\thepage};
+        \end{tikzpicture}
+    }
+}
+
+% ========== DOCUMENT CONTENT ==========
+\begin{document}
+
+% Page 1: Corporate Style
+\thispagestyle{corporate}
+\vspace*{2in}
+\begin{center}
+    {\Huge\bfseries\sffamily Corporate Style Header/Footer}
+    
+    \vspace{1in}
+    {\large Modern corporate design with clean lines and professional branding}
+\end{center}
+\newpage
+
+% Page 2: Academic Style
+\thispagestyle{academic}
+\vspace*{2in}
+\begin{center}
+    {\Huge\bfseries Academic Style Header/Footer}
+    
+    \vspace{1in}
+    {\large Elegant design suitable for research papers and academic documents}
+\end{center}
+\newpage
+
+% Page 3: Technical Style
+\thispagestyle{technical}
+\vspace*{2in}
+\begin{center}
+    {\Huge\bfseries\ttfamily Technical Style Header/Footer}
+    
+    \vspace{1in}
+    {\large Blueprint-inspired design for technical documentation}
+\end{center}
+\newpage
+
+% Page 4: Creative Style
+\thispagestyle{creative}
+\vspace*{2in}
+\begin{center}
+    {\Huge\bfseries\sffamily Creative Style Header/Footer}
+    
+    \vspace{1in}
+    {\large Modern creative design with gradients and dynamic elements}
+\end{center}
+\newpage
+
+% Page 5: Minimal Style
+\thispagestyle{minimal}
+\vspace*{2in}
+\begin{center}
+    {\Huge\bfseries\sffamily Minimalist Style Header/Footer}
+    
+    \vspace{1in}
+    {\large Clean, professional minimalist design}
+\end{center}
+
+\end{document}

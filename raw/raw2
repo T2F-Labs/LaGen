@@ -1,0 +1,509 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, positioning}
+\usepackage{fontspec}
+\usepackage{tcolorbox}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{eso-pic}
+\usepackage{transparent}
+
+% Custom colors
+\definecolor{primaryblue}{RGB}{0,102,204}
+\definecolor{secondaryblue}{RGB}{51,153,255}
+\definecolor{darkgray}{RGB}{64,64,64}
+\definecolor{lightgray}{RGB}{240,240,240}
+\definecolor{accentgreen}{RGB}{0,153,102}
+
+\begin{document}
+
+% ========== TITLE PAGE 1: MODERN MINIMALIST ==========
+\begin{titlepage}
+\newgeometry{margin=0.8in}
+
+% Header with logos
+\begin{minipage}[t]{0.45\textwidth}
+\includegraphics[width=0.8\textwidth]{university-logo.png}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\raggedleft
+\includegraphics[width=0.8\textwidth]{college-logo.png}
+\end{minipage}
+
+\vspace{1cm}
+
+% Institutional Information
+\begin{center}
+{\Large\textbf{UNIVERSITY OF TECHNOLOGY}}\\[0.3cm]
+{\large Faculty of Engineering and Computer Science}\\[0.2cm]
+{\normalsize Department of Computer Science}
+\end{center}
+
+\vspace{1.5cm}
+
+% Document Type
+\begin{center}
+\colorbox{primaryblue}{\textcolor{white}{\Large\textbf{\quad Final Year Project Report \quad}}}
+\end{center}
+
+\vspace{2cm}
+
+% Project Title
+\begin{center}
+{\Huge\textbf{\textcolor{primaryblue}{AI-Powered Healthcare\\Management System}}}
+\end{center}
+
+\vspace{2.5cm}
+
+% Student Information
+\begin{center}
+\begin{tabular}{@{}c@{}}
+\textbf{\Large Team Members:}\\[0.5cm]
+\textbf{Sarah Johnson} - ID: 2021-CS-001\\[0.2cm]
+\textbf{Michael Chen} - ID: 2021-CS-002\\[0.2cm]
+\textbf{Emma Williams} - ID: 2021-CS-003\\[0.5cm]
+\textit{Level 4 – Academic Year 2025/2026}
+\end{tabular}
+\end{center}
+
+\vspace{1.5cm}
+
+% Supervisor Information
+\begin{center}
+\begin{tabular}{@{}c@{}}
+\textbf{\large Supervisor:}\\[0.3cm]
+\textbf{Dr. Robert Anderson}\\
+Professor, Department of Computer Science\\[0.5cm]
+\textbf{External Supervisor:}\\
+\textbf{Ms. Lisa Thompson}\\
+Senior Software Engineer, TechCorp Ltd.
+\end{tabular}
+\end{center}
+
+\vfill
+
+% Course Information
+\begin{center}
+\textbf{Course:} Advanced Software Engineering (CSE-401)
+\end{center}
+
+\end{titlepage}
+
+\restoregeometry
+
+% ========== TITLE PAGE 2: GEOMETRIC DESIGN ==========
+\begin{titlepage}
+\newgeometry{margin=0.8in}
+
+% Background geometric shapes
+\begin{tikzpicture}[remember picture,overlay]
+\node[circle, fill=primaryblue!20, minimum size=8cm] at ([xshift=-3cm,yshift=3cm]current page.north east) {};
+\node[rectangle, fill=accentgreen!15, minimum width=15cm, minimum height=4cm] at ([yshift=-2cm]current page.center) {};
+\end{tikzpicture}
+
+% Header with logos
+\begin{minipage}[t]{0.4\textwidth}
+\includegraphics[width=0.9\textwidth]{university-logo.png}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+\raggedleft
+\includegraphics[width=0.9\textwidth]{college-logo.png}
+\end{minipage}
+
+\vspace{0.8cm}
+
+% Institutional Information in a box
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=primaryblue,width=0.8\textwidth,arc=5pt]
+\begin{center}
+{\Large\textbf{STANFORD UNIVERSITY}}\\[0.2cm]
+{\large School of Engineering}\\[0.1cm]
+{\normalsize Department of Electrical Engineering}
+\end{center}
+\end{tcolorbox}
+\end{center}
+
+\vspace{1cm}
+
+% Document Type
+\begin{center}
+\tikz\node[draw=primaryblue,thick,rounded corners=10pt,fill=primaryblue!10,text width=6cm,align=center,minimum height=1cm] {\Large\textbf{Internship Report}};
+\end{center}
+
+\vspace{1.5cm}
+
+% Project Title
+\begin{center}
+\begin{tcolorbox}[colback=darkgray!5,colframe=none,width=0.9\textwidth]
+\begin{center}
+{\huge\textbf{\textcolor{darkgray}{Renewable Energy Grid\\Integration System}}}
+\end{center}
+\end{tcolorbox}
+\end{center}
+
+\vspace{1.5cm}
+
+% Student Information
+\begin{center}
+\begin{tikzpicture}
+\node[draw=accentgreen,thick,rounded corners=5pt,fill=accentgreen!5,text width=8cm,align=center,minimum height=3cm] {
+\textbf{\large Student Information:}\\[0.3cm]
+\textbf{Alexander Rodriguez}\\
+Student ID: EE-2021-045\\[0.3cm]
+\textit{Level 4 – Academic Year 2025/2026}
+};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1cm}
+
+% Supervisor Information
+\begin{center}
+\begin{tabularx}{0.8\textwidth}{|X|X|}
+\hline
+\multicolumn{2}{|c|}{\textbf{\large Supervision}} \\
+\hline
+\textbf{Academic Supervisor:} & \textbf{Industry Supervisor:} \\
+Dr. Jennifer Park & Mr. David Kim \\
+Associate Professor & Lead Engineer \\
+Dept. of Electrical Engineering & GreenTech Solutions \\
+\hline
+\end{tabularx}
+\end{center}
+
+\vfill
+
+% Course Information
+\begin{center}
+\colorbox{lightgray}{\textbf{Course: Industrial Internship (EE-498)}}
+\end{center}
+
+\end{titlepage}
+
+\restoregeometry
+
+% ========== TITLE PAGE 3: CORPORATE STYLE ==========
+\begin{titlepage}
+\newgeometry{margin=0.7in}
+
+% Header strip
+\begin{tikzpicture}[remember picture,overlay]
+\fill[primaryblue] ([yshift=-1cm]current page.north west) rectangle ([yshift=-2.5cm]current page.north east);
+\end{tikzpicture}
+
+\vspace{0.5cm}
+
+% Logos in header
+\textcolor{white}{
+\begin{minipage}[t]{0.45\textwidth}
+\includegraphics[width=0.8\textwidth]{university-logo-white.png}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\raggedleft
+\includegraphics[width=0.8\textwidth]{college-logo-white.png}
+\end{minipage}
+}
+
+\vspace{1.5cm}
+
+% Institutional Information
+\begin{center}
+{\LARGE\textbf{\textcolor{primaryblue}{MASSACHUSETTS INSTITUTE OF TECHNOLOGY}}}\\[0.4cm]
+{\Large\textcolor{darkgray}{Sloan School of Management}}\\[0.2cm]
+{\large\textcolor{darkgray}{Department of Operations Research}}
+\end{center}
+
+\vspace{1cm}
+
+% Document Type Banner
+\begin{center}
+\begin{tikzpicture}
+\node[trapezium, trapezium left angle=70, trapezium right angle=110, 
+      fill=accentgreen, text=white, minimum width=8cm, minimum height=1.2cm] 
+      {\Large\textbf{Master's Thesis}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1.5cm}
+
+% Project Title
+\begin{center}
+\begin{tcolorbox}[colback=primaryblue!5,colframe=primaryblue,width=0.95\textwidth,arc=0pt,boxrule=2pt]
+\begin{center}
+{\LARGE\textbf{Optimization Models for\\Supply Chain Resilience\\in Post-Pandemic Era}}
+\end{center}
+\end{tcolorbox}
+\end{center}
+
+\vspace{1.5cm}
+
+% Student Information Table
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{3cm}|p{8cm}|}
+\hline
+\rowcolor{lightgray}
+\textbf{Student} & \textbf{Maria Gonzalez} \\
+\hline
+\textbf{Student ID} & MBA-2023-127 \\
+\hline
+\textbf{Program} & Master of Business Administration \\
+\hline
+\textbf{Academic Year} & 2025/2026 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{1cm}
+
+% Supervisor Information
+\begin{center}
+\begin{tabular}{cc}
+\begin{tabular}{|c|}
+\hline
+\textbf{\large Primary Supervisor} \\
+\textbf{Prof. Dr. Thomas Wilson} \\
+Department of Operations Research \\
+MIT Sloan School of Management \\
+\hline
+\end{tabular}
+&
+\qquad
+\begin{tabular}{|c|}
+\hline
+\textbf{\large Co-Supervisor} \\
+\textbf{Dr. Rachel Chang} \\
+Senior Consultant \\
+McKinsey \& Company \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{center}
+
+\vfill
+
+% Course Information Footer
+\begin{center}
+\begin{tikzpicture}[remember picture,overlay]
+\fill[darkgray!20] ([yshift=2cm]current page.south west) rectangle ([yshift=3cm]current page.south east);
+\node[anchor=center] at ([yshift=2.5cm]current page.south) {\textbf{Course: Strategic Operations Management (15.769)}};
+\end{tikzpicture}
+\end{center}
+
+\end{titlepage}
+
+\restoregeometry
+
+% ========== TITLE PAGE 4: ELEGANT GRADIENT ==========
+\begin{titlepage}
+\newgeometry{margin=0.8in}
+
+% Gradient background
+\AddToShipoutPictureBG{%
+\begin{tikzpicture}[remember picture,overlay]
+\shade[top color=primaryblue!20,bottom color=white] 
+      (current page.north west) rectangle (current page.south east);
+\end{tikzpicture}
+}
+
+% Header with logos
+\begin{minipage}[t]{0.4\textwidth}
+\includegraphics[width=0.85\textwidth]{university-logo.png}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+\raggedleft
+\includegraphics[width=0.85\textwidth]{college-logo.png}
+\end{minipage}
+
+\vspace{1cm}
+
+% Institutional Information
+\begin{center}
+{\Huge\textbf{\textcolor{primaryblue}{OXFORD}}}\\
+{\LARGE\textbf{\textcolor{primaryblue}{UNIVERSITY}}}\\[0.5cm]
+{\Large Faculty of Engineering Science}\\[0.2cm]
+{\large Department of Engineering Science}
+\end{center}
+
+\vspace{1.2cm}
+
+% Document Type
+\begin{center}
+\begin{tikzpicture}
+\node[ellipse, fill=accentgreen, text=white, minimum width=6cm, minimum height=1.5cm] 
+     {\Large\textbf{Doctoral Dissertation}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1.8cm}
+
+% Project Title
+\begin{center}
+{\huge\textbf{Machine Learning Approaches\\for Autonomous Vehicle\\Navigation Systems}}
+\end{center}
+
+\vspace{2cm}
+
+% Student Information
+\begin{center}
+\begin{tcolorbox}[colback=white!90,colframe=primaryblue,width=0.7\textwidth,arc=10pt,boxrule=1pt]
+\begin{center}
+\textbf{\Large Candidate:}\\[0.3cm]
+\textbf{\large James Patterson}\\
+Student ID: DPhil-2022-089\\[0.3cm]
+\textit{Doctoral Program – Year 3}\\
+\textit{Academic Year 2025/2026}
+\end{center}
+\end{tcolorbox}
+\end{center}
+
+\vspace{1.5cm}
+
+% Supervisor Information
+\begin{center}
+\begin{tabular}{@{}c@{}}
+\textbf{\large Supervision Committee:}\\[0.5cm]
+\begin{tabular}{cc}
+\textbf{Primary Supervisor:} & \textbf{Secondary Supervisor:} \\
+Prof. Margaret Smith & Dr. Alan Thompson \\
+Professor of Robotics & Associate Professor \\
+Engineering Science Dept. & Computer Science Dept. \\
+\\
+\multicolumn{2}{c}{\textbf{External Examiner:}} \\
+\multicolumn{2}{c}{Prof. Richard Davis} \\
+\multicolumn{2}{c}{University of Cambridge}
+\end{tabular}
+\end{tabular}
+\end{center}
+
+\vfill
+
+% Course Information
+\begin{center}
+\textbf{Research Area:} Artificial Intelligence and Robotics
+\end{center}
+
+\end{titlepage}
+
+\restoregeometry
+
+% ========== TITLE PAGE 5: CONTEMPORARY BLOCKS ==========
+\begin{titlepage}
+\newgeometry{margin=0.7in}
+
+% Top colored blocks
+\begin{tikzpicture}[remember picture,overlay]
+\fill[primaryblue] ([yshift=-0.5cm]current page.north west) rectangle ++(5cm,-1.5cm);
+\fill[accentgreen] ([xshift=5cm,yshift=-0.5cm]current page.north west) rectangle ++(5cm,-1.5cm);
+\fill[secondaryblue] ([xshift=10cm,yshift=-0.5cm]current page.north west) rectangle ++(5cm,-1.5cm);
+\end{tikzpicture}
+
+\vspace{0.3cm}
+
+% Logos
+\begin{minipage}[t]{0.45\textwidth}
+\includegraphics[width=0.8\textwidth]{university-logo.png}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\raggedleft
+\includegraphics[width=0.8\textwidth]{college-logo.png}
+\end{minipage}
+
+\vspace{1cm}
+
+% Institutional Information
+\begin{center}
+{\LARGE\textbf{UNIVERSITY OF CALIFORNIA, BERKELEY}}\\[0.3cm]
+{\Large College of Engineering}\\[0.2cm]
+{\large Department of Mechanical Engineering}
+\end{center}
+
+\vspace{1cm}
+
+% Document Type in Block
+\begin{center}
+\begin{tikzpicture}
+\node[rectangle, fill=primaryblue, text=white, minimum width=10cm, minimum height=1.5cm] 
+     {\Large\textbf{Senior Design Project Report}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{1.5cm}
+
+% Project Title
+\begin{center}
+\begin{tcolorbox}[colback=lightgray,colframe=darkgray,width=0.9\textwidth,boxrule=2pt]
+\begin{center}
+{\LARGE\textbf{Sustainable Urban Transportation:\\Electric Scooter Sharing System}}
+\end{center}
+\end{tcolorbox}
+\end{center}
+
+\vspace{1.5cm}
+
+% Team Information in Grid
+\begin{center}
+\textbf{\Large Team Members:}\\[0.5cm]
+\begin{tabular}{|c|c|}
+\hline
+\rowcolor{primaryblue!20}
+\textbf{Name} & \textbf{Student ID} \\
+\hline
+Kevin Zhang & ME-2021-234 \\
+\hline
+Sophie Martinez & ME-2021-156 \\
+\hline
+Ryan O'Connor & ME-2021-298 \\
+\hline
+Priya Patel & ME-2021-177 \\
+\hline
+\end{tabular}\\[0.5cm]
+\textit{\large Level 4 – Academic Year 2025/2026}
+\end{center}
+
+\vspace{1cm}
+
+% Supervisor Information in Blocks
+\begin{center}
+\begin{tabular}{cc}
+\begin{tikzpicture}
+\node[rectangle, fill=accentgreen!20, draw=accentgreen, text width=5.5cm, align=center, minimum height=2.5cm] {
+\textbf{Faculty Advisor:}\\[0.2cm]
+\textbf{Prof. Dr. Nancy Lee}\\
+Department of Mechanical\\Engineering
+};
+\end{tikzpicture}
+&
+\quad
+\begin{tikzpicture}
+\node[rectangle, fill=secondaryblue!20, draw=secondaryblue, text width=5.5cm, align=center, minimum height=2.5cm] {
+\textbf{Industry Mentor:}\\[0.2cm]
+\textbf{Mr. Carlos Ruiz}\\
+Senior Design Engineer\\
+Tesla Motors
+};
+\end{tikzpicture}
+\end{tabular}
+\end{center}
+
+\vfill
+
+% Course Information at Bottom
+\begin{center}
+\colorbox{darkgray}{\textcolor{white}{\textbf{\quad Course: Mechanical Engineering Design (ME 102B) \quad}}}
+\end{center}
+
+\end{titlepage}
+
+\restoregeometry
+
+\end{document}
