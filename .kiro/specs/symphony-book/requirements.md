@@ -1,5 +1,17 @@
 # Requirements Document
 
+RULES; You must verify things from the user:
+- Before Starting creating chapter content Tell the user about the chapter files hierachy
+- Before Starting creating chapter content Tell the user about the modules will be used
+- Before Starting creating chapter content Tell the user about the figures/tables/lists/etc will be used
+Before Starting creating chapter content Tell the user about which file you will read to get context reference
+Before Starting creating chapter content Tell the user about which references will be used, are all of them internal referecens, are all they web [external] references
+- FULLY ADHERE TO USER REQUIRMENTS
+- FULLY ADHERE TO SPEC REQUIREMENTS
+- FULLY ADHERE TO THE SYSTEM DESIGN HERE [LaGen project]
+
+
+
 ## Introduction
 
 The Symphony Book is a comprehensive technical documentation project that will serve as the single source of truth for Symphony, an AI-first development environment. This book will be written using the LaTeX document generation system available in this workspace, leveraging the modular template framework to create a professional academic/technical publication.
