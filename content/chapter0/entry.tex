@@ -1,0 +1,33 @@
+% ========== CHAPTER 0: FRONT MATTER ==========
+% Symphony: An AI-First Development Environment
+% Comprehensive Technical Documentation
+% 
+% This file serves as the main entry point for all front matter sections
+% Source: Symphony/Book Index.md, Symphony/Content/The Glossary
+% Requirements: 2.1, 2.4
+
+% Use clean section styling for front matter (template4 saves original as \oldsection)
+% Temporarily restore the original LaTeX section command for front matter
+\let\frontmattersection\section
+\let\section\oldsection
+
+% Title Page
+\input{content/chapter0/title-page.tex}
+
+% Dedication (Optional)
+\input{content/chapter0/dedication.tex}
+
+% Acknowledgments
+\input{content/chapter0/acknowledgments.tex}
+
+% Abstract
+\input{content/chapter0/abstract.tex}
+
+% Table of Contents, List of Figures, List of Tables
+\input{content/chapter0/table-of-contents.tex}
+
+% List of Acronyms & Abbreviations
+\input{content/chapter0/acronyms.tex}
+
+% Restore template4's styled sections for main content
+\let\section\frontmattersection

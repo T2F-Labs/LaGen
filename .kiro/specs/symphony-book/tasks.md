@@ -44,7 +44,9 @@ CURRENT_DATE
 
 
 
-- [ ] 1. Write Front Matter (Chapter 0)
+- [x] 1. Write Front Matter (Chapter 0)
+
+
 
 
 

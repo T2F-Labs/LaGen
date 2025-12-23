@@ -20,6 +20,8 @@
 \usepackage{fp}
 % Load datetime2 package for date formatting (needed by covers 4 and 5)
 \usepackage{datetime2}
+% Load enumitem for enhanced list formatting
+\usepackage{enumitem}
 \ifdefined\pdftexversion
   \usepackage{microtype}
 \fi
@@ -145,7 +147,7 @@
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
-\fancyhead[L]{\color{textgray}\small\sffamily Your Document Title Here}
+\fancyhead[L]{\color{textgray}\small\sffamily Symphony: An AI-First Development Environment}
 \fancyhead[R]{\color{textgray}\small\sffamily\thepage}
 \fancyfoot[C]{\color{textgray}\footnotesize\sffamily Page \thepage{} of \pageref{LastPage}}
 

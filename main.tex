@@ -65,13 +65,13 @@
 
 % ========== COVER CONTENT CUSTOMIZATION ==========
 % These variables are used by both templates and covers
-% Customize them to match your document:
+% Customized for Symphony Book:
 %
-\newcommand{\CoverTitle}{Your Document Title}        % Main title on cover page
-\newcommand{\CoverSubtitle}{Document Subtitle}       % Subtitle/description
-\newcommand{\CoverYear}{2024}                        % Year or date
-\newcommand{\CoverRecipient}{Recipient Name}         % Who is this document for?
-\newcommand{\CoverPreparer}{Author Name}             % Who created this document?
+\newcommand{\CoverTitle}{Symphony: An AI-First Development Environment}        % Main title on cover page
+\newcommand{\CoverSubtitle}{Comprehensive Technical Documentation}       % Subtitle/description
+\newcommand{\CoverYear}{2025}                        % Year or date
+\newcommand{\CoverRecipient}{Technical Community}         % Who is this document for?
+\newcommand{\CoverPreparer}{Symphony Development Team}             % Who created this document?
 %
 % Example for a business report:
 % \newcommand{\CoverTitle}{Q4 2024 Sales Analysis}
@@ -107,22 +107,22 @@
 % These placeholders are used by templates and covers globally
 % Define them here so they're available for headers, footers, and content
 
-% Institution and organization placeholders
-\providecommand{\InstitutionPlaceholder}{Your Institution Name}
-\providecommand{\DepartmentPlaceholder}{Your Department}
-\providecommand{\CompanyPlaceholder}{Your Company Name}
+% Institution and organization placeholders for Symphony Book
+\providecommand{\InstitutionPlaceholder}{BENHA UNIVERSITY}
+\providecommand{\DepartmentPlaceholder}{Faculty of Computer Science and Artificial Intelligence}
+\providecommand{\CompanyPlaceholder}{Symphony Development Team}
 
 % Image path placeholders for template4
 \providecommand{\UniversityLogoPath}{images/inc/university-logo.jpeg}
 \providecommand{\CollegeLogoPath}{images/inc/college-logo.jpeg}
 
-% Document metadata placeholders  
-\providecommand{\DocumentIDPlaceholder}{DOC-2024-001}
-\providecommand{\VersionPlaceholder}{1.0}
-\providecommand{\ClassificationPlaceholder}{Internal Use}
-\providecommand{\DistributionPlaceholder}{Restricted}
+% Document metadata placeholders for Symphony Book
+\providecommand{\DocumentIDPlaceholder}{SYM-2025-001}
+\providecommand{\VersionPlaceholder}{1.0.0}
+\providecommand{\ClassificationPlaceholder}{Academic Research}
+\providecommand{\DistributionPlaceholder}{Public}
 \providecommand{\StatusPlaceholder}{Final}
-\providecommand{\ContactPlaceholder}{contact@company.com}
+\providecommand{\ContactPlaceholder}{symphony-team@bfcai.edu}
 
 % ========== MODULE CONFIGURATION ==========
 % 
@@ -148,7 +148,7 @@
 \newcommand{\EnableBoxes}{true}                % Info boxes, alerts, callouts, warnings
                                                % Use for: Almost all documents (highly recommended)
                                                
-\newcommand{\EnableLists}{false}               % Enhanced lists, task lists, priority indicators
+\newcommand{\EnableLists}{true}               % Enhanced lists, task lists, priority indicators
                                                % Use for: Project plans, checklists, structured content
                                                
 \newcommand{\EnableCode}{false}                % Syntax highlighting, code blocks, programming examples
@@ -209,20 +209,23 @@
 \fi
 
 % ========== DOCUMENT METADATA ==========
-% Standard LaTeX document information
+% Standard LaTeX document information for Symphony Book
 % This is used for the default \maketitle command and PDF metadata
-\title{\CoverTitle}
-\author{\CoverPreparer}
+\title{Symphony: An AI-First Development Environment}
+\author{AMR MUHMAED FATHY, MOHAMED, MAHMOUD, MOSTAFA, SALMA}
 \date{\today}
 
 % ========== DOCUMENT BEGIN ==========
 \begin{document}
 
 % ========== LOAD CONTENT SECTIONS ==========
-\input{content/00-layout.tex}
-\input{content/01-introduction.tex}
-\input{content/02-mathematics.tex}
-\input{content/03-tables.tex}
-\input{content/04-conclusion.tex}
+% Symphony Book Content Structure
+% Front Matter (Chapter 0)
+\input{content/chapter0/entry.tex}
+
+% Main Content (Chapters 1-26 + Appendices A-G will be added as tasks are completed)
+% \input{content/chapter1/entry.tex}  % Introduction
+% \input{content/chapter2/entry.tex}  % Vision & Philosophy
+% ... (Additional chapters will be added in subsequent tasks)
 
 \end{document}
