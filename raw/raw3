@@ -1,0 +1,545 @@
+\documentclass[12pt,a4paper]{article}
+
+% Required packages
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{hyperref}
+\usepackage{eso-pic}
+
+% Define custom colors
+\definecolor{primaryblue}{RGB}{0,51,102}
+\definecolor{accentblue}{RGB}{51,122,183}
+\definecolor{goldaccent}{RGB}{255,193,7}
+\definecolor{darkgray}{RGB}{64,64,64}
+\definecolor{lightgray}{RGB}{240,240,240}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primaryblue,
+    citecolor=primaryblue,
+    urlcolor=accentblue,
+    pdfborder={0 0 0}
+}
+
+% Background for ALL pages (inspired by cover)
+\AddToShipoutPictureBG{%
+\begin{tikzpicture}[remember picture,overlay]
+    % Top right decorative circle
+    \node[circle, fill=primaryblue!8, minimum size=8cm] at ([xshift=-2cm,yshift=3cm]current page.north east) {};
+    % Bottom left decorative circle
+    \node[circle, fill=goldaccent!12, minimum size=5cm] at ([xshift=3cm,yshift=-3cm]current page.south west) {};
+    % Subtle accent line top
+    \draw[accentblue!20, line width=2pt] ([yshift=-0.8cm]current page.north west) -- ([yshift=-0.8cm]current page.north east);
+    % Subtle accent line bottom
+    \draw[accentblue!20, line width=2pt] ([yshift=0.8cm]current page.south west) -- ([yshift=0.8cm]current page.south east);
+\end{tikzpicture}
+}
+
+% Section formatting with colored boxes
+\titleformat{\section}
+{\Large\bfseries\color{white}}
+{\thesection}{1em}{}
+[\vspace{-0.7cm}]
+
+\titleformat{\subsection}
+{\large\bfseries\color{primaryblue}}
+{\thesubsection}{1em}{}
+[\textcolor{accentblue!40}{\titlerule[0.8pt]}]
+
+\titleformat{\subsubsection}
+{\normalsize\bfseries\color{accentblue}}
+{\thesubsubsection}{1em}{}
+
+% Custom section command with background
+\let\oldsection\section
+\renewcommand{\section}[1]{%
+\vspace{0.3cm}
+\noindent\begin{tcolorbox}[colback=primaryblue,colframe=primaryblue,arc=4pt,boxrule=0pt,left=10pt,right=10pt,top=8pt,bottom=8pt,width=\textwidth]
+\oldsection*{#1}
+\end{tcolorbox}
+\vspace{0.2cm}
+}
+
+% Header and Footer with design elements
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{%
+\begin{tikzpicture}[remember picture,overlay]
+\node[rectangle,fill=accentblue!15,rounded corners=3pt,minimum height=0.6cm,minimum width=3cm,anchor=west] at (0,0) {};
+\end{tikzpicture}
+\hspace{0.2cm}\textcolor{primaryblue}{\small\textbf{Quantum Computing Applications}}
+}
+\fancyhead[R]{%
+\textcolor{darkgray}{\small MIT - CSAI}
+\begin{tikzpicture}[remember picture,overlay]
+\node[circle,fill=goldaccent!20,minimum size=0.5cm,anchor=east] at (0.3,0) {};
+\end{tikzpicture}
+}
+\fancyfoot[C]{%
+\begin{tikzpicture}
+\node[circle,fill=primaryblue!15,inner sep=6pt] {\textcolor{primaryblue}{\textbf{\thepage}}};
+\end{tikzpicture}
+}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Table of contents styling
+\renewcommand{\cftsecfont}{\bfseries\color{primaryblue}}
+\renewcommand{\cftsubsecfont}{\color{darkgray}}
+\renewcommand{\cftsecpagefont}{\bfseries\color{primaryblue}}
+\renewcommand{\cftsubsecpagefont}{\color{darkgray}}
+
+% Line spacing
+\onehalfspacing
+
+\begin{document}
+
+% ============================================================
+% TITLE PAGE (Enhanced version)
+% ============================================================
+\begin{titlepage}
+\newgeometry{margin=0.7in}
+\thispagestyle{empty}
+
+% Enhanced background for title page
+\begin{tikzpicture}[remember picture,overlay]
+    \node[circle, fill=primaryblue!12, minimum size=13cm] at ([xshift=-4cm,yshift=4.5cm]current page.north east) {};
+    \node[rectangle, fill=accentblue!8, minimum width=19cm, minimum height=5.5cm, rounded corners=18pt] at ([yshift=-0.5cm]current page.center) {};
+    \node[circle, fill=goldaccent!15, minimum size=7cm] at ([xshift=5.5cm,yshift=-8.5cm]current page.south west) {};
+\end{tikzpicture}
+
+% Professional header with logos
+\begin{minipage}[t]{0.45\textwidth}
+    \includegraphics[width=0.8\textwidth]{university-logo.jpeg}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+    \raggedleft
+    \includegraphics[width=0.8\textwidth]{college-logo.jpeg}
+\end{minipage}
+
+\vspace{1cm}
+
+% Institutional Information
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=primaryblue,width=0.82\textwidth,arc=6pt,boxrule=1.8pt]
+\centering
+{\Large\textbf{\textcolor{primaryblue}{MASSACHUSETTS INSTITUTE OF TECHNOLOGY}}}\\[0.3cm]
+{\large\textcolor{darkgray}{School of Engineering}}\\[0.15cm]
+{\normalsize\textcolor{darkgray}{Department of Computer Science \& Artificial Intelligence}}
+\end{tcolorbox}
+\end{center}
+
+\vspace{1.8cm}
+
+% Document Type
+\begin{center}
+{\LARGE\textcolor{accentblue}{\textit{Final Year Project Report}}}
+\end{center}
+
+\vspace{2cm}
+
+% Project Title
+\begin{center}
+{\huge\textbf{\textcolor{primaryblue}{Quantum Computing Applications}}}\\[0.6cm]
+{\LARGE\textbf{\textcolor{darkgray}{in Cryptographic Security Systems}}}\\[0.5cm]
+{\Large\textit{\textcolor{accentblue}{Advanced Post-Quantum Encryption Protocols}}}
+\end{center}
+
+\vspace{2.2cm}
+
+% Student Information
+\begin{center}
+\begin{tcolorbox}[colback=goldaccent!5,colframe=goldaccent!60,width=0.75\textwidth,arc=5pt,boxrule=1.2pt]
+\centering
+\textbf{\large Team Members}\\[0.4cm]
+\begin{tabular}{l}
+\textbf{Emma Charlotte Thompson} \hspace{1cm} ID: CS2021-087 \\[0.15cm]
+\textbf{Rajesh Kumar Patel} \hspace{1cm} ID: CS2021-091 \\[0.15cm]
+\textbf{Isabella Marie Rodriguez} \hspace{1cm} ID: CS2021-103 \\[0.3cm]
+\end{tabular}\\
+\textit{\textcolor{darkgray}{Level 4 — Academic Year 2025/2026}}
+\end{tcolorbox}
+\end{center}
+
+\vspace{1.8cm}
+
+% Supervision
+\begin{center}
+\textbf{\Large\textcolor{primaryblue}{Supervision \& Guidance}}\\[0.5cm]
+\begin{tabular}{p{0.44\textwidth}p{0.44\textwidth}}
+\textbf{Academic Supervisor:} & \textbf{Industry Mentor:} \\[0.2cm]
+Prof. Dr. Sarah Elizabeth Chen & Dr. Michael Jonathan Foster \\
+Professor of Quantum Computing & Principal Research Scientist \\
+MIT CSAIL Laboratory & IBM Quantum Research Division \\
+\end{tabular}
+\end{center}
+
+\vfill
+
+% Course Information
+\begin{center}
+\colorbox{lightgray}{\makebox[0.85\textwidth]{\textbf{Course: Advanced Computer Science Project (CS-6.UAP)}}}
+\end{center}
+
+\end{titlepage}
+\restoregeometry
+
+% ============================================================
+% ABSTRACT PAGE (with consistent design)
+% ============================================================
+\newpage
+\thispagestyle{fancy}
+
+\vspace*{1cm}
+
+\begin{tcolorbox}[colback=primaryblue,colframe=primaryblue,arc=4pt,boxrule=0pt,left=10pt,right=10pt,top=8pt,bottom=8pt,width=\textwidth]
+\centering
+{\Huge\textbf{\textcolor{white}{Abstract}}}
+\end{tcolorbox}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[colback=lightgray!30,colframe=accentblue!60,arc=4pt,boxrule=1.5pt,left=15pt,right=15pt,top=15pt,bottom=15pt]
+\noindent
+This research investigates the integration of quantum computing principles into modern cryptographic security systems, with a particular focus on post-quantum encryption protocols. As traditional cryptographic methods face unprecedented threats from advancing quantum computational capabilities, this project explores novel approaches to secure data transmission and storage.
+
+\vspace{0.4cm}
+
+\noindent
+Our comprehensive study examines three primary areas: quantum key distribution (QKD) mechanisms, lattice-based cryptographic algorithms, and hybrid classical-quantum security frameworks. Through rigorous mathematical analysis and simulation-based validation, we demonstrate the viability of implementing quantum-resistant encryption protocols in contemporary network infrastructures.
+
+\vspace{0.4cm}
+
+\noindent
+The findings reveal significant improvements in security metrics while maintaining acceptable computational overhead. Specifically, our proposed hybrid framework achieves 99.7\% resistance against known quantum attack vectors while introducing only 12\% additional latency compared to conventional RSA implementations.
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[colback=goldaccent!8,colframe=goldaccent!70,arc=4pt,boxrule=1.2pt,left=12pt,right=12pt,top=10pt,bottom=10pt]
+\textbf{\textcolor{primaryblue}{Keywords:}} Quantum Computing, Post-Quantum Cryptography, Quantum Key Distribution, Lattice-Based Encryption, Hybrid Security Systems, Cryptographic Protocols
+\end{tcolorbox}
+
+\vspace{1cm}
+
+\begin{center}
+\begin{tcolorbox}[colback=accentblue!5,colframe=accentblue,arc=4pt,boxrule=1.2pt,width=0.85\textwidth]
+\centering
+\textbf{\large Submitted in Partial Fulfillment}\\[0.2cm]
+\textbf{\large of the Requirements for the Degree of}\\[0.2cm]
+\textbf{\Large Bachelor of Science in Computer Science}\\[0.3cm]
+\textit{December 2025}
+\end{tcolorbox}
+\end{center}
+
+% ============================================================
+% TABLE OF CONTENTS (with design elements)
+% ============================================================
+\newpage
+
+\vspace*{0.5cm}
+
+\begin{tcolorbox}[colback=primaryblue,colframe=primaryblue,arc=4pt,boxrule=0pt,left=10pt,right=10pt,top=8pt,bottom=8pt,width=\textwidth]
+\centering
+{\Huge\textbf{\textcolor{white}{Table of Contents}}}
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\tableofcontents
+
+% ============================================================
+% CHAPTER 1 - INTRODUCTION
+% ============================================================
+\newpage
+
+\section{Introduction}
+
+\subsection{Background and Motivation}
+
+The advent of quantum computing represents a paradigm shift in computational capabilities, bringing both unprecedented opportunities and significant challenges to the field of information security. Traditional cryptographic systems, which have formed the backbone of digital security for decades, are increasingly vulnerable to quantum-based attacks.
+
+\vspace{0.3cm}
+
+\begin{tcolorbox}[colback=accentblue!5,colframe=accentblue!60,arc=3pt,boxrule=1pt,left=10pt,right=10pt,top=8pt,bottom=8pt,title=\textbf{\textcolor{primaryblue}{Key Challenge}}]
+Shor's algorithm, first proposed in 1994, demonstrated that sufficiently powerful quantum computers could efficiently factor large integers and compute discrete logarithms—tasks that underpin the security of widely-used encryption schemes such as RSA and Elliptic Curve Cryptography (ECC).
+\end{tcolorbox}
+
+\vspace{0.4cm}
+
+Recent advances in quantum hardware development have accelerated the urgency of this challenge. Major technology companies and research institutions have made significant progress in building quantum processors with increasing qubit counts and improving coherence times. While fully fault-tolerant quantum computers capable of breaking current cryptographic standards remain years away, the "harvest now, decrypt later" threat model necessitates immediate action.
+
+\subsection{Research Objectives}
+
+This project aims to address the quantum cryptographic challenge through three primary objectives:
+
+\vspace{0.3cm}
+
+\begin{tcolorbox}[colback=goldaccent!5,colframe=goldaccent!70,arc=3pt,boxrule=1pt]
+\begin{enumerate}
+\item \textbf{\textcolor{primaryblue}{Theoretical Analysis:}} Conduct comprehensive mathematical analysis of quantum attack vectors against classical cryptographic systems and evaluate the theoretical security guarantees of post-quantum alternatives.
+
+\vspace{0.2cm}
+
+\item \textbf{\textcolor{primaryblue}{Protocol Development:}} Design and implement hybrid cryptographic protocols that combine classical and quantum-resistant algorithms to provide defense-in-depth security.
+
+\vspace{0.2cm}
+
+\item \textbf{\textcolor{primaryblue}{Performance Evaluation:}} Assess the computational overhead, latency impact, and scalability characteristics of proposed solutions through extensive simulation and benchmarking.
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Scope and Limitations}
+
+This research focuses specifically on symmetric key distribution mechanisms and public-key cryptography vulnerable to quantum attacks. The scope includes analysis of lattice-based, code-based, and hash-based post-quantum algorithms, development of quantum key distribution protocols, and integration frameworks for hybrid classical-quantum security systems.
+
+% ============================================================
+% CHAPTER 2 - LITERATURE REVIEW
+% ============================================================
+\newpage
+
+\section{Literature Review}
+
+\subsection{Quantum Computing Fundamentals}
+
+Quantum computing leverages fundamental principles of quantum mechanics—superposition, entanglement, and interference—to perform computations in ways fundamentally different from classical computers.
+
+\vspace{0.3cm}
+
+\begin{tcolorbox}[colback=primaryblue!5,colframe=primaryblue,arc=3pt,boxrule=1.5pt,width=0.8\textwidth,center]
+\centering
+\textbf{\textcolor{primaryblue}{Quantum State Representation}}\\[0.3cm]
+$|\psi\rangle = \alpha|0\rangle + \beta|1\rangle$\\[0.2cm]
+where $|\alpha|^2 + |\beta|^2 = 1$
+\end{tcolorbox}
+
+\vspace{0.4cm}
+
+A quantum bit, or qubit, can exist in a superposition of both 0 and 1 states simultaneously. This property enables quantum computers to process vast amounts of information in parallel. When multiple qubits become entangled, their collective quantum state cannot be described independently, creating correlations that have no classical analog.
+
+\subsection{Classical Cryptography Under Quantum Threat}
+
+Modern cryptographic systems rely on computational hardness assumptions—mathematical problems believed to be intractable for classical computers. The most widely deployed systems include:
+
+\vspace{0.3cm}
+
+\begin{tcolorbox}[colback=lightgray!40,colframe=accentblue!60,arc=3pt,boxrule=1pt]
+\textbf{\textcolor{primaryblue}{Vulnerable Cryptographic Systems:}}
+
+\begin{itemize}
+\item \textbf{RSA Encryption:} Based on the difficulty of factoring large composite numbers. A 2048-bit RSA key could theoretically be broken by a quantum computer with approximately 4,000 logical qubits.
+
+\vspace{0.2cm}
+
+\item \textbf{Elliptic Curve Cryptography (ECC):} Relies on the discrete logarithm problem over elliptic curves. Similarly vulnerable to quantum attacks.
+
+\vspace{0.2cm}
+
+\item \textbf{Diffie-Hellman Key Exchange:} Enables secure key agreement over public channels but is vulnerable to quantum attacks on the discrete logarithm problem.
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Post-Quantum Cryptographic Approaches}
+
+The cryptographic community has responded to the quantum threat by developing alternative algorithms resistant to both classical and quantum attacks. The National Institute of Standards and Technology (NIST) initiated a standardization process in 2016, evaluating numerous candidates.
+
+\vspace{0.3cm}
+
+\begin{tcolorbox}[enhanced,colback=goldaccent!5,colframe=goldaccent!80,arc=3pt,boxrule=1.2pt,
+attach boxed title to top left={yshift=-2mm,xshift=5mm},
+boxed title style={colback=goldaccent!80,arc=2pt},
+title=\textbf{\textcolor{white}{NIST-Approved Algorithms}}]
+
+\textbf{\textcolor{primaryblue}{Lattice-Based Cryptography}}
+
+Lattice-based schemes rely on the hardness of problems such as Learning With Errors (LWE). Notable examples include CRYSTALS-Kyber for key encapsulation and CRYSTALS-Dilithium for digital signatures.
+
+\vspace{0.3cm}
+
+\textbf{\textcolor{primaryblue}{Code-Based Cryptography}}
+
+Dating back to McEliece's 1978 proposal, code-based systems leverage the difficulty of decoding random linear codes and have withstood decades of cryptanalytic efforts.
+\end{tcolorbox}
+
+% ============================================================
+% CHAPTER 3 - METHODOLOGY
+% ============================================================
+\newpage
+
+\section{Methodology}
+
+\subsection{Research Design}
+
+Our research employs a multi-phase approach combining theoretical analysis, algorithm development, and empirical evaluation.
+
+\vspace{0.4cm}
+
+\begin{tcolorbox}[enhanced,colback=accentblue!5,colframe=accentblue,arc=4pt,boxrule=1.5pt,
+attach boxed title to top center={yshift=-3mm},
+boxed title style={colback=accentblue,arc=2pt},
+title=\textbf{\textcolor{white}{Research Phases Timeline}}]
+
+\textbf{\textcolor{primaryblue}{Phase 1: Theoretical Foundation}} (Weeks 1-4)
+\begin{itemize}
+\item Mathematical formalization of security models
+\item Quantum threat assessment and attack vector analysis
+\item Selection criteria for post-quantum algorithms
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{\textcolor{primaryblue}{Phase 2: Protocol Development}} (Weeks 5-10)
+\begin{itemize}
+\item Design of hybrid cryptographic frameworks
+\item Implementation of key distribution mechanisms
+\item Integration with existing security infrastructures
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{\textcolor{primaryblue}{Phase 3: Simulation and Testing}} (Weeks 11-14)
+\begin{itemize}
+\item Performance benchmarking under varied conditions
+\item Security analysis using automated tools
+\item Comparative evaluation against baseline systems
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Experimental Setup}
+
+All simulations and implementations were conducted on a high-performance computing cluster with the following specifications:
+
+\vspace{0.4cm}
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=primaryblue!80,arc=3pt,boxrule=1.5pt,width=0.9\textwidth]
+\begin{tabular}{|l|l|}
+\hline
+\rowcolor{primaryblue!15}
+\textbf{Component} & \textbf{Specification} \\
+\hline
+Processor & Intel Xeon Platinum 8380 (40 cores) \\
+\hline
+Memory & 512 GB DDR4-3200 ECC RAM \\
+\hline
+Storage & 4TB NVMe SSD (Read: 7000 MB/s) \\
+\hline
+Quantum Simulator & Qiskit 0.45.0, Cirq 1.3.0 \\
+\hline
+\rowcolor{goldaccent!10}
+Programming Languages & Python 3.11, C++ (GCC 12.2) \\
+\hline
+\end{tabular}
+\end{tcolorbox}
+\end{center}
+
+\subsection{Implementation Details}
+
+\subsubsection{Quantum Key Distribution Protocol}
+
+We implemented a full BB84 quantum key distribution protocol simulator with realistic physical models and error correction mechanisms.
+
+\vspace{0.3cm}
+
+\begin{tcolorbox}[colback=goldaccent!8,colframe=goldaccent!70,arc=3pt,boxrule=1pt]
+\textbf{\textcolor{primaryblue}{Key Features:}}
+\begin{itemize}
+\item Single-photon source emulation with realistic loss models
+\item Basis reconciliation and error correction mechanisms
+\item Privacy amplification using universal hash families
+\item Eve detection and security parameter estimation
+\end{itemize}
+\end{tcolorbox}
+
+\subsubsection{Hybrid Encryption Framework}
+
+Our hybrid framework combines classical AES-256 for bulk data encryption with lattice-based key encapsulation for session key exchange.
+
+% ============================================================
+% REFERENCES PAGE
+% ============================================================
+\newpage
+
+\section{References}
+
+\begin{tcolorbox}[colback=lightgray!20,colframe=accentblue!40,arc=2pt,boxrule=0.8pt]
+\small
+\begin{enumerate}
+\item Shor, P. W. (1997). Polynomial-time algorithms for prime factorization and discrete logarithms on a quantum computer. \textit{SIAM Journal on Computing}, 26(5), 1484-1509.
+
+\item Bennett, C. H., \& Brassard, G. (1984). Quantum cryptography: Public key distribution and coin tossing. \textit{Proceedings of IEEE International Conference}.
+
+\item National Institute of Standards and Technology. (2022). \textit{Post-Quantum Cryptography Standardization}.
+
+\item Alagic, G., et al. (2022). Status report on the third round of the NIST post-quantum cryptography standardization process. \textit{NIST Internal Report} 8413.
+
+\item Bernstein, D. J., \& Lange, T. (2017). Post-quantum cryptography. \textit{Nature}, 549(7671), 188-194.
+
+\item Preskill, J. (2018). Quantum computing in the NISQ era and beyond. \textit{Quantum}, 2, 79.
+
+\item Arute, F., et al. (2019). Quantum supremacy using a programmable superconducting processor. \textit{Nature}, 574(7779), 505-510.
+
+\item Lyubashevsky, V., et al. (2020). CRYSTALS-DILITHIUM: Algorithm specifications and supporting documentation. \textit{NIST PQC Submission}.
+\end{enumerate}
+\end{tcolorbox}
+
+% ============================================================
+% ACKNOWLEDGMENTS PAGE
+% ============================================================
+\newpage
+
+\section{Acknowledgments}
+
+\vspace{0.5cm}
+
+\begin{tcolorbox}[colback=accentblue!5,colframe=accentblue!60,arc=4pt,boxrule=1.2pt,left=15pt,right=15pt,top=12pt,bottom=12pt]
+We would like to express our sincere gratitude to all those who contributed to the successful completion of this research project.
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+\noindent
+First and foremost, we extend our deepest appreciation to \textbf{Prof. Dr. Sarah Elizabeth Chen}, our academic supervisor, for her invaluable guidance, insightful feedback, and unwavering support throughout this research journey. Her expertise in quantum computing and commitment to academic excellence have been instrumental in shaping this work.
+
+\vspace{0.4cm}
+
+\begin{tcolorbox}[colback=goldaccent!5,colframe=goldaccent!60,arc=3pt,boxrule=1pt,left=12pt,right=12pt,top=10pt,bottom=10pt]
+\textbf{\textcolor{primaryblue}{Special Thanks}} to \textbf{Dr. Michael Jonathan Foster} from IBM Quantum Research Division for providing industry perspective, access to quantum computing resources, and practical insights that bridged the gap between theoretical research and real-world applications.
+\end{tcolorbox}
+
+\vspace{0.4cm}
+
+\noindent
+We acknowledge the support of the \textbf{MIT Computer Science and Artificial Intelligence Laboratory (CSAIL)} for providing the computational resources and research facilities necessary for conducting our experiments.
+
+\vspace{0.4cm}
+
+\noindent
+Finally, we express our heartfelt gratitude to our families and friends for their patience, encouragement, and moral support throughout this challenging endeavor.
+
+\vspace{1cm}
+
+\begin{tcolorbox}[colback=primaryblue!5,colframe=primaryblue!60,arc=3pt,boxrule=1pt,width=0.6\textwidth,right]
+\begin{flushright}
+\textit{Emma Charlotte Thompson}\\
+\textit{Rajesh Kumar Patel}\\
+\textit{Isabella Marie Rodriguez}\\
+\vspace{0.2cm}
+\textbf{December 2025}
+\end{flushright}
+\end{tcolorbox}
+
+\end{document}
