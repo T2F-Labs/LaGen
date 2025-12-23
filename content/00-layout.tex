@@ -1,0 +1,132 @@
+% ========== LAYOUT CONFIGURATION ==========
+% This file handles the automatic generation of cover pages and document layout
+% based on template/cover selection in main.tex
+%
+% This file is loaded first in the content sequence to set up the document structure
+% before the actual content sections are loaded.
+
+% ========== COVER PAGE GENERATION ==========
+% This section automatically generates the appropriate cover page
+% based on your template/cover selection in main.tex
+
+\ifdefined\UseTemplate
+    \typeout{^^J DEBUG: In cover generation - UseTemplate is defined as: \UseTemplate ^^J}
+    % TEMPLATE MODE: Use template-specific cover page commands
+    % Each template provides its own cover page styling and layout
+    \ifthenelse{\equal{\UseTemplate}{template1}}{
+        \typeout{^^J DEBUG: Calling templateOneCover ^^J}
+        \templateOneCover{\CoverTitle}{\CoverSubtitle}{\CoverYear}{\CoverRecipient}{\CoverPreparer}
+    }{}
+    \ifthenelse{\equal{\UseTemplate}{template2}}{
+        \typeout{^^J DEBUG: Calling templateTwoCover ^^J}
+        \templateTwoCover{\CoverTitle}{\CoverSubtitle}{\CoverYear}{\CoverRecipient}{\CoverPreparer}
+    }{}
+    \ifthenelse{\equal{\UseTemplate}{template3}}{
+        \typeout{^^J DEBUG: Calling templateThreeCover ^^J}
+        \templateThreeCover{\CoverTitle}{\CoverSubtitle}{\CoverYear}{\CoverRecipient}{\CoverPreparer}
+    }{}
+    \ifthenelse{\equal{\UseTemplate}{template4}}{
+        \typeout{^^J DEBUG: Calling templateFourCover ^^J}
+        \templateFourCover{\CoverTitle}{\CoverSubtitle}{\CoverYear}{\CoverRecipient}{\CoverPreparer}{\UniversityLogoPath}{\CollegeLogoPath}
+    }{}
+\else
+    \ifdefined\UseCover
+        \typeout{^^J DEBUG: UseCover is defined as: \UseCover ^^J}
+        % COVER MODE: Use standalone cover page without template styling
+        \begin{titlepage}
+        % Define ALL placeholders that cover files expect to find
+        % Basic placeholders (used by all covers)
+        \providecommand{\TitlePlaceholder}{\CoverTitle}
+        \providecommand{\SubtitlePlaceholder}{\CoverSubtitle}
+        \providecommand{\AuthorPlaceholder}{\CoverPreparer}
+        \providecommand{\DatePlaceholder}{\today}
+        % Note: VersionPlaceholder, ClassificationPlaceholder, DistributionPlaceholder, StatusPlaceholder are now global
+        
+        % Cover1 specific placeholders (Modern Gradient Design)
+        \providecommand{\SummaryTitlePlaceholder}{\CoverSubtitle}
+        \providecommand{\SummaryTextPlaceholder}{This document provides comprehensive analysis and insights for strategic decision making.}
+        \providecommand{\PlatformsList}{• Analysis Platform\\ • Research Tools\\ • Data Sources}
+        \providecommand{\FocusList}{• Key Insights\\ • Strategic Analysis\\ • Recommendations}
+        % Note: DistributionPlaceholder and StatusPlaceholder are now global
+        
+        % Cover2 specific placeholders (Minimal Circle Design)
+        \providecommand{\FocusItemOne}{Strategic Planning}
+        \providecommand{\FocusItemTwo}{Market Analysis}
+        \providecommand{\FocusItemThree}{Risk Assessment}
+        \providecommand{\FocusItemFour}{Implementation}
+        \providecommand{\ClassificationLevelPlaceholder}{Confidential}
+        
+        % Cover3 specific placeholders (Modern Corporate Design)
+        % Note: CompanyPlaceholder and DepartmentPlaceholder are now global
+        
+        % Cover4 specific placeholders (Elegant Academic Design)
+        \providecommand{\AbstractPlaceholder}{This document presents a comprehensive analysis of the latest developments in our field. It examines key aspects and proposes innovative solutions to address current challenges.}
+        \providecommand{\KeywordsPlaceholder}{research, analysis, innovation, methodology, results}
+        
+        % Cover5 specific placeholders (Technical Blueprint Design)
+        % Note: DocumentIDPlaceholder is now global
+        \providecommand{\RevisionPlaceholder}{A}
+        
+        % Cover6 specific placeholders (Creative Gradient Design)
+        \providecommand{\SummaryPlaceholder}{\SummaryTextPlaceholder}
+        \providecommand{\TaglinePlaceholder}{INNOVATIVE}
+        
+        % Cover7 specific placeholders (Professional Design)
+        % Note: ContactPlaceholder is now global
+        
+        % Load the selected cover with proper conditional handling
+        \ifthenelse{\equal{\UseCover}{cover1}}{
+            \typeout{^^J DEBUG: Loading cover1.tex ^^J}
+            \input{covers/cover1.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover2}}{
+            \typeout{^^J DEBUG: Loading cover2.tex ^^J}
+            \input{covers/cover2.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover3}}{
+            \typeout{^^J DEBUG: Loading cover3.tex ^^J}
+            \input{covers/cover3.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover4}}{
+            \typeout{^^J DEBUG: Loading cover4.tex ^^J}
+            \input{covers/cover4.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover5}}{
+            \typeout{^^J DEBUG: Loading cover5.tex ^^J}
+            \input{covers/cover5.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover6}}{
+            \typeout{^^J DEBUG: Loading cover6.tex ^^J}
+            \input{covers/cover6.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover7}}{
+            \typeout{^^J DEBUG: Loading cover7.tex ^^J}
+            \input{covers/cover7.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover8}}{
+            \typeout{^^J DEBUG: Loading cover8.tex ^^J}
+            \input{covers/cover8.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover9}}{
+            \typeout{^^J DEBUG: Loading cover9.tex ^^J}
+            \input{covers/cover9.tex}
+        }{}
+        \ifthenelse{\equal{\UseCover}{cover10}}{
+            \typeout{^^J DEBUG: Loading cover10.tex ^^J}
+            \input{covers/cover10.tex}
+        }{}
+        \end{titlepage}
+        \newpage
+    \else
+        \typeout{^^J DEBUG: UseCover is NOT defined ^^J}
+        % DEFAULT MODE: Use basic LaTeX title page
+        % This creates a simple, centered title page using \maketitle
+        \maketitle
+    \fi
+\fi
+
+% ========== DOCUMENT CONTENT BEGINS HERE ==========
+% This info box demonstrates that the Boxes module is working
+\begin{infobox}[title=Performance Optimization]
+This document demonstrates selective module loading. Only the features actually used are loaded, reducing compilation time while maintaining full functionality where needed.
+\end{infobox}

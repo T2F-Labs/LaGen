@@ -110,12 +110,14 @@
 
 % ========== COVER PAGE MACRO ==========
 % Define a command for generating the academic cover page (based on raw3 title page)
-\newcommand{\templateFourCover}[5]{%
+\newcommand{\templateFourCover}[7]{%
   % #1: Document Title
   % #2: Document Subtitle  
   % #3: Year
   % #4: Submitted to (recipient)
   % #5: Prepared by (author)
+  % #6: University logo path (optional - use empty {} if no logo)
+  % #7: College logo path (optional - use empty {} if no logo)
   \begin{titlepage}
   \newgeometry{margin=0.7in}
   \thispagestyle{empty}
@@ -128,29 +130,43 @@
   \end{tikzpicture}
   
   % Professional header with logos (optional - from raw3)
-  % If logo files exist, they will be displayed; otherwise, this section is skipped
-  \IfFileExists{university-logo.jpeg}{
-    \begin{minipage}[t]{0.45\textwidth}
-        \includegraphics[width=0.8\textwidth]{university-logo.jpeg}
-    \end{minipage}
-    \hfill
-    \IfFileExists{college-logo.jpeg}{
-      \begin{minipage}[t]{0.45\textwidth}
-          \raggedleft
-          \includegraphics[width=0.8\textwidth]{college-logo.jpeg}
-      \end{minipage}
-    }{
-      \begin{minipage}[t]{0.45\textwidth}
-          \raggedleft
-          % Placeholder for second logo
-          \textcolor{templateDark}{\large\textbf{Institution Logo}}
-      \end{minipage}
-    }
-    \vspace{1cm}
-  }{
-    % No logos available - skip logo section
+  % If logo paths are provided and files exist, they will be displayed
+  \ifx\relax#6\relax
+    % No university logo path provided
     \vspace{2cm}
-  }
+  \else
+    \IfFileExists{#6}{
+      \begin{minipage}[t]{0.45\textwidth}
+          \includegraphics[width=0.8\textwidth]{#6}
+      \end{minipage}
+      \hfill
+      \ifx\relax#7\relax
+        % No college logo path provided
+        \begin{minipage}[t]{0.45\textwidth}
+            \raggedleft
+            % Placeholder for second logo
+            \textcolor{templateDark}{\large\textbf{Institution Logo}}
+        \end{minipage}
+      \else
+        \IfFileExists{#7}{
+          \begin{minipage}[t]{0.45\textwidth}
+              \raggedleft
+              \includegraphics[width=0.8\textwidth]{#7}
+          \end{minipage}
+        }{
+          \begin{minipage}[t]{0.45\textwidth}
+              \raggedleft
+              % Placeholder for second logo
+              \textcolor{templateDark}{\large\textbf{Institution Logo}}
+          \end{minipage}
+        }
+      \fi
+      \vspace{1cm}
+    }{
+      % University logo file doesn't exist - skip logo section
+      \vspace{2cm}
+    }
+  \fi
   
   % Institutional Information (from raw3)
   \begin{center}
