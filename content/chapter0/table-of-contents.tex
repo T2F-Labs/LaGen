@@ -1,14 +1,90 @@
-% ========== TABLE OF CONTENTS ==========
-% Automatic generation of TOC, List of Figures, and List of Tables
+% ========== ENHANCED TABLE OF CONTENTS ==========
+% Comprehensive navigation system with all lists and enhanced formatting
+% Includes TOC, figures, tables, algorithms, code listings, and boxes
 
-% Table of Contents
+% Add Symphony branding header
+\begin{center}
+\includegraphics[width=0.3\textwidth]{\SymphonyLogoPath}\\[0.5cm]
+{\Large\textbf{SYMPHONY DOCUMENTATION NAVIGATION}}\\[0.3cm]
+\textit{Comprehensive Guide to AI-First Development Environment}
+\end{center}
+
+\vspace{1cm}
+
+% Table of Contents with enhanced formatting
+\renewcommand{\contentsname}{Table of Contents}
 \tableofcontents
 \clearpage
 
-% List of Figures
-\listoffigures
-\clearpage
+% List of Figures with description
+\section*{Visual Elements Guide}
+\addcontentsline{toc}{section}{Visual Elements Guide}
 
-% List of Tables
+\begin{infobox}[title=Navigation Guide for Visual Elements]
+This section provides comprehensive navigation for all visual elements in the Symphony documentation, including figures, tables, algorithms, code examples, and information boxes used throughout the document.
+\end{infobox}
+
+\subsection*{List of Figures}
+\listoffigures
+
+\subsection*{List of Tables}
 \listoftables
+
+% List of Algorithms (if any algorithms are present)
+\ifthenelse{\equal{\EnableAlgorithms}{true}}{
+\subsection*{List of Algorithms}
+\listofalgorithms
+}{}
+
+% List of Code Listings (if code module is enabled)
+\ifthenelse{\equal{\EnableCode}{true}}{
+\subsection*{List of Code Listings}
+\lstlistoflistings
+}{}
+
+\subsection*{Information Boxes Reference}
+The following types of information boxes are used throughout this documentation:
+
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+    \item[\textbf{Info Boxes}] \colorbox{blue!20}{General information and explanations}
+    \item[\textbf{Success Boxes}] \colorbox{green!20}{Achievements and positive outcomes}
+    \item[\textbf{Alert Boxes}] \colorbox{orange!20}{Important warnings and considerations}
+    \item[\textbf{Technical Boxes}] \colorbox{purple!20}{Technical specifications and details}
+\end{description}
+
+\section*{Reader's Navigation Guide}
+
+\begin{successbox}
+\textbf{For Different Reader Types:}
+\begin{compactlist}
+    \item \textbf{Researchers \& Academics}: Focus on Chapters 1-3, 9-10, 13-16, 24-26
+    \item \textbf{Developers}: Emphasize Chapters 4, 7-8, 11, 19-21, Appendices C-F
+    \item \textbf{Architects}: Concentrate on Chapters 5-6, 12, 17-18, Appendix B
+    \item \textbf{Users}: Begin with Chapters 1-3, 9, 20, Appendices A \& D
+\end{compactlist}
+\end{successbox}
+
+\section*{Document Structure Overview}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Part} & \textbf{Chapters} & \textbf{Focus Area} \\
+\midrule
+Front Matter & i-viii & Introduction \& Navigation \\
+Part I & 1-3 & Introduction \& Foundations \\
+Part II & 4-5 & Technical Foundation \& Architecture \\
+Part III & 6-8 & Core Infrastructure \& Microkernel \\
+Part IV & 9-12 & AIDE, Intelligence \& Execution \\
+Part V & 13-16 & Orchestration \& AI Models \\
+Part VI & 17-18 & Data Management \& Storage \\
+Part VII & 19-23 & Implementation \& Engineering \\
+Part VIII & 24-26 & Evaluation \& Future Work \\
+Appendices & A-G & Reference \& Supporting Material \\
+\bottomrule
+\end{tabular}
+\caption{Document Structure Overview}
+\end{table}
+
 \clearpage
