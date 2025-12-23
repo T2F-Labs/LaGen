@@ -219,7 +219,7 @@ This research investigates the integration of quantum computing principles into 
 \vspace{0.4cm}
 
 \noindent
-Our comprehensive study examines three primary areas: quantum key distribution (QKD) mechanisms, lattice-based cryptographic algorithms, and hybrid classical-quantum security frameworks. Through rigorous mathematical analysis and simulation-based validation, we demonstrate the viability of implementing quantum-resistant encryption protocols in contemporary network infrastructures.
+Our  study examines three primary areas: quantum key distribution (QKD) mechanisms, lattice-based cryptographic algorithms, and hybrid classical-quantum security frameworks. Through rigorous mathematical analysis and simulation-based validation, we demonstrate the viability of implementing quantum-resistant encryption protocols in contemporary network infrastructures.
 
 \vspace{0.4cm}
 
@@ -290,7 +290,7 @@ This project aims to address the quantum cryptographic challenge through three p
 
 \begin{tcolorbox}[colback=goldaccent!5,colframe=goldaccent!70,arc=3pt,boxrule=1pt]
 \begin{enumerate}
-\item \textbf{\textcolor{primaryblue}{Theoretical Analysis:}} Conduct comprehensive mathematical analysis of quantum attack vectors against classical cryptographic systems and evaluate the theoretical security guarantees of post-quantum alternatives.
+\item \textbf{\textcolor{primaryblue}{Theoretical Analysis:}} Conduct  mathematical analysis of quantum attack vectors against classical cryptographic systems and evaluate the theoretical security guarantees of post-quantum alternatives.
 
 \vspace{0.2cm}
 

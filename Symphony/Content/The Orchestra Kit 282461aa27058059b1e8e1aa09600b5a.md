@@ -326,7 +326,7 @@ symphony-ext publish
 
 ### 📚 Documentation & Support
 
-- Comprehensive guides for each extension type
+-  guides for each extension type
 - Tutorial series from beginner to advanced
 - Community forums and Discord
 - Direct support for verified publishers

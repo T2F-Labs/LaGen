@@ -22,7 +22,7 @@ Symphony's external extension system consists of three distinct types of extensi
 - **Operators**: Lightweight data processing utilities needing minimal dependencies (CSV parsing, regex)
 - **Motifs**: UI components requiring web technologies and rendering frameworks (Tauri, WebView APIs)
 
-Our target extension developers fall into distinct categories: 60% are AI/ML engineers focused solely on model integration, 25% are data engineers building processing utilities, and 15% are full-stack developers creating comprehensive workflows. Early feedback from prototype testing indicates strong developer preference for focused, specialized APIs rather than comprehensive toolkits.
+Our target extension developers fall into distinct categories: 60% are AI/ML engineers focused solely on model integration, 25% are data engineers building processing utilities, and 15% are full-stack developers creating  workflows. Early feedback from prototype testing indicates strong developer preference for focused, specialized APIs rather than  toolkits.
 
 The extension marketplace is critical to Symphony's business model, targeting 15%+ revenue contribution by Year 2 through marketplace commissions and premium extensions. Developer experience directly impacts ecosystem growth, with build times and dependency management being primary friction points identified in user research.
 

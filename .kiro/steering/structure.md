@@ -6,7 +6,7 @@
 ├── main.tex                    # Main document entry point with module configuration
 ├── config.tex                  # Core LaTeX configuration with conditional module loading
 ├── brand_colors.tex            # Brand color definitions and color cascade system
-├── GUIDE.md                    # Comprehensive LaTeX configuration guide
+├── GUIDE.md                    #  LaTeX configuration guide
 ├── README.md                   # Project overview and quick start
 └── .kiro/                      # Kiro IDE configuration and steering files
 ```
@@ -172,4 +172,4 @@ assets/
 - Templates should work with any brand color scheme
 - Provide both cover and body styling options
 - Allow mixing covers from different templates
-- Include comprehensive usage examples
+- Include  usage examples

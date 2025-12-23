@@ -19,7 +19,7 @@ Not all extensions participate in Conductor orchestration. **Players** are
 extensions that have registered with the Conductor Core to actively collaborate
 in workflows under defined policies and governance frameworks.
 
-*For comprehensive details on Player registration, requirements, benefits, and
+*For  details on Player registration, requirements, benefits, and
 lifecycle management, see → [The Player](The%20Player%20294461aa27058067ac8ec0bdfda7a4ff.md)* 
 
 **Core Philosophy:**

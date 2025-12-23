@@ -221,7 +221,7 @@ Core IDE provides foundational UI framework and layout system. Maestro and Harmo
 ### 🎨 UI Framework Requirements
 
 - Flexible layout system supporting both traditional IDE and visual programming paradigms
-- Mode switching infrastructure with comprehensive state preservation
+- Mode switching infrastructure with  state preservation
 - Shared component library ensuring absolute visual consistency
 - Integrated help system and onboarding flow coordination
 
@@ -380,7 +380,7 @@ All three modes built as first-class, tightly integrated components within a uni
 1. **Robust Extension API** - Must support complete UI takeover seamlessly
 2. **Performance Standards** - Mode switching must achieve <200ms latency consistently
 3. **Design System Enforcement** - Automated validation of extension UI consistency
-4. **Error Isolation** - Comprehensive fault isolation between modes and core
+4. **Error Isolation** -  fault isolation between modes and core
 
 ### 📋 Implementation Priority Sequence
 

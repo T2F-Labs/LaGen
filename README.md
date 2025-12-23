@@ -35,7 +35,7 @@ This project provides a flexible template system that lets you generate beautifu
 - **Better Page Control**: Enhanced float placement and management
 - **Professional Pagination**: "Page X of Y" numbering and advanced headers/footers
 - **Advanced Image Handling**: Professional image formatting with shapes, fallbacks, and effects
-- **Comprehensive Lists**: Task lists, priority lists, and custom styling options
+- ** Lists**: Task lists, priority lists, and custom styling options
 - **Semantic Box Styling**: Info, alert, and success boxes with visual cues
 
 ## 🧱 Content Structure
@@ -61,7 +61,7 @@ How to include:
 
 ## 📖 Documentation
 
-This project includes comprehensive documentation to help you get the most out of the LaTeX template system:
+This project includes  documentation to help you get the most out of the LaTeX template system:
 
 - **GUIDE.md**: [Complete LaTeX configuration guide](./GUIDE.md) with detailed explanations of all available features and usage examples
 - **dev.md**: Development guidelines for maintaining and extending the system

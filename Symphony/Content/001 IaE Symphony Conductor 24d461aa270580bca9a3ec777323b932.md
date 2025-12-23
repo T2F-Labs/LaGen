@@ -88,7 +88,7 @@ Symphony's Conductor requires several infrastructure services:
 - **Development Complexity**: Python for the RL-based core requires bridging to Rust extensions via a Foreign Function Interface (FFI) or inter-process communication (IPC), adding integration complexity. This is mitigated by well-defined extension APIs.
 - **Development Time**: +123% longer (29 weeks vs 13 weeks) due to building the Python-based RL core and Rust extension system, plus implementing each infrastructure component with proper interfaces and lifecycle management.
 - **Performance Overhead**: ~2-3% slower than direct function calls due to extension dispatch and Python-Rust boundaries, though negligible compared to workflow execution time.
-- **Debugging Complexity**: Cross-language stack traces (Python core to Rust extensions) require additional tooling, addressed by comprehensive logging and debugging extensions.
+- **Debugging Complexity**: Cross-language stack traces (Python core to Rust extensions) require additional tooling, addressed by  logging and debugging extensions.
 
 ---
 

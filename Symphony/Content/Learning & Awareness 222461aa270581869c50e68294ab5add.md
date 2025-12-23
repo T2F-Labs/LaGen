@@ -1,6 +1,6 @@
 # Learning & Awareness
 
-> **Your** comprehensive knowledge hub for contributing to Symphony IDE - an AI-first development environment
+> **Your**  knowledge hub for contributing to Symphony IDE - an AI-first development environment
 > 
 > 
 > [AI](AI%20249461aa270580f1ab17e37d7cf7617b.md)
@@ -44,7 +44,7 @@ Complete frontend development knowledge for Symphony's React-based UI:
 
 ---
 
-Comprehensive AI/ML knowledge for Symphony's intelligent features:
+ AI/ML knowledge for Symphony's intelligent features:
 
 - Large Language Models (LLMs) and inference
 - Local AI with Ollama and model management

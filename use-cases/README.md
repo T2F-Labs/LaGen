@@ -1,6 +1,6 @@
 # LaTeX Use Cases Documentation
 
-This directory contains comprehensive examples demonstrating every combination of covers, templates, brand colors, and modular configurations for the LaGen LaTeX system.
+This directory contains  examples demonstrating every combination of covers, templates, brand colors, and modular configurations for the LaGen LaTeX system.
 
 ## 📁 Directory Structure
 

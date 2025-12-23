@@ -267,7 +267,7 @@ Choosing a database architecture that supports these features natively avoids fu
 ### Negative
 
 1. **Dual Database Management**: Developers must understand two database systems, maintain separate connection pools, and handle different error types. Increases cognitive load, onboarding time (~2-3 weeks vs. 1 week for single database), and potential for subtle bugs.
-2. **Cache Consistency Complexity**: Changes in primary database require explicit cache invalidation or update. Incorrect invalidation logic causes stale reads, incorrect orchestration decisions, and potential workflow failures. Requires 200-300 lines of invalidation code and comprehensive testing.
+2. **Cache Consistency Complexity**: Changes in primary database require explicit cache invalidation or update. Incorrect invalidation logic causes stale reads, incorrect orchestration decisions, and potential workflow failures. Requires 200-300 lines of invalidation code and  testing.
 3. **Increased Testing Burden**: Must test both databases independently and their interaction (consistency, failover scenarios, performance under mixed load). Approximately 30-40% more integration tests compared to single-database architecture.
 4. **Data Duplication**: Cache layer duplicates subset of primary database data, increasing storage requirements by 10-20%. More importantly, creates potential for inconsistency if cache invalidation fails.
 
@@ -289,7 +289,7 @@ Choosing a database architecture that supports these features natively avoids fu
 | --- | --- | --- |
 | **Cache consistency bugs**: Invalidation logic errors serve stale data from cache while primary database has updated values | High - Incorrect model allocations or workflow state causes execution failures, data corruption | Implement cache versioning with TTL (max 1-second staleness). Add consistency checks in critical paths (assert cache matches DB every 100th operation). Use read-through cache pattern where primary database is authoritative. Log all cache mismatches for investigation. |
 | **Performance targets not met**: Chosen databases don't achieve <100ms analytical or <1ms hot-path latency targets | High - Invalidates core architectural assumption, requires re-architecture or performance compromise | Implement performance benchmarks in CI pipeline (block PRs if regression >10%). Profile under realistic load (1M+ records, 1000+ concurrent ops) *before* production deployment. Prepare fallback plans for each recommended option. |
-| **Database stability issues**: Bugs in chosen databases cause data corruption, crashes, or query failures in production | Critical - Could cause data loss, system downtime, loss of user trust | Choose stable releases only (avoid nightly/beta). Implement comprehensive integration test suite (500+ test cases) covering edge cases. Establish rollback procedures. Monitor database error rates in production with alerting. |
+| **Database stability issues**: Bugs in chosen databases cause data corruption, crashes, or query failures in production | Critical - Could cause data loss, system downtime, loss of user trust | Choose stable releases only (avoid nightly/beta). Implement  integration test suite (500+ test cases) covering edge cases. Establish rollback procedures. Monitor database error rates in production with alerting. |
 | **Memory consumption exceeds targets**: Combined databases consume >4GB RAM, preventing edge device deployment | Medium - Limits deployment scenarios, reduces Symphony's market reach | Configure memory limits for both databases (max 2GB combined). Implement spillover to disk for large queries. Monitor memory usage in production and adjust dynamically. Provide "low-memory mode" configuration. |
 | **Cache layer write contention**: High concurrent write load causes lock contention or performance degradation | Medium - Reduces hot-path throughput, may limit workflow execution concurrency | Use separate cache databases/namespaces for different hot paths to partition contention. Implement write batching (flush every 10ms) to reduce transaction frequency. Monitor lock wait times. |
 | **Technology immaturity**: Less mature options (DuckDB, redb) have undiscovered bugs or breaking API changes | Medium - Could require emergency patches or technology swap mid-project | Prioritize stable releases with 6+ month track record. Maintain abstraction layer allowing database swaps. Monitor issue trackers for both projects. Budget 20% contingency time for stability fixes. |
@@ -310,7 +310,7 @@ Choosing a database architecture that supports these features natively avoids fu
 - Implement repository pattern abstractions for chosen databases
 - Migrate core entities (workflows, artifacts, training data)
 - Implement cache invalidation logic with consistency checks
-- Comprehensive integration test suite (500+ test cases)
+-  integration test suite (500+ test cases)
 
 ### Phase 3: Performance Testing (Week 5)
 

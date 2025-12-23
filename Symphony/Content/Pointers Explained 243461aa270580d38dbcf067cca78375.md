@@ -1,6 +1,6 @@
 # Pointers Explained
 
-## Comprehensive Guide to Pointers: Everything You Need to Know
+##  Guide to Pointers: Everything You Need to Know
 
 ## Table of Contents
 

@@ -443,8 +443,8 @@ trusted_extensions = "minimal_restrictions"
 security_requirements = "clear_and_fair"
 review_process = "transparent_and_fast"
 appeals_process = "developer_friendly"
-education = "comprehensive_security_guides"
+education = "_security_guides"
 
 ```
 
-Your malicious extension security strategy should **protect users without stifling innovation**. The key is graduated trust, comprehensive monitoring, and rapid response capabilities.
+Your malicious extension security strategy should **protect users without stifling innovation**. The key is graduated trust,  monitoring, and rapid response capabilities.
