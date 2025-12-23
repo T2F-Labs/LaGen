@@ -10,6 +10,7 @@
 \usepackage{titlesec}
 \usepackage{tocloft}
 \usepackage{setspace}
+\usepackage{graphicx}  % For image support in cover page
 
 % ========== TEMPLATE PLACEHOLDER DEFAULTS ==========
 % Provide default values for placeholders used in headers/footers
@@ -126,8 +127,30 @@
       \node[circle, fill=templateGold!15, minimum size=7cm] at ([xshift=5.5cm,yshift=-8.5cm]current page.south west) {};
   \end{tikzpicture}
   
-  % Skip logo space since we don't have logos in our system
-  \vspace{2cm}
+  % Professional header with logos (optional - from raw3)
+  % If logo files exist, they will be displayed; otherwise, this section is skipped
+  \IfFileExists{university-logo.jpeg}{
+    \begin{minipage}[t]{0.45\textwidth}
+        \includegraphics[width=0.8\textwidth]{university-logo.jpeg}
+    \end{minipage}
+    \hfill
+    \IfFileExists{college-logo.jpeg}{
+      \begin{minipage}[t]{0.45\textwidth}
+          \raggedleft
+          \includegraphics[width=0.8\textwidth]{college-logo.jpeg}
+      \end{minipage}
+    }{
+      \begin{minipage}[t]{0.45\textwidth}
+          \raggedleft
+          % Placeholder for second logo
+          \textcolor{templateDark}{\large\textbf{Institution Logo}}
+      \end{minipage}
+    }
+    \vspace{1cm}
+  }{
+    % No logos available - skip logo section
+    \vspace{2cm}
+  }
   
   % Institutional Information (from raw3)
   \begin{center}
