@@ -531,7 +531,7 @@
     - **Three Extension Types**: Instruments, Operators, Motifs
     - **Minimal Core**: Only 6 built-in features, rest via extensions
 - 3.4.3 Competitive Advantages
-    - Performance: 10-100x faster extension latency
+    - Performance: 10x faster extension latency
     - Architecture: Ground-up AI-first design
     - Extensibility: Multiple execution models
     - Intelligence: Learning orchestration system

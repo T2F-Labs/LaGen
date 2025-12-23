@@ -228,7 +228,7 @@ Choosing a database architecture that supports these features natively avoids fu
 
 **Cons:**
 
-- **Limited analytical performance**: SQLite's row-based storage 10-100x slower than columnar databases for aggregations and analytics
+- **Limited analytical performance**: SQLite's row-based storage 10x slower than columnar databases for aggregations and analytics
 - **No parallel queries**: SQLite processes queries single-threaded, leaving multi-core CPUs underutilized
 - **Basic features**: Limited window function support, no native JSON operators (requires extensions)
 - **Sled stability concerns**: Sled's API is not yet 1.0 stable, potential for breaking changes in future versions
@@ -239,7 +239,7 @@ Choosing a database architecture that supports these features natively avoids fu
 
 **Pros:**
 
-- **Superior analytical performance**: 10-100x faster than SQLite for aggregations due to columnar storage and vectorized execution
+- **Superior analytical performance**: 10x faster than SQLite for aggregations due to columnar storage and vectorized execution
 - **Advanced SQL features**: Parallel query execution, window functions, native JSON operators, SIMD optimizations
 - **Pure Rust cache**: redb eliminates FFI overhead in hot path, provides ACID transactions with zero-copy reads
 - **Future-proof**: Features align with Symphony's roadmap (time-series analysis, vector search, real-time dashboards)
