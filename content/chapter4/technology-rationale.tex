@@ -1,0 +1,48 @@
+% Technology Selection Rationale
+% Focus: High-level rationale for core technology choices
+
+\lettrine{S}{ymphony's} technology stack represents a carefully considered balance between performance requirements, development velocity, and ecosystem compatibility. Our approach prioritizes proven technologies that enable rapid iteration while maintaining the architectural flexibility necessary for AI-first development environments.
+
+\subsection*{Core Technology Philosophy}
+
+We adopted a \textcolor{brandPrimary}{multi-language architecture} that leverages each technology's strengths rather than forcing a single-language solution. This decision emerged from our analysis of AI development environment requirements, where different components demand different performance characteristics and development approaches.
+
+\begin{infobox}[title=Technology Selection Principles]
+Our technology choices follow three core principles:
+\begin{compactlist}
+    \item \textbf{Performance where it matters}: Use systems languages for performance-critical paths
+    \item \textbf{Productivity where possible}: Leverage high-level languages for rapid development
+    \item \textbf{Ecosystem compatibility}: Choose technologies with strong AI/ML ecosystem support
+\end{compactlist}
+\end{infobox}
+
+\subsection*{Language Distribution Strategy}
+
+The Symphony architecture employs a strategic distribution of programming languages based on component requirements:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Component} & \textbf{Language} & \textbf{Rationale} \\
+\midrule
+Core Infrastructure & Rust & Memory safety, performance \\
+AI Orchestration & Python & ML ecosystem, rapid iteration \\
+User Interface & TypeScript/React & Modern web standards, tooling \\
+Extensions & Multi-language & Developer choice, flexibility \\
+\bottomrule
+\end{tabular}
+\caption{Language Selection by Component Type}
+\end{table}
+
+This distribution allows us to optimize each component for its specific requirements while maintaining clear interfaces between subsystems. The approach contrasts with monolithic IDE architectures that typically commit to a single primary language.
+
+\subsection*{AI Ecosystem Integration}
+
+Our technology choices prioritize seamless integration with the rapidly evolving AI/ML ecosystem. Python's dominance in machine learning research and tooling made it the natural choice for our AI orchestration layer, while Rust provides the performance foundation necessary for real-time operations.
+
+\begin{successbox}
+The multi-language approach enables Symphony to adapt to new AI technologies without architectural constraints, supporting both current LLM integrations and future AI paradigms.
+\end{successbox}
+
+This flexibility proves essential in the fast-moving AI landscape, where new models and techniques emerge regularly. Our architecture can incorporate new AI capabilities without requiring fundamental system redesign.
