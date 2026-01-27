@@ -28,8 +28,7 @@ Our comparative evaluation employs a systematic methodology to assess architectu
 
 We analyze the fundamental architectural approaches that distinguish Symphony from existing development environments, focusing on design decisions that enable novel capabilities.
 
-\begin{table}[h]
-\centering
+\begin{center}
 \begin{tabular}{@{}p{3cm}p{4cm}p{5cm}@{}}
 \toprule
 \textbf{Platform} & \textbf{Architectural Approach} & \textbf{Design Philosophy} \\
@@ -41,9 +40,9 @@ Cursor & AI-Enhanced Fork & VSCode foundation with AI layer \\
 Windsurf & AI-Focused Interface & Custom UI with traditional backend \\
 \bottomrule
 \end{tabular}
-\caption{Architectural Design Philosophy Comparison}
+\captionof{table}{Architectural Design Philosophy Comparison}
 \label{tab:architectural-philosophy}
-\end{table}
+\end{center}
 
 \textbf{Research Insight}: Symphony's microkernel architecture represents a fundamental departure from traditional IDE design, enabling capabilities that cannot be retrofitted onto existing architectures.
 
@@ -52,8 +51,7 @@ Windsurf & AI-Focused Interface & Custom UI with traditional backend \\
 
 Our analysis reveals significant differences in how platforms integrate AI capabilities, with implications for system performance, extensibility, and user experience.
 
-\begin{table}[h]
-\centering
+\begin{center}
 \begin{tabular}{@{}p{3cm}p{4cm}p{5cm}@{}}
 \toprule
 \textbf{Integration Model} & \textbf{Implementation} & \textbf{Research Implications} \\
@@ -64,9 +62,9 @@ Feature-Based (JetBrains) & Integrated AI assistant & Constrained by monolithic 
 Fork-Based (Cursor) & Modified editor with AI & Inherits architectural limitations \\
 \bottomrule
 \end{tabular}
-\caption{AI Integration Architecture Analysis}
+\captionof{table}{AI Integration Architecture Analysis}
 \label{tab:ai-integration-analysis}
-\end{table}
+\end{center}
 
 \textbf{Novel Contribution}: Symphony's conductor-based orchestration enables multi-model workflows that are architecturally impossible in existing systems.
 
@@ -83,8 +81,7 @@ Our performance evaluation employed controlled benchmarks across multiple dimens
 - Startup time analysis across different system configurations
 - Scalability testing with large project repositories
 
-\begin{table}[h]
-\centering
+\begin{center}
 \begin{tabular}{@{}p{3.5cm}p{2cm}p{2cm}p{2cm}p{2cm}@{}}
 \toprule
 \textbf{Performance Metric} & \textbf{Symphony} & \textbf{VSCode} & \textbf{JetBrains} & \textbf{Improvement} \\
@@ -95,9 +92,9 @@ Startup Time -4s & 5-8s & 2-20× \\
 Large File Handling & 10,000+ files & 5,000 files & 8,000 files & 2× capacity \\
 \bottomrule
 \end{tabular}
-\caption{Quantitative Performance Comparison Results}
+\captionof{table}{Quantitative Performance Comparison Results}
 \label{tab:performance-results}
-\end{table}
+\end{center}
 
 \textbf{Research Findings:}
 
@@ -118,8 +115,7 @@ Our evaluation demonstrates significant performance improvements attributable to
 
 We analyze the security implications of different extension architectures, focusing on enterprise requirements and threat models.
 
-\begin{table}[h]
-\centering
+\begin{center}
 \begin{tabular}{@{}p{3cm}p{3cm}p{3cm}p{3cm}@{}}
 \toprule
 \textbf{Security Feature} & \textbf{Symphony} & \textbf{VSCode} & \textbf{Research Impact} \\
@@ -131,9 +127,9 @@ Audit Logging & ✅ Complete & ❌ Limited & Compliance support \\
 Trust Verification & ✅ Certificate-based & ⚠️ Basic signing & Supply chain security \\
 \bottomrule
 \end{tabular}
-\caption{Extension Security Architecture Comparison}
+\captionof{table}{Extension Security Architecture Comparison}
 \label{tab:security-comparison}
-\end{table}
+\end{center}
 
 \textbf{Research Contribution}: Symphony's three-tier security model (Community, Trusted, Enterprise) provides the first enterprise-grade extension security framework for development environments.
 
@@ -144,8 +140,7 @@ Our systematic comparative evaluation revt demonstrate Symphony's architectural 
 
 \textbf{Primary Research Findings:}
 
-\begin{table}[h]
-\centering
+\begin{center}
 \begin{tabular}{@{}p{4cm}p{3cm}p{5cm}@{}}
 \toprule
 \textbf{Research Dimension} & \textbf{Symphony Advantage} & \textbf{Architectural Innovation} \\
@@ -156,16 +151,16 @@ Security & & Three-tier extension security model \\
 Extensibility & Unlimited scalability & Plugin-based capability expansion \\
 \bottomrule
 \end{tabular}
-\caption{Summary of Research Contributions}
+\captionof{table}{Summary of Research Contributions}
 \label{tab:research-contributions}
-\end{table}
+\end{center}
 
 \textbf{Implications for Future Research:}
 
 \begin{infobox}[title=Research Impact and Future Directions]
 \begin{expandedlist}
     \item \textbf{Architectural Paradigm}: Demonstrates viability of AI-first system design
-    \itenel benefits for development tools
+    \item \textbf{Performance Benefits}: Quantifiable improvements for development tools
     \item \textbf{Security Framework}: Establishes new standards for extension security
     \item \textbf{Extensibility Model}: Proves scalability of plugin-based AI systems
 \end{expandedlist}
