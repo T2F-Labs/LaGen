@@ -1,0 +1,266 @@
+% ========== PROCESS MANAGEMENT PRIMITIVES ==========
+% Spawning external tools, flexible communication patterns, and resource control
+% Source: Symphony/Content/The Minimal IDE, The Assembling
+
+\section*{Process Management Primitives}
+\addcontentsline{toc}{section}{Process Management Primitives}
+
+\lettrine{S}{ymphony's} process management primitives provide the foundation for integrating external tools, language servers, build systems, and any other command-line utilities that extensions might need. Rather than hardcoding support for specific tools, Symphony offers flexible primitives that can adapt to any external process communication pattern.
+
+\subsection*{Spawning External Tools}
+\addcontentsline{toc}{subsection}{Spawning External Tools}
+
+The process spawning system provides comprehensive control over external process creation and management:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}p{0.3\textwidth}p{0.35\textwidth}p{0.3\textwidth}@{}}
+\toprule
+\textbf{Process Type} & \textbf{Capabilities} & \textbf{Use Cases} \\
+\midrule
+\textbf{Long-Running Services} & 
+Persistent processes, automatic restart, health monitoring & 
+Language servers, build watchers, development servers \\
+\midrule
+\textbf{Task Execution} & 
+One-time execution, progress tracking, result capture & 
+Build commands, test runners, formatters \\
+\midrule
+\textbf{Interactive Processes} & 
+Bidirectional communication, real-time interaction & 
+REPLs, debuggers, interactive shells \\
+\midrule
+\textbf{Background Workers} & 
+Asynchronous execution, resource isolation, job queuing & 
+File indexing, code analysis, batch processing \\
+\bottomrule
+\end{tabular}
+\caption{Process Types and Management Capabilities}
+\end{table}
+
+\subsubsection*{Process Configuration}
+
+Extensions configure process spawning through a comprehensive manifest system:
+
+\begin{lstlisting}[language=toml, caption=Process Configuration Example]
+[processes.language_server]
+command = "rust-analyzer"
+args = []
+working_directory = "${workspaceRoot}"
+environment = { RUST_LOG = "info" }
+
+[processes.language_server.communication]
+stdin = true
+stdout = true
+stderr = "capture"
+protocol = "json-rpc"
+
+[processes.language_server.lifecycle]
+auto_start = true
+restart_on_crash = true
+max_restarts = 5
+health_check_interval = 30
+
+[processes.build_task]
+command = "cargo"
+args = ["build", "--release"]
+working_directory = "${workspaceRoot}"
+shell = false
+
+[processes.build_task.resources]
+memory_limit = "1GB"
+cpu_priority = "normal"
+timeout = 300
+\end{lstlisting}
+
+\subsection*{Flexible Communication Patterns}
+\addcontentsline{toc}{subsection}{Flexible Communication Patterns}
+
+Symphony supports multiple communication patterns between extensions and external processes:
+
+\begin{infobox}[title=Communication Pattern Philosophy]
+Different tools require different communication patterns. A language server needs bidirectional JSON-RPC, a build tool needs simple command execution, and a debugger needs complex state management. Symphony's primitives adapt to each pattern without imposing artificial constraints.
+\end{infobox}
+
+\subsubsection*{Standard I/O Communication}
+
+The most common pattern for tool integration:
+
+\begin{compactlist}
+    \item \textbf{Stdin Writing}: Send commands and data to processes
+    \item \textbf{Stdout Reading}: Receive structured output and responses
+    \item \textbf{Stderr Handling}: Capture errors and diagnostic information
+    \item \textbf{Line Buffering}: Efficient line-by-line processing
+\end{compactlist}
+
+\subsubsection*{Network Communication}
+
+For tools that prefer network-based communication:
+
+\begin{compactlist}
+    \item \textbf{TCP Sockets}: Direct socket communication for performance
+    \item \textbf{HTTP/REST}: RESTful API integration for web-based tools
+    \item \textbf{WebSockets}: Real-time bidirectional communication
+    \item \textbf{Named Pipes}: High-performance local communication on supported platforms
+\end{compactlist}
+
+\subsubsection*{Message Protocols}
+
+Symphony provides protocol adapters for common message formats:
+
+\begin{lstlisting}[language=javascript, caption=Protocol Communication Example]
+// JSON-RPC communication with a language server
+const languageServer = await symphony.processes.spawn({
+    command: 'rust-analyzer',
+    protocol: 'json-rpc',
+    communication: 'stdio'
+});
+
+// Send initialization request
+const initResult = await languageServer.request('initialize', {
+    processId: process.pid,
+    rootUri: workspace.rootUri,
+    capabilities: clientCapabilities
+});
+
+// Handle notifications
+languageServer.onNotification('textDocument/publishDiagnostics', 
+    (params) => {
+        diagnostics.update(params.uri, params.diagnostics);
+    }
+);
+
+// Simple command execution
+const buildProcess = await symphony.processes.spawn({
+    command: 'cargo',
+    args: ['build'],
+    capture: 'all'
+});
+
+buildProcess.onExit((code, signal) => {
+    if (code === 0) {
+        notifications.show('Build successful');
+    } else {
+        problems.show(buildProcess.stderr);
+    }
+});
+\end{lstlisting}
+
+\subsection*{Resource Control and Isolation}
+\addcontentsline{toc}{subsection}{Resource Control and Isolation}
+
+Symphony provides comprehensive resource management to ensure external processes don't impact IDE performance:
+
+\subsubsection*{Resource Limits}
+
+Extensions can specify resource constraints for spawned processes:
+
+\begin{compactlist}
+    \item \textbf{Memory Limits}: Maximum memory usage per process
+    \item \textbf{CPU Throttling}: CPU usage limits and priority settings
+    \item \textbf{File Descriptor Limits}: Control over file and network handles
+    \item \textbf{Execution Timeouts}: Automatic termination of long-running processes
+\end{compactlist}
+
+\subsubsection*{Process Isolation}
+
+Security and stability through process isolation:
+
+\begin{compactlist}
+    \item \textbf{Sandboxing}: Restricted file system and network access
+    \item \textbf{User Permissions}: Process execution under restricted user accounts
+    \item \textbf{Working Directory Control}: Isolated working directories
+    \item \textbf{Environment Variable Filtering}: Controlled environment variable access
+\end{compactlist}
+
+\begin{successbox}
+Resource control ensures that even poorly-behaved external tools cannot compromise Symphony's performance or security. Extensions can spawn resource-intensive processes with confidence that they won't affect the overall IDE experience.
+\end{successbox}
+
+\subsection*{Lifecycle Management}
+\addcontentsline{toc}{subsection}{Lifecycle Management}
+
+Symphony provides sophisticated lifecycle management for external processes:
+
+\subsubsection*{Automatic Process Management}
+
+\begin{expandedlist}
+    \item \textbf{Auto-Start}: Processes start automatically when extensions load
+    \item \textbf{Health Monitoring}: Regular health checks with configurable intervals
+    \item \textbf{Crash Recovery}: Automatic restart with exponential backoff
+    \item \textbf{Graceful Shutdown}: Proper cleanup when extensions are disabled
+    \item \textbf{Resource Cleanup}: Automatic cleanup of temporary files and resources
+\end{expandedlist}
+
+\subsubsection*{Process State Management}
+
+Extensions can monitor and control process state:
+
+\begin{lstlisting}[language=javascript, caption=Process Lifecycle Management]
+class LanguageServerManager {
+    constructor() {
+        this.server = null;
+        this.restartCount = 0;
+        this.maxRestarts = 5;
+    }
+    
+    async start() {
+        this.server = await symphony.processes.spawn({
+            command: 'rust-analyzer',
+            lifecycle: {
+                auto_restart: true,
+                health_check: this.healthCheck.bind(this),
+                on_crash: this.handleCrash.bind(this)
+            }
+        });
+        
+        await this.server.waitForReady();
+        this.restartCount = 0; // Reset on successful start
+    }
+    
+    async healthCheck() {
+        try {
+            await this.server.request('ping', {}, { timeout: 5000 });
+            return true;
+        } catch (error) {
+            console.warn('Language server health check failed:', error);
+            return false;
+        }
+    }
+    
+    handleCrash(exitCode, signal) {
+        this.restartCount++;
+        
+        if (this.restartCount >= this.maxRestarts) {
+            notifications.showError(
+                'Language server crashed too many times. Manual restart required.'
+            );
+            return false; // Don't auto-restart
+        }
+        
+        return true; // Allow auto-restart
+    }
+    
+    async stop() {
+        if (this.server) {
+            await this.server.shutdown();
+            this.server = null;
+        }
+    }
+}
+\end{lstlisting}
+
+\subsubsection*{Process Coordination}
+
+For extensions that manage multiple processes:
+
+\begin{compactlist}
+    \item \textbf{Process Groups}: Logical grouping of related processes
+    \item \textbf{Dependency Management}: Start/stop processes in correct order
+    \item \textbf{Inter-Process Communication}: Coordination between multiple external tools
+    \item \textbf{Batch Operations}: Start, stop, or restart multiple processes together
+\end{compactlist}
+
+\begin{alertbox}
+The process management primitives transform Symphony into a powerful orchestration platform that can coordinate complex toolchains while maintaining simplicity and reliability.
+\end{alertbox}

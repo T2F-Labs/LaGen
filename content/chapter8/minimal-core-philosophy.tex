@@ -1,0 +1,70 @@
+% ========== MINIMAL CORE PHILOSOPHY ==========
+% The foundational philosophy behind Symphony's minimal core approach
+% Source: Symphony/Content/The Minimal IDE
+
+\section*{Minimal Core Philosophy}
+\addcontentsline{toc}{section}{Minimal Core Philosophy}
+
+\lettrine{S}{ymphony} represents a radical departure from the traditional "kitchen sink" approach to IDE development. Where conventional development environments attempt to anticipate every possible need and bundle countless features into a monolithic core, Symphony embraces a fundamentally different philosophy: \textbf{Minimal Core, Maximum Potential}.
+
+\subsection*{The Core vs Extension Boundary}
+\addcontentsline{toc}{subsection}{The Core vs Extension Boundary}
+
+The distinction between what belongs in Symphony's core versus what should be an extension is not arbitrary—it follows a carefully considered architectural principle. The core contains only those components that are:
+
+\begin{compactlist}
+    \item \textbf{Universally Required}: Every developer, regardless of language or workflow, needs these capabilities
+    \item \textbf{Performance Critical}: Components where the overhead of extension boundaries would be prohibitive
+    \item \textbf{Security Sensitive}: Features that require deep system integration and cannot be safely delegated
+    \item \textbf{Foundational}: Building blocks that other extensions depend upon for their own functionality
+\end{compactlist}
+
+\begin{infobox}[title=Architectural Decision Rationale]
+The minimal core philosophy emerged from analyzing the pain points of existing IDEs. VSCode, despite its extension system, still ships with over 100 built-in features. JetBrains IDEs bundle comprehensive toolchains that many developers never use. This bloat leads to slower startup times, higher memory usage, and reduced flexibility.
+
+Symphony's approach inverts this model: start with the absolute minimum and let the community build everything else through a powerful extension system.
+\end{infobox}
+
+\subsection*{Design Trade-offs and Benefits}
+\addcontentsline{toc}{subsection}{Design Trade-offs and Benefits}
+
+The minimal core approach involves deliberate trade-offs that favor long-term flexibility over short-term convenience:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}p{0.45\textwidth}p{0.45\textwidth}@{}}
+\toprule
+\textbf{Traditional IDE Approach} & \textbf{Symphony's Minimal Core} \\
+\midrule
+Immediate feature availability & Requires extension installation \\
+Larger initial download size & Minimal initial footprint \\
+Consistent but rigid experience & Highly customizable experience \\
+Slower startup due to feature loading & Lightning-fast startup \\
+Limited customization options & Infinite extensibility \\
+Vendor-controlled feature roadmap & Community-driven innovation \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of IDE Architectural Approaches}
+\end{table}
+
+The benefits of this approach become apparent in real-world usage:
+
+\begin{expandedlist}
+    \item \textbf{Performance}: Symphony starts in under 1 second compared to 3-8 seconds for traditional IDEs
+    \item \textbf{Memory Efficiency}: Base installation uses less than 150MB compared to 500MB+ for feature-rich IDEs
+    \item \textbf{Customization}: Developers install only the features they need, creating personalized workflows
+    \item \textbf{Innovation}: Community extensions can experiment with new paradigms without core modifications
+\end{expandedlist}
+
+\subsection*{The Extension-First Mindset}
+\addcontentsline{toc}{subsection}{The Extension-First Mindset}
+
+Symphony's philosophy extends beyond technical architecture to embrace an \textit{extension-first mindset}. This means:
+
+\begin{alertbox}
+\textbf{Every Feature is Questioned}: Before adding any capability to the core, we ask: "Could this be implemented as an extension?" If the answer is yes, it becomes an extension.
+\end{alertbox}
+
+This discipline ensures that the core remains truly minimal while the extension system becomes increasingly powerful. Features that might seem "obviously core" in other IDEs—such as debugging, source control, or even advanced search—are implemented as extensions in Symphony.
+
+The result is an IDE that can be as simple as a text editor for beginners or as sophisticated as a full development suite for experts, with each user assembling exactly the toolchain they need.

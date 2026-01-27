@@ -68,9 +68,9 @@
 % Customized for Symphony Book:
 %
 \newcommand{\CoverTitle}{Symphony: An AI-First Development Environment}        % Main title on cover page
-\newcommand{\CoverSubtitle}{Technical Documentation}       % Subtitle/description
+\newcommand{\CoverSubtitle}{Research Publication \& Architectural Analysis}       % Subtitle/description
 \newcommand{\CoverYear}{2025}                        % Year or date
-\newcommand{\CoverRecipient}{Technical Community}         % Who is this document for?
+\newcommand{\CoverRecipient}{Academic \& Research Community}         % Who is this document for?
 \newcommand{\CoverPreparer}{Symphony Development Team}             % Who created this document?
 %
 % Example for a business report:
@@ -118,13 +118,13 @@
 \providecommand{\SymphonyLogoPath}{images/brand/logo.png}
 \providecommand{\SymphonyLogoOutlinePath}{images/brand/logo-outline.png}
 
-% Document metadata placeholders for Symphony Book
+% Document metadata placeholders for Symphony Book - Academic Research Publication
 \providecommand{\DocumentIDPlaceholder}{SYM-2025-001}
 \providecommand{\VersionPlaceholder}{1.0.0}
-\providecommand{\ClassificationPlaceholder}{Academic Research}
-\providecommand{\DistributionPlaceholder}{Public}
-\providecommand{\StatusPlaceholder}{Final}
-\providecommand{\ContactPlaceholder}{symphony-team@bfcai.edu}
+\providecommand{\ClassificationPlaceholder}{Academic Research Publication}
+\providecommand{\DistributionPlaceholder}{Public - Academic Community}
+\providecommand{\StatusPlaceholder}{Final Research Submission}
+\providecommand{\ContactPlaceholder}{symphony-research@bfcai.edu}
 
 % ========== MODULE CONFIGURATION ==========
 % 
@@ -138,37 +138,39 @@
 %
 % Set to 'true' to enable, 'false' to disable:
 
-\newcommand{\EnableAdvancedTypography}{true}   % Drop caps, advanced fonts, letter spacing
-                                               % Use for: Professional documents, marketing materials
+\newcommand{\EnableAdvancedTypography}{true}   % Drop caps, advanced fonts, letter spacing - ESSENTIAL for academic documents
+                                               % Use for: Professional documents, marketing materials, academic papers
                                                
-\newcommand{\EnableMathematics}{true}          % Equations, theorems, mathematical symbols
+\newcommand{\EnableMathematics}{true}          % Equations, theorems, mathematical symbols - REQUIRED for research
                                                % Use for: Academic papers, technical documents, research
                                                
-\newcommand{\EnableTables}{true}               % Enhanced table formatting, colors, multi-page tables
+\newcommand{\EnableTables}{true}               % Enhanced table formatting, colors, multi-page tables - ESSENTIAL for data presentation
                                                % Use for: Data reports, comparisons, structured information
                                                
-\newcommand{\EnableBoxes}{true}                % Info boxes, alerts, callouts, warnings
+\newcommand{\EnableBoxes}{true}                % Info boxes, alerts, callouts, warnings - CRITICAL for academic formatting
                                                % Use for: Almost all documents (highly recommended)
                                                
-\newcommand{\EnableLists}{true}               % Enhanced lists, task lists, priority indicators
+\newcommand{\EnableLists}{true}               % Enhanced lists, task lists, priority indicators - IMPORTANT for structured content
                                                % Use for: Project plans, checklists, structured content
                                                
-\newcommand{\EnableCode}{false}                % Syntax highlighting, code blocks, programming examples
+\newcommand{\EnableCode}{false}                % Syntax highlighting, code blocks, programming examples - Not needed for this academic focus
                                                % Use for: Technical documentation, programming guides
                                                
-\newcommand{\EnableImages}{true}              % Advanced image handling, positioning, effects
+\newcommand{\EnableImages}{true}              % Advanced image handling, positioning, effects - REQUIRED for figures and diagrams
                                                % Use for: Visual documents, reports with graphics
                                                
-\newcommand{\EnableAlgorithms}{false}          % Pseudocode, algorithm formatting, flowcharts
+\newcommand{\EnableAlgorithms}{true}          % Pseudocode, algorithm formatting, flowcharts - USEFUL for research papers
                                                % Use for: Computer science papers, technical specifications
                                                
-\newcommand{\EnableReferences}{false}          % Bibliography, citations, cross-references
+\newcommand{\EnableReferences}{true}          % Bibliography, citations, cross-references - ESSENTIAL for academic work
                                                % Use for: Academic papers, research documents
 %
 % COMMON COMBINATIONS:
 %
-% Academic Paper:
-% Mathematics=true, References=true, Algorithms=true, Boxes=true
+% Academic Research Paper (CURRENT CONFIGURATION - OPTIMIZED):
+% AdvancedTypography=true, Mathematics=true, References=true, Algorithms=true, 
+% Boxes=true, Tables=true, Images=true, Lists=true
+% Expected compilation time: 20-30 seconds (full academic features)
 %
 % Business Report:  
 % Tables=true, Boxes=true, Images=true, AdvancedTypography=true
@@ -211,9 +213,9 @@
 \fi
 
 % ========== DOCUMENT METADATA ==========
-% Standard LaTeX document information for Symphony Book
+% Standard LaTeX document information for Symphony Book - Academic Research Publication
 % This is used for the default \maketitle command and PDF metadata
-\title{Symphony: An AI-First Development Environment}
+\title{Symphony: An AI-First Development Environment - Research Publication \& Architectural Analysis}
 \author{AMR MUHMAED FATHY, MOHAMED, MAHMOUD, MOSTAFA, SALMA}
 \date{\today}
 
@@ -228,8 +230,11 @@
 % Main Content (Chapters 1-26 + Appendices A-G will be added as tasks are completed)
 \input{content/chapter1/entry.tex}  % Introduction
 \input{content/chapter2/entry.tex}  % Vision & Philosophy
-\input{content/chapter3/entry.tex}  % Market Analysis & Competitive Landscape
-\input{content/chapter4/entry.tex}  % Technology Stack
-% ... (Additional chapters will be added in subsequent tasks)
+\input{content/chapter3/entry.tex}  % Related Work & Competitive Analysis
+\input{content/chapter4/entry.tex}  % Technical Architecture Research
+\input{content/chapter5/entry.tex}  % Architectural Design Research
+\input{content/chapter6/entry.tex}  % Microkernel Research Contributions
+\input{content/chapter7/entry.tex}  % Extension Framework Research
+\input{content/chapter8/entry.tex}  % Implementation Research Insights
 
 \end{document}

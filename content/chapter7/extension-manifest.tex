@@ -1,0 +1,357 @@
+% ========== EXTENSION MANIFEST SYMPHONY.TOML ==========
+
+\section{Extension Manifest: Symphony.toml}
+\label{sec:extension-manifest}
+
+\lettrine{T}{he} Symphony.toml manifest serves as the definitive declaration of an extension's identity, capabilities, requirements, and integration points within the Symphony ecosystem. This comprehensive configuration system enables static analysis, automated dependency resolution, security policy enforcement, and intelligent orchestration by the Conductor.
+
+\subsection{Manifest Schema Overview}
+\label{subsec:manifest-schema-overview}
+
+The Symphony.toml manifest follows a hierarchical structure organized into logical sections that declare different aspects of extension functionality. The schema supports three extension types while maintaining a unified configuration approach.
+
+\begin{infobox}[title=Manifest Design Philosophy]
+\textbf{Declarative over Imperative:} Extensions declare what they can do and need, rather than how they do it. This enables Symphony to make intelligent decisions about extension loading, orchestration, and resource allocation.
+\end{infobox}
+
+\subsubsection{Core Manifest Sections}
+\label{subsubsec:core-manifest-sections}
+
+\begin{table}[h]
+\centering
+\caption{Symphony.toml Manifest Sections}
+\label{tab:manifest-sections}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Section} & \textbf{Purpose} & \textbf{Required} \\
+\midrule
+\texttt{[package]} & Extension identity and metadata & Yes \\
+\texttt{[engine]} & Symphony compatibility requirements & Yes \\
+\texttt{[extension\_type]} & Type-specific configuration & Yes \\
+\texttt{[runtime]} & Execution environment specification & Yes \\
+\texttt{[capabilities]} & System capability declarations & Yes \\
+\texttt{[dependencies]} & Extension and system dependencies & No \\
+\texttt{[security]} & Security and permission model & No \\
+\texttt{[configuration]} & User-configurable settings & No \\
+\texttt{[ui\_extensibility]} & UI integration points & No \\
+\texttt{[lifecycle]} & Lifecycle hook configuration & No \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Metadata Fields}
+\label{subsec:metadata-fields}
+
+The package section defines the extension's core identity and marketplace information:
+
+\begin{lstlisting}[language=toml,caption=Package Metadata Example]
+[package]
+name = "rust-code-generator"
+display_name = "Rust Code Generator"
+version = "1.2.3"
+description = "AI-powered Rust code generation and optimization"
+author = "Symphony Community"
+publisher = "symphony-instruments"
+license = "MIT"
+homepage = "https://symphony.dev/extensions/rust-generator"
+repository = "https://github.com/symphony/rust-generator"
+documentation = "https://docs.symphony.dev/rust-generator"
+
+# Orchestra Kit categorization
+categories = ["instruments", "code-generation", "rust"]
+keywords = ["rust", "ai", "codegen", "optimization"]
+tags = ["llm", "productivity", "development"]
+\end{lstlisting}
+
+\subsubsection{Version Management}
+\label{subsubsec:version-management}
+
+Symphony uses semantic versioning with additional metadata for compatibility and migration support:
+
+\begin{compactlist}
+\item \textbf{Version Format}: MAJOR.MINOR.PATCH following SemVer 2.0
+\item \textbf{Compatibility Matrix}: Declares compatible Symphony versions
+\item \textbf{Breaking Changes}: Explicit declaration of breaking changes
+\item \textbf{Migration Support}: Automated migration paths between versions
+\end{compactlist}
+
+\subsection{Dependency Specification}
+\label{subsec:dependency-specification}
+
+The dependency system supports complex dependency relationships with version constraints, optional dependencies, and conflict resolution.
+
+\subsubsection{Dependency Types}
+\label{subsubsec:dependency-types}
+
+\begin{table}[h]
+\centering
+\caption{Extension Dependency Types}
+\label{tab:dependency-types}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Type} & \textbf{Behavior} & \textbf{Example} \\
+\midrule
+Required & Must be present for operation & Language servers \\
+Optional & Enhances functionality if present & Additional AI models \\
+Bundled & Included with this extension & Utility libraries \\
+Conflicting & Cannot coexist with this extension & Alternative implementations \\
+Suggested & Recommended for optimal experience & Complementary tools \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{lstlisting}[language=toml,caption=Dependency Specification Example]
+[dependencies]
+# Required extensions with version constraints
+required_extensions = [
+    "language-server-rust ^1.0.0",
+    "syntax-highlighter >=2.1.0, <3.0.0"
+]
+
+# Optional extensions that enhance functionality
+optional_extensions = [
+    "rust-analyzer ~1.5.0",
+    "cargo-integration ^2.0.0"
+]
+
+# System dependencies
+system_requirements = [
+    "rust-toolchain >=1.70.0",
+    "cargo >=1.70.0"
+]
+
+# Extensions that conflict with this one
+conflicts_with = [
+    "legacy-rust-support <1.0.0"
+]
+
+# Version constraints for Symphony itself
+minimum_symphony_version = "1.0.0"
+maximum_symphony_version = "2.0.0"
+\end{lstlisting}
+
+\subsubsection{Dependency Resolution Algorithm}
+\label{subsubsec:dependency-resolution-algorithm}
+
+Symphony employs a sophisticated dependency resolution algorithm that considers multiple factors:
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    step/.style={rectangle, rounded corners, draw=brandPrimary, fill=brandPrimary!10, text width=3cm, text centered, minimum height=1cm},
+    decision/.style={diamond, draw=brandSecondary, fill=brandSecondary!10, text width=2.5cm, text centered, minimum height=1cm},
+    arrow/.style={->, >=stealth, thick, brandAccent}
+]
+
+% Steps
+\node[step] (collect) {Collect Dependencies};
+\node[step, below=1.5cm of collect] (resolve) {Resolve Versions};
+\node[decision, below=1.5cm of resolve] (conflicts) {Conflicts?};
+\node[step, left=2cm of conflicts] (negotiate) {Negotiate Resolution};
+\node[step, below=1.5cm of conflicts] (validate) {Validate Solution};
+\node[step, below=1.5cm of validate] (install) {Install Extensions};
+
+% Arrows
+\draw[arrow] (collect) -- (resolve);
+\draw[arrow] (resolve) -- (conflicts);
+\draw[arrow] (conflicts) -- node[right] {Yes} (negotiate);
+\draw[arrow] (negotiate) |- (resolve);
+\draw[arrow] (conflicts) -- node[right] {No} (validate);
+\draw[arrow] (validate) -- (install);
+
+\end{tikzpicture}
+\caption{Dependency Resolution Algorithm Flow}
+\label{fig:dependency-resolution}
+\end{figure}
+
+\subsection{Permission Declaration}
+\label{subsec:permission-declaration}
+
+Symphony implements a fine-grained permission model that allows extensions to declare their required capabilities while enabling users and administrators to make informed security decisions.
+
+\subsubsection{Permission Categories}
+\label{subsubsec:permission-categories}
+
+\begin{table}[h]
+\centering
+\caption{Extension Permission Categories}
+\label{tab:permission-categories}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Category} & \textbf{Scope} & \textbf{Risk Level} \\
+\midrule
+File System & Read/write access to files and directories & Medium \\
+Network & HTTP/HTTPS requests, API access & High \\
+Process & Spawn external processes, system commands & High \\
+UI & Modify interface, create panels & Low \\
+Extension & Communicate with other extensions & Medium \\
+System & Environment variables, registry access & High \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{lstlisting}[language=toml,caption=Permission Declaration Example]
+[security]
+# Security level determines default permissions
+security_level = "standard"  # minimal | standard | elevated | system
+
+[security.permissions]
+# File system permissions
+file_system = ["read", "write"]
+file_system_scope = ["workspace", "temp"]
+
+# Network permissions for AI model access
+network = ["https"]
+network_domains = ["api.openai.com", "api.anthropic.com"]
+
+# UI modification capabilities
+ui = ["create_panels", "modify_editor"]
+
+# Extension communication
+extension_communication = true
+extension_apis = ["language-server", "syntax-highlighter"]
+
+[security.data_access]
+# Data access controls
+workspace_data_access = true
+user_data_access = false
+system_data_access = false
+\end{lstlisting}
+
+\subsection{Validation Rules}
+\label{subsec:validation-rules}
+
+The manifest validation system ensures consistency, security, and compatibility across the extension ecosystem.
+
+\subsubsection{Static Validation}
+\label{subsubsec:static-validation}
+
+Static validation occurs during extension packaging and installation:
+
+\begin{expandedlist}
+\item \textbf{Schema Compliance}: Manifest structure matches the defined schema
+\item \textbf{Semantic Validation}: Logical consistency of declared capabilities
+\item \textbf{Security Policy}: Permission requests align with extension type
+\item \textbf{Dependency Integrity}: All dependencies are resolvable and compatible
+\item \textbf{Version Constraints}: Version specifications are valid and consistent
+\end{expandedlist}
+
+\subsubsection{Runtime Validation}
+\label{subsubsec:runtime-validation}
+
+Runtime validation ensures extensions behave according to their manifest declarations:
+
+\begin{alertbox}
+\textbf{Manifest Enforcement:} Symphony continuously monitors extension behavior to ensure it matches manifest declarations. Violations result in warnings, restrictions, or extension suspension.
+\end{alertbox}
+
+\begin{table}[h]
+\centering
+\caption{Runtime Validation Checks}
+\label{tab:runtime-validation}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Check Type} & \textbf{Frequency} & \textbf{Action on Violation} \\
+\midrule
+Resource Usage & Continuous & Throttle or suspend \\
+Permission Compliance & Per operation & Block operation \\
+API Usage & Per call & Rate limit or block \\
+Performance Metrics & Periodic & Performance warnings \\
+Security Behavior & Event-driven & Security alerts \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Validation Error Handling}
+\label{subsubsec:validation-error-handling}
+
+The validation system provides detailed error reporting and remediation guidance:
+
+\begin{compactlist}
+\item \textbf{Error Classification}: Errors categorized by severity and type
+\item \textbf{Remediation Suggestions}: Specific guidance for fixing validation issues
+\item \textbf{Compatibility Warnings}: Notifications about potential compatibility issues
+\item \textbf{Performance Recommendations}: Suggestions for optimizing manifest declarations
+\end{compactlist}
+
+\subsection{Type-Specific Manifest Sections}
+\label{subsec:type-specific-manifest-sections}
+
+Each extension type includes specialized manifest sections that declare type-specific capabilities and requirements.
+
+\subsubsection{Instrument-Specific Configuration}
+\label{subsubsec:instrument-specific-configuration}
+
+\begin{lstlisting}[language=toml,caption=Instrument Extension Manifest]
+[extension_type]
+type = "instrument"
+
+[extension_type.instrument]
+model_type = "llm"
+intelligence_level = "expert"
+processing_domain = ["code", "text", "planning"]
+
+[model]
+provider = "openai"
+model_name = "gpt-4"
+api_version = "2023-12-01"
+
+[model.capabilities]
+max_tokens = 8192
+supports_streaming = true
+supports_function_calling = true
+context_window = 128000
+
+[model.billing]
+cost_per_request = 0.03
+cost_per_token = 0.00003
+billing_model = "per_token"
+\end{lstlisting}
+
+\subsubsection{Operator-Specific Configuration}
+\label{subsubsec:operator-specific-configuration}
+
+\begin{lstlisting}[language=toml,caption=Operator Extension Manifest]
+[extension_type]
+type = "operator"
+
+[extension_type.operator]
+utility_type = "data_processing"
+execution_context = "sync"
+
+[processing]
+input_size_limit_mb = 100
+output_size_limit_mb = 100
+cpu_intensive = false
+deterministic_output = true
+thread_safe = true
+
+[performance]
+expected_latency_ms = 50
+throughput_ops_per_sec = 1000
+memory_efficiency = "high"
+\end{lstlisting}
+
+\subsubsection{Motif-Specific Configuration}
+\label{subsubsec:motif-specific-configuration}
+
+\begin{lstlisting}[language=toml,caption=Motif Extension Manifest]
+[extension_type]
+type = "motif"
+
+[extension_type.motif]
+ui_type = "panel"
+integration_level = "integrated"
+
+[ui_integration]
+panel_locations = ["sidebar", "bottom"]
+theme_integration = true
+responsive_design = true
+
+[ui_behavior]
+can_create_panels = true
+can_modify_layout = false
+persistent_state = true
+\end{lstlisting}
+
+The Symphony.toml manifest system provides a comprehensive, type-aware configuration framework that enables intelligent extension management while maintaining security, performance, and compatibility across the entire extension ecosystem.

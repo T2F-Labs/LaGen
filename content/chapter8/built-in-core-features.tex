@@ -1,0 +1,153 @@
+% ========== BUILT-IN CORE FEATURES ==========
+% The six essential components that form Symphony's minimal core
+% Source: Symphony/Content/The Minimal IDE
+
+\section*{The Six Built-in Core Features}
+\addcontentsline{toc}{section}{The Six Built-in Core Features}
+
+\lettrine{S}{ymphony's} core consists of exactly six components—no more, no less. These represent the absolute minimum functionality required for any development environment, carefully selected to provide a solid foundation while maintaining the minimal philosophy.
+
+\subsection*{Core Component Architecture}
+\addcontentsline{toc}{subsection}{Core Component Architecture}
+
+Each core component serves a specific, well-defined purpose and provides the essential building blocks that extensions can leverage:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}p{0.25\textwidth}p{0.35\textwidth}p{0.35\textwidth}@{}}
+\toprule
+\textbf{Component} & \textbf{Core Capabilities} & \textbf{Extension Interface} \\
+\midrule
+\textbf{Text Editor} & 
+Multi-cursor support, basic text operations, file encoding handling & 
+Editor API, text manipulation hooks, cursor management \\
+\midrule
+\textbf{File Explorer} & 
+Project navigation, file operations, type recognition & 
+File system events, custom file handlers, tree customization \\
+\midrule
+\textbf{Syntax Highlighting} & 
+TextMate grammar support, language detection, token-based highlighting & 
+Custom grammar registration, theme integration, semantic highlighting \\
+\midrule
+\textbf{Settings System} & 
+Preference management, configuration persistence & 
+Extension settings schema, validation, UI generation \\
+\midrule
+\textbf{Native Terminal} & 
+Shell integration, process management & 
+Terminal customization, command interception, output processing \\
+\midrule
+\textbf{Extension System} & 
+Extension loading, security sandboxing, API provisioning & 
+Extension lifecycle hooks, inter-extension communication \\
+\bottomrule
+\end{tabular}
+\caption{Symphony's Six Core Components and Their Capabilities}
+\end{table}
+
+\subsection*{1. Text Editor: The Foundation}
+\addcontentsline{toc}{subsection}{1. Text Editor: The Foundation}
+
+The text editor component provides the fundamental text manipulation capabilities that every developer needs:
+
+\begin{compactlist}
+    \item \textbf{Multi-cursor Support}: Efficient editing with multiple selection points
+    \item \textbf{Basic Text Operations}: Copy, paste, find, replace, undo/redo
+    \item \textbf{File Encoding Handling}: Support for UTF-8, UTF-16, and legacy encodings
+    \item \textbf{Performance Optimization}: Efficient handling of large files through virtual scrolling
+\end{compactlist}
+
+\begin{successbox}
+The editor is intentionally basic—advanced features like IntelliSense, code completion, and refactoring are provided by language-specific extensions that leverage the editor's API.
+\end{successbox}
+
+\subsection*{2. File Explorer: Project Navigation}
+\addcontentsline{toc}{subsection}{2. File Explorer: Project Navigation}
+
+The file explorer provides essential project structure navigation and file management:
+
+\begin{compactlist}
+    \item \textbf{Hierarchical Navigation}: Tree-based project structure display
+    \item \textbf{File Operations}: Create, delete, rename, move operations
+    \item \textbf{File Type Recognition}: Basic file type detection for appropriate handling
+    \item \textbf{Folder Management}: Expand/collapse, nested folder support
+\end{compactlist}
+
+Extensions can enhance the file explorer with features like Git status indicators, custom file icons, or specialized project views.
+
+\subsection*{3. Syntax Highlighting Engine}
+\addcontentsline{toc}{subsection}{3. Syntax Highlighting Engine}
+
+The syntax highlighting engine provides the foundation for code visualization:
+
+\begin{compactlist}
+    \item \textbf{TextMate Grammar Support}: Industry-standard grammar format compatibility
+    \item \textbf{Language Detection}: Automatic language identification for common file types
+    \item \textbf{Color Theming Foundation}: Base theming system for consistent appearance
+    \item \textbf{Token-based Highlighting}: Efficient syntax parsing and colorization
+\end{compactlist}
+
+\begin{infobox}[title=Language Support Strategy]
+Symphony's core provides syntax highlighting for widely-used programming languages (JavaScript, Python, Rust, Java, C++, Go). Specialized languages and domain-specific syntaxes are available through community extensions, ensuring the core remains lightweight while supporting comprehensive language ecosystems.
+\end{infobox}
+
+\subsection*{4. Settings System: Configuration Management}
+\addcontentsline{toc}{subsection}{4. Settings System: Configuration Management}
+
+The settings system manages user preferences and extension configurations:
+
+\begin{compactlist}
+    \item \textbf{User Preferences}: Editor behavior, appearance, keyboard shortcuts
+    \item \textbf{Configuration Persistence}: Automatic saving and loading of settings
+    \item \textbf{Extension Integration}: Seamless integration of extension-specific settings
+    \item \textbf{Schema Validation}: Type-safe configuration with automatic validation
+\end{compactlist}
+
+Extensions can define their own settings schemas, and the core automatically generates appropriate UI components for configuration.
+
+\subsection*{5. Native Terminal: System Integration}
+\addcontentsline{toc}{subsection}{5. Native Terminal: System Integration}
+
+The native terminal provides essential system interaction capabilities:
+
+\begin{compactlist}
+    \item \textbf{Shell Integration}: Support for system shells (bash, zsh, PowerShell, cmd)
+    \item \textbf{Process Management}: Spawning and managing external processes
+    \item \textbf{Terminal Emulation}: Full terminal emulation with ANSI escape sequence support
+    \item \textbf{Multiple Sessions}: Support for multiple concurrent terminal sessions
+\end{compactlist}
+
+The terminal serves as a foundation for build systems, version control, and other command-line tools that extensions might provide.
+
+\subsection*{6. Extension System: The Enabler}
+\addcontentsline{toc}{subsection}{6. Extension System: The Enabler}
+
+The extension system is perhaps the most critical core component, as it enables everything else:
+
+\begin{compactlist}
+    \item \textbf{Extension Loading}: Dynamic loading and unloading of extensions
+    \item \textbf{Security Sandboxing}: Isolated execution environments for extensions
+    \item \textbf{API Provisioning}: Comprehensive APIs for core system interaction
+    \item \textbf{Inter-Extension Communication}: Secure communication channels between extensions
+\end{compactlist}
+
+\begin{alertbox}
+The extension system itself demonstrates Symphony's minimal core philosophy—it provides the infrastructure for extensions without dictating what those extensions should do or how they should work.
+\end{alertbox}
+
+\subsection*{What's Notably Absent}
+\addcontentsline{toc}{subsection}{What's Notably Absent}
+
+Understanding what Symphony's core \textit{doesn't} include is as important as understanding what it does:
+
+\begin{compactlist}
+    \item \textbf{Debugging}: Provided by Debug Adapter Protocol (DAP) extensions
+    \item \textbf{Source Control}: Implemented through Git, SVN, or other SCM extensions
+    \item \textbf{Language Servers}: LSP integration handled by language-specific extensions
+    \item \textbf{Build Systems}: Cargo, npm, Maven, etc. supported via extensions
+    \item \textbf{Testing Frameworks}: Test runners implemented as extensions
+    \item \textbf{Advanced Search}: Sophisticated search capabilities provided by extensions
+\end{compactlist}
+
+This intentional minimalism ensures that Symphony remains fast, lightweight, and infinitely customizable while still providing a solid foundation for building sophisticated development environments.
