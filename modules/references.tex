@@ -1,28 +1,33 @@
 % ========== REFERENCES MODULE ==========
 % Load this module only when advanced references are needed
 
+% Pass options to hyperref before it gets loaded anywhere
+\PassOptionsToPackage{
+    colorlinks=true,
+    bookmarks=true,
+    bookmarksopen=true,
+    bookmarksnumbered=true,
+    pdfstartview=FitH,
+    pdfpagelayout=SinglePage
+}{hyperref}
+
 % Reference management packages
 \usepackage[
     backend=biber,
     style=authoryear,
     sorting=nyt,
     maxbibnames=99,
-    giveninits=true
+    giveninits=true,
+    uniquename=init
 ]{biblatex}
 
 % Hyperref and cross-references (order matters!)
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,
     linkcolor=accent,
     urlcolor=accent,
     citecolor=accent,
-    filecolor=accent,
-    bookmarks=true,
-    bookmarksopen=true,
-    bookmarksnumbered=true,
-    pdfstartview=FitH,
-    pdfpagelayout=SinglePage
+    filecolor=accent
 }
 
 \usepackage{nameref}

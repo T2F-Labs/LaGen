@@ -24,6 +24,8 @@
 \usepackage{enumitem}
 % Load caption package for \captionof command
 \usepackage{caption}
+% Configure caption package to suppress hypcap warnings for \captionof
+\captionsetup[table]{hypcap=false}
 \ifdefined\pdftexversion
   \usepackage{microtype}
 \fi
@@ -36,7 +38,7 @@
     right=1.1in,
     headheight=14pt,
     headsep=0.3in,
-    footskip=40pt
+    footskip=50pt
 }
 
 % ========== BASIC COLORS ==========
