@@ -4,99 +4,62 @@
 \section{AI-First Development Environment: Foundational Principles}
 \label{sec:aide-concept}
 
-\lettrine{T}{he} concept of an AI-First Development Environment (AIDE) represents a fundamental paradigm shift in software engineering research, moving beyond the traditional model of human-centric development tools enhanced with AI capabilities to an architecture where artificial intelligence serves as the foundational orchestrator of the entire development process. Our research introduces AIDE as a novel approach to human-computer interaction in software development, where AI agents function as primary actors rather than auxiliary assistants.
+\lettrine{T}{he} concept of an AI-First Development Environment (AIDE) represents a fundamental paradigm shift in software engineering research, moving beyond traditional human-centric development tools to an architecture where artificial intelligence serves as the foundational orchestrator of the entire development process.
 
 \subsection{Theoretical Foundation and Research Problem}
 
-Traditional Integrated Development Environments (IDEs) were architected under the assumption that human developers would serve as the primary decision-makers and orchestrators of all development activities. This human-centric model, while successful for decades, creates inherent bottlenecks when attempting to integrate sophisticated AI capabilities. Our analysis of existing AI-assisted development tools reveals a fundamental architectural limitation: AI features are retrofitted onto human-centric foundations, resulting in suboptimal integration and limited collaborative potential.
+Traditional Integrated Development Environments were architected under the assumption that human developers would serve as the primary decision-makers and orchestrators of all development activities. This human-centric model creates inherent bottlenecks when attempting to integrate sophisticated AI capabilities.
 
 The research problem we address is: \textit{How can development environments be architected from the ground up to enable true human-AI collaboration, where artificial intelligence serves as an equal partner in the creative process rather than a sophisticated autocomplete system?}
 
 \subsection{AIDE Architecture Principles}
 
-Our AIDE framework is built upon four core architectural principles that distinguish it from traditional and AI-assisted development environments:
+Our AIDE framework is built upon four core architectural principles:
 
 \subsubsection{AI-Centric Foundation}
 
-Unlike traditional IDEs that add AI features as extensions, AIDE places artificial intelligence at the architectural core. This design decision enables several key capabilities:
-
-\begin{itemize}
-    \item \textbf{Intelligent Resource Management}: AI systems automatically optimize computational resources, model loading, and memory allocation based on development context
-    \item \textbf{Adaptive Workflow Orchestration}: The environment dynamically adjusts development workflows based on project requirements and user patterns
-    \item \textbf{Predictive Context Switching}: AI anticipates developer needs and pre-loads relevant models and tools
-\end{itemize}
+Unlike traditional IDEs that add AI features as extensions, AIDE places artificial intelligence at the architectural core, enabling intelligent resource management, adaptive workflow orchestration, and predictive context switching.
 
 \subsubsection{Agentic Design Philosophy}
 
-AIDE implements a multi-agent architecture where specialized AI agents collaborate to accomplish complex development tasks. This approach draws from distributed systems research and multi-agent coordination theory, adapted for software development contexts. Each agent maintains:
-
-\begin{itemize}
-    \item \textbf{Domain Expertise}: Specialized knowledge in specific aspects of software development
-    \item \textbf{Autonomous Decision-Making}: Capability to make decisions within defined boundaries
-    \item \textbf{Collaborative Communication}: Structured interaction protocols with other agents
-    \item \textbf{Adaptive Learning}: Continuous improvement through experience and feedback
-\end{itemize}
+AIDE implements a multi-agent architecture where specialized AI agents collaborate to accomplish complex development tasks. Each agent maintains domain expertise, autonomous decision-making capabilities, and collaborative communication protocols.
 
 \subsubsection{Artifact-Driven Communication}
 
-A critical innovation in AIDE is the use of structured artifacts as the primary communication medium between agents and between agents and humans. This approach ensures:
-
-\begin{itemize}
-    \item \textbf{Transparency}: All decisions and reasoning are documented in accessible formats
-    \item \textbf{Reproducibility}: Development processes can be replayed and analyzed
-    \item \textbf{Traceability}: Complete audit trails from requirements to implementation
-    \item \textbf{Collaborative Understanding}: Shared knowledge representation across all participants
-\end{itemize}
+A critical innovation in AIDE is the use of structured artifacts as the primary communication medium between agents and humans, ensuring transparency, reproducibility, and traceability throughout the development process.
 
 \subsubsection{Human-AI Role Redefinition}
 
-AIDE fundamentally redefines the roles of humans and AI in software development. Rather than humans managing tools and AI providing suggestions, AIDE establishes a collaborative partnership where:
-
-\begin{itemize}
-    \item \textbf{Humans provide creative vision}: Strategic direction, user experience goals, and quality standards
-    \item \textbf{AI handles implementation orchestration}: Task coordination, resource management, and technical execution
-    \item \textbf{Both contribute to decision-making}: Collaborative evaluation of alternatives and trade-offs
-\end{itemize}
+AIDE fundamentally redefines roles where humans provide creative vision and strategic direction while AI handles implementation orchestration and technical execution, with both contributing to collaborative decision-making.
 
 \subsection{Research Contributions and Novelty}
 
 Our AIDE framework contributes several novel concepts to software engineering research:
 
-\subsubsection{Architectural Innovation}
-
-The microkernel architecture with AI-centric orchestration represents a significant departure from existing IDE architectures. This design enables:
-
-\begin{itemize}
-    \item \textbf{Modular Intelligence}: AI capabilities can be added, removed, or upgraded without affecting core functionality
-    \item \textbf{Fault Isolation}: Agent failures do not compromise the entire development environment
-    \item \textbf{Scalable Complexity}: The system can handle increasingly sophisticated AI models and workflows
-\end{itemize}
-
-\subsubsection{Interaction Model Research}
-
-AIDE introduces new interaction paradigms that extend beyond traditional command-line or graphical user interfaces:
-
-\begin{itemize}
-    \item \textbf{Conversational Development}: Natural language interaction with specialized development agents
-    \item \textbf{Visual Workflow Composition}: Graphical orchestration of AI agent collaborations
-    \item \textbf{Contextual Intelligence}: Environment awareness that adapts to development patterns and preferences
-\end{itemize}
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Innovation Area} & \textbf{Key Contribution} \\
+\midrule
+Architectural Design & Microkernel architecture with AI-centric orchestration \\
+Interaction Models & Conversational development and visual workflow composition \\
+Process Transformation & AI-driven task management with human oversight \\
+Quality Assurance & Multi-agent validation and reliability frameworks \\
+\bottomrule
+\end{tabular}
+\caption{AIDE Research Contributions}
+\end{table}
 
 \subsection{Implications for Software Engineering Research}
 
 The AIDE paradigm has broader implications for software engineering research and practice:
 
-\subsubsection{Human-Computer Interaction Evolution}
+\begin{infobox}[title=Research Impact]
+AIDE represents an evolution in human-computer interaction research, moving from human-tool interaction to human-agent collaboration. This shift requires new theoretical frameworks for understanding and optimizing collaborative intelligence systems.
+\end{infobox}
 
-AIDE represents an evolution in HCI research, moving from human-tool interaction to human-agent collaboration. This shift requires new theoretical frameworks for understanding and optimizing collaborative intelligence systems.
-
-\subsubsection{Development Process Transformation}
-
-Traditional software development processes assume human-driven task management and coordination. AIDE enables new process models where AI agents can autonomously manage certain aspects of development while maintaining human oversight and creative control.
-
-\subsubsection{Quality Assurance and Validation}
-
-The multi-agent nature of AIDE introduces new challenges and opportunities for software quality assurance. Our research explores how traditional validation approaches must evolve to accommodate AI-driven development processes while maintaining reliability and security standards.
+This approach enables new development process models where AI agents can autonomously manage certain aspects of development while maintaining human oversight and creative control, fundamentally transforming how we approach software creation.
 
 \subsection{Limitations and Future Research Directions}
 
