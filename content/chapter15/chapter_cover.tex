@@ -5,11 +5,29 @@
 
 \vspace{2cm}
 
-% 1. BIG CHAPTER NUMBER in content-reflective shape (diamond for training/learning)
+% 1. BIG CHAPTER NUMBER in content-reflective shape (quest/puzzle pattern for training)
 \begin{center}
 \begin{tikzpicture}
-    % Diamond shape for training/learning content
-    \fill[brandPrimary!15] (0,2) -- (2,0) -- (0,-2) -- (-2,0) -- cycle;
+    % Quest/puzzle pattern with interconnected challenges
+    % Central quest hub
+    \fill[brandPrimary!15] (0,0) circle (1.8cm);
+    \draw[brandPrimary!40, line width=2pt] (0,0) circle (1.8cm);
+    % Surrounding quest nodes (training challenges)
+    \foreach \angle in {45, 135, 225, 315} {
+        \fill[brandPrimary!10] ({2.8*cos(\angle)}, {2.8*sin(\angle)}) circle (0.6cm);
+        \draw[brandPrimary!30, line width=1pt] ({2.8*cos(\angle)}, {2.8*sin(\angle)}) circle (0.6cm);
+        % Connection paths (learning progression)
+        \draw[brandAccent!50, line width=1.5pt, ->] ({1.2*cos(\angle)}, {1.2*sin(\angle)}) -- ({2.2*cos(\angle)}, {2.2*sin(\angle)});
+    }
+    % Quest completion indicators
+    \foreach \angle in {45, 135, 225, 315} {
+        \fill[brandAccent] ({2.8*cos(\angle)}, {2.8*sin(\angle)}) circle (0.15cm);
+    }
+    % Progressive difficulty indicators
+    \draw[brandPrimary!20, dashed, line width=1pt] ({2.8*cos(45)}, {2.8*sin(45)}) -- ({2.8*cos(135)}, {2.8*sin(135)});
+    \draw[brandPrimary!20, dashed, line width=1pt] ({2.8*cos(135)}, {2.8*sin(135)}) -- ({2.8*cos(225)}, {2.8*sin(225)});
+    \draw[brandPrimary!20, dashed, line width=1pt] ({2.8*cos(225)}, {2.8*sin(225)}) -- ({2.8*cos(315)}, {2.8*sin(315)});
+    \draw[brandPrimary!20, dashed, line width=1pt] ({2.8*cos(315)}, {2.8*sin(315)}) -- ({2.8*cos(45)}, {2.8*sin(45)});
     % Chapter number
     \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {15};
 \end{tikzpicture}
