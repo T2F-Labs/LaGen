@@ -1,0 +1,202 @@
+% ========== MACRO ARCHITECTURE ==========
+% Architectural layers, component boundaries, communication patterns, deployment topology
+% Source: Symphony/Content/Architecture documents
+
+\section*{Macro Architecture}
+\addcontentsline{toc}{section}{Macro Architecture}
+
+\lettrine{S}{ymphony's} macro architecture represents a paradigm shift from traditional monolithic IDE designs to a distributed, microkernel-inspired system that prioritizes modularity, performance, and extensibility. The architecture is built on four foundational principles: minimal core complexity, maximum extensibility, intelligent orchestration, and infrastructure-aware evolution.
+
+\subsection*{Architectural Layers}
+\addcontentsline{toc}{subsection}{Architectural Layers}
+
+Symphony's architecture is organized into distinct layers, each with specific responsibilities and well-defined interfaces. This layered approach ensures separation of concerns while enabling efficient communication and resource sharing.
+
+\subsubsection*{Presentation Layer}
+
+The presentation layer encompasses all user-facing components and interfaces, built using modern web technologies for consistency across platforms.
+
+\begin{compactlist}
+    \item \textbf{React UI Framework}: Modern component-based interface with TypeScript integration
+    \item \textbf{Jotai State Management}: Atomic state management for predictable UI behavior
+    \item \textbf{TanStack Query}: Efficient data fetching and caching for responsive interactions
+    \item \textbf{Tauri Integration}: Native desktop capabilities with web technology benefits
+    \item \textbf{Communication Hub}: Centralized interface for backend communication
+\end{compactlist}
+
+\subsubsection*{Service Orchestration Layer}
+
+The orchestration layer manages service coordination, task routing, and system-wide resource allocation through the Conductor microkernel.
+
+\begin{compactlist}
+    \item \textbf{Conductor Core}: Python-based RL model for intelligent decision-making
+    \item \textbf{Task Router}: Distributes work across available services and extensions
+    \item \textbf{Resource Manager}: Manages system resources and prevents conflicts
+    \item \textbf{Conflict Arbitrator}: Resolves resource contention and access conflicts
+    \item \textbf{Extension Registry}: Manages extension lifecycle and capabilities
+\end{compactlist}
+
+\subsubsection*{Infrastructure Layer}
+
+The infrastructure layer provides core system services implemented as high-performance Rust extensions.
+
+\begin{compactlist}
+    \item \textbf{Pool Manager}: Manages AI model lifecycle and resource allocation
+    \item \textbf{Artifact Store}: Content-addressable storage for intermediate results
+    \item \textbf{DAG Tracker}: Workflow dependency tracking and execution coordination
+    \item \textbf{Stale Manager}: Automated data lifecycle and archival management
+    \item \textbf{Communication Bridge}: Cross-language interoperability infrastructure
+\end{compactlist}
+
+\subsubsection*{Extension Layer}
+
+The extension layer hosts all specialized functionality as pluggable components, enabling infinite extensibility.
+
+\begin{compactlist}
+    \item \textbf{AI Model Services}: Specialized AI processing capabilities
+    \item \textbf{Development Tools}: Language servers, debuggers, and analysis tools
+    \item \textbf{Integration Services}: Version control, deployment, and external tool integration
+    \item \textbf{Custom Extensions}: User-defined and community-contributed functionality
+\end{compactlist}
+
+\subsection*{Component Boundaries}
+
+Symphony's component boundaries are designed to maximize modularity while minimizing coupling. Each component operates within well-defined interfaces and communication protocols.
+
+\begin{infobox}[title=Boundary Design Principles]
+\textbf{Interface Segregation}: Components expose only necessary functionality through minimal interfaces.
+
+\textbf{Dependency Inversion}: High-level components depend on abstractions, not concrete implementations.
+
+\textbf{Single Responsibility}: Each component has a single, well-defined purpose within the system.
+
+\textbf{Open/Closed Principle}: Components are open for extension but closed for modification.
+\end{infobox}
+
+\subsubsection*{Core-Extension Boundary}
+
+The boundary between Symphony's core and extensions is carefully designed to ensure system stability while enabling maximum flexibility.
+
+\textbf{Core Responsibilities}:
+\begin{compactlist}
+    \item System initialization and shutdown
+    \item Extension lifecycle management
+    \item Resource allocation and conflict resolution
+    \item Inter-component communication routing
+    \item Security policy enforcement
+\end{compactlist}
+
+\textbf{Extension Responsibilities}:
+\begin{compactlist}
+    \item Specialized functionality implementation
+    \item Domain-specific processing logic
+    \item External system integration
+    \item User interface customization
+    \item Performance optimization
+\end{compactlist}
+
+\subsubsection*{Language Boundaries}
+
+Symphony's multi-language architecture requires careful boundary management between Python, Rust, and JavaScript components.
+
+\begin{table}[h]
+\centering
+\caption{Language Boundary Characteristics}
+\label{tab:language-boundaries}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Boundary} & \textbf{Mechanism} & \textbf{Performance} & \textbf{Use Case} \\
+\midrule
+Python-Rust & PyO3 FFI & 50-100ns overhead & AI model integration \\
+Rust-JavaScript & Tauri IPC & 100-500ns overhead & UI communication \\
+Python-JavaScript & WebSocket/HTTP & 1-5ms overhead & Real-time updates \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Communication Patterns}
+
+Symphony employs multiple communication patterns optimized for different use cases and performance requirements.
+
+\subsubsection*{Synchronous Communication}
+
+Used for operations requiring immediate responses and strong consistency guarantees.
+
+\textbf{Request-Response Pattern}:
+\begin{compactlist}
+    \item Direct function calls within language boundaries
+    \item FFI calls for cross-language synchronous operations
+    \item Blocking operations with timeout protection
+    \item Error propagation and exception handling
+\end{compactlist}
+
+\subsubsection*{Asynchronous Communication}
+
+Employed for operations that can be processed independently or in parallel.
+
+\textbf{Event-Driven Pattern}:
+\begin{compactlist}
+    \item Publish-subscribe messaging for loose coupling
+    \item Event queues for reliable message delivery
+    \item Async/await patterns for non-blocking operations
+    \item Callback mechanisms for completion notification
+\end{compactlist}
+
+\subsubsection*{Streaming Communication}
+
+Utilized for real-time data flows and continuous processing scenarios.
+
+\textbf{Stream Processing Pattern}:
+\begin{compactlist}
+    \item WebSocket connections for real-time UI updates
+    \item Async iterators for data stream processing
+    \item Backpressure handling for flow control
+    \item Stream transformation and filtering
+\end{compactlist}
+
+\subsection*{Deployment Topology}
+
+Symphony's deployment architecture supports multiple deployment scenarios while maintaining consistent behavior and performance characteristics.
+
+\subsubsection*{Desktop Deployment}
+
+The primary deployment target leveraging Tauri for native desktop integration.
+
+\begin{successbox}
+\textbf{Desktop Advantages}:
+\begin{compactlist}
+    \item Native file system access and performance
+    \item Direct hardware resource utilization
+    \item Offline operation capabilities
+    \item Enhanced security through OS-level isolation
+    \item Optimal AI model performance with local GPU access
+\end{compactlist}
+\end{successbox}
+
+\subsubsection*{Web Deployment}
+
+Browser-based deployment for accessibility and collaboration scenarios.
+
+\textbf{Web Architecture Adaptations}:
+\begin{compactlist}
+    \item WebAssembly compilation for performance-critical components
+    \item Service worker integration for offline capabilities
+    \item Progressive Web App (PWA) features for native-like experience
+    \item Cloud-based AI model execution for resource-intensive operations
+\end{compactlist}
+
+\subsubsection*{Hybrid Deployment}
+
+Combination deployment supporting both local and cloud resources.
+
+\textbf{Hybrid Capabilities}:
+\begin{compactlist}
+    \item Local processing for sensitive data and low-latency operations
+    \item Cloud processing for resource-intensive AI model execution
+    \item Intelligent workload distribution based on resource availability
+    \item Seamless failover between local and cloud resources
+\end{compactlist}
+
+\begin{alertbox}
+\textbf{Deployment Considerations}: Each deployment topology maintains the same architectural principles while adapting to platform-specific constraints and capabilities. The modular design ensures consistent behavior across all deployment scenarios.
+\end{alertbox}
