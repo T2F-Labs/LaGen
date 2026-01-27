@@ -15,7 +15,7 @@
 \usepackage{scalefnt}
 \usepackage{lettrine}
 \usepackage[english]{babel}
-\usepackage[autostyle=true,english=american]{csquotes}
+% Note: csquotes will be loaded after code module to avoid fvextra warning
 \usepackage[all]{nowidow}
 \usepackage{needspace}
 
@@ -95,8 +95,8 @@
     }
 \fi
 
-% Smart quotes setup
-\MakeOuterQuote{"}
+% Smart quotes setup - will be configured after csquotes is loaded
+% Note: \MakeOuterQuote will be called from config.tex after csquotes loads
 
 % Font feature control
 \newcommand{\withfeatures}[2]{{\addfontfeatures{#1}#2}}

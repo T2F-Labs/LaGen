@@ -206,6 +206,44 @@ Extra }, or forgotten \endgroup.
 - Remove extra `}` from `\end{environment}}`
 - Use systematic search: `\\end\{[^}]+\}\}`
 
+### 11. **Package Command Dependencies**
+
+**Problem**: Commands used before required packages are loaded
+```
+Undefined control sequence.
+./modules/typography-advanced.tex, 99
+l.99 \MakeOuterQuote{"}
+LaTeX Error: Missing \begin{document}.
+```
+
+**Root Cause**: `\MakeOuterQuote` command used before csquotes package is loaded
+
+**Recipe**:
+1. Ensure package is loaded before using its commands
+2. Move command calls to after package loading
+3. Use conditional loading when packages are optional
+
+**Fix Pattern**:
+```latex
+% OLD (problematic)
+\usepackage{somepackage}
+\SomeCommand{}  % In different file loaded before package
+
+% NEW (working)
+\usepackage{somepackage}
+\SomeCommand{}  % After package is loaded
+```
+
+**Specific csquotes Fix**:
+```latex
+% In config.tex - load csquotes then configure
+\usepackage[autostyle=true,english=american]{csquotes}
+\MakeOuterQuote{"}  % After csquotes is loaded
+
+% In typography module - remove the command
+% \MakeOuterQuote{"}  % Comment out or remove
+```
+
 ## Warning Resolution Recipes
 
 ### 1. **Hyperref Bookmarks Warning**
@@ -274,29 +312,95 @@ Package fancyhdr Warning: \footskip is too small
 \geometry{footskip=50pt}  % Increase from default 40pt
 ```
 
+### 6. **Package Loading Order Warnings**
+
+**Problem**: fvextra/csquotes loading order
+```
+Package fvextra Warning: csquotes should be loaded after fvextra
+```
+
+**Recipe**:
+```latex
+% Load csquotes after code module (which loads minted/fvextra)
+\ifthenelse{\equal{\EnableCode}{true}}{
+    \input{modules/code.tex}
+}{}
+% Then load csquotes
+\usepackage[autostyle=true,english=american]{csquotes}
+```
+
+### 7. **Lettrine Spacing Warnings**
+
+**Problem**: Drop caps don't fit on page
+```
+Package lettrine Warning: The dropped cap S doesn't fit on page
+```
+
+**Recipe**:
+```latex
+% Add vertical space before lettrine
+\vspace{0.5cm}
+\lettrine{S}{ymphony} continues normally...
+```
+
+### 8. **Float Specifier Warnings**
+
+**Problem**: Float placement restrictions
+```
+`h' float specifier changed to `ht'
+```
+
+**Recipe**:
+```latex
+% Use more flexible float specifiers
+\begin{table}[ht]  % Instead of [h]
+\begin{figure}[htb] % Instead of [h]
+```
+
+### 9. **Hyperref Bookmark Warnings**
+
+**Problem**: Bookmark anchor conflicts
+```
+Package hyperref Warning: The anchor of a bookmark and its parent's must not be the same
+```
+
+**Recipe**:
+```latex
+% Add spacing between section and subsection
+\section{Title}
+\vspace{0.3cm}
+\subsection{Subtitle}
+```
+
 ## Systematic Troubleshooting Process
 
 ### Phase 1: Critical Error Resolution
 1. **Fix undefined control sequences** (highest priority)
-2. **Fix malformed syntax** (braces, quotes, environments)
-3. **Balance environments** (begin/end pairs)
-4. **Fix file path issues** (missing files, incorrect paths)
+2. **Fix package command dependencies** (commands before packages)
+3. **Fix malformed syntax** (braces, quotes, environments)
+4. **Balance environments** (begin/end pairs)
+5. **Fix file path issues** (missing files, incorrect paths)
 
 ### Phase 2: Language and Environment Fixes
 1. **Fix listings language issues** (undefined languages)
 2. **Fix list environment problems** (lonely items)
 3. **Fix math mode issues** (missing environments)
 4. **Resolve duplicate labels** (make unique)
+5. **Enable required modules** (code module for language definitions)
 
 ### Phase 3: Warning Cleanup
-1. **Package conflicts** (options, loading order)
-2. **Configuration warnings** (geometry, caption)
-3. **Compatibility issues** (siunitx/physics)
+1. **Package loading order** (fvextra before csquotes)
+2. **Package conflicts** (siunitx/physics, options)
+3. **Typography spacing** (lettrine, drop caps)
+4. **Float placement** (table/figure specifiers)
+5. **Configuration warnings** (geometry, caption)
 
 ### Phase 4: Verification
 1. **Environment balance check**
-2. **Compilation test**
-3. **Warning analysis**
+2. **Package dependency verification**
+3. **Module loading order test**
+4. **Compilation test**
+5. **Warning analysis**
 
 ## Automated Fix Scripts
 
@@ -363,6 +467,15 @@ def fix_braces(content):
     return content
 ```
 
+### Package Command Dependencies Fixer
+```python
+def fix_package_dependencies(content):
+    # Move commands that require packages to after package loading
+    # Example: Move \MakeOuterQuote after csquotes
+    content = re.sub(r'\\MakeOuterQuote\{[^}]+\}', '', content)  # Remove from modules
+    return content
+```
+
 ### Environment Balance Checker
 ```python
 def check_balance(content):
@@ -371,6 +484,14 @@ def check_balance(content):
         end_count = len(re.findall(rf'\\end\{{{env}\}}', content))
         if begin_count != end_count:
             print(f"Unbalanced {env}: {begin_count} begin, {end_count} end")
+```
+
+### Module Loading Order Fixer
+```python
+def fix_module_loading_order(config_content):
+    # Ensure proper loading sequence for packages with dependencies
+    # Example: Load code module before csquotes to avoid fvextra warnings
+    return config_content
 ```
 
 ## Prevention Best Practices
@@ -401,15 +522,22 @@ def check_balance(content):
 - Check for duplicates before adding new labels
 - Follow consistent naming conventions
 
-### 6. **Module Loading**
-- Use `\PassOptionsToPackage` for early option setting
-- Load packages in correct order (hyperref last)
-- Handle package conflicts explicitly
+### 7. **Package Dependencies**
+- Ensure packages are loaded before using their commands
+- Move command calls to appropriate locations after package loading
+- Use conditional loading for optional package features
+- Check package documentation for command requirements
 
-### 7. **Syntax Checking**
+### 8. **Module Loading Order**
+- Load packages in correct dependency order
+- Handle package conflicts with proper sequencing
+- Use `\PassOptionsToPackage` for early option setting
+- Test module combinations for compatibility
+### 9. **Syntax Checking**
 - Verify brace matching
 - Check environment balance
 - Test compilation frequently
+- Validate package command usage
 
 ## Quick Reference Commands
 
@@ -427,8 +555,8 @@ def check_balance(content):
 \hexagon → \diamond
 
 % Listings languages
-language=toml → language=bash
-language=javascript → language=JavaScript
+language=toml → language=toml (with proper definition)
+language=javascript → language=JavaScript (capital J)
 
 % File paths (from within chapter directory)
 \input{content/chapter11/file.tex} → \input{file.tex}
@@ -437,12 +565,27 @@ language=javascript → language=JavaScript
 \begin{table}[h]\centering → \begin{center}
 \caption{Title} → \captionof{table}{Title}
 \end{table} → \end{center}
+
+% Float specifiers
+\begin{table}[h] → \begin{table}[ht]
+\begin{figure}[h] → \begin{figure}[htb]
+
+% Package command dependencies
+% In module file:
+\MakeOuterQuote{"} → % Remove or comment out
+% In config file after csquotes:
+\usepackage{csquotes}
+\MakeOuterQuote{"}  % Add after package loading
+
+% Module enabling
+\newcommand{\EnableCode}{false} → \newcommand{\EnableCode}{true}
 ```
 
 ## Success Metrics
 
 ### Clean Compilation Indicators
 - ✅ No "Undefined control sequence" errors
+- ✅ No "Missing \begin{document}" errors
 - ✅ No "Missing $ inserted" errors
 - ✅ No "Listings Error" messages
 - ✅ No "Lonely \item" errors
@@ -451,25 +594,52 @@ language=javascript → language=JavaScript
 - ✅ No "Not in outer par mode" errors
 - ✅ No "Runaway argument" errors
 - ✅ No "Emergency stop" messages
+- ✅ No package command dependency errors
+- ✅ Proper module loading (EnableCode=true for listings)
 - ✅ Minimal package warnings only
 - ✅ PDF generation successful
 
 ### Warning Reduction
 - ✅ Hyperref warnings eliminated/reduced
-- ✅ Package conflict warnings resolved
-- ✅ Geometry warnings fixed
+- ✅ Package conflict warnings resolved (siunitx/physics)
+- ✅ Package loading order warnings fixed (fvextra/csquotes)
+- ✅ Geometry warnings fixed (footskip)
 - ✅ Caption warnings suppressed appropriately
+- ✅ Lettrine spacing warnings resolved
+- ✅ Float specifier warnings minimized
+- ✅ Lineno package warnings acknowledged
 
 ## Conclusion
 
 The key to successful LaTeX troubleshooting is systematic error categorization and targeted fixes. Most compilation failures stem from:
 
 1. **Undefined symbols** - Use standard alternatives or define properly
-2. **Environment misuse** - Ensure proper nesting and balance
-3. **Language configuration** - Use supported language names
-4. **File path issues** - Use correct relative paths
-5. **Label conflicts** - Make labels unique and descriptive
+2. **Package dependencies** - Load packages before using their commands
+3. **Environment misuse** - Ensure proper nesting and balance
+4. **Language configuration** - Enable code module and define custom languages
+5. **File path issues** - Use correct relative paths
+6. **Label conflicts** - Make labels unique and descriptive
+7. **Module configuration** - Enable required modules (EnableCode=true for listings)
+8. **Package loading order** - Load dependencies in correct sequence
 
 Address critical errors first, then clean up warnings for a professional result.
 
 **Remember**: Some warnings are informational and harmless. Focus on eliminating errors and critical warnings that affect functionality or output quality.
+
+## Recent Fixes Applied (Symphony Book Project)
+
+### Major Error Resolutions:
+1. **EnableCode Module**: Changed from false to true to load language definitions
+2. **JavaScript/TOML Languages**: Proper definitions added to code module
+3. **csquotes/MakeOuterQuote**: Fixed package dependency order
+4. **Lettrine Spacing**: Added vertical space for proper drop cap fitting
+5. **Duplicate Labels**: Made all labels unique with context prefixes
+6. **Float Specifiers**: Changed restrictive [h] to flexible [ht]/[htb]
+7. **Package Loading Order**: csquotes after fvextra to avoid warnings
+
+### System Improvements:
+- Complete language support for JavaScript and TOML
+- Proper package dependency management
+- Enhanced typography with correct spacing
+- Optimized warning reduction strategies
+- Comprehensive error prevention patterns

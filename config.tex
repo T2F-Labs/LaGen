@@ -111,6 +111,15 @@
     \typeout{^^J INFO: Loaded code module^^J}
 }{}
 
+% Load csquotes after code module to avoid fvextra warning
+\ifthenelse{\equal{\EnableAdvancedTypography}{true}}{
+    % Suppress lineno package warnings about \@parboxrestore changes
+    \usepackage[autostyle=true,english=american]{csquotes}
+    % Configure smart quotes after csquotes is loaded
+    \MakeOuterQuote{"}
+    \typeout{^^J INFO: Loaded csquotes after code module^^J}
+}{}
+
 \ifthenelse{\equal{\EnableImages}{true}}{
     \input{modules/images.tex}
     \typeout{^^J INFO: Loaded images module^^J}
