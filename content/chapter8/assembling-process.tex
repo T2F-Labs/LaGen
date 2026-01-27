@@ -1,5 +1,5 @@
 % ========== ASSEMBLING PROCESS ==========
-% Building from primitives, component composition, and real-world LSP example
+% Building from primitives, component composition, and real-world examples
 % Source: Symphony/Content/The Minimal IDE, The Assembling
 
 \section*{The Assembling Process}
@@ -62,21 +62,38 @@ Extensions typically organize functionality in layers:
     \item \textbf{Integration Layer}: Connects with other extensions and core features
 \end{compactlist}
 
-\subsubsection*{Plugin Architecture Pattern}
+\subsubsection*{Modular Composition Pattern}
 
-Complex extensions can be composed of smaller, focused plugins:
+Complex extensions can be composed of smaller, focused components that work together to provide comprehensive functionality while maintaining clear separation of concerns.
 
-\begin{lstlisting}[language=toml, caption=Modular Extension Composition]
-[extension]
-name = "rust-development-suite"
-version = "1.0.0"
+\subsection*{Real-World Assembly Examples}
+\addcontentsline{toc}{subsection}{Real-World Assembly Examples}
 
-# Compose from smaller, focused components
-[dependencies]
-rust-analyzer-client = "^1.0"
-cargo-integration = "^0.8"
-rust-debugger = "^0.5"
-rust-testing = "^0.3"
+The assembling process enables extensions to create sophisticated development tools:
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+    \item[\textbf{Language Support}] Combining language servers, syntax highlighting, and debugging tools
+    \item[\textbf{Source Control}] Integrating Git operations, visual diff, and merge conflict resolution
+    \item[\textbf{Testing Frameworks}] Orchestrating test runners, result visualization, and coverage reporting
+    \item[\textbf{Build Systems}] Coordinating compilation, dependency management, and deployment
+\end{description}
+
+\subsection*{Assembly Benefits}
+\addcontentsline{toc}{subsection}{Assembly Benefits}
+
+The primitive-based assembly approach provides several key advantages:
+
+\begin{successbox}
+Extensions built through primitive assembly are more maintainable, testable, and adaptable than monolithic implementations. They can evolve independently while maintaining compatibility with the broader ecosystem.
+\end{successbox}
+
+\begin{compactlist}
+    \item \textbf{Modularity}: Components can be developed, tested, and updated independently
+    \item \textbf{Reusability}: Primitives can be combined in different ways for different use cases
+    \item \textbf{Flexibility}: Extensions can adapt to new requirements without architectural changes
+    \item \textbf{Community Innovation}: Developers can create novel combinations and patterns
+    \item \textbf{Quality Assurance}: Smaller, focused components are easier to test and debug
+\end{compactlist}
 
 [composition]
 # Define how components work together

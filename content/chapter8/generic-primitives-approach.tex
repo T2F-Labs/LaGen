@@ -88,16 +88,17 @@ The negotiation process follows these steps:
     \item \textbf{Dynamic Adaptation}: Runtime switching if conditions change
 \end{expandedlist}
 
-\subsection*{Real-World Protocol Examples}
-\addcontentsline{toc}{subsection}{Real-World Protocol Examples}
+\subsection*{Benefits of Generic Primitives}
+\addcontentsline{toc}{subsection}{Benefits of Generic Primitives}
 
-To illustrate the power of generic primitives, consider how different protocols can be implemented:
+This approach provides several key advantages:
 
-\subsubsection*{Language Server Protocol (LSP)}
-
-An LSP extension using Symphony's primitives:
-
-\begin{lstlisting}[language=toml, caption=LSP Extension Configuration]
+\begin{compactlist}
+    \item \textbf{Future-Proof}: New protocols can be supported without core changes
+    \item \textbf{Innovation-Friendly}: Community can experiment with novel communication patterns
+    \item \textbf{Lightweight Core}: No protocol-specific code bloating the core system
+    \item \textbf{Universal Compatibility}: Same primitives work for any external tool or service
+\end{compactlist}
 [protocols.custom]
 name = "language-server-protocol"
 transport = ["stdio", "tcp"]

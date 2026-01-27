@@ -38,41 +38,6 @@ File indexing, code analysis, batch processing \\
 \caption{Process Types and Management Capabilities}
 \end{table}
 
-\subsubsection*{Process Configuration}
-
-Extensions configure process spawning through a manifest system:
-
-\begin{lstlisting}[language=toml, caption=Process Configuration Example]
-[processes.language_server]
-command = "rust-analyzer"
-args = []
-working_directory = "${workspaceRoot}"
-environment = { RUST_LOG = "info" }
-
-[processes.language_server.communication]
-stdin = true
-stdout = true
-stderr = "capture"
-protocol = "json-rpc"
-
-[processes.language_server.lifecycle]
-auto_start = true
-restart_on_crash = true
-max_restarts = 5
-health_check_interval = 30
-
-[processes.build_task]
-command = "cargo"
-args = ["build", "--release"]
-working_directory = "${workspaceRoot}"
-shell = false
-
-[processes.build_task.resources]
-memory_limit = "1GB"
-cpu_priority = "normal"
-timeout = 300
-\end{lstlisting}
-
 \subsection*{Flexible Communication Patterns}
 \addcontentsline{toc}{subsection}{Flexible Communication Patterns}
 
@@ -98,6 +63,39 @@ The most common pattern for tool integration:
 For tools that prefer network-based communication:
 
 \begin{compactlist}
+    \item \textbf{TCP Sockets}: Direct network connections for high-performance tools
+    \item \textbf{HTTP/REST}: Web-based APIs and services
+    \item \textbf{WebSockets}: Real-time bidirectional communication
+    \item \textbf{Named Pipes}: High-performance local communication on supported platforms
+\end{compactlist}
+
+\subsection*{Resource Management and Control}
+\addcontentsline{toc}{subsection}{Resource Management and Control}
+
+Symphony provides comprehensive resource management for external processes:
+
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+    \item[\textbf{Memory Limits}] Configurable memory constraints to prevent resource exhaustion
+    \item[\textbf{CPU Priority}] Process scheduling priority management
+    \item[\textbf{Timeout Control}] Automatic termination of long-running or stuck processes
+    \item[\textbf{Health Monitoring}] Continuous process health checking and automatic restart
+\end{description}
+
+\subsection*{Integration Benefits}
+\addcontentsline{toc}{subsection}{Integration Benefits}
+
+This approach to process management provides several key advantages:
+
+\begin{successbox}
+Extensions can integrate any external tool without requiring Symphony core modifications. The generic primitives handle the complexity of process management while providing the flexibility needed for diverse integration scenarios.
+\end{successbox}
+
+\begin{compactlist}
+    \item \textbf{Tool Agnostic}: Works with any command-line tool or service
+    \item \textbf{Protocol Flexible}: Supports any communication protocol or data format
+    \item \textbf{Resource Safe}: Prevents external processes from affecting system stability
+    \item \textbf{Development Friendly}: Simplified integration patterns for extension developers
+\end{compactlist}
     \item \textbf{TCP Sockets}: Direct socket communication for performance
     \item \textbf{HTTP/REST}: RESTful API integration for web-based tools
     \item \textbf{WebSockets}: Real-time bidirectional communication

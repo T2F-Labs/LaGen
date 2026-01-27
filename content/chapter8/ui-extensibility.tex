@@ -38,36 +38,6 @@ Complex visualizations, real-time displays, games \\
 \caption{UI Extensibility Levels and Capabilities}
 \end{table}
 
-\subsubsection*{Component Registration System}
-
-Extensions register UI components through a declarative manifest system:
-
-\begin{lstlisting}[language=toml, caption=UI Component Registration]
-[ui_components]
-# Register a custom sidebar panel
-[[ui_components.panels]]
-id = "git-status-panel"
-title = "Git Status"
-location = "sidebar-left"
-icon = "git-branch"
-default_visible = true
-
-# Register a custom toolbar button
-[[ui_components.toolbar]]
-id = "run-tests-button"
-title = "Run Tests"
-icon = "play-circle"
-command = "extension.runTests"
-when = "hasTestFiles"
-
-# Register a custom status bar item
-[[ui_components.statusbar]]
-id = "coverage-indicator"
-text = "Coverage: ${coverage}%"
-alignment = "right"
-priority = 100
-\end{lstlisting}
-
 \subsection*{Dynamic Layout Modifications}
 \addcontentsline{toc}{subsection}{Dynamic Layout Modifications}
 
@@ -78,6 +48,47 @@ Unlike traditional IDEs with fixed layouts, Symphony's UI adapts to the extensio
 \end{infobox}
 
 \subsubsection*{Layout Regions and Panels}
+
+Symphony organizes its interface into flexible regions that extensions can populate:
+
+\begin{compactlist}
+    \item \textbf{Editor Area}: Primary content editing space with tab management
+    \item \textbf{Sidebar Panels}: Left and right collapsible panels for tools and navigation
+    \item \textbf{Bottom Panel}: Output, terminal, and debugging information
+    \item \textbf{Status Bar}: Real-time status indicators and quick actions
+    \item \textbf{Menu Bar}: Application-level commands and extension actions
+\end{compactlist}
+
+\subsection*{Component Integration Patterns}
+\addcontentsline{toc}{subsection}{Component Integration Patterns}
+
+Extensions integrate with Symphony's UI through several well-defined patterns:
+
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+    \item[\textbf{Declarative}] Extensions declare their UI requirements in manifests
+    \item[\textbf{Event-Driven}] Components respond to user actions and system events
+    \item[\textbf{Data-Bound}] UI elements automatically reflect underlying data changes
+    \item[\textbf{Themeable}] All components respect Symphony's theming system
+\end{description}
+
+\subsection*{Performance and Consistency}
+\addcontentsline{toc}{subsection}{Performance and Consistency}
+
+The UI extensibility framework ensures both performance and visual consistency:
+
+\begin{successbox}
+Extensions can create rich, interactive interfaces while Symphony handles the complexity of layout management, theme integration, and performance optimization.
+\end{successbox}
+
+Key benefits include:
+
+\begin{compactlist}
+    \item \textbf{Automatic Theming}: Extension UIs automatically adapt to user-selected themes
+    \item \textbf{Responsive Layout}: Components automatically adjust to window size changes
+    \item \textbf{Performance Optimization}: Virtual DOM and efficient rendering for smooth interactions
+    \item \textbf{Accessibility}: Built-in keyboard navigation and screen reader support
+    \item \textbf{Consistency}: Shared design system ensures cohesive user experience
+\end{compactlist}
 
 The UI framework defines several extensible regions:
 
