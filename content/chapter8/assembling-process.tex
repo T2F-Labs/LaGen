@@ -95,6 +95,7 @@ Extensions built through primitive assembly are more maintainable, testable, and
     \item \textbf{Quality Assurance}: Smaller, focused components are easier to test and debug
 \end{compactlist}
 
+\begin{lstlisting}[language=toml, caption=Component Composition Configuration]
 [composition]
 # Define how components work together
 language_server = "rust-analyzer-client"
@@ -244,7 +245,7 @@ The LSP extension demonstrates how multiple primitive categories work together:
 
 The extension's manifest shows how primitives are declared and assembled:
 
-\begin{lstlisting}[language=bash, caption=LSP Extension Manifest]
+\begin{lstlisting}[language=toml, caption=LSP Extension Manifest]
 [extension]
 name = "language-server-client"
 version = "2.1.0"
