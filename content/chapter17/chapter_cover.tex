@@ -1,19 +1,44 @@
-% ========== CHAPTER 17 COVER: DATA ARCHITECTURE ==========
+% ========== CHAPTER 17 COVER: HYBRID DATABASE ARCHITECTURE ==========
 % Creative and elegant chapter introduction with sophisticated visual elements
 % Following the established 4-element pattern
-% Requirements: Academic research focus on data architecture
+% Requirements: Academic research focus on database architecture
 
 \vspace{2cm}
 
-% 1. BIG CHAPTER NUMBER in content-reflective shape (cylinder for data)
+% 1. BIG CHAPTER NUMBER in content-reflective shape (database cylinder pattern)
 \begin{center}
 \begin{tikzpicture}
-    % Cylinder shape for data/storage content
-    \fill[brandPrimary!15] (-1.5,-1.5) rectangle (1.5,1.5);
-    \fill[brandPrimary!10] (-1.5,1.5) ellipse (1.5 and 0.3);
-    \fill[brandPrimary!20] (-1.5,-1.5) ellipse (1.5 and 0.3);
+    % Database architecture pattern with hybrid storage layers
+    % Primary database cylinder (left)
+    \fill[brandPrimary!15] (-2,-1.5) ellipse (0.8 and 0.3);
+    \fill[brandPrimary!15] (-2.8,-1.5) rectangle (-1.2,1.5);
+    \fill[brandPrimary!15] (-2,1.5) ellipse (0.8 and 0.3);
+    \draw[brandPrimary!40, line width=2pt] (-2,-1.5) ellipse (0.8 and 0.3);
+    \draw[brandPrimary!40, line width=2pt] (-2.8,-1.5) -- (-2.8,1.5);
+    \draw[brandPrimary!40, line width=2pt] (-1.2,-1.5) -- (-1.2,1.5);
+    \draw[brandPrimary!40, line width=2pt] (-2,1.5) ellipse (0.8 and 0.3);
+    
+    % Cache layer cylinder (right)
+    \fill[brandSecondary!15] (2,-1.5) ellipse (0.8 and 0.3);
+    \fill[brandSecondary!15] (1.2,-1.5) rectangle (2.8,1.5);
+    \fill[brandSecondary!15] (2,1.5) ellipse (0.8 and 0.3);
+    \draw[brandSecondary!40, line width=2pt] (2,-1.5) ellipse (0.8 and 0.3);
+    \draw[brandSecondary!40, line width=2pt] (1.2,-1.5) -- (1.2,1.5);
+    \draw[brandSecondary!40, line width=2pt] (2.8,-1.5) -- (2.8,1.5);
+    \draw[brandSecondary!40, line width=2pt] (2,1.5) ellipse (0.8 and 0.3);
+    
+    % Hybrid connection bridge
+    \draw[brandAccent!60, line width=3pt, <->] (-1.2,0) -- (1.2,0);
+    \node[brandAccent, font=\small\bfseries] at (0,0.3) {HYBRID};
+    
+    % Data flow indicators
+    \foreach \y in {-0.8, -0.4, 0.4, 0.8} {
+        \fill[brandPrimary!30] (-2,\y) circle (0.08);
+        \fill[brandSecondary!30] (2,\y) circle (0.08);
+    }
+    
     % Chapter number
-    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {17};
+    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,-0.3) {17};
 \end{tikzpicture}
 \end{center}
 
@@ -21,7 +46,9 @@
 
 % 2. CHAPTER TOPIC with elegant typography
 \begin{center}
-{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{Data Architecture}}}
+{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{Hybrid Database}}}\\
+\vspace{0.3cm}
+{\fontsize{24}{28}\selectfont\textcolor{brandTertiary}{\textit{Architecture}}}
 \end{center}
 
 \vspace{0.5cm}
@@ -60,12 +87,12 @@
 \vspace{0.8cm}
 
 \begin{compactlist}
-    \item {\large Hybrid database strategy combining SQL and NoSQL approaches}
-    \item {\large Entity relationship design for AI-first development environments}
-    \item {\large Content-addressable artifact store architecture and implementation}
-    \item {\large Data distribution strategies and consistency models}
-    \item {\large Performance optimization and scalability analysis}
-    \item {\large Research contributions to AI system data management}
+    \item {\large Hybrid database strategy addressing dual performance requirements of AI systems}
+    \item {\large Entity relationship design for complex AI orchestration data modeling}
+    \item {\large Content-addressable artifact store architecture with quality scoring}
+    \item {\large Performance and scalability analysis of hybrid storage approaches}
+    \item {\large Research contributions to AI system data architecture design}
+    \item {\large Empirical validation of hybrid approaches versus monolithic alternatives}
 \end{compactlist}
 \end{tcolorbox}
 

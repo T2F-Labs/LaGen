@@ -5,11 +5,39 @@
 
 \vspace{2cm}
 
-% 1. BIG CHAPTER NUMBER in content-reflective shape (triangle for trio/trinity)
+% 1. BIG CHAPTER NUMBER in content-reflective shape (trio interface pattern)
 \begin{center}
 \begin{tikzpicture}
-    % Triangle shape for trio/trinity content
-    \fill[brandPrimary!15] (0,1.8) -- (-1.6,-0.9) -- (1.6,-0.9) -- cycle;
+    % The Trio interface pattern - three interconnected modes
+    % IDE Mode (left triangle)
+    \fill[brandPrimary!15] (-3,0) -- (-2,-1.5) -- (-2,1.5) -- cycle;
+    \draw[brandPrimary!40, line width=2pt] (-3,0) -- (-2,-1.5) -- (-2,1.5) -- cycle;
+    \node[brandPrimary, font=\small\bfseries, rotate=90] at (-2.3,0) {IDE};
+    
+    % Maestro Mode (top triangle)
+    \fill[brandSecondary!15] (0,2.5) -- (-1.5,1) -- (1.5,1) -- cycle;
+    \draw[brandSecondary!40, line width=2pt] (0,2.5) -- (-1.5,1) -- (1.5,1) -- cycle;
+    \node[brandSecondary, font=\small\bfseries] at (0,1.5) {MAESTRO};
+    
+    % Harmony Board Mode (right triangle)
+    \fill[brandTertiary!15] (3,0) -- (2,-1.5) -- (2,1.5) -- cycle;
+    \draw[brandTertiary!40, line width=2pt] (3,0) -- (2,-1.5) -- (2,1.5) -- cycle;
+    \node[brandTertiary, font=\small\bfseries, rotate=-90] at (2.3,0) {HARMONY};
+    
+    % Central connection hub (The Trio core)
+    \fill[brandAccent!20] (0,0) circle (0.8cm);
+    \draw[brandAccent!60, line width=2pt] (0,0) circle (0.8cm);
+    
+    % Mode transition arrows
+    \draw[brandAccent!60, line width=2pt, <->] (-2,0) -- (-0.8,0);
+    \draw[brandAccent!60, line width=2pt, <->] (0.4,0.7) -- (-0.4,0.7);
+    \draw[brandAccent!60, line width=2pt, <->] (2,0) -- (0.8,0);
+    
+    % Interface elements indicators
+    \foreach \angle in {0, 120, 240} {
+        \fill[brandAccent] ({0.6*cos(\angle)}, {0.6*sin(\angle)}) circle (0.08);
+    }
+    
     % Chapter number
     \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {20};
 \end{tikzpicture}

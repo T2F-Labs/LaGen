@@ -5,11 +5,34 @@
 
 \vspace{2cm}
 
-% 1. BIG CHAPTER NUMBER in content-reflective shape (circle for resource pools)
+% 1. BIG CHAPTER NUMBER in content-reflective shape (resource pool pattern)
 \begin{center}
 \begin{tikzpicture}
-    % Circle shape for resource/pool management
-    \fill[brandPrimary!15] (0,0) circle (1.8);
+    % Resource pool management pattern
+    % Central pool manager
+    \fill[brandPrimary!15] (0,0) circle (1.5cm);
+    \draw[brandPrimary!40, line width=2pt] (0,0) circle (1.5cm);
+    \node[brandPrimary, font=\small\bfseries] at (0,1) {POOL};
+    \node[brandPrimary, font=\small\bfseries] at (0,-1) {MGR};
+    
+    % Resource nodes (AI models) around the pool
+    \foreach \angle/\size in {30/0.4, 90/0.5, 150/0.3, 210/0.6, 270/0.4, 330/0.5} {
+        \fill[brandSecondary!20] ({2.8*cos(\angle)}, {2.8*sin(\angle)}) circle (\size cm);
+        \draw[brandSecondary!40, line width=1.5pt] ({2.8*cos(\angle)}, {2.8*sin(\angle)}) circle (\size cm);
+        % Resource allocation lines
+        \draw[brandAccent!50, line width=1.5pt, ->] ({1.3*cos(\angle)}, {1.3*sin(\angle)}) -- ({(2.8-\size)*cos(\angle)}, {(2.8-\size)*sin(\angle)});
+    }
+    
+    % Resource utilization indicators
+    \foreach \angle in {30, 90, 150, 210, 270, 330} {
+        \fill[brandAccent] ({2.8*cos(\angle)}, {2.8*sin(\angle)}) circle (0.08);
+    }
+    
+    % Predictive arrows showing resource flow
+    \draw[brandPrimary!30, dashed, line width=1pt, ->] ({2.8*cos(30)}, {2.8*sin(30)}) arc (30:90:2.8);
+    \draw[brandPrimary!30, dashed, line width=1pt, ->] ({2.8*cos(150)}, {2.8*sin(150)}) arc (150:210:2.8);
+    \draw[brandPrimary!30, dashed, line width=1pt, ->] ({2.8*cos(270)}, {2.8*sin(270)}) arc (270:330:2.8);
+    
     % Chapter number
     \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {18};
 \end{tikzpicture}
@@ -30,9 +53,9 @@
 \begin{center}
 \textcolor{brandAccent}{
 \rule{2cm}{0.8pt} \quad
-\raisebox{-0.2ex}{\Large$\bullet$} \quad
+\raisebox{-0.2ex}{\Large$\diamond$} \quad
 \rule{4cm}{0.8pt} \quad
-\raisebox{-0.2ex}{\Large$\bullet$} \quad
+\raisebox{-0.2ex}{\Large$\diamond$} \quad
 \rule{2cm}{0.8pt}
 }
 \end{center}
@@ -60,12 +83,12 @@
 \vspace{0.8cm}
 
 \begin{compactlist}
-    \item {\large AI model lifecycle management and predictive pre-warming strategies}
-    \item {\large Resource allocation algorithms and performance optimization}
-    \item {\large Stale manager implementation for automated data lifecycle management}
-    \item {\large Multi-tier caching strategies and storage optimization}
-    \item {\large Performance benchmarking and scalability analysis}
-    \item {\large Research contributions to AI resource management systems}
+    \item {\large Pool Manager architecture for intelligent AI model lifecycle management}
+    \item {\large Resource optimization strategies and multi-dimensional performance frameworks}
+    \item {\large Predictive model management using machine learning for resource allocation}
+    \item {\large Performance evaluation and empirical validation of resource management approaches}
+    \item {\large Research contributions to AI resource management and optimization}
+    \item {\large Scalability analysis and cost-efficiency optimization for AI development environments}
 \end{compactlist}
 \end{tcolorbox}
 
