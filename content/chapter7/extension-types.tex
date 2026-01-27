@@ -1,0 +1,94 @@
+% Extension Types and Capabilities
+% Focus: The three extension categories and their roles
+
+\lettrine{S}{ymphony's} extension taxonomy organizes functionality into three distinct categories, each optimized for different types of capabilities and use cases. This classification system enables appropriate execution environments, integration patterns, and user experiences for each extension type.
+
+\subsection*{Instruments: AI and Intelligence}
+
+\textcolor{brandPrimary}{Instruments} represent Symphony's intelligence layer, encompassing all AI and ML models that provide cognitive capabilities to development workflows:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Capability} & \textbf{Examples} \\
+\midrule
+Code Generation & Language-specific code synthesis \\
+Natural Language Processing & Documentation generation, code explanation \\
+Code Analysis & Bug detection, performance optimization \\
+Decision Support & Architecture recommendations, technology selection \\
+\bottomrule
+\end{tabular}
+\caption{Instrument Extension Capabilities}
+\end{table}
+
+Instruments integrate with Symphony's AI orchestration system, enabling the Conductor to select and coordinate multiple models for complex workflows. They support both manual invocation and automatic orchestration through the Player registration system.
+
+\subsection*{Operators: Workflow and Data Processing}
+
+\textcolor{brandSecondary}{Operators} handle the logical and structural aspects of development workflows, providing deterministic operations that complement the probabilistic nature of AI models:
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+    \item[\textbf{Data Transformation}] Format conversion, normalization, and validation
+    \item[\textbf{Workflow Logic}] Conditional branching, iteration, and decision trees
+    \item[\textbf{Integration}] API connections, database operations, external service communication
+    \item[\textbf{Optimization}] Performance analysis, resource management, cleanup operations
+\end{description}
+
+Operators are designed to be lightweight, composable, and free to use, encouraging their adoption as building blocks for complex workflows.
+
+\subsection*{Motifs: User Experience and Visualization}
+
+\textcolor{brandAccent}{Motifs} (also called Addons) focus on user interface enhancements and visualization capabilities, shaping how developers interact with Symphony and understand their work:
+
+\begin{infobox}[title=Motif Capabilities]
+\begin{compactlist}
+    \item Custom dashboards and data visualization components
+    \item Specialized editors for domain-specific languages or formats
+    \item Developer tools such as debuggers, profilers, and inspectors
+    \item Theme and layout customizations for personalized experiences
+\end{compactlist}
+\end{infobox}
+
+Motifs integrate seamlessly with Symphony's web-based user interface, leveraging modern web technologies while maintaining native application performance.
+
+\subsection*{Extension Interaction Patterns}
+
+The three extension types are designed to work together through well-defined interaction patterns:
+
+\begin{compactlist}
+    \item \textbf{Sequential Composition}: Operators prepare data for Instrument processing
+    \item \textbf{Parallel Execution}: Multiple Instruments process different aspects simultaneously
+    \item \textbf{Visualization Integration}: Motifs display results from Instruments and Operators
+    \item \textbf{Feedback Loops}: User interactions through Motifs influence Instrument behavior
+\end{compactlist}
+
+\subsection*{Execution Environment Optimization}
+
+Each extension type receives an execution environment optimized for its characteristics:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Extension Type} & \textbf{Execution Model} & \textbf{Optimization Focus} \\
+\midrule
+Instruments & Isolated processes & Resource management, AI model lifecycle \\
+Operators & Lightweight containers & Fast startup, minimal overhead \\
+Motifs & Web runtime & UI responsiveness, visual performance \\
+\bottomrule
+\end{tabular}
+\caption{Extension Type Execution Optimization}
+\end{table}
+
+This specialization ensures that each extension type can operate at optimal efficiency while maintaining system stability and security.
+
+\subsection*{Development and Distribution}
+
+Symphony provides specialized development tools and distribution channels for each extension type:
+
+\begin{alertbox}
+Extension creators can focus on their domain expertise while Symphony handles the complexity of integration, security, and distribution through type-specific SDKs and marketplace categories.
+\end{alertbox}
+
+The extension type system enables Symphony to provide appropriate development guidance, security policies, and user experiences while maintaining architectural consistency across the entire ecosystem.
