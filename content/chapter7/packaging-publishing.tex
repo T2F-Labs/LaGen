@@ -3,7 +3,7 @@
 \section{Extension Packaging \& Publishing}
 \label{sec:extension-packaging-publishing}
 
-\lettrine{T}{he} Extension Package Protocol (EPP) defines Symphony's comprehensive packaging and publishing system, enabling secure, efficient distribution of extensions while maintaining compatibility, security, and performance across the ecosystem. The EPP format combines modern packaging techniques with Symphony-specific metadata and validation requirements.
+\lettrine{T}{he} Extension Package Protocol (EPP) defines Symphony's packaging and publishing system, enabling secure, efficient distribution of extensions while maintaining compatibility, security, and performance across the ecosystem. The EPP format combines modern packaging techniques with Symphony-specific metadata and validation requirements.
 
 \subsection{EPP Package Format}
 \label{subsec:epp-package-format}
@@ -34,7 +34,7 @@ extension-name-1.2.3.epp
 \subsubsection{Package Metadata}
 \label{subsubsec:package-metadata}
 
-Each EPP package includes comprehensive metadata that enables automated processing and validation:
+Each EPP package includes metadata that enables automated processing and validation:
 
 \begin{table}[h]
 \centering
@@ -164,7 +164,7 @@ symphony-cli extension init --type instrument --name rust-generator
 # Build extension for multiple platforms
 symphony-cli extension build --target all --release
 
-# Run comprehensive test suite
+# Run test suite
 symphony-cli extension test --coverage --integration
 
 # Package extension into EPP format
@@ -376,7 +376,7 @@ update_only_on_wifi = true
 \subsubsection{Update Verification and Rollback}
 \label{subsubsec:update-verification-rollback}
 
-Every update includes comprehensive verification and rollback capabilities:
+Every update includes verification and rollback capabilities:
 
 \begin{alertbox}
 \textbf{Safe Updates:} All updates are verified before installation and can be automatically rolled back if issues are detected during the verification period.

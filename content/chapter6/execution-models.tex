@@ -1,0 +1,80 @@
+% Extension Execution Models
+% Focus: In-process vs out-of-process execution approach
+
+\lettrine{S}{ymphony's} extension architecture employs two distinct execution models that balance performance requirements with safety and isolation needs. This dual approach enables the system to optimize for different types of operations while maintaining architectural consistency.
+
+\subsection*{Dual Execution Strategy}
+
+Symphony recognizes that different extensions have fundamentally different requirements, leading to a \textcolor{brandPrimary}{two-tier execution model}:
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+    \item[\textbf{In-Process Extensions}] Performance-critical infrastructure components running within the Conductor process
+    \item[\textbf{Out-of-Process Extensions}] User-facing and community-developed extensions running in isolated processes
+\end{description}
+
+This strategy allows Symphony to achieve both the performance characteristics of monolithic systems and the safety benefits of distributed architectures.
+
+\subsection*{In-Process Execution: The Pit}
+
+The Pit represents Symphony's high-performance execution environment where infrastructure extensions achieve optimal performance through direct integration with the Conductor:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Extension Type} & \textbf{Performance Target} & \textbf{Justification} \\
+\midrule
+Resource Management & Microsecond response & Critical path operations \\
+Workflow Coordination & Sub-millisecond updates & Real-time orchestration \\
+Data Storage & Nanosecond metadata access & High-frequency operations \\
+Conflict Resolution & Immediate arbitration & System stability \\
+\bottomrule
+\end{tabular}
+\caption{In-Process Extension Performance Requirements}
+\end{table}
+
+In-process extensions sacrifice some isolation for performance, but this trade-off is justified for infrastructure components that require ultra-low latency.
+
+\subsection*{Out-of-Process Execution: The Grand Stage}
+
+The Grand Stage provides a safe execution environment for user-facing extensions, prioritizing isolation and fault tolerance over raw performance:
+
+\begin{infobox}[title=Out-of-Process Benefits]
+\begin{compactlist}
+    \item \textbf{Fault Isolation}: Extension failures cannot affect core system operation
+    \item \textbf{Security Boundaries}: Clear separation between trusted and untrusted code
+    \item \textbf{Resource Limits}: Controlled resource consumption per extension
+    \item \textbf{Hot Swapping}: Extensions can be updated without system restart
+\end{compactlist}
+\end{infobox}
+
+This execution model enables unlimited community innovation while maintaining system stability and security.
+
+\subsection*{Communication Patterns}
+
+The dual execution model requires different communication patterns optimized for each environment:
+
+\begin{compactlist}
+    \item \textbf{In-Process Communication}: Direct function calls and shared memory for maximum performance
+    \item \textbf{Cross-Process Communication}: Message passing with serialization for safety and isolation
+    \item \textbf{Hybrid Communication}: Optimized protocols for Conductor-to-extension interaction
+\end{compactlist}
+
+These patterns ensure that each execution model can operate at its optimal performance level while maintaining system coherence.
+
+\subsection*{Extension Classification}
+
+Symphony automatically determines the appropriate execution model based on extension characteristics:
+
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+    \item[\textbf{Infrastructure}] Core system components requiring maximum performance
+    \item[\textbf{Instruments}] AI models and processing components with moderate performance needs
+    \item[\textbf{Operators}] Utility functions with standard performance requirements
+    \item[\textbf{Motifs}] User interface components prioritizing safety over performance
+\end{description}
+
+This classification system ensures that extensions run in the environment best suited to their requirements and trust level.
+
+\begin{successbox}
+The dual execution model enables Symphony to deliver both the performance required for AI-intensive operations and the safety necessary for community-driven extensibility.
+\end{successbox}
