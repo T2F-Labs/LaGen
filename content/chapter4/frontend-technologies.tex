@@ -1,0 +1,441 @@
+% ========== FRONTEND TECHNOLOGIES ==========
+% Source: Symphony/Content/UI documents, Tech Stack Guide
+% Modern frontend stack with React 19.1.0, Vite, Tailwind CSS, and TypeScript
+
+\lettrine{S}{ymphony's} frontend architecture represents a carefully curated selection of modern web technologies, designed to deliver exceptional performance, developer experience, and maintainability. The frontend stack serves as the primary interface between users and Symphony's AI-powered development environment, requiring both responsiveness and sophisticated state management capabilities.
+
+\subsection*{React 19.1.0 \& Modern Hooks Architecture}
+
+Symphony leverages React 19.1.0, the latest iteration of Facebook's component-based UI library, taking advantage of significant performance improvements and new concurrent features that align perfectly with Symphony's real-time AI interaction requirements.
+
+\begin{infobox}[title=React 19.1.0 Key Features]
+React 19.1.0 introduces several breakthrough features that Symphony utilizes:
+\begin{compactlist}
+    \item \textbf{Concurrent Rendering}: Enables non-blocking UI updates during AI model processing
+    \item \textbf{Automatic Batching}: Optimizes state updates for better performance
+    \item \textbf{Suspense for Data Fetching}: Streamlines async operations with AI models
+    \item \textbf{Server Components}: Reduces bundle size and improves initial load times
+\end{compactlist}
+\end{infobox}
+
+The component architecture follows a hierarchical structure optimized for AI-driven workflows:
+
+\begin{lstlisting}[language=JavaScript, caption=Core React Component Structure]
+// Main Application Shell
+const SymphonyApp = () => {
+  return (
+    <ErrorBoundary>
+      <AIContextProvider>
+        <ThemeProvider>
+          <Router>
+            <Layout>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Routes>
+                  <Route path="/editor" element={<CodeEditor />} />
+                  <Route path="/conductor" element={<ConductorPanel />} />
+                  <Route path="/harmony" element={<HarmonyBoard />} />
+                </Routes>
+              </Suspense>
+            </Layout>
+          </Router>
+        </ThemeProvider>
+      </AIContextProvider>
+    </ErrorBoundary>
+  );
+};
+
+// AI-Enhanced Code Editor Component
+const CodeEditor = () => {
+  const { aiSuggestions, isProcessing } = useAI();
+  const { files, activeFile } = useFileSystem();
+  
+  return (
+    <div className="editor-container">
+      <FileExplorer files={files} />
+      <EditorPane 
+        file={activeFile}
+        suggestions={aiSuggestions}
+        loading={isProcessing}
+      />
+      <AIAssistantPanel />
+    </div>
+  );
+};
+\end{lstlisting}
+
+Symphony's React architecture emphasizes custom hooks for state management and AI integration:
+
+\begin{lstlisting}[language=JavaScript, caption=Custom Hooks for AI Integration]
+// AI State Management Hook
+const useAI = () => {
+  const [state, dispatch] = useReducer(aiReducer, initialState);
+  const { data, error, mutate } = useSWR('/api/ai/status');
+  
+  const processPrompt = useCallback(async (prompt) => {
+    dispatch({ type: 'PROCESSING_START' });
+    try {
+      const result = await aiService.process(prompt);
+      dispatch({ type: 'PROCESSING_SUCCESS', payload: result });
+    } catch (error) {
+      dispatch({ type: 'PROCESSING_ERROR', payload: error });
+    }
+  }, []);
+  
+  return {
+    ...state,
+    processPrompt,
+    isConnected: !error,
+    refresh: mutate
+  };
+};
+
+// File System Integration Hook
+const useFileSystem = () => {
+  const [files, setFiles] = useState([]);
+  const [activeFile, setActiveFile] = useState(null);
+  
+  useEffect(() => {
+    // Listen for file system changes via Tauri
+    const unlisten = listen('fs-change', (event) => {
+      setFiles(prev => updateFileTree(prev, event.payload));
+    });
+    
+    return unlisten;
+  }, []);
+  
+  return { files, activeFile, setActiveFile };
+};
+\end{lstlisting}
+
+\subsection*{Vite Build System \& Development Experience}
+
+Symphony employs Vite as its build system, chosen for its exceptional development experience and production optimization capabilities. Vite's native ES modules support and hot module replacement (HMR) provide near-instantaneous feedback during development.
+
+\begin{table}[h]
+\centering
+\caption{Vite vs Traditional Build Systems Performance}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Metric} & \textbf{Vite} & \textbf{Webpack} \\
+\midrule
+Cold Start & <1 second & 15-30 seconds \\
+HMR Update & 50-100ms & 1-3 seconds \\
+Bundle Size & Optimized & Larger \\
+Dev Server & Native ESM & Bundle-based \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The Vite configuration is optimized for Symphony's specific requirements:
+
+\begin{lstlisting}[language=JavaScript, caption=Vite Configuration for Symphony]
+// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
+
+export default defineConfig({
+  plugins: [
+    react({
+      // Enable React 19 features
+      jsxRuntime: 'automatic',
+      babel: {
+        plugins: ['babel-plugin-react-compiler']
+      }
+    })
+  ],
+  
+  // Tauri integration
+  clearScreen: false,
+  server: {
+    port: 1420,
+    strictPort: true,
+  },
+  
+  // Build optimization
+  build: {
+    target: 'esnext',
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          ai: ['@symphony/ai-client'],
+          editor: ['monaco-editor']
+        }
+      }
+    }
+  },
+  
+  // Path resolution
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+      '@components': resolve(__dirname, 'src/components'),
+      '@hooks': resolve(__dirname, 'src/hooks'),
+      '@services': resolve(__dirname, 'src/services')
+    }
+  }
+});
+\end{lstlisting}
+
+\subsection*{Tailwind CSS 3.3.2 \& Design System}
+
+Symphony's styling architecture is built on Tailwind CSS 3.3.2, providing a utility-first approach that enables rapid UI development while maintaining design consistency. The framework is extended with custom design tokens that reflect Symphony's brand identity and AI-first philosophy.
+
+\begin{lstlisting}[language=JavaScript, caption=Tailwind Configuration with Symphony Design System]
+// tailwind.config.js
+module.exports = {
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  
+  theme: {
+    extend: {
+      colors: {
+        // Symphony Brand Colors
+        symphony: {
+          primary: '#2563EB',
+          secondary: '#4F46E5',
+          accent: '#10B981',
+          tertiary: '#F97316',
+          neutral: '#64748B'
+        },
+        
+        // AI State Colors
+        ai: {
+          processing: '#F59E0B',
+          success: '#10B981',
+          error: '#EF4444',
+          idle: '#6B7280'
+        }
+      },
+      
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Consolas', 'monospace']
+      },
+      
+      animation: {
+        'ai-pulse': 'ai-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'code-highlight': 'code-highlight 0.3s ease-in-out'
+      }
+    }
+  },
+  
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('tailwindcss-animate')
+  ]
+};
+\end{lstlisting}
+
+The design system emphasizes component composition and reusability:
+
+\begin{lstlisting}[language=JavaScript, caption=Tailwind Component Patterns]
+// Button Component with Variants
+const Button = ({ variant = 'primary', size = 'md', children, ...props }) => {
+  const baseClasses = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
+  
+  const variants = {
+    primary: 'bg-symphony-primary text-white hover:bg-symphony-primary/90 focus:ring-symphony-primary',
+    secondary: 'bg-symphony-secondary text-white hover:bg-symphony-secondary/90 focus:ring-symphony-secondary',
+    ai: 'bg-ai-processing text-white hover:bg-ai-processing/90 focus:ring-ai-processing animate-ai-pulse'
+  };
+  
+  const sizes = {
+    sm: 'px-3 py-1.5 text-sm',
+    md: 'px-4 py-2 text-base',
+    lg: 'px-6 py-3 text-lg'
+  };
+  
+  return (
+    <button 
+      className={`${baseClasses} ${variants[variant]} ${sizes[size]}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+\end{lstlisting}
+
+\subsection*{Shadcn UI Library Integration}
+
+Symphony integrates Shadcn UI as its primary component library, chosen for its modern design patterns, accessibility features, and seamless integration with Tailwind CSS. Shadcn UI provides a foundation of well-tested, accessible components that Symphony extends for AI-specific use cases.
+
+\begin{infobox}[title=Shadcn UI Advantages for Symphony]
+Shadcn UI offers several benefits that align with Symphony's requirements:
+\begin{compactlist}
+    \item \textbf{Copy-Paste Architecture}: Components are copied into the codebase, allowing full customization
+    \item \textbf{Radix UI Foundation}: Built on Radix primitives for robust accessibility
+    \item \textbf{Tailwind Integration}: Native Tailwind CSS styling without conflicts
+    \item \textbf{TypeScript Support}: Full type safety and IntelliSense support
+\end{compactlist}
+\end{infobox}
+
+Key Shadcn UI components used in Symphony include:
+
+\begin{lstlisting}[language=JavaScript, caption=Shadcn UI Component Usage]
+// AI-Enhanced Dialog Component
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+
+const AIPromptDialog = ({ open, onOpenChange }) => {
+  const [prompt, setPrompt] = useState('');
+  const { processPrompt, isProcessing } = useAI();
+  
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="sm:max-w-[600px]">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-2">
+            <Bot className="h-5 w-5 text-symphony-primary" />
+            AI Assistant
+          </DialogTitle>
+        </DialogHeader>
+        
+        <div className="space-y-4">
+          <Textarea
+            placeholder="Describe what you want to build..."
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            className="min-h-[120px]"
+          />
+          
+          <Button 
+            onClick={() => processPrompt(prompt)}
+            disabled={isProcessing || !prompt.trim()}
+            className="w-full"
+            variant="ai"
+          >
+            {isProcessing ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Processing...
+              </>
+            ) : (
+              'Generate Code'
+            )}
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+\end{lstlisting}
+
+\subsection*{TypeScript Integration \& Type Safety}
+
+Symphony is built with TypeScript throughout, providing comprehensive type safety that extends from the frontend through to the Rust backend via generated type definitions. This approach significantly reduces runtime errors and improves developer productivity.
+
+\begin{lstlisting}[language=TypeScript, caption=TypeScript Interfaces for AI Integration]
+// AI Service Types
+interface AIModel {
+  id: string;
+  name: string;
+  type: 'enhancer' | 'feature' | 'planner' | 'coordinator' | 'visualizer' | 'editor';
+  status: 'idle' | 'processing' | 'error';
+  capabilities: string[];
+}
+
+interface AIRequest {
+  model: string;
+  prompt: string;
+  context?: Record<string, any>;
+  options?: {
+    temperature?: number;
+    maxTokens?: number;
+    stream?: boolean;
+  };
+}
+
+interface AIResponse<T = any> {
+  success: boolean;
+  data?: T;
+  error?: string;
+  metadata: {
+    model: string;
+    processingTime: number;
+    tokensUsed: number;
+  };
+}
+
+// Component Props with Strict Typing
+interface CodeEditorProps {
+  file: FileNode | null;
+  language: string;
+  value: string;
+  onChange: (value: string) => void;
+  aiSuggestions?: AISuggestion[];
+  readOnly?: boolean;
+  theme?: 'light' | 'dark';
+}
+
+// State Management Types
+type AIState = {
+  models: AIModel[];
+  activeRequests: Map<string, AIRequest>;
+  history: AIResponse[];
+  settings: {
+    defaultModel: string;
+    autoSuggest: boolean;
+    streamResponses: boolean;
+  };
+};
+
+type AIAction = 
+  | { type: 'MODEL_LOADED'; payload: AIModel }
+  | { type: 'REQUEST_START'; payload: AIRequest }
+  | { type: 'REQUEST_SUCCESS'; payload: AIResponse }
+  | { type: 'REQUEST_ERROR'; payload: { id: string; error: string } };
+\end{lstlisting}
+
+\subsection*{Internationalization (i18n) Support}
+
+Symphony includes comprehensive internationalization support to serve its global developer community. The i18n implementation uses react-i18next for dynamic language switching and supports right-to-left (RTL) languages.
+
+\begin{lstlisting}[language=JavaScript, caption=Internationalization Configuration]
+// i18n Configuration
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import Backend from 'i18next-http-backend';
+import LanguageDetector from 'i18next-browser-languagedetector';
+
+i18n
+  .use(Backend)
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    fallbackLng: 'en',
+    debug: process.env.NODE_ENV === 'development',
+    
+    interpolation: {
+      escapeValue: false
+    },
+    
+    backend: {
+      loadPath: '/locales/{{lng}}/{{ns}}.json'
+    },
+    
+    detection: {
+      order: ['localStorage', 'navigator', 'htmlTag'],
+      caches: ['localStorage']
+    }
+  });
+
+// Usage in Components
+const WelcomeMessage = () => {
+  const { t } = useTranslation('common');
+  
+  return (
+    <div className="welcome-container">
+      <h1>{t('welcome.title')}</h1>
+      <p>{t('welcome.description')}</p>
+      <Button>{t('actions.getStarted')}</Button>
+    </div>
+  );
+};
+\end{lstlisting}
+
+The frontend technology stack creates a robust foundation for Symphony's AI-first development environment, combining modern web technologies with thoughtful architecture decisions that prioritize performance, maintainability, and user experience. This foundation seamlessly integrates with Symphony's desktop framework and backend systems to deliver a cohesive development platform.

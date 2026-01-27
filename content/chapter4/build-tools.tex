@@ -1,0 +1,678 @@
+% ========== BUILD TOOLS & DEVELOPMENT ENVIRONMENT ==========
+% Source: Symphony/Content/Tech Stack Guide, Development workflow documents
+% Package managers, build orchestration, development tools, and automation
+
+\lettrine{S}{ymphony's} build system represents a sophisticated orchestration of modern development tools designed to support both traditional software development workflows and AI-enhanced development processes. The build infrastructure must handle the unique challenges of a multi-language, AI-integrated development environment while maintaining developer productivity and system reliability.
+
+\subsection*{Package Managers \& Dependency Management}
+
+Symphony employs a multi-language package management strategy that coordinates dependencies across Rust, Python, and JavaScript ecosystems while ensuring reproducible builds and security compliance.
+
+\begin{table}[h]
+\centering
+\caption{Package Manager Strategy by Language}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Language} & \textbf{Package Manager} & \textbf{Lock File} & \textbf{Purpose} \\
+\midrule
+Rust & Cargo & Cargo.lock & Backend core, Tauri app \\
+Python & Poetry & poetry.lock & AI models, ML libraries \\
+JavaScript/TypeScript & pnpm & pnpm-lock.yaml & Frontend, build tools \\
+System & Nix (optional) & flake.lock & Reproducible environments \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The dependency management strategy emphasizes security and reproducibility:
+
+\begin{lstlisting}[language=toml, caption=Cargo Workspace Configuration]
+# Cargo.toml - Workspace Root
+[workspace]
+members = [
+    "crates/symphony-core",
+    "crates/symphony-ai",
+    "crates/symphony-tauri",
+    "crates/symphony-cli",
+    "crates/symphony-lsp",
+]
+
+resolver = "2"
+
+[workspace.dependencies]
+# Shared dependencies with unified versions
+tokio = { version = "1.35", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+anyhow = "1.0"
+tracing = "0.1"
+uuid = { version = "1.6", features = ["v4", "serde"] }
+
+# AI-specific dependencies
+pyo3 = { version = "0.20", features = ["auto-initialize"] }
+candle-core = "0.3"
+
+# Security-focused configuration
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[workspace.lints.clippy]
+all = "warn"
+pedantic = "warn"
+nursery = "warn"
+
+# Dependency audit configuration
+[workspace.metadata.audit]
+db-path = "~/.cargo/advisory-db"
+deny = ["unmaintained", "unsound", "yanked"]
+\end{lstlisting}
+
+Python dependency management with Poetry:
+
+\begin{lstlisting}[language=toml, caption=Python Dependencies with Poetry]
+# pyproject.toml - AI Components
+[tool.poetry]
+name = "symphony-ai"
+version = "0.1.0"
+description = "Symphony AI Model Integration"
+authors = ["Symphony Team <team@symphony.dev>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+torch = "^2.1.0"
+transformers = "^4.35.0"
+numpy = "^1.24.0"
+pandas = "^2.1.0"
+scikit-learn = "^1.3.0"
+asyncio = "^3.4.3"
+pydantic = "^2.5.0"
+fastapi = "^0.104.0"
+uvicorn = "^0.24.0"
+
+# Development dependencies
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-asyncio = "^0.21.0"
+black = "^23.10.0"
+isort = "^5.12.0"
+mypy = "^1.7.0"
+ruff = "^0.1.0"
+
+# AI model specific dependencies
+[tool.poetry.group.models.dependencies]
+sentence-transformers = "^2.2.0"
+langchain = "^0.0.340"
+openai = "^1.3.0"
+anthropic = "^0.7.0"
+
+# Security scanning
+[tool.poetry.group.security.dependencies]
+safety = "^2.3.0"
+bandit = "^1.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# Tool configurations
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+\end{lstlisting}
+
+Frontend package management with pnpm:
+
+\begin{lstlisting}[language=json, caption=Frontend Package Configuration]
+{
+  "name": "symphony-frontend",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "type-check": "tsc --noEmit",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@tanstack/react-query": "^5.8.0",
+    "jotai": "^2.6.0",
+    "react-router-dom": "^6.18.0",
+    "@tauri-apps/api": "^1.5.0",
+    "tailwindcss": "^3.3.2",
+    "@headlessui/react": "^1.7.17",
+    "framer-motion": "^10.16.0",
+    "lucide-react": "^0.292.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "@vitejs/plugin-react": "^4.1.1",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0",
+    "vitest": "^0.34.6",
+    "@vitest/ui": "^0.34.6",
+    "jsdom": "^22.1.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "semver": "^7.5.4"
+    }
+  }
+}
+\end{lstlisting}
+
+\subsection*{Build Orchestration \& Automation}
+
+Symphony's build orchestration system coordinates complex multi-stage builds that include Rust compilation, Python environment setup, frontend bundling, and AI model preparation.
+
+\begin{lstlisting}[language=yaml, caption=GitHub Actions Build Pipeline]
+# .github/workflows/build.yml
+name: Symphony Build Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: 1
+
+jobs:
+  # Security and dependency auditing
+  security-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Rust Security Audit
+        uses: actions-rs/audit-check@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Python Security Audit
+        run: |
+          pip install safety
+          safety check --json
+      
+      - name: Frontend Security Audit
+        run: |
+          pnpm audit --audit-level moderate
+
+  # Multi-platform Rust builds
+  rust-build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        rust: [stable, beta]
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.rust }}
+          components: rustfmt, clippy
+          override: true
+      
+      - name: Cache Cargo
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      
+      - name: Format Check
+        run: cargo fmt --all -- --check
+      
+      - name: Clippy Analysis
+        run: cargo clippy --all-targets --all-features -- -D warnings
+      
+      - name: Build
+        run: cargo build --release --all-features
+      
+      - name: Test
+        run: cargo test --all-features
+      
+      - name: Benchmark
+        run: cargo bench --no-run
+
+  # Python AI components
+  python-build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: latest
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+      
+      - name: Cache Poetry
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
+      
+      - name: Install Dependencies
+        run: poetry install --all-extras
+      
+      - name: Type Check
+        run: poetry run mypy symphony_ai/
+      
+      - name: Lint
+        run: |
+          poetry run black --check symphony_ai/
+          poetry run isort --check-only symphony_ai/
+          poetry run ruff symphony_ai/
+      
+      - name: Test
+        run: poetry run pytest --cov=symphony_ai --cov-report=xml
+      
+      - name: Upload Coverage
+        uses: codecov/codecov-action@v3
+
+  # Frontend build and testing
+  frontend-build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Type Check
+        run: pnpm type-check
+      
+      - name: Lint
+        run: pnpm lint
+      
+      - name: Test
+        run: pnpm test --coverage
+      
+      - name: Build
+        run: pnpm build
+      
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: frontend-dist
+          path: dist/
+
+  # Integration build with Tauri
+  tauri-build:
+    needs: [rust-build, frontend-build]
+    strategy:
+      matrix:
+        platform: [macos-latest, ubuntu-20.04, windows-latest]
+    runs-on: ${{ matrix.platform }}
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      
+      - name: Install system dependencies (Ubuntu)
+        if: matrix.platform == 'ubuntu-20.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
+      
+      - name: Download Frontend Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: frontend-dist
+          path: dist/
+      
+      - name: Build Tauri App
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: app-v__VERSION__
+          releaseName: 'Symphony v__VERSION__'
+          releaseBody: 'See the assets to download this version and install.'
+          releaseDraft: true
+          prerelease: false
+\end{lstlisting}
+
+\subsection*{Development Tools \& Environment Setup}
+
+Symphony provides a comprehensive development environment that supports both traditional development workflows and AI-enhanced development processes.
+
+\begin{lstlisting}[language=bash, caption=Development Environment Setup Script]
+#!/bin/bash
+# scripts/setup-dev-env.sh
+
+set -e
+
+echo "🎵 Setting up Symphony development environment..."
+
+# Check system requirements
+check_requirements() {
+    echo "📋 Checking system requirements..."
+    
+    # Check Rust
+    if ! command -v rustc &> /dev/null; then
+        echo "❌ Rust not found. Installing via rustup..."
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        source ~/.cargo/env
+    fi
+    
+    # Check Python
+    if ! command -v python3.11 &> /dev/null; then
+        echo "❌ Python 3.11+ required"
+        exit 1
+    fi
+    
+    # Check Node.js
+    if ! command -v node &> /dev/null; then
+        echo "❌ Node.js not found. Please install Node.js 18+"
+        exit 1
+    fi
+    
+    # Check pnpm
+    if ! command -v pnpm &> /dev/null; then
+        echo "📦 Installing pnpm..."
+        npm install -g pnpm
+    fi
+    
+    # Check Poetry
+    if ! command -v poetry &> /dev/null; then
+        echo "📦 Installing Poetry..."
+        curl -sSL https://install.python-poetry.org | python3 -
+    fi
+}
+
+# Setup Rust environment
+setup_rust() {
+    echo "🦀 Setting up Rust environment..."
+    
+    # Install required targets
+    rustup target add wasm32-unknown-unknown
+    
+    # Install useful tools
+    cargo install cargo-watch cargo-audit cargo-outdated
+    cargo install --locked trunk  # For WASM builds
+    
+    # Setup pre-commit hooks
+    cargo install cargo-husky --features "precommit-hook,run-cargo-test,run-cargo-clippy,run-cargo-fmt"
+}
+
+# Setup Python environment
+setup_python() {
+    echo "🐍 Setting up Python environment..."
+    
+    # Create virtual environment with Poetry
+    cd ai-components/
+    poetry install --all-extras
+    
+    # Setup pre-commit hooks for Python
+    poetry run pre-commit install
+    
+    cd ..
+}
+
+# Setup frontend environment
+setup_frontend() {
+    echo "⚛️ Setting up frontend environment..."
+    
+    cd frontend/
+    pnpm install
+    
+    # Setup Husky hooks
+    pnpm exec husky install
+    
+    cd ..
+}
+
+# Setup AI models and data
+setup_ai_models() {
+    echo "🤖 Setting up AI models..."
+    
+    # Create models directory
+    mkdir -p models/
+    
+    # Download base models (if not exists)
+    if [ ! -f "models/base-model.bin" ]; then
+        echo "📥 Downloading base AI models..."
+        # This would download actual models in production
+        echo "Placeholder for model download"
+    fi
+    
+    # Setup model cache
+    mkdir -p ~/.cache/symphony/models
+}
+
+# Setup development database
+setup_database() {
+    echo "🗄️ Setting up development database..."
+    
+    # Check if Docker is available
+    if command -v docker &> /dev/null; then
+        echo "🐳 Starting development database with Docker..."
+        docker-compose -f docker/dev-compose.yml up -d postgres redis
+    else
+        echo "⚠️ Docker not found. Please setup PostgreSQL and Redis manually."
+    fi
+}
+
+# Setup IDE configurations
+setup_ide() {
+    echo "🔧 Setting up IDE configurations..."
+    
+    # VS Code settings
+    mkdir -p .vscode/
+    cat > .vscode/settings.json << EOF
+{
+    "rust-analyzer.cargo.features": "all",
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "python.defaultInterpreterPath": "./ai-components/.venv/bin/python",
+    "python.linting.enabled": true,
+    "python.linting.mypyEnabled": true,
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "eslint.workingDirectories": ["frontend"],
+    "tailwindCSS.includeLanguages": {
+        "rust": "html"
+    }
+}
+EOF
+    
+    # Recommended extensions
+    cat > .vscode/extensions.json << EOF
+{
+    "recommendations": [
+        "rust-lang.rust-analyzer",
+        "ms-python.python",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "tauri-apps.tauri-vscode"
+    ]
+}
+EOF
+}
+
+# Main setup function
+main() {
+    check_requirements
+    setup_rust
+    setup_python
+    setup_frontend
+    setup_ai_models
+    setup_database
+    setup_ide
+    
+    echo "✅ Symphony development environment setup complete!"
+    echo ""
+    echo "🚀 Quick start commands:"
+    echo "  cargo run --bin symphony-cli        # Run CLI tool"
+    echo "  cd frontend && pnpm dev             # Start frontend dev server"
+    echo "  cd ai-components && poetry run dev  # Start AI services"
+    echo "  cargo tauri dev                     # Start Tauri app in dev mode"
+}
+
+main "$@"
+\end{lstlisting}
+
+\subsection*{Continuous Integration \& Quality Assurance}
+
+Symphony implements comprehensive CI/CD pipelines that ensure code quality, security, and performance across all components of the system.
+
+\begin{lstlisting}[language=yaml, caption=Quality Assurance Pipeline]
+# .github/workflows/quality.yml
+name: Quality Assurance
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # Code quality metrics
+  quality-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for better analysis
+      
+      - name: Setup SonarQube Scanner
+        uses: sonarqube-quality-gate-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      
+      - name: Rust Code Coverage
+        run: |
+          cargo install cargo-tarpaulin
+          cargo tarpaulin --out xml --output-dir coverage/
+      
+      - name: Python Code Coverage
+        run: |
+          cd ai-components/
+          poetry run pytest --cov=symphony_ai --cov-report=xml
+      
+      - name: Frontend Code Coverage
+        run: |
+          cd frontend/
+          pnpm test --coverage --reporter=lcov
+      
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/cobertura.xml,./ai-components/coverage.xml,./frontend/coverage/lcov.info
+
+  # Performance benchmarking
+  performance-benchmarks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      
+      - name: Run Rust Benchmarks
+        run: |
+          cargo bench --bench ai_integration -- --output-format json | tee benchmark-results.json
+      
+      - name: Performance Regression Check
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: 'cargo'
+          output-file-path: benchmark-results.json
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          auto-push: true
+          alert-threshold: '200%'
+          comment-on-alert: true
+
+  # Security scanning
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+      
+      - name: Upload Trivy scan results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+      
+      - name: Rust Security Audit
+        run: |
+          cargo audit --json | jq '.vulnerabilities.list[] | select(.advisory.severity == "high" or .advisory.severity == "critical")'
+\end{lstlisting}
+
+The build tools and development environment create a robust foundation for Symphony's development workflow, ensuring that the complex multi-language, AI-integrated system can be developed, tested, and deployed reliably while maintaining high standards for code quality, security, and performance.
