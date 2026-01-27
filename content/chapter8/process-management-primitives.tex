@@ -96,6 +96,8 @@ Extensions can integrate any external tool without requiring Symphony core modif
     \item \textbf{Resource Safe}: Prevents external processes from affecting system stability
     \item \textbf{Development Friendly}: Simplified integration patterns for extension developers
 \end{compactlist}
+
+\begin{compactlist}
     \item \textbf{TCP Sockets}: Direct socket communication for performance
     \item \textbf{HTTP/REST}: RESTful API integration for web-based tools
     \item \textbf{WebSockets}: Real-time bidirectional communication
@@ -106,7 +108,7 @@ Extensions can integrate any external tool without requiring Symphony core modif
 
 Symphony provides protocol adapters for common message formats:
 
-\begin{lstlisting}[language=javascript, caption=Protocol Communication Example]
+\begin{lstlisting}[language=bash, caption=Protocol Communication Example]
 // JSON-RPC communication with a language server
 const languageServer = await symphony.processes.spawn({
     command: 'rust-analyzer',
@@ -194,7 +196,7 @@ Symphony provides sophisticated lifecycle management for external processes:
 
 Extensions can monitor and control process state:
 
-\begin{lstlisting}[language=javascript, caption=Process Lifecycle Management]
+\begin{lstlisting}[language=JavaScript, caption=Process Lifecycle Management]
 class LanguageServerManager {
     constructor() {
         this.server = null;

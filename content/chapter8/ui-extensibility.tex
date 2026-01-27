@@ -105,7 +105,7 @@ The UI framework defines several extensible regions:
 
 Extensions can create and manage panels dynamically:
 
-\begin{lstlisting}[language=javascript, caption=Dynamic Panel Creation]
+\begin{lstlisting}[language=JavaScript, caption=Dynamic Panel Creation]
 // Create a new panel programmatically
 const panel = await symphony.ui.createPanel({
     id: 'debug-variables',
@@ -219,7 +219,7 @@ Symphony manages the complete lifecycle of extension UI components:
 
 Extensions can hook into various UI lifecycle events:
 
-\begin{lstlisting}[language=javascript, caption=UI Component Lifecycle]
+\begin{lstlisting}[language=JavaScript, caption=UI Component Lifecycle]
 class CustomPanelComponent extends React.Component {
     componentDidMount() {
         // Register for workspace events

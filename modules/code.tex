@@ -9,6 +9,38 @@
 
 % Basic code listings
 \usepackage{listings}
+
+% Define TOML language for listings
+\lstdefinelanguage{toml}{
+    keywords={true,false},
+    keywordstyle=\color{codekey}\bfseries,
+    ndkeywords={[,]},
+    ndkeywordstyle=\color{codekey}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{\#},
+    commentstyle=\color{codecomment}\ttfamily,
+    stringstyle=\color{codestring}\ttfamily,
+    morestring=[b]',
+    morestring=[b]"
+}
+
+% Enhanced JavaScript language definition
+\lstdefinelanguage{JavaScript}{
+    keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, const, let, async, await, class, extends, import, export, from, default},
+    keywordstyle=\color{codekey}\bfseries,
+    ndkeywords={class, export, boolean, throw, implements, import, this},
+    ndkeywordstyle=\color{codekey}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    commentstyle=\color{codecomment}\ttfamily,
+    stringstyle=\color{codestring}\ttfamily,
+    morestring=[b]',
+    morestring=[b]"
+}
+
 \lstset{
     basicstyle=\ttfamily\small,
     backgroundcolor=\color{codebg},
