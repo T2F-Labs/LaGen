@@ -96,6 +96,24 @@ Symphony provides specialized development tools and distribution channels for ea
 
 As shown in the development workflow, Symphony's extension creation process emphasizes:
 
+\begin{compactlist}
+    \item \textbf{Automated Scaffolding}: The Carets CLI generates complete project structures with proper manifests
+    \item \textbf{Integrated Testing}: Comprehensive test frameworks validate functionality before publication
+    \item \textbf{Security Validation}: Cryptographic signing and verification ensure package integrity
+    \item \textbf{Marketplace Integration}: Seamless publication to The Grand Stage with automated quality checks
+\end{compactlist}
+
+The complete extension development interaction flow is further detailed in Figure~\ref{fig:extension-creator-sequence}, which shows the step-by-step sequence of interactions between the extension creator and Symphony's development infrastructure.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/sequence_diagram/2_extension_creator_workflow.png}
+\caption{Extension Creator Workflow Sequence Diagram showing the detailed interaction flow from project creation through marketplace publication. This sequence diagram illustrates how creators use the Carets CLI, Extension SDK, Testing Framework, and Security Module to build and publish high-quality extensions.}
+\label{fig:extension-creator-sequence}
+\end{figure}
+
+The sequence diagram demonstrates how Symphony's development infrastructure supports creators through:
+
 \begin{alertbox}
 Extension creators can focus on their domain expertise while Symphony handles the complexity of integration, security, and distribution through type-specific SDKs and marketplace categories.
 \end{alertbox}

@@ -29,9 +29,9 @@ State Synchronization & Manual state management & Automated state coordination \
 Resource Sharing & Static resource allocation & Dynamic resource negotiation \\
 Failure Recovery & Process restart strategies & Graceful degradation systems \\
 \bottomrule
-\end{tabular>
+\end{tabular}
 \captionof{table}{Out-of-Process Architecture Research Contributions}
-\end{center>
+\end{center}
 
 \subsection*{Intelligent Communication Protocols}
 \addcontentsline{toc}{subsection}{Intelligent Communication Protocols}
@@ -59,7 +59,43 @@ Our security model research contributes novel approaches to capability-based sec
     \item \textbf{Dynamic Permission Adjustment}: Runtime permission modification based on behavior analysis
     \item \textbf{Trust-Based Escalation}: Graduated trust levels based on extension reliability and user feedback
     \item \textbf{Behavioral Monitoring}: Continuous monitoring of extension behavior for anomaly detection
-\end{expandedlist>
+\end{expandedlist}
+
+\subsection*{Extension Lifecycle State Management}
+\addcontentsline{toc}{subsection}{Extension Lifecycle State Management}
+
+Our research contributes a novel state management approach called the "Chambering" state machine, which provides systematic lifecycle management for out-of-process extensions. This state machine ensures reliable transitions between extension states while maintaining system stability and security.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/state_diagram/1_extension_lifecycle_chambering.png}
+\caption{Extension Lifecycle Chambering State Machine showing the complete state transitions for out-of-process extensions. The Chambering system manages extensions through seven distinct states: Installed, Loading, Loaded, Activated, Running, Error, and Uninstalling, with comprehensive error handling and recovery mechanisms.}
+\label{fig:extension-lifecycle-states}
+\end{figure}
+
+The Chambering state machine addresses critical research challenges in extension lifecycle management:
+
+\begin{expandedlist}
+    \item \textbf{State Consistency}: Ensures extensions maintain consistent state across process boundaries
+    \item \textbf{Error Recovery}: Provides systematic error handling with graceful degradation
+    \item \textbf{Resource Management}: Coordinates resource allocation and cleanup across state transitions
+    \item \textbf{Security Enforcement}: Validates permissions and capabilities at each state transition
+\end{expandedlist}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{State Transition} & \textbf{Validation Checks} & \textbf{Recovery Actions} \\
+\midrule
+Installed → Loading & Manifest validation, dependency resolution & Rollback to Installed \\
+Loading → Loaded & Code integrity, memory allocation & Cleanup and retry \\
+Loaded → Activated & Permission validation, resource availability & Deactivate gracefully \\
+Activated → Running & Task validation, capability checks & Return to Activated \\
+Any → Error & Error classification, impact assessment & Automatic recovery attempt \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Chambering State Machine Validation and Recovery}
+\end{center}
 
 \subsection*{Extension Ecosystem Analysis}
 \addcontentsline{toc}{subsection}{Extension Ecosystem Analysis}
@@ -73,7 +109,16 @@ Our ecosystem analysis demonstrates the effectiveness of out-of-process architec
 \label{fig:extension-lifecycle}
 \end{figure}
 
-As demonstrated in the lifecycle diagram, our out-of-process architecture provides systematic state management that ensures system reliability:
+As demonstrated in the lifecycle diagram, our out-of-process architecture provides systematic state management that ensures system reliability. The detailed interaction flow for extension installation and usage is shown in Figure~\ref{fig:extension-install-sequence}, which illustrates how developers discover, install, and use extensions through Symphony's secure installation process.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/sequence_diagram/3_developer_workflow_install_extension.png}
+\caption{Developer Workflow Install Extension Sequence Diagram showing the complete installation and usage process. This diagram demonstrates how the Grand Stage marketplace, Kit Installer, Kit Lifecycle, and Kit Security components work together to provide secure extension installation with the Chambering state machine managing extension lifecycle.}
+\label{fig:extension-install-sequence}
+\end{figure>
+
+The installation sequence demonstrates our out-of-process architecture benefits:
 
 \begin{center}
 \begin{tabular}{@{}lrrr@{}}
@@ -85,8 +130,8 @@ Extension Reliability & 89.1\% & 96.4\% & +8.2\% \\
 Development Velocity & 100\% & 145\% & +45\% \\
 Security Incidents & 12/year & 2/year & -83\% \\
 \bottomrule
-\end{tabular>
+\end{tabular}
 \captionof{table}{Extension Architecture Comparison}
-\end{center>
+\end{center}
 
 The out-of-process architecture research establishes new paradigms for extension system design, contributing novel approaches to secure, performant, and reliable extension architectures for AI-first development environments.

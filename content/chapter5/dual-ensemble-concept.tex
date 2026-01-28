@@ -6,7 +6,16 @@
 
 \subsection*{The Two Ensembles}
 
-Symphony organizes its extension ecosystem into two distinct architectural layers, each optimized for different requirements and use cases:
+Symphony organizes its extension ecosystem into two distinct architectural layers, each optimized for different requirements and use cases. The complete architectural structure is illustrated in Figure~\ref{fig:h2a2-architecture}, which shows the Harmonic Hexagonal Actor Architecture (H²A²) with its domain adapters and clean separation of concerns.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/class_diagram/1_h2a2_architecture_domain_adapters.png}
+\caption{H²A² Architecture Class Diagram showing the Harmonic Hexagonal Actor Architecture with domain core, port interfaces, and adapter implementations. This diagram illustrates the clean separation between domain logic, port abstractions, and concrete adapter implementations for Xi-Editor, The Pit, and the Actor-based extension system.}
+\label{fig:h2a2-architecture}
+\end{figure}
+
+As shown in the architectural diagram, Symphony's dual ensemble approach provides:
 
 \begin{description}[leftmargin=3cm,labelwidth=2.5cm]
     \item[\textbf{The Pit}] Infrastructure extensions running in-process for maximum performance

@@ -47,6 +47,44 @@ Resource-Aware & Balanced utilization & Mixed workload scenarios \\
 \caption{Topological Sorting Strategies}
 \end{table}
 
+\subsection*{Individual Task Execution State Management}
+\addcontentsline{toc}{subsection}{Individual Task Execution State Management}
+
+Our research contributes a detailed state management system for individual task nodes within DAG workflows. This state machine provides systematic execution control, resource allocation, and error handling for each task while supporting parallel execution across multiple nodes.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/state_diagram/1_extension_lifecycle_chambering.png}
+\caption{DAG Task Execution State Machine showing the complete lifecycle for individual workflow tasks. The system manages eight distinct states: Pending, Ready, Allocated, Executing, Storing, Completed, Failed, and Retrying, with comprehensive resource management and error recovery mechanisms for reliable parallel execution.}
+\label{fig:dag-task-execution-states}
+\end{figure}
+
+The DAG task execution state machine addresses critical individual task management challenges:
+
+\begin{expandedlist}
+    \item \textbf{Dependency Coordination}: Systematic waiting for upstream task completion before execution
+    \item \textbf{Resource Allocation}: Integration with Pool Manager for Player extension allocation
+    \item \textbf{Execution Monitoring}: Comprehensive validation of inputs, execution, and outputs
+    \item \textbf{Artifact Management}: Automatic storage with content-addressable hashing and quality scoring
+    \item \textbf{Retry Logic}: Intelligent retry policies with exponential backoff and maximum attempt limits
+\end{expandedlist}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{State Transition} & \textbf{Trigger Condition} & \textbf{Performance Target} \\
+\midrule
+Pending → Ready & All dependencies satisfied & Immediate (topological sort) \\
+Ready → Allocated & Player extension available & 50-100ns (Pool Manager cache hit) \\
+Allocated → Executing & Player initialization complete & <10ms (resource setup) \\
+Executing → Storing & Task execution success & Variable (task-dependent) \\
+Storing → Completed & Artifact storage complete & 1-5ms (Artifact Store) \\
+Failed → Retrying & Retry policy active & Exponential backoff delay \\
+\bottomrule
+\end{tabular}
+\captionof{table}{DAG Task State Transition Performance Characteristics}
+\end{center>
+
 \subsection*{Parallel Execution Architecture}
 
 Our parallel execution system enables Symphony to process multiple workflow branches simultaneously while maintaining data consistency and resource coordination. The system automatically identifies parallelization opportunities and manages concurrent execution.

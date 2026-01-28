@@ -184,6 +184,27 @@ Stability & Policy KL divergence & <0.01 per update \\
 \caption{PPO Performance Evaluation Metrics}
 \end{table}
 
+\subsection*{Conductor Workflow Generation Process}
+
+The Conductor's workflow generation process demonstrates PPO's practical application in real-time orchestration. This sequence illustrates how reinforcement learning transforms natural language prompts into executable workflow DAGs through intelligent Player extension selection and resource optimization.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{images/diagrams/sequence_diagram/4_conductor_workflow_generate_melody.png}
+\caption{Conductor Workflow Generation: AI-Powered Melody Creation from Natural Language Prompts}
+\label{fig:conductor-workflow-generation}
+\end{figure}
+
+The workflow generation process involves several critical stages where PPO optimization occurs:
+
+\begin{expandedlist}
+    \item \textbf{Intent Parsing and Context Analysis}: The Conductor analyzes user prompts and project state to create a comprehensive context representation for the RL model
+    \item \textbf{State Encoding}: System context is encoded into the neural network input format, including available Player extensions, resource constraints, and historical performance data
+    \item \textbf{Action Prediction}: The PPO policy network outputs probability distributions over possible workflow structures, Player selections, and resource allocations
+    \item \textbf{DAG Construction}: The Melody Engine translates RL decisions into executable workflow graphs with optimized task dependencies and resource assignments
+    \item \textbf{Reward Calculation}: Execution outcomes provide feedback for policy updates, including success rates, performance metrics, and user satisfaction scores
+\end{expandedlist}
+
 \subsection*{Integration with Function Quest Training}
 
 PPO's integration with Function Quest Game training provides a unique foundation for orchestration learning. The game environment enables safe exploration and skill development before deployment to real system orchestration tasks.

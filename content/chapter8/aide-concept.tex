@@ -26,7 +26,16 @@ AIDE implements a multi-agent architecture where specialized AI agents collabora
 
 \subsubsection{Artifact-Driven Communication}
 
-A critical innovation in AIDE is the use of structured artifacts as the primary communication medium between agents and humans, ensuring transparency, reproducibility, and traceability throughout the development process.
+A critical innovation in AIDE is the use of structured artifacts as the primary communication medium between agents and humans, ensuring transparency, reproducibility, and traceability throughout the development process. Figure~\ref{fig:developer-workflow-melody} illustrates the complete developer workflow for executing a Melody, demonstrating how AIDE orchestrates AI agents to transform user prompts into working software through structured artifact generation.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/sequence_diagram/1_developer_workflow_execute_melody.png}
+\caption{Developer Workflow Execute Melody Sequence Diagram showing the complete lifecycle from prompt submission to artifact retrieval. This diagram demonstrates how AIDE coordinates between the Developer, Conductor, The Pit, and various managers to execute AI-driven workflows with both Maestro (automatic) and Manual modes.}
+\label{fig:developer-workflow-melody}
+\end{figure}
+
+As shown in the workflow sequence, artifact-driven communication enables:
 
 \subsubsection{Human-AI Role Redefinition}
 

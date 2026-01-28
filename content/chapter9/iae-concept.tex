@@ -4,6 +4,7 @@
 \section{Intelligence-as-Extension: Architectural Philosophy}
 \label{sec:iae-concept}
 
+\vspace{0.5cm}
 \lettrine{T}{he} Intelligence-as-Extension (IaE) paradigm represents a fundamental architectural decision in Symphony's design that treats artificial intelligence capabilities as first-class extensions rather than built-in system components. This approach contrasts sharply with the Built-in-Extension (BiE) model employed by most contemporary AI-assisted development tools, where AI capabilities are tightly integrated into the core system architecture.
 
 \subsection{Theoretical Foundation and Research Problem}
@@ -134,7 +135,16 @@ The extension dispatch overhead in IaE systems requires careful optimization to 
 
 \subsubsection{Cross-Extension Communication}
 
-IaE architectures must carefully manage communication between different AI extensions to maintain system coherence:
+IaE architectures must carefully manage communication between different AI extensions to maintain system coherence. Symphony's approach centers on The Pit, a specialized infrastructure layer that provides high-performance coordination between AI extensions. Figure~\ref{fig:pit-aide-layer} illustrates the detailed architecture of The Pit's five core components that enable microsecond-level coordination.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/class_diagram/2_the_pit_aide_layer_execution.png}
+\caption{The Pit AIDE Layer Class Diagram showing the five core components that enable high-performance in-process execution: Pool Manager, DAG Tracker, Artifact Store, Arbitration Engine, and Stale Manager. This diagram illustrates how these components work together to achieve 50-100ns latency for critical operations.}
+\label{fig:pit-aide-layer}
+\end{figure}
+
+As shown in The Pit architecture, cross-extension communication is managed through:
 
 \begin{itemize}
     \item \textbf{Centralized Orchestration}: The Conductor serves as the primary communication hub

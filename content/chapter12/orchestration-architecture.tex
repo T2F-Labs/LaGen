@@ -27,7 +27,16 @@ Our orchestration architecture operates at two distinct levels:
 
 \subsection*{Architectural Components}
 
-The orchestration architecture comprises several interconnected components that work together to provide intelligent coordination across Symphony's ecosystem.
+The orchestration architecture comprises several interconnected components that work together to provide intelligent coordination across Symphony's ecosystem. The detailed technical architecture is illustrated in Figure~\ref{fig:ipc-conductor-architecture}, which shows the IPC communication backbone and the Python-based Conductor that uses reinforcement learning for intelligent workflow generation.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/class_diagram/3_ipc_communication_conductor_rl.png}
+\caption{IPC Communication and Conductor RL Architecture Class Diagram showing the inter-process communication infrastructure and the Python-based Conductor with reinforcement learning capabilities. This diagram illustrates how the IPC Bus manages cross-process messaging while the Conductor provides intelligent orchestration through PyO3 bindings.}
+\label{fig:ipc-conductor-architecture}
+\end{figure}
+
+As shown in the architectural diagram, the orchestration system integrates:
 
 \begin{table}[ht]
 \centering
@@ -63,6 +72,43 @@ The Player system provides several key benefits:
     \item \textbf{Resource Coordination}: Intelligent resource allocation and sharing across multiple extensions
     \item \textbf{Quality Assurance}: Continuous monitoring and performance validation with SLA enforcement
 \end{expandedlist}
+
+\subsection*{Melody Execution State Management}
+\addcontentsline{toc}{subsection}{Melody Execution State Management}
+
+Our research contributes a comprehensive state management system for Melody (workflow) execution that handles the complete lifecycle from creation through completion. This state machine provides systematic error handling, checkpointing, and recovery mechanisms essential for reliable AI workflow orchestration.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/state_diagram/3_melody_execution_workflow.png}
+\caption{Melody Execution Workflow State Machine showing the complete lifecycle management for AI-driven workflows. The system manages nine distinct states: Draft, Validating, Ready, Queued, Executing, Paused, Completed, Failed, and Cancelled, with comprehensive error handling and recovery mechanisms for reliable orchestration.}
+\label{fig:melody-execution-states}
+\end{figure}
+
+The Melody execution state machine addresses critical workflow management challenges:
+
+\begin{expandedlist}
+    \item \textbf{Validation and Safety}: Comprehensive DAG validation including cycle detection and type safety checking
+    \item \textbf{Resource Coordination}: Intelligent queueing and resource allocation through the Arbitration Engine
+    \item \textbf{Fault Tolerance}: Systematic error handling with automatic retry capabilities and graceful degradation
+    \item \textbf{User Control}: Support for pause/resume operations and user-initiated cancellation
+\end{expandedlist}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{State Transition} & \textbf{Validation Requirements} & \textbf{Recovery Mechanisms} \\
+\midrule
+Draft → Validating & User submission trigger & Return to Draft on validation failure \\
+Validating → Ready & DAG validation, type checking & Detailed error reporting \\
+Ready → Queued & Resource availability check & Queue position management \\
+Queued → Executing & Resource allocation success & Automatic retry on resource conflicts \\
+Executing → Paused & User request or checkpoint & State preservation and resumption \\
+Executing → Failed & Task execution error & Retry policies and fallback strategies \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Melody Execution State Management Characteristics}
+\end{center>
 
 \subsection*{Control Flow Architecture}
 

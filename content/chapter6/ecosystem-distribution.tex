@@ -75,7 +75,16 @@ Organizations can extend the public marketplace with private extension capabilit
 
 \subsection*{Developer Experience}
 
-Symphony prioritizes developer experience to encourage high-quality extension creation:
+Symphony prioritizes developer experience to encourage high-quality extension creation. The complete extension ecosystem management infrastructure is illustrated in Figure~\ref{fig:orchestra-kit-ecosystem}, which shows how the Orchestra Kit manages the entire extension lifecycle from development through distribution.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/class_diagram/4_orchestra_kit_extension_ecosystem.png}
+\caption{Orchestra Kit Extension Ecosystem Class Diagram showing the complete extension lifecycle management system including Registry, Marketplace, Installer, Lifecycle Manager, Security Manager, and the Carets CLI/SDK toolchain. This diagram illustrates how all components work together to provide a comprehensive extension development and distribution platform.}
+\label{fig:orchestra-kit-ecosystem}
+\end{figure}
+
+As shown in the Orchestra Kit architecture, the developer experience encompasses:
 
 \begin{alertbox}
 The extension development process is designed to be accessible to developers with varying levels of experience, from individual contributors to large development teams.
