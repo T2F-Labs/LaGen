@@ -71,40 +71,41 @@ A critical innovation in the Stale Manager is its training data preservation str
 \end{compactlist}
 \end{alertbox}
 
-\subsection*{Artifact Lifecycle State Management}
-\addcontentsline{toc}{subsection}{Artifact Lifecycle State Management}
-
-Our research contributes a novel artifact lifecycle management system that automatically transitions artifacts through storage tiers based on age, access patterns, and training value. This state machine optimizes storage costs while preserving essential training data for continuous AI model improvement.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.9\textwidth]{images/diagrams/state_diagram/5_artifact_lifecycle_stale_manager.png}
-\caption{Artifact Lifecycle State Machine showing automated transitions through storage tiers. The system manages four primary states: SSD Hot (1-7 days), HDD Warm (8-30 days), Cloud Cold (30+ days), and Deleted, with intelligent access-based promotion and content-addressable deduplication achieving 20-40\% storage savings.}
-\label{fig:artifact-lifecycle-states}
-\end{figure}
-
-The artifact lifecycle state machine addresses critical storage optimization challenges:
-
-\begin{expandedlist}
-    \item \textbf{Cost-Performance Balance}: Automatic tier placement optimizes storage costs while maintaining access performance
-    \item \textbf{Training Data Preservation}: Intelligent retention policies preserve high-quality training examples regardless of age
-    \item \textbf{Access-Based Promotion}: Frequently accessed artifacts are automatically promoted to faster storage tiers
-    \item \textbf{Content Deduplication}: Content-addressable storage eliminates redundant data across all tiers
-\end{expandedlist}
-
-\begin{center}
-\begin{tabular}{@{}lll@{}}
-\toprule
-\textbf{Storage Tier} & \textbf{Performance Characteristics} & \textbf{Optimization Strategy} \\
-\midrule
-SSD Hot (1-7 days) & 0.5-2ms retrieval, frequent access & Active development artifacts \\
-HDD Warm (8-30 days) & 5-20ms retrieval, moderate access & Recent training data \\
-Cloud Cold (30+ days) & 100-500ms retrieval, archival & Long-term preservation \\
-Deleted & Permanent removal & Retention policy compliance \\
-\bottomrule
-\end{tabular}
-\captionof{table}{Artifact Lifecycle Storage Tier Characteristics}
-\end{center}
+% \subsection*{Artifact Lifecycle State Management}
+% \addcontentsline{toc}{subsection}{Artifact Lifecycle State Management}
+% 
+% Our research contributes a novel artifact lifecycle management system that automatically transitions artifacts through storage tiers based on age, access patterns, and training value. This state machine optimizes storage costs while preserving essential training data for continuous AI model improvement.
+% 
+% % TODO: Add Artifact Lifecycle State Machine diagram when available
+% % \begin{figure}[h]
+% % \centering
+% % \includegraphics[width=0.9\textwidth]{images/diagrams/state_diagram/5_artifact_lifecycle_stale_manager.png}
+% % \caption{Artifact Lifecycle State Machine showing automated transitions through storage tiers. The system manages four primary states: SSD Hot (1-7 days), HDD Warm (8-30 days), Cloud Cold (30+ days), and Deleted, with intelligent access-based promotion and content-addressable deduplication achieving 20-40\% storage savings.}
+% % \label{fig:artifact-lifecycle-states}
+% % \end{figure}
+% 
+% The artifact lifecycle state machine addresses critical storage optimization challenges:
+% 
+% \begin{expandedlist}
+%     \item \textbf{Cost-Performance Balance}: Automatic tier placement optimizes storage costs while maintaining access performance
+%     \item \textbf{Training Data Preservation}: Intelligent retention policies preserve high-quality training examples regardless of age
+%     \item \textbf{Access-Based Promotion}: Frequently accessed artifacts are automatically promoted to faster storage tiers
+%     \item \textbf{Content Deduplication}: Content-addressable storage eliminates redundant data across all tiers
+% \end{expandedlist}
+% 
+% \begin{center}
+% \begin{tabular}{@{}lll@{}}
+% \toprule
+% \textbf{Storage Tier} & \textbf{Performance Characteristics} & \textbf{Optimization Strategy} \\
+% \midrule
+% SSD Hot (1-7 days) & 0.5-2ms retrieval, frequent access & Active development artifacts \\
+% HDD Warm (8-30 days) & 5-20ms retrieval, moderate access & Recent training data \\
+% Cloud Cold (30+ days) & 100-500ms retrieval, archival & Long-term preservation \\
+% Deleted & Permanent removal & Retention policy compliance \\
+% \bottomrule
+% \end{tabular}
+% \captionof{table}{Artifact Lifecycle Storage Tier Characteristics}
+% \end{center}
 
 \subsection*{Automatic Archival and Retrieval}
 \addcontentsline{toc}{subsection}{Automatic Archival and Retrieval}

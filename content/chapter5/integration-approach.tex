@@ -3,41 +3,42 @@
 
 \lettrine{T}{he} integration of Symphony's architectural components demonstrates how microkernel principles can be applied to create a cohesive AI-first development environment. Our approach prioritizes clear interfaces, event-driven coordination, and graceful failure handling.
 
-\subsection*{Inter-Process Communication State Management}
-\addcontentsline{toc}{subsection}{Inter-Process Communication State Management}
-
-Our research contributes a robust IPC connection state machine that manages communication between Symphony's core and out-of-process extensions with automatic reconnection, health monitoring, and performance optimization.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.9\textwidth]{images/diagrams/state_diagram/1_extension_lifecycle_chambering.png}
-\caption{IPC Connection State Machine showing the complete communication lifecycle management. The system manages six distinct states: Disconnected, Connecting, Authenticating, Connected, Degraded, and Reconnecting, with automatic health monitoring, exponential backoff retry logic, and 0.1-0.3ms target message latency.}
-\label{fig:ipc-connection-states}
-\end{figure}
-
-The IPC connection state machine addresses critical communication challenges:
-
-\begin{expandedlist}
-    \item \textbf{Connection Reliability}: Automatic reconnection with exponential backoff and maximum retry limits
-    \item \textbf{Performance Monitoring}: Real-time latency tracking with automatic degradation detection
-    \item \textbf{Security Validation}: Process authentication and capability verification at connection establishment
-    \item \textbf{Health Management}: Continuous health checks every 5 seconds with automatic recovery
-\end{expandedlist}
-
-\begin{center}
-\begin{tabular}{@{}lll@{}}
-\toprule
-\textbf{Connection State} & \textbf{Performance Characteristics} & \textbf{Recovery Strategy} \\
-\midrule
-Connected & 0.1-0.3ms message latency & Continuous health monitoring \\
-Degraded & >1ms latency, packet loss & Performance restoration attempts \\
-Reconnecting & Connection restoration & Exponential backoff (max 5 retries) \\
-Authenticating & Process ID verification & Security validation protocols \\
-Disconnected & No active connection & Manual or automatic reconnection \\
-\bottomrule
-\end{tabular}
-\captionof{table}{IPC Connection State Performance and Recovery}
-\end{center}
+% \subsection*{Inter-Process Communication State Management}
+% \addcontentsline{toc}{subsection}{Inter-Process Communication State Management}
+% 
+% Our research contributes a robust IPC connection state machine that manages communication between Symphony's core and out-of-process extensions with automatic reconnection, health monitoring, and performance optimization.
+% 
+% % TODO: Add IPC Connection State Machine diagram when available
+% % \begin{figure}[h]
+% % \centering
+% % \includegraphics[width=0.9\textwidth]{images/diagrams/state_diagram/6_ipc_connection_state_machine.png}
+% % \caption{IPC Connection State Machine showing the complete communication lifecycle management. The system manages six distinct states: Disconnected, Connecting, Authenticating, Connected, Degraded, and Reconnecting, with automatic health monitoring, exponential backoff retry logic, and 0.1-0.3ms target message latency.}
+% % \label{fig:ipc-connection-states}
+% % \end{figure}
+% 
+% The IPC connection state machine addresses critical communication challenges:
+% 
+% \begin{expandedlist}
+%     \item \textbf{Connection Reliability}: Automatic reconnection with exponential backoff and maximum retry limits
+%     \item \textbf{Performance Monitoring}: Real-time latency tracking with automatic degradation detection
+%     \item \textbf{Security Validation}: Process authentication and capability verification at connection establishment
+%     \item \textbf{Health Management}: Continuous health checks every 5 seconds with automatic recovery
+% \end{expandedlist}
+% 
+% \begin{center}
+% \begin{tabular}{@{}lll@{}}
+% \toprule
+% \textbf{Connection State} & \textbf{Performance Characteristics} & \textbf{Recovery Strategy} \\
+% \midrule
+% Connected & 0.1-0.3ms message latency & Continuous health monitoring \\
+% Degraded & >1ms latency, packet loss & Performance restoration attempts \\
+% Reconnecting & Connection restoration & Exponential backoff (max 5 retries) \\
+% Authenticating & Process ID verification & Security validation protocols \\
+% Disconnected & No active connection & Manual or automatic reconnection \\
+% \bottomrule
+% \end{tabular}
+% \captionof{table}{IPC Connection State Performance and Recovery}
+% \end{center}
 
 \subsection*{Component Coordination}
 
