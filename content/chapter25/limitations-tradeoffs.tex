@@ -50,11 +50,11 @@ Our architectural decisions involve fundamental trade-offs that affect system ch
     \item \textbf{Advantages}: Native AI integration, intelligent orchestration, novel capabilities
     \item \textbf{Disadvantages}: AI dependency, resource requirements, unpredictable behavior
     \item \textbf{Impact}: Revolutionary capabilities with 2-3x resource requirements
-\end{compactlist>
+\end{compactlist}
 
 \begin{infobox}[title=Design Philosophy Trade-off]
 Symphony's "AI-first" philosophy provides unprecedented capabilities but creates fundamental dependency on AI model availability and quality. This trade-off enables revolutionary functionality while constraining deployment flexibility and offline capability.
-\end{infobox>
+\end{infobox}
 
 \subsection*{Performance Trade-offs}
 \addcontentsline{toc}{subsection}{Performance Trade-offs}
@@ -73,7 +73,7 @@ Real-time Orchestration & <100ms coordination & 25\% CPU overhead & Responsivene
 \bottomrule
 \end{tabular}
 \captionof{table}{Performance Trade-off Analysis}
-\end{center>
+\end{center}
 
 \textbf{Memory vs Capability Trade-off}:
 Our system maintains multiple AI models in memory for responsiveness, resulting in higher baseline memory usage than traditional IDEs but enabling capabilities impossible with on-demand loading.
@@ -105,7 +105,7 @@ Individuals & Flexibility over consistency & Personal customization \\
 \bottomrule
 \end{tabular}
 \captionof{table}{User Experience Trade-off Resolution}
-\end{center>
+\end{center}
 
 \subsection*{Scalability Constraints}
 \addcontentsline{toc}{subsection}{Scalability Constraints}
@@ -117,7 +117,7 @@ Symphony faces several scalability constraints that limit its applicability in c
     \item \textbf{Project Size Scaling}: AI analysis performance degrades with projects exceeding 100,000 lines of code
     \item \textbf{Concurrent User Scaling}: Shared AI resources create bottlenecks with more than 50 concurrent users
     \item \textbf{Extension Ecosystem Scaling}: Marketplace curation becomes challenging with thousands of extensions
-\end{expandedlist>
+\end{expandedlist}
 
 \subsection*{Acknowledged Constraints and Future Directions}
 \addcontentsline{toc}{subsection}{Acknowledged Constraints and Future Directions}
@@ -129,18 +129,18 @@ We acknowledge several fundamental constraints that shape Symphony's current and
     \item \textbf{AI Model Limitations}: Dependent on external AI model capabilities and availability
     \item \textbf{Platform Dependencies}: Tauri and web technology constraints limit native platform integration
     \item \textbf{Resource Requirements}: AI integration requires substantial computational resources
-\end{compactlist>
+\end{compactlist}
 
 \textbf{Design Constraints}:
 \begin{compactlist}
     \item \textbf{Complexity Management}: Balancing power and usability remains an ongoing challenge
     \item \textbf{Trust Calibration}: Users require time and experience to develop appropriate AI trust levels
     \item \textbf{Domain Specificity}: Different programming domains require specialized AI training and interfaces
-\end{compactlist>
+\end{compactlist}
 
 \begin{alertbox}
 \textbf{Research Limitation}: Our evaluation focuses primarily on individual developer productivity. The implications of AI-first development for team dynamics, code maintainability, and long-term software evolution require additional longitudinal research.
-\end{alertbox>
+\end{alertbox}
 
 \subsection*{Implications for Future Research}
 \addcontentsline{toc}{subsection}{Implications for Future Research}
@@ -152,6 +152,6 @@ The limitations and trade-offs identified in Symphony's development suggest seve
     \item \textbf{Hybrid Human-AI Workflows}: Investigating optimal patterns for human-AI collaboration across different development tasks
     \item \textbf{Trust-Aware Interface Design}: Creating interfaces that help users develop appropriate trust calibration with AI systems
     \item \textbf{Scalable AI Integration}: Researching architectures that maintain AI capabilities while scaling to large teams and projects
-\end{expandedlist>
+\end{expandedlist}
 
 The honest acknowledgment of these limitations and trade-offs is essential for advancing the field of AI-first development environments and ensuring that future research builds upon a realistic understanding of current capabilities and constraints.
