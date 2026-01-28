@@ -28,7 +28,7 @@ pub trait Extension {
 
 \subsection*{Extension Metadata}
 
-Comprehensive metadata structure for extension registration and discovery:
+Complete metadata structure for extension registration and discovery:
 
 \begin{lstlisting}[language=Rust,caption={Extension Metadata Structure}]
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -157,7 +157,7 @@ pub type EventHandler<T> = Box<dyn Fn(&T) -> Result<(), EventError> + Send + Syn
 
 \subsection*{Error Handling}
 
-Comprehensive error types for extension development:
+Complete error types for extension development:
 
 \begin{lstlisting}[language=Rust,caption={Extension Error Types}]
 #[derive(Debug, Clone, Serialize, Deserialize)]
