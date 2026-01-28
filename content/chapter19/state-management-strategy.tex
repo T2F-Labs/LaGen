@@ -47,8 +47,7 @@ State management performance in AI applications requires specialized optimizatio
 
 Intelligent batching strategies group related state updates to minimize rendering overhead and improve application responsiveness. The system analyzes update patterns to identify optimal batching windows that balance responsiveness with performance efficiency.
 
-\begin{table}[h]
-\centering
+\begin{center}
 \begin{tabular}{@{}lrrr@{}}
 \toprule
 \textbf{Optimization Strategy} & \textbf{Update Latency} & \textbf{Memory Usage} & \textbf{CPU Overhead} \\
@@ -59,8 +58,8 @@ Intelligent Batching & 5ms & 75\% & 50\% \\
 Predictive Batching & 3ms & 70\% & 45\% \\
 \bottomrule
 \end{tabular}
-\caption{State Management Performance Optimization Results}
-\end{table}
+\captionof{table}{State Management Performance Optimization Results}
+\end{center}
 
 Selective update propagation prevents unnecessary component re-renders by analyzing state change impact and updating only affected components. The system implements dependency tracking that identifies which components require updates based on specific state changes.
 
@@ -125,8 +124,7 @@ State management complexity in AI applications requires sophisticated debugging 
 
 The debugging framework provides real-time visualization of state changes, AI processing status, and component update patterns. Developers can observe state flow through the application and identify performance bottlenecks or consistency issues.
 
-\begin{table}[h]
-\centering
+\begin{center}
 \begin{tabular}{@{}lll@{}}
 \toprule
 \textbf{Debugging Feature} & \textbf{Capability} & \textbf{AI Integration} \\
@@ -138,8 +136,8 @@ Consistency Validation & State integrity checking & AI result validation \\
 Conflict Detection & Concurrent operation analysis & AI operation coordination \\
 \bottomrule
 \end{tabular}
-\caption{State Management Debugging Features}
-\end{table>
+\captionof{table}{State Management Debugging Features}
+\end{center}
 
 Time-travel debugging enables developers to replay state changes and observe their effects on application behavior. This capability is particularly valuable for debugging complex AI workflows where state changes occur across multiple processing stages.
 
@@ -164,3 +162,4 @@ Performance testing includes specialized metrics for state management operations
 Consistency validation testing employs formal verification techniques to ensure that state management operations maintain data integrity and consistency guarantees. This validation provides confidence in state management reliability under complex concurrent scenarios.
 
 The state management strategy represents a significant contribution to the field of AI-first application development, demonstrating how sophisticated state management can effectively coordinate complex AI processing while maintaining the performance and reliability standards expected by professional development environments.
+

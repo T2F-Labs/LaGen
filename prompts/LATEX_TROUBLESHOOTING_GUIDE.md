@@ -948,3 +948,139 @@ ends = re.findall(r'\\end\{([^}]+)\}', content)
 mismatches = set(begins) - set(ends)
 print("Potential mismatches:", mismatches)
 ```
+### 19. **"Not in outer par mode" Errors**
+
+**Problem**: Tables inside non-floating environments
+```
+LaTeX Error: Not in outer par mode.
+./content/chapter19/component-system-implementation.tex, 50
+```
+
+**Root Cause**: Using `\begin{table}` inside box environments (infobox, alertbox, successbox)
+
+**Recipe**:
+1. Replace `\begin{table}[h]` with `\begin{center}`
+2. Remove `\centering` line
+3. Replace `\caption{...}` with `\captionof{table}{...}`
+4. Replace `\end{table}` with `\end{center}`
+5. Ensure `caption` package is loaded
+
+**Automated Fix Pattern**:
+```latex
+% WRONG (inside box environments)
+\begin{infobox}
+\begin{table}[h]
+\centering
+\begin{tabular}{...}
+...
+\end{tabular}
+\caption{Table Title}
+\end{table}
+\end{infobox}
+
+% CORRECT (using center environment)
+\begin{infobox}
+\begin{center}
+\begin{tabular}{...}
+...
+\end{tabular}
+\captionof{table}{Table Title}
+\end{center}
+\end{infobox}
+```
+
+### 20. **Runaway Arguments and Missing Braces**
+
+**Problem**: Missing closing braces in commands
+```
+Runaway argument?
+./content/chapter18/entry.tex, 20
+{A/B Testing Data**: Preserves data for model comparison and validati\ETC.
+! File ended while scanning use of \textbf .
+```
+
+**Root Cause**: Malformed `\textbf` commands with missing opening braces
+
+**Recipe**:
+1. Check for malformed `\textbf{text**` patterns
+2. Fix missing opening braces: `\textbf{text}`
+3. Ensure all braces are properly matched
+4. Look for double asterisks `**` which indicate markdown-style formatting
+
+**Common Patterns to Fix**:
+```latex
+% WRONG (missing opening brace)
+\textbf{A/B Testing Data**: Description
+\textbf{Feedback Integration**: Description
+
+% CORRECT (proper braces)
+\textbf{A/B Testing Data}: Description
+\textbf{Feedback Integration}: Description
+```
+
+### 21. **Malformed Table Environment Syntax**
+
+**Problem**: Incorrect table environment syntax
+```
+LaTeX Error: \begin{tabular} on input line 86 ended by \end{tabable}.
+```
+
+**Root Cause**: Typos in environment commands and malformed backslashes
+
+**Recipe**:
+1. Fix double backslashes: `\\begin{center}` → `\begin{center}`
+2. Fix environment name typos: `\end{tabable}` → `\end{tabular}`
+3. Check for missing closing braces in table endings
+4. Verify proper table structure
+
+**Common Syntax Errors**:
+```latex
+% WRONG (malformed syntax)
+\\begin{center}           % Double backslash
+\end{tabable}            % Wrong environment name
+\end{table>              % Missing closing brace
+
+% CORRECT (proper syntax)
+\begin{center}           % Single backslash
+\end{tabular}           % Correct environment name
+\end{table}             % Proper closing brace
+```
+
+### 22. **"Too deeply nested" List Errors**
+
+**Problem**: Excessive list nesting beyond LaTeX limits
+```
+LaTeX Error: Too deeply nested.
+./content/chapter21/testing-strategy.tex, 76
+```
+
+**Root Cause**: Lists nested more than 4 levels deep or custom list environments not properly defined
+
+**Recipe**:
+1. Reduce list nesting to maximum 4 levels
+2. Use description lists instead of nested itemize
+3. Break complex lists into separate sections
+4. Ensure custom list environments (compactlist, expandedlist) are properly defined
+
+**List Nesting Limits**:
+```latex
+% MAXIMUM NESTING (4 levels)
+\begin{itemize}
+  \item Level 1
+  \begin{itemize}
+    \item Level 2
+    \begin{itemize}
+      \item Level 3
+      \begin{itemize}
+        \item Level 4 (maximum)
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+% ALTERNATIVE: Use description lists
+\begin{description}
+  \item[Category 1] Description
+  \item[Category 2] Description
+\end{description}
+```
