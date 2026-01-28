@@ -64,7 +64,16 @@ Our security model research contributes novel approaches to capability-based sec
 \subsection*{Extension Ecosystem Analysis}
 \addcontentsline{toc}{subsection}{Extension Ecosystem Analysis}
 
-Our ecosystem analysis demonstrates the effectiveness of out-of-process architectures:
+Our ecosystem analysis demonstrates the effectiveness of out-of-process architectures through comprehensive lifecycle management. Figure~\ref{fig:extension-lifecycle} illustrates the complete extension lifecycle management process, showing how Symphony's out-of-process architecture handles extension states from installation through runtime execution.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/activity_diagram/symphony-extension-lifecycle.png}
+\caption{Extension Lifecycle Activity Diagram showing the complete state management process for out-of-process extensions. This diagram illustrates the Chambering state machine that manages extensions through installation, loading, activation, and runtime phases while maintaining system stability and security.}
+\label{fig:extension-lifecycle}
+\end{figure}
+
+As demonstrated in the lifecycle diagram, our out-of-process architecture provides systematic state management that ensures system reliability:
 
 \begin{center}
 \begin{tabular}{@{}lrrr@{}}

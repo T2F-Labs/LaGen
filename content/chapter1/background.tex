@@ -149,7 +149,16 @@ Despite rapid advancement in AI-assisted development tools, fundamental architec
 
 \subsubsection{Market Analysis of Existing Solutions}
 
-The current development tools market is dominated by solutions that retrofit AI capabilities onto architectures designed for human-centric workflows:
+The current development tools market is dominated by solutions that retrofit AI capabilities onto architectures designed for human-centric workflows. To understand the scope and complexity of the solution space, Figure~\ref{fig:symphony-use-case} presents a comprehensive view of Symphony's system actors and their interactions, illustrating the breadth of functionality required in a modern AI-first development environment.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{images/diagrams/use-case.png}
+\caption{Symphony IDE Use Case Diagram showing system actors (Developer, Extension Creator, User) and their interactions with core components (Conductor, Orchestra Kit). This diagram illustrates the comprehensive scope of functionality required in an AI-first development environment, from basic development tasks to AI orchestration and extension ecosystem management.}
+\label{fig:symphony-use-case}
+\end{figure}
+
+As shown in the use case diagram, Symphony addresses multiple user personas and interaction patterns that current IDEs handle inadequately:
 
 \begin{alertbox}
 Current IDEs treat AI as supplementary tooling rather than foundational architecture. This retrofit approach creates performance bottlenecks, limits AI integration depth, and prevents the emergence of truly collaborative human-AI development workflows.

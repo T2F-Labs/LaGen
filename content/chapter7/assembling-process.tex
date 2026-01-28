@@ -5,7 +5,16 @@
 \section*{The Assembling Process}
 \addcontentsline{toc}{section}{The Assembling Process}
 
-\lettrine{T}{he} true power of Symphony's minimal core and generic primitives becomes evident in the assembling process—how extensions combine these building blocks to create sophisticated functionality that rivals or exceeds traditional built-in features. This process demonstrates Symphony's philosophy of \textit{composition over configuration}.
+\lettrine{T}{he} true power of Symphony's minimal core and generic primitives becomes evident in the assembling process—how extensions combine these building blocks to create sophisticated functionality that rivals or exceeds traditional built-in features. This process begins with Symphony's systematic initialization sequence, illustrated in Figure~\ref{fig:system-bootstrap}, which demonstrates how the minimal core assembles itself from fundamental components.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/activity_diagram/symphony-system-bootstrap.png}
+\caption{Symphony System Bootstrap Activity Diagram showing the phased initialization process. This diagram illustrates how Symphony's minimal core assembles itself through five sequential phases: Foundation, IPC, Pit Components, Conductor, and UI, with parallel execution within phases for optimal performance.}
+\label{fig:system-bootstrap}
+\end{figure}
+
+As shown in the bootstrap sequence, Symphony's assembling philosophy applies even to its own initialization, where complex system functionality emerges from the systematic composition of simple, well-defined components. This process demonstrates Symphony's philosophy of \textit{composition over configuration}.
 
 \subsection*{Building from Primitives}
 \addcontentsline{toc}{subsection}{Building from Primitives}

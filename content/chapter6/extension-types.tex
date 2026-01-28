@@ -85,7 +85,16 @@ This specialization ensures that each extension type can operate at optimal effi
 
 \subsection*{Development and Distribution}
 
-Symphony provides specialized development tools and distribution channels for each extension type:
+Symphony provides specialized development tools and distribution channels for each extension type. The complete extension development lifecycle is illustrated in Figure~\ref{fig:extension-development-workflow}, which shows the comprehensive process from initial scaffolding through marketplace publication.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/activity_diagram/symphony-extension-development.png}
+\caption{Extension Development Workflow showing the complete lifecycle from project creation through marketplace publication. This activity diagram illustrates how developers use the Carets CLI toolchain to create, test, and publish extensions across all three categories (Instruments, Operators, Motifs).}
+\label{fig:extension-development-workflow}
+\end{figure}
+
+As shown in the development workflow, Symphony's extension creation process emphasizes:
 
 \begin{alertbox}
 Extension creators can focus on their domain expertise while Symphony handles the complexity of integration, security, and distribution through type-specific SDKs and marketplace categories.
