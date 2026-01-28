@@ -30,6 +30,51 @@
   morestring=[b]` % Template literals
 }[keywords, comments, strings]
 
+% Define TypeScript language for listings
+\lstdefinelanguage{TypeScript}{
+  morekeywords=[1]{break, continue, delete, else, for, function, if, in,
+    new, return, this, typeof, var, void, while, with, case, catch, class, const, default, do,
+    enum, export, extends, finally, from, implements, import, instanceof,
+    let, static, super, switch, throw, try, await, async, interface, type, namespace, module,
+    declare, public, private, protected, readonly, abstract},
+  % Literals, primitive types, and reference types.
+  morekeywords=[2]{false, null, true, boolean, number, undefined, string, any, never, unknown,
+    Array, Boolean, Date, Math, Number, String, Object, Promise},
+  % Built-ins.
+  morekeywords=[3]{eval, parseInt, parseFloat, escape, unescape},
+  sensitive,
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]//,
+  morecomment=[s]{/**}{*/}, % JavaDoc style comments
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[b]` % Template literals
+}[keywords, comments, strings]
+
+% Define Rust language for listings
+\lstdefinelanguage{Rust}{
+  morekeywords=[1]{as, break, const, continue, crate, else, enum, extern, false, fn, for, if, impl, in, let, loop, match, mod, move, mut, pub, ref, return, self, Self, static, struct, super, trait, true, type, unsafe, use, where, while, async, await, dyn},
+  morekeywords=[2]{bool, char, f32, f64, i8, i16, i32, i64, i128, isize, str, u8, u16, u32, u64, u128, usize, Box, Vec, HashMap, String, Option, Result},
+  morekeywords=[3]{println!, print!, panic!, assert!, assert_eq!, assert_ne!, debug_assert!, debug_assert_eq!, debug_assert_ne!, unreachable!, unimplemented!, todo!},
+  sensitive,
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]//,
+  morestring=[b]",
+  morestring=[d]'
+}[keywords, comments, strings]
+
+% Define JSON language for listings
+\lstdefinelanguage{json}{
+  morekeywords=[1]{true, false, null},
+  keywordstyle=\color{codekey}\bfseries,
+  sensitive=true,
+  morestring=[b]",
+  stringstyle=\color{codestring},
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{codecomment}
+}
+
 % Define TOML language for listings
 \lstdefinelanguage{toml}{
     keywords={true,false},

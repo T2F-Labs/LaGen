@@ -19,25 +19,28 @@
 \usepackage[all]{nowidow}
 \usepackage{needspace}
 
-% Font setup with Inter (if available)
-\IfFontExistsTF{Inter}{
-    \setmainfont{Inter}[
-        UprightFont = *-Regular,
-        BoldFont = *-SemiBold,
-        ItalicFont = *-Italic,
-        BoldItalicFont = *-SemiBoldItalic,
-        LetterSpace = 3.0
-    ]
-    \setsansfont{Inter}[
-        UprightFont = *-Regular,
-        BoldFont = *-SemiBold,
-        ItalicFont = *-Italic,
-        BoldItalicFont = *-SemiBoldItalic,
-        LetterSpace = 3.0
-    ]
-}{
-    \typeout{^^J WARNING: Inter font not found, using default fonts^^J}
-}
+% Font setup with Inter (if available) - DISABLED to use config.tex font settings
+% \IfFontExistsTF{Inter}{
+%     \setmainfont{Inter}[
+%         UprightFont = *-Regular,
+%         BoldFont = *-SemiBold,
+%         ItalicFont = *-Italic,
+%         BoldItalicFont = *-SemiBoldItalic,
+%         LetterSpace = 3.0
+%     ]
+%     \setsansfont{Inter}[
+%         UprightFont = *-Regular,
+%         BoldFont = *-SemiBold,
+%         ItalicFont = *-Italic,
+%         BoldItalicFont = *-SemiBoldItalic,
+%         LetterSpace = 3.0
+%     ]
+% }{
+%     \typeout{^^J WARNING: Inter font not found, using default fonts^^J}
+% }
+
+% Note: Font configuration is now handled in config.tex
+\typeout{^^J INFO: Typography module loaded - using fonts from config.tex^^J}
 
 % Enhanced brand text macros
 \renewcommand{\brandname}[1]{{\addfontfeatures{LetterSpace=12.0}\textsc{#1}}}

@@ -60,6 +60,32 @@
     \typeout{^^J INFO: Using basic colors (brand_colors.tex not found)^^J}
 }
 
+% ========== FONT CONFIGURATION ==========
+% Professional font setup using fontspec for XeLaTeX
+% Body text: TeX Gyre Pagella (Palatino-like serif)
+% Code: DejaVu Sans Mono (monospace)
+% Headings: TeX Gyre Heros (Helvetica-like sans-serif)
+% Math: Handled by mathematics module when enabled
+
+% Set main document font (body text)
+\setmainfont{TeX Gyre Pagella}[
+    Ligatures=TeX,
+    Numbers=OldStyle
+]
+
+% Set sans-serif font (headings)
+\setsansfont{TeX Gyre Heros}[
+    Ligatures=TeX,
+    Scale=MatchLowercase
+]
+
+% Set monospace font (code)
+\setmonofont{DejaVu Sans Mono}[
+    Scale=MatchLowercase
+]
+
+\typeout{^^J INFO: Font configuration loaded - TeX Gyre Pagella, TeX Gyre Heros, DejaVu Sans Mono^^J}
+
 % ========== BASIC TYPOGRAPHY ==========
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{8pt plus 2pt minus 1pt}

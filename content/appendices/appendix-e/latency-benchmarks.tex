@@ -7,7 +7,7 @@ Symphony's architecture prioritizes low-latency operations to support real-time 
 
 The Pit's in-process extensions achieve microsecond-level response times for critical operations:
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Infrastructure Operations Latency (The Pit)}
 \label{tab:pit-latency}
@@ -28,7 +28,7 @@ Stale Manager - Cleanup Check & 6.3 & 11.7 & 18.4 \\
 
 Out-of-process extensions communicate through the IPC Bus with sub-millisecond latency:
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{IPC Communication Latency (The Grand Stage)}
 \label{tab:ipc-latency}
@@ -48,7 +48,7 @@ Message Queues & 0.22 & 0.41 & 0.67 \\
 
 Conductor orchestration and model coordination performance:
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{AI Orchestration Latency}
 \label{tab:ai-latency}
@@ -69,7 +69,7 @@ Artifact Processing & 4.5 & 8.9 & 14.2 \\
 
 Frontend responsiveness and user interaction latency:
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{UI Response Times}
 \label{tab:ui-latency}
@@ -90,7 +90,7 @@ Theme Switch & 12.4 & 24.8 & 37.2 \\
 
 Symphony vs. competing development environments:
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Latency Comparison with Competitors}
 \label{tab:competitive-latency}
@@ -98,10 +98,10 @@ Symphony vs. competing development environments:
 \toprule
 \textbf{Operation} & \textbf{Symphony} & \textbf{VSCode} & \textbf{IntelliJ} & \textbf{Improvement} \\
 \midrule
-Startup Time (ms) & 847 & 3,240 & 8,560 & 3.8-10.1× \\
-File Open (ms) & 45 & 120 & 280 & 2.7-6.2× \\
-Extension Load (ms) & 68 & 340 & 890 & 5.0-13.1× \\
-Search (ms) & 24 & 85 & 150 & 3.5-6.3× \\
+Startup Time (ms) & 847 & 3,240 & 8,560 & 3.8--10.1× \\
+File Open (ms) & 45 & 120 & 280 & 2.7--6.2× \\
+Extension Load (ms) & 68 & 340 & 890 & 5.0--13.1× \\
+Search (ms) & 24 & 85 & 150 & 3.5--6.3× \\
 AI Response (ms) & 1,240 & 2,890 & N/A & 2.3× \\
 \bottomrule
 \end{tabular}
@@ -111,7 +111,7 @@ AI Response (ms) & 1,240 & 2,890 & N/A & 2.3× \\
 
 Statistical analysis of latency distributions shows Symphony's consistent performance:
 
-\begin{figure}[h]
+\begin{figure}[htb]
 \centering
 \begin{tikzpicture}[scale=0.8]
 \begin{axis}[
@@ -149,7 +149,7 @@ Statistical analysis of latency distributions shows Symphony's consistent perfor
 
 Performance characteristics under varying system load:
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Latency vs. System Load}
 \label{tab:latency-load}
@@ -169,7 +169,7 @@ Performance characteristics under varying system load:
 
 Effect of network conditions on AI model interactions:
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Network Latency Impact on AI Operations}
 \label{tab:network-latency}

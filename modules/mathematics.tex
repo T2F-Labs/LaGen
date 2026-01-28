@@ -1,6 +1,11 @@
 % ========== MATHEMATICS MODULE ==========
 % Load this module only when mathematical typesetting is needed
 
+% Load unicode-math first (for XeLaTeX) - must come before other math packages
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\typeout{^^J INFO: Using Latin Modern Math for mathematics^^J}
+
 % Core math packages
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -21,6 +26,10 @@
 
 % Fix siunitx/physics conflict - suppress the warning
 \AtBeginDocument{\RenewCommandCopy\qty\SI}
+
+% Load pgfplots for charts and graphs
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 
 % Configure siunitx
 \sisetup{

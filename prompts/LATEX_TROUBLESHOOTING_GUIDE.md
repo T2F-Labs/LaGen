@@ -54,12 +54,16 @@ Missing $ inserted.
 ```
 Package Listings Error: language toml undefined.
 Package Listings Error: language javascript undefined.
+Package Listings Error: language rust undefined.
+Package Listings Error: language json undefined.
+Package Listings Error: language typescript undefined.
 ```
 
 **Recipe**:
 1. Replace `language=toml` with `language=bash` for configuration files
 2. Replace `language=javascript` with `language=JavaScript` (capital J)
 3. Define custom languages in code module if needed
+4. Ensure EnableCode=true to load language definitions
 
 **Language Mapping**:
 ```latex
@@ -68,6 +72,44 @@ language=bash        % For TOML, YAML, config files
 language=JavaScript  % For JavaScript (capital J)
 language=Python      % For Python
 language=C           % For C/C++
+language=rust        % Custom definition required
+language=json        % Custom definition required
+language=typescript  % Custom definition required
+```
+
+**Custom Language Definitions** (add to modules/code.tex):
+```latex
+% Define Rust language
+\lstdefinelanguage{Rust}{
+  morekeywords=[1]{as, break, const, continue, crate, else, enum, extern, false, fn, for, if, impl, in, let, loop, match, mod, move, mut, pub, ref, return, self, Self, static, struct, super, trait, true, type, unsafe, use, where, while, async, await, dyn},
+  morekeywords=[2]{bool, char, f32, f64, i8, i16, i32, i64, i128, isize, str, u8, u16, u32, u64, u128, usize, Box, Vec, HashMap, String, Option, Result},
+  sensitive,
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]//,
+  morestring=[b]",
+  morestring=[d]'
+}[keywords, comments, strings]
+
+% Define JSON language
+\lstdefinelanguage{json}{
+  morekeywords=[1]{true, false, null},
+  sensitive=true,
+  morestring=[b]",
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/}
+}
+
+% Define TypeScript language
+\lstdefinelanguage{TypeScript}{
+  morekeywords=[1]{break, continue, delete, else, for, function, if, in, new, return, this, typeof, var, void, while, with, case, catch, class, const, default, do, enum, export, extends, finally, from, implements, import, instanceof, let, static, super, switch, throw, try, await, async, interface, type, namespace, module, declare, public, private, protected, readonly, abstract},
+  morekeywords=[2]{false, null, true, boolean, number, undefined, string, any, never, unknown, Array, Boolean, Date, Math, Number, String, Object, Promise},
+  sensitive,
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]//,
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[b]`
+}[keywords, comments, strings]
 ```
 
 ### 4. **List Environment Errors**
@@ -193,6 +235,21 @@ Runaway argument?
 malformed = re.findall(r'\\end\{[^}]*>', content)
 # Fix them
 content = re.sub(r'\\end\{([^}]+)>', r'\\end{\1}', content)
+```
+
+**Common Malformed Patterns**:
+```latex
+% WRONG (missing closing brace)
+\end{tabular>
+\end{table>
+\end{description>
+\end{figure>
+
+% CORRECT
+\end{tabular}
+\end{table}
+\end{description}
+\end{figure}
 ```
 
 ### 10. **Extra Closing Braces**
@@ -643,3 +700,167 @@ Address critical errors first, then clean up warnings for a professional result.
 - Enhanced typography with correct spacing
 - Optimized warning reduction strategies
 - Complete error prevention patterns
+
+### 12. **pgfplots Axis Environment Errors**
+
+**Problem**: Undefined axis environment for charts and graphs
+```
+LaTeX Error: Environment axis undefined.
+./content/appendices/appendix-e/latency-benchmarks.tex, 117
+Undefined control sequence.
+./content/appendices/appendix-e/latency-benchmarks.tex, 127
+```
+
+**Root Cause**: pgfplots package not loaded for chart creation
+
+**Recipe**:
+1. Add pgfplots package to mathematics module
+2. Set compatibility version for consistent behavior
+3. Ensure EnableMathematics=true in main.tex
+
+**Fix for modules/mathematics.tex**:
+```latex
+% Load pgfplots for charts and graphs
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+```
+
+**Module Configuration**:
+```latex
+% In main.tex - ensure mathematics module is enabled
+\newcommand{\EnableMathematics}{true}
+```
+
+### 13. **Article Class Chapter Commands**
+
+**Problem**: Undefined control sequence for \chapter* in article class
+```
+Undefined control sequence.
+./content/appendices/appendix-a/entry.tex, 2
+l.2 \chapter*{Appendix A: Glossary of Terms}
+```
+
+**Root Cause**: Article document class doesn't support \chapter commands
+
+**Recipe**:
+1. Comment out \chapter* commands in article class documents
+2. Use \section* for top-level divisions instead
+3. Keep \addcontentsline for table of contents entries
+
+**Fix Pattern**:
+```latex
+% WRONG (in article class)
+\chapter*{Appendix A: Glossary of Terms}
+
+% CORRECT (in article class)
+% \chapter*{Appendix A: Glossary of Terms}
+\addcontentsline{toc}{chapter}{Appendix A: Glossary of Terms}
+
+% OR use section instead
+\section*{Appendix A: Glossary of Terms}
+\addcontentsline{toc}{section}{Appendix A: Glossary of Terms}
+```
+
+**Document Class Comparison**:
+```latex
+% Book/Report class - supports chapters
+\documentclass{book}
+\chapter{Chapter Title}
+\chapter*{Unnumbered Chapter}
+
+% Article class - sections only
+\documentclass{article}
+\section{Section Title}
+\section*{Unnumbered Section}
+```
+
+### 14. **Float Specifier Warnings**
+
+**Problem**: Restrictive float placement warnings
+```
+`h' float specifier changed to `ht'.
+./content/appendices/appendix-e/latency-benchmarks.tex
+```
+
+**Root Cause**: `[h]` float specifier is too restrictive for LaTeX's float placement algorithm
+
+**Recipe**:
+1. Replace `[h]` with `[ht]` for tables
+2. Replace `[h]` with `[htb]` for figures
+3. Use more flexible placement options
+
+**Fix Pattern**:
+```latex
+% RESTRICTIVE (causes warnings)
+\begin{table}[h]
+\begin{figure}[h]
+
+% FLEXIBLE (no warnings)
+\begin{table}[ht]
+\begin{figure}[htb]
+```
+
+**Float Specifier Guide**:
+- `h` = here only (too restrictive)
+- `t` = top of page
+- `b` = bottom of page
+- `p` = separate page
+- `!` = override restrictions
+- `H` = exactly here (requires float package)
+
+### 15. **Hyperref Bookmark Warnings**
+
+**Problem**: Bookmark anchor conflicts
+```
+Package hyperref Warning: The anchor of a bookmark and its parent's must not be the same. Added a new anchor on input line 11.
+```
+
+**Root Cause**: Section and subsection anchors are too close together
+
+**Recipe**:
+1. Add vertical space between bookmark levels
+2. Use `\vspace{0.3cm}` after main headings
+3. Use `\vspace{0.2cm}` before subsections
+
+**Fix Pattern**:
+```latex
+% PROBLEMATIC (anchors too close)
+\addcontentsline{toc}{chapter}{Appendix A}
+\section*{Overview}
+\addcontentsline{toc}{section}{Overview}
+
+% FIXED (proper spacing)
+\addcontentsline{toc}{chapter}{Appendix A}
+\vspace{0.3cm}
+\section*{Overview}
+\addcontentsline{toc}{section}{Overview}
+```
+
+### 16. **Overfull \hbox Warnings**
+
+**Problem**: Text extends beyond margin
+```
+Overfull \hbox (2.23705pt too wide) in paragraph at lines 100--101
+```
+
+**Root Cause**: Long text or numbers don't fit within column width
+
+**Recipe**:
+1. Use en-dashes (--) instead of hyphens (-) for ranges
+2. Break long numbers or text appropriately
+3. Adjust table column specifications if needed
+
+**Fix Pattern**:
+```latex
+% PROBLEMATIC (causes overfull)
+3.8-10.1× improvement
+
+% FIXED (proper typography)
+3.8--10.1× improvement
+```
+
+**Table Column Adjustments**:
+```latex
+% If still overfull, adjust column types
+\begin{tabular}{@{}lrrrp{2cm}@{}}  % p{width} for last column
+```
