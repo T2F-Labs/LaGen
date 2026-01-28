@@ -1825,7 +1825,7 @@ Runaway argument?
 **Recipe**:
 1. Identify malformed environment beginnings with `>` instead of `}`
 2. Replace `\begin{environment>` with `\begin{environment}`
-3. Apply comprehensive fix for both begin and end patterns
+3. Apply fix for both begin and end patterns
 
 **Complete Pattern Fix**:
 ```latex
@@ -1842,7 +1842,7 @@ Runaway argument?
 \end{compactlist}       % Correct: } closing brace
 ```
 
-**Comprehensive Fix Script**:
+**Complete Fix Script**:
 ```python
 #!/usr/bin/env python3
 import re
@@ -1902,7 +1902,7 @@ grep -r "\\end{[^}]*>" content/
 - **Error Type**: Malformed environment beginnings causing additional runaway arguments
 - **Scope**: 2 additional files in chapters 25-26
 - **Root Cause**: `\begin{environment>` instead of `\begin{environment}`
-- **Solution**: Comprehensive fix for both begin and end patterns
+- **Solution**: Complete fix for both begin and end patterns
 
 ### Additional Files Fixed
 - content/chapter25/limitations-tradeoffs.tex: Fixed `\begin{expandedlist>`
