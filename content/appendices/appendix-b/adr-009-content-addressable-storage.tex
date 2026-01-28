@@ -1,0 +1,46 @@
+\section*{ADR-009: Content-Addressable Artifact Store}
+\addcontentsline{toc}{section}{ADR-009: Content-Addressable Artifact Store}
+
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+\item[\textbf{Status}] Accepted
+\item[\textbf{Date}] June 2024
+\item[\textbf{Authors}] Symphony Storage Team
+\end{description}
+
+\subsection*{Summary}
+
+We implemented content-addressable storage for Symphony's Artifact Store using SHA-256 hashing, enabling automatic deduplication, integrity verification, and efficient version management for AI-generated artifacts.
+
+\subsection*{Context}
+
+Symphony's artifact management requires:
+\begin{itemize}
+\item Efficient storage of large AI-generated artifacts
+\item Automatic deduplication of similar content
+\item Integrity verification for critical artifacts
+\item Version control and lineage tracking
+\item Fast retrieval and caching capabilities
+\end{itemize}
+
+\subsection*{Decision}
+
+We implemented content-addressable storage with:
+\begin{itemize}
+\item SHA-256 hashing for content addressing
+\item Automatic deduplication based on content hashes
+\item Metadata overlay for versioning and relationships
+\item Integrity checking on read operations
+\item Hierarchical storage with hot/warm/cold tiers
+\end{itemize}
+
+\subsection*{Rationale}
+
+Content-addressable storage provides natural deduplication and integrity guarantees while enabling efficient caching and distribution of AI artifacts.
+
+\subsection*{Success Criteria}
+
+\begin{itemize}
+\item Storage efficiency >50\% through deduplication (Achieved: 70\%)
+\item Integrity verification for all artifacts (Achieved)
+\item Retrieval performance under 10ms for cached content (Achieved)
+\end{itemize}

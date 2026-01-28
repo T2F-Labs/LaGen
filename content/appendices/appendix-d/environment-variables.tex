@@ -1,0 +1,299 @@
+\section*{Environment Variables}
+\addcontentsline{toc}{section}{Environment Variables}
+
+Symphony uses environment variables for configuration, feature flags, and runtime behavior control. Environment variables provide a secure way to configure sensitive information and enable different deployment scenarios without modifying configuration files.
+
+\subsection*{Core System Variables}
+
+Essential environment variables for Symphony operation:
+
+\begin{center}
+\begin{tabular}{@{}p{4cm}p{3cm}p{5cm}@{}}
+\toprule
+\textbf{Variable} & \textbf{Default} & \textbf{Description} \\
+\midrule
+\texttt{SYMPHONY\_HOME} & Platform-specific & Symphony installation directory \\
+\texttt{SYMPHONY\_CONFIG} & \texttt{\$HOME/.symphony} & Configuration directory path \\
+\texttt{SYMPHONY\_DATA} & \texttt{\$HOME/.symphony/data} & Data storage directory \\
+\texttt{SYMPHONY\_CACHE} & \texttt{\$HOME/.symphony/cache} & Cache directory path \\
+\texttt{SYMPHONY\_LOGS} & \texttt{\$HOME/.symphony/logs} & Log files directory \\
+\texttt{SYMPHONY\_TEMP} & System temp & Temporary files directory \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Runtime Configuration}
+
+Variables controlling Symphony's runtime behavior:
+
+\begin{lstlisting}[language=bash,caption={Runtime Environment Variables}]
+# Logging configuration
+export SYMPHONY_LOG_LEVEL=info          # trace, debug, info, warn, error
+export SYMPHONY_LOG_FORMAT=json         # json, text, pretty
+export SYMPHONY_LOG_FILE=symphony.log   # Log file name
+export SYMPHONY_LOG_ROTATION=daily      # daily, weekly, size
+
+# Performance settings
+export SYMPHONY_MAX_MEMORY=4GB          # Maximum memory usage
+export SYMPHONY_MAX_CPU_CORES=0         # CPU cores (0 = auto-detect)
+export SYMPHONY_THREAD_POOL_SIZE=8      # Thread pool size
+export SYMPHONY_CACHE_SIZE=1GB          # Cache size limit
+
+# Feature flags
+export SYMPHONY_ENABLE_TELEMETRY=true   # Enable telemetry collection
+export SYMPHONY_ENABLE_AUTO_UPDATE=false # Enable automatic updates
+export SYMPHONY_ENABLE_CRASH_REPORTING=true # Crash reporting
+export SYMPHONY_ENABLE_DEBUG_MODE=false # Debug mode
+
+# Development settings
+export SYMPHONY_DEV_MODE=false          # Development mode
+export SYMPHONY_HOT_RELOAD=false        # Hot reload extensions
+export SYMPHONY_MOCK_AI=false           # Use mock AI responses
+export SYMPHONY_SKIP_VALIDATION=false   # Skip configuration validation
+\end{lstlisting}
+
+\subsection*{AI and Model Configuration}
+
+Environment variables for AI model configuration and API keys:
+
+\begin{lstlisting}[language=bash,caption={AI Configuration Variables}]
+# API Keys (sensitive - use secure storage)
+export OPENAI_API_KEY=sk-...            # OpenAI API key
+export ANTHROPIC_API_KEY=sk-ant-...     # Anthropic API key
+export HUGGINGFACE_API_KEY=hf_...       # Hugging Face API key
+export COHERE_API_KEY=...               # Cohere API key
+
+# Model endpoints
+export OPENAI_BASE_URL=https://api.openai.com/v1
+export ANTHROPIC_BASE_URL=https://api.anthropic.com
+export LOCAL_MODEL_ENDPOINT=http://localhost:8080
+
+# Model configuration
+export SYMPHONY_DEFAULT_MODEL=gpt-4     # Default AI model
+export SYMPHONY_MODEL_TIMEOUT=30000     # Model timeout (ms)
+export SYMPHONY_MAX_TOKENS=4000         # Maximum tokens per request
+export SYMPHONY_MODEL_TEMPERATURE=0.7   # Default temperature
+export SYMPHONY_ENABLE_MODEL_CACHE=true # Enable response caching
+
+# Conductor settings
+export SYMPHONY_CONDUCTOR_ENABLED=true  # Enable Conductor
+export SYMPHONY_LEARNING_MODE=true      # Enable learning mode
+export SYMPHONY_FQT_ENABLED=true        # Function Quest Training
+export SYMPHONY_AUTO_ORCHESTRATION=true # Auto orchestration
+
+# Resource limits
+export SYMPHONY_AI_MEMORY_LIMIT=2GB     # AI processing memory limit
+export SYMPHONY_AI_REQUEST_LIMIT=100    # Requests per minute
+export SYMPHONY_AI_CONCURRENT_LIMIT=5   # Concurrent requests
+\end{lstlisting}
+
+\subsection*{Extension System Variables}
+
+Configuration for extension system behavior:
+
+\begin{lstlisting}[language=bash,caption={Extension System Variables}]
+# Extension directories
+export SYMPHONY_EXTENSIONS_DIR=$HOME/.symphony/extensions
+export SYMPHONY_EXTENSION_CACHE_DIR=$HOME/.symphony/cache/extensions
+export SYMPHONY_EXTENSION_DATA_DIR=$HOME/.symphony/data/extensions
+
+# Extension behavior
+export SYMPHONY_AUTO_INSTALL_DEPS=true  # Auto-install dependencies
+export SYMPHONY_ALLOW_UNSIGNED=false    # Allow unsigned extensions
+export SYMPHONY_SANDBOX_EXTENSIONS=true # Sandbox extensions
+export SYMPHONY_EXTENSION_TIMEOUT=30000 # Extension timeout (ms)
+
+# Marketplace configuration
+export SYMPHONY_MARKETPLACE_URL=https://extensions.symphony.dev
+export SYMPHONY_MARKETPLACE_TOKEN=...   # Marketplace auth token
+export SYMPHONY_CHECK_UPDATES=true      # Check for extension updates
+export SYMPHONY_AUTO_UPDATE_EXTENSIONS=false # Auto-update extensions
+
+# Security settings
+export SYMPHONY_REQUIRE_SIGNATURES=true # Require code signatures
+export SYMPHONY_TRUSTED_PUBLISHERS=symphony-team,verified-dev
+export SYMPHONY_BLOCKED_EXTENSIONS=malicious-ext,deprecated-ext
+
+# Development
+export SYMPHONY_EXTENSION_DEV_MODE=false # Extension development mode
+export SYMPHONY_RELOAD_EXTENSIONS=false  # Hot reload extensions
+export SYMPHONY_EXTENSION_DEBUG=false    # Extension debugging
+\end{lstlisting}
+
+\subsection*{Network and Security}
+
+Network configuration and security-related variables:
+
+\begin{lstlisting}[language=bash,caption={Network and Security Variables}]
+# Network configuration
+export SYMPHONY_HTTP_TIMEOUT=30000      # HTTP timeout (ms)
+export SYMPHONY_MAX_REDIRECTS=5         # Maximum HTTP redirects
+export SYMPHONY_USER_AGENT="Symphony/1.0" # HTTP User-Agent
+export SYMPHONY_ENABLE_HTTP2=true       # Enable HTTP/2
+
+# Proxy settings
+export SYMPHONY_HTTP_PROXY=http://proxy:8080
+export SYMPHONY_HTTPS_PROXY=https://proxy:8080
+export SYMPHONY_NO_PROXY=localhost,127.0.0.1,.local
+
+# SSL/TLS configuration
+export SYMPHONY_SSL_VERIFY=true         # Verify SSL certificates
+export SYMPHONY_SSL_CERT_FILE=cert.pem  # Custom SSL certificate
+export SYMPHONY_SSL_KEY_FILE=key.pem    # Custom SSL key
+export SYMPHONY_SSL_CA_FILE=ca.pem      # Custom CA certificate
+
+# Security settings
+export SYMPHONY_ENCRYPT_DATA=true       # Encrypt local data
+export SYMPHONY_SECURE_STORAGE=true     # Use secure storage
+export SYMPHONY_SESSION_TIMEOUT=3600    # Session timeout (seconds)
+export SYMPHONY_REQUIRE_AUTH=false      # Require authentication
+
+# Content Security Policy
+export SYMPHONY_CSP="default-src 'self'; script-src 'self' 'unsafe-inline'"
+export SYMPHONY_CORS_ORIGINS=https://symphony.dev,https://extensions.symphony.dev
+\end{lstlisting}
+
+\subsection*{Database and Storage}
+
+Database and storage configuration variables:
+
+\begin{lstlisting}[language=bash,caption={Database and Storage Variables}]
+# Database configuration
+export SYMPHONY_DB_PATH=$HOME/.symphony/data/symphony.db
+export SYMPHONY_DB_POOL_SIZE=10         # Connection pool size
+export SYMPHONY_DB_TIMEOUT=5000         # Query timeout (ms)
+export SYMPHONY_DB_BACKUP_ENABLED=true  # Enable automatic backups
+export SYMPHONY_DB_BACKUP_INTERVAL=86400 # Backup interval (seconds)
+
+# Artifact store configuration
+export SYMPHONY_ARTIFACT_STORE_PATH=$HOME/.symphony/artifacts
+export SYMPHONY_ARTIFACT_CACHE_SIZE=1GB # Artifact cache size
+export SYMPHONY_ARTIFACT_COMPRESSION=gzip # Compression algorithm
+export SYMPHONY_ARTIFACT_ENCRYPTION=aes256 # Encryption algorithm
+
+# Search index configuration
+export SYMPHONY_SEARCH_INDEX_PATH=$HOME/.symphony/search
+export SYMPHONY_SEARCH_MEMORY_LIMIT=512MB # Search index memory
+export SYMPHONY_SEARCH_UPDATE_INTERVAL=300 # Update interval (seconds)
+
+# Storage limits
+export SYMPHONY_MAX_ARTIFACT_SIZE=100MB # Maximum artifact size
+export SYMPHONY_MAX_STORAGE_SIZE=10GB   # Maximum total storage
+export SYMPHONY_CLEANUP_THRESHOLD=0.9   # Cleanup threshold (90%)
+export SYMPHONY_RETENTION_DAYS=30       # Data retention period
+\end{lstlisting}
+
+\subsection*{UI and Display}
+
+User interface and display configuration:
+
+\begin{lstlisting}[language=bash,caption={UI and Display Variables}]
+# Display settings
+export SYMPHONY_THEME=dark              # UI theme (light, dark, auto)
+export SYMPHONY_FONT_FAMILY="JetBrains Mono" # Font family
+export SYMPHONY_FONT_SIZE=14            # Font size
+export SYMPHONY_UI_SCALE=1.0            # UI scaling factor
+export SYMPHONY_HIGH_DPI=auto           # High DPI support
+
+# Window behavior
+export SYMPHONY_WINDOW_STATE=normal     # Window state (normal, maximized)
+export SYMPHONY_REMEMBER_WINDOW_SIZE=true # Remember window size
+export SYMPHONY_MULTI_WINDOW=true       # Allow multiple windows
+export SYMPHONY_NATIVE_MENUS=true       # Use native menus (macOS)
+
+# Accessibility
+export SYMPHONY_HIGH_CONTRAST=false     # High contrast mode
+export SYMPHONY_REDUCE_MOTION=false     # Reduce animations
+export SYMPHONY_SCREEN_READER=false     # Screen reader support
+export SYMPHONY_KEYBOARD_NAV=true       # Keyboard navigation
+
+# Performance
+export SYMPHONY_VSYNC=true              # Enable VSync
+export SYMPHONY_GPU_ACCELERATION=true   # GPU acceleration
+export SYMPHONY_MAX_FPS=60              # Maximum frame rate
+export SYMPHONY_RENDER_THREADS=2        # Rendering threads
+\end{lstlisting}
+
+\subsection*{Development and Testing}
+
+Variables for development and testing environments:
+
+\begin{lstlisting}[language=bash,caption={Development and Testing Variables}]
+# Development environment
+export SYMPHONY_ENV=development         # Environment (dev, staging, prod)
+export SYMPHONY_DEBUG=false             # Debug mode
+export SYMPHONY_VERBOSE=false           # Verbose logging
+export SYMPHONY_PROFILE=false           # Enable profiling
+
+# Testing configuration
+export SYMPHONY_TEST_MODE=false         # Test mode
+export SYMPHONY_MOCK_SERVICES=false     # Mock external services
+export SYMPHONY_TEST_DATA_DIR=./test-data # Test data directory
+export SYMPHONY_HEADLESS=false          # Headless mode for testing
+
+# CI/CD settings
+export SYMPHONY_CI=false                # Running in CI environment
+export SYMPHONY_BUILD_NUMBER=0          # Build number
+export SYMPHONY_GIT_COMMIT=unknown      # Git commit hash
+export SYMPHONY_BUILD_TIMESTAMP=unknown # Build timestamp
+
+# Feature flags for testing
+export SYMPHONY_EXPERIMENTAL_FEATURES=false # Experimental features
+export SYMPHONY_BETA_FEATURES=false     # Beta features
+export SYMPHONY_ALPHA_FEATURES=false    # Alpha features
+\end{lstlisting}
+
+\subsection*{Platform-Specific Variables}
+
+Platform-specific configuration options:
+
+\begin{lstlisting}[language=bash,caption={Platform-Specific Variables}]
+# Windows-specific
+export SYMPHONY_WIN_INTEGRATION=true    # Windows integration
+export SYMPHONY_WIN_NOTIFICATIONS=true  # Windows notifications
+export SYMPHONY_WIN_JUMPLIST=true       # Windows jump list
+
+# macOS-specific
+export SYMPHONY_MACOS_INTEGRATION=true  # macOS integration
+export SYMPHONY_MACOS_NOTIFICATIONS=true # macOS notifications
+export SYMPHONY_MACOS_TOUCHBAR=true     # Touch Bar support
+export SYMPHONY_MACOS_DARKMODE=auto     # Dark mode detection
+
+# Linux-specific
+export SYMPHONY_LINUX_INTEGRATION=true  # Linux integration
+export SYMPHONY_LINUX_NOTIFICATIONS=true # Linux notifications
+export SYMPHONY_WAYLAND_SUPPORT=true    # Wayland support
+export SYMPHONY_X11_SUPPORT=true        # X11 support
+
+# Cross-platform
+export SYMPHONY_NATIVE_DIALOGS=true     # Use native file dialogs
+export SYMPHONY_SYSTEM_TRAY=true        # System tray integration
+export SYMPHONY_AUTO_START=false        # Auto-start with system
+\end{lstlisting}
+
+\subsection*{Environment Variable Precedence}
+
+Symphony resolves configuration in the following order (highest to lowest precedence):
+
+\begin{enumerate}
+\item Command-line arguments
+\item Environment variables
+\item Workspace configuration files
+\item User configuration files
+\item System-wide configuration files
+\item Built-in defaults
+\end{enumerate}
+
+\subsection*{Security Considerations}
+
+When using environment variables for sensitive information:
+
+\begin{itemize}
+\item Use secure storage systems for API keys in production
+\item Avoid logging environment variables containing secrets
+\item Use variable substitution in configuration files when possible
+\item Implement proper access controls for environment variable files
+\item Consider using encrypted environment variable solutions
+\end{itemize}
+
+Environment variables provide flexible configuration management for Symphony while supporting secure deployment practices and development workflows across different environments and platforms.

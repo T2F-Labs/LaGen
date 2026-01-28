@@ -1,0 +1,45 @@
+\section*{ADR-006: Microkernel Architecture}
+\addcontentsline{toc}{section}{ADR-006: Microkernel Architecture}
+
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+\item[\textbf{Status}] Accepted
+\item[\textbf{Date}] March 2024
+\item[\textbf{Authors}] Symphony Architecture Team
+\end{description}
+
+\subsection*{Summary}
+
+We adopted a microkernel architecture with the Conductor as the minimal core and all other functionality implemented as extensions. This decision affects the entire system design, from basic IDE features to AI orchestration capabilities.
+
+\subsection*{Context}
+
+Symphony requires:
+\begin{itemize}
+\item Maximum modularity for AI-first development
+\item Reliability where component failures don't crash the system
+\item Extensibility for community-driven innovation
+\item Performance for real-time AI interactions
+\item Maintainability for rapid feature development
+\end{itemize}
+
+\subsection*{Decision}
+
+We implemented a microkernel architecture with:
+\begin{itemize}
+\item Conductor as the minimal orchestration core
+\item Six built-in features: text editor, file explorer, syntax highlighting, settings, terminal, extension system
+\item All other functionality as extensions (infrastructure and user-facing)
+\item Clear separation between kernel space (Conductor) and user space (extensions)
+\end{itemize}
+
+\subsection*{Rationale}
+
+The microkernel approach enables maximum modularity while maintaining system reliability through isolated component failures and clear architectural boundaries.
+
+\subsection*{Success Criteria}
+
+\begin{itemize}
+\item Component isolation preventing system crashes (Achieved)
+\item Startup time under 1 second (Achieved)
+\item Extension hot-swapping capability (Achieved)
+\end{itemize}

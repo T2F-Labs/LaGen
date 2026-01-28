@@ -1,0 +1,165 @@
+\section*{Technical Terminology}
+\addcontentsline{toc}{section}{Technical Terminology}
+
+The following terms represent the specialized vocabulary that has emerged from Symphony's research contributions to AI-first development environments, software architecture, and human-computer interaction in programming contexts.
+
+\subsection*{Core Architectural Concepts}
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+
+\item[\textbf{AIDE}] \textbf{AI-First Development Environment} - A new class of development system where AI agents serve as primary actors rather than supplementary tools. Unlike traditional IDEs that embed AI as features, an AIDE places intelligent orchestration at its architectural core. Symphony represents the first true AIDE implementation, demonstrating how AI-centric design fundamentally transforms software development workflows.
+
+\item[\textbf{ADD}] \textbf{Agent-Driven Development} - A development paradigm where autonomous AI agents drive the software creation process while humans provide vision, guidance, and creative direction. This approach replaces traditional manual coding with intelligent orchestration, transforming developers from code writers into creative composers who orchestrate intelligent systems.
+
+\item[\textbf{DEA}] \textbf{Dual Ensemble Architecture} - Symphony's novel architectural pattern featuring two distinct extension layers: The Pit (Infrastructure as Extensions) for performance-critical operations, and The Grand Stage (User-Faced Extensions) for creative functionality. Each layer employs different execution models optimized for their specific requirements, enabling both high performance and safe extensibility.
+
+\item[\textbf{IaE}] \textbf{Infrastructure as Extensions} - An architectural philosophy where core infrastructure components operate as extensions rather than built-in features. Embodied by The Pit's five Rust-powered components, this approach enables modular infrastructure with in-process execution for maximum performance while maintaining architectural consistency.
+
+\item[\textbf{UFE}] \textbf{User-Faced Extensions} - Extensions operating on The Grand Stage that provide user-visible functionality including AI models (Instruments), utilities (Operators), and UI enhancements (Motifs). These extensions run out-of-process for safety and isolation, enabling community innovation while protecting system stability.
+
+\end{description}
+
+\subsection*{Orchestration and Intelligence}
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+
+\item[\textbf{Conductor}] Symphony's intelligent orchestration engine—a Python-based reinforcement learning model trained through Function Quest methodology. The Conductor operates on microkernel principles, coordinating all AI agents, managing workflows, and making strategic decisions about model activation and problem resolution.
+
+\item[\textbf{FQG}] \textbf{Function Quest Game} - A logic-based puzzle system where the Conductor learns orchestration strategies through reinforcement learning. Each level teaches reasoning, dependency management, and optimal decision-making by treating models as callable functions in complex logical workflows.
+
+\item[\textbf{FQT}] \textbf{Function Quest Training} - The complete training methodology using Function Quest Game to develop the Conductor's orchestration intelligence. Involves progressive difficulty levels, performance tracking, and continuous improvement through gameplay scenarios that translate to real-world orchestration skills.
+
+\item[\textbf{Melody}] A user-created or Conductor-generated workflow representing a visual, composable sequence of extensions orchestrated to automate development tasks. Melodies can be manually composed or automatically generated based on user requirements, executed on the Harmony Board as musical scores with connected nodes.
+
+\item[\textbf{Harmony Board}] A visual node-based interface for designing and debugging AI agent interactions. Provides real-time workflow execution visualization, bottleneck identification, and melody optimization capabilities as part of Symphony's orchestration tools.
+
+\end{description}
+
+\subsection*{Extension System Architecture}
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+
+\item[\textbf{The Pit}] Symphony's Internal Ensemble containing five privileged Rust-powered infrastructure extensions: Pool Manager, DAG Tracker, Artifact Store, Arbitration Engine, and Stale Manager. These components run in-process with the Conductor for maximum performance, forming Symphony's foundational infrastructure layer.
+
+\item[\textbf{The Grand Stage}] Symphony's External Ensemble where community developers build user-facing extensions. Includes Instruments (AI models), Operators (utilities), and Motifs (UI enhancements) that run out-of-process for safety and isolation, enabling creative innovation while maintaining system security.
+
+\item[\textbf{Orchestra Kit}] The complete framework managing Symphony's extension ecosystem, including sandboxed execution, dependency management, auto-generated configuration interfaces, marketplace integration, and communication protocols between all components.
+
+\item[\textbf{Instrument}] AI/ML models integrated as extensions on The Grand Stage, including hosted models (GPT, Claude), local models, and custom fine-tuned models. Instruments provide intelligence to workflows and can be orchestrated by the Conductor in various operational modes.
+
+\item[\textbf{Operator}] Workflow utilities and data processing extensions handling data preparation, file conversion, decision logic, and optimization. These lightweight, deterministic components serve as the rhythm section maintaining workflow continuity.
+
+\item[\textbf{Motif}] Visual and experiential extensions (also called Addons) providing UI components, themes, custom editors, and enhanced user experiences. Named to fit Symphony's musical metaphor, these extensions focus on presentation and interaction.
+
+\end{description}
+
+\subsection*{Performance and Resource Management}
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+
+\item[\textbf{Pool Manager}] One of The Pit's infrastructure extensions managing AI model lifecycle including loading, warming, activation, and cooldown. Learns usage patterns for predictive pre-warming, monitors health, manages costs, and handles failures with automatic fallbacks.
+
+\item[\textbf{DAG Tracker}] Symphony's workflow cartographer mapping dependencies, determining optimal execution order, managing state, and handling recovery. Creates checkpoints and rollback strategies while learning optimal execution patterns from historical data.
+
+\item[\textbf{Artifact Store}] Symphony's institutional memory storing, versioning, and managing all workflow data. Tracks quality, relationships, and lineage of artifacts while providing intelligent retrieval with predictive preloading and complete audit trails.
+
+\item[\textbf{Arbitration Engine}] Makes intelligent, fair decisions about resource allocation when multiple workflows compete for limited resources. Considers business value, user impact, cost efficiency, and learning value to resolve conflicts equitably.
+
+\item[\textbf{Stale Manager}] Symphony's optimization component continuously maintaining system health by removing unused data, optimizing storage, and ensuring consistent performance even after heavy usage.
+
+\end{description}
+
+\subsection*{Communication and Security}
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+
+\item[\textbf{IPC Bus}] A high-performance Rust crate managing all communication between the Conductor and out-of-process extensions. Implements multiple transport strategies (Unix sockets, shared memory, named pipes) optimized for different message patterns.
+
+\item[\textbf{ACA}] \textbf{Access Control Architecture} - A security framework enabling selective internal API access. Allows trusted sources to access internal APIs while maintaining security boundaries from untrusted community extensions, enabling dual library systems with different permission levels.
+
+\item[\textbf{EPP}] \textbf{Execution Policy Playbook} - A comprehensive framework managing execution policies for community-built extensions. Applies shared policies across extension types while providing specialized enforcement based on category-specific requirements.
+
+\item[\textbf{SPFR}] \textbf{Symphony Playbook Failure Recovery} - The complete failure handling strategy defining systematic responses to extension failures based on classification, position in workflow, and system state, ensuring predictable behavior under all failure conditions.
+
+\end{description}
+
+\subsection*{Development Paradigms and Modes}
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+
+\item[\textbf{Maestro Mode}] One of Symphony's three operational modes ideal for full application creation from single prompts. Uses complete orchestration with all seven models working in coordinated pipelines, with the Conductor automatically selecting and blending AI models for optimal results.
+
+\item[\textbf{Virtuoso Mode}] Context-sensitive editing and enhancement mode focused on refactoring and improving existing code. Provides editor-centric intelligent assistance optimized for code manipulation rather than creation from scratch.
+
+\item[\textbf{Solo Mode}] Lightweight assistance mode for quick help, questions, and code snippets. Uses single model responses without full orchestration overhead, ideal for rapid interactions and simple tasks.
+
+\item[\textbf{Wave 2}] The current generation of AI-first development environments where agents understand and orchestrate entire workflows. Symphony represents the first Wave 2 implementation, bridging traditional AI assistance (Wave 1.5) and future autonomous systems (Wave 3).
+
+\end{description}
+
+\subsection*{Model Pipeline and Processing}
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+
+\item[\textbf{Seven-Model Pipeline}] Symphony's complete orchestration involving specialized AI models: Enhancer-Prompt, Feature, Planner, Coordinator, Code-Visualizer, Editor, and Summarizer models. Each produces structured artifacts feeding into subsequent stages, creating transparent and traceable development pipelines.
+
+\item[\textbf{Artifact}] Structured outputs produced by models and extensions throughout Symphony's workflows, including JSON plans, configuration files, documentation, CSV backlogs, and code files. Artifacts form the communication layer between different pipeline components.
+
+\item[\textbf{Virtual DOM}] The technique enabling out-of-process extensions to describe user interfaces. Extensions generate Virtual DOM structures that React efficiently renders, allowing rich UI creation without direct DOM access.
+
+\end{description}
+
+\subsection*{Research and Evaluation Frameworks}
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+
+\item[\textbf{PDF}] \textbf{Predictability Test Framework} - A formal testing framework ensuring Symphony's agent-driven pipeline operates reliably and deterministically across multiple runs. Evaluates output consistency, structure, and variance thresholds while accommodating adaptive Conductor approaches.
+
+\item[\textbf{MCCF}] \textbf{Model Criticality Classification Framework} - A system automatically classifying models as Essential, Recommended, or Optional through balanced objective analysis. Combines practical pattern matching with adaptive weighted scoring to determine model importance in workflows.
+
+\item[\textbf{H²A²}] \textbf{Harmonic Hexagonal Actor Architecture} - Symphony's foundational architectural model combining Hexagonal Architecture (ports/adapters) with Actor-based concurrency, orchestrated by the Conductor Model. Ensures boundary purity, adaptive flow control, and musical coherence across orchestration layers.
+
+\end{description}
+
+\section*{Acronyms and Abbreviations}
+\addcontentsline{toc}{section}{Acronyms and Abbreviations}
+
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+
+\item[\textbf{AI}] Artificial Intelligence
+\item[\textbf{API}] Application Programming Interface
+\item[\textbf{CRDT}] Conflict-free Replicated Data Type
+\item[\textbf{CSS}] Cascading Style Sheets
+\item[\textbf{DAG}] Directed Acyclic Graph
+\item[\textbf{DAP}] Debug Adapter Protocol
+\item[\textbf{DOM}] Document Object Model
+\item[\textbf{FFI}] Foreign Function Interface
+\item[\textbf{HMR}] Hot Module Replacement
+\item[\textbf{HTML}] HyperText Markup Language
+\item[\textbf{HTTP}] HyperText Transfer Protocol
+\item[\textbf{IDE}] Integrated Development Environment
+\item[\textbf{IPC}] Inter-Process Communication
+\item[\textbf{JSON}] JavaScript Object Notation
+\item[\textbf{LSP}] Language Server Protocol
+\item[\textbf{ML}] Machine Learning
+\item[\textbf{PTY}] Pseudo Terminal
+\item[\textbf{RBAC}] Role-Based Access Control
+\item[\textbf{REST}] Representational State Transfer
+\item[\textbf{RL}] Reinforcement Learning
+\item[\textbf{RPC}] Remote Procedure Call
+\item[\textbf{SDK}] Software Development Kit
+\item[\textbf{SLA}] Service Level Agreement
+\item[\textbf{TOML}] Tom's Obvious Minimal Language
+\item[\textbf{UI}] User Interface
+\item[\textbf{UX}] User Experience
+\item[\textbf{WASM}] WebAssembly
+\item[\textbf{XML}] eXtensible Markup Language
+
+\end{description}
+
+\section*{Usage Notes}
+\addcontentsline{toc}{section}{Usage Notes}
+
+This glossary reflects the specialized terminology that has emerged from Symphony's research contributions to AI-first development environments. Terms are defined in the context of their research significance and novel contributions to the field of software engineering and human-computer interaction.
+
+For cross-references to specific implementations or detailed technical discussions, readers should consult the relevant chapters where these concepts are explored in depth with supporting evidence and evaluation results.

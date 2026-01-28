@@ -1,0 +1,139 @@
+\section*{ADR-002: Dual Ensemble Architecture (DEA)}
+\addcontentsline{toc}{section}{ADR-002: Dual Ensemble Architecture (DEA)}
+
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+\item[\textbf{Status}] Accepted
+\item[\textbf{Date}] April 2024
+\item[\textbf{Authors}] Symphony Architecture Team
+\end{description}
+
+\subsection*{Summary}
+
+We adopted a Dual Ensemble Architecture (DEA) that separates extensions into two distinct layers: The Pit (Infrastructure as Extensions - IaE) for performance-critical operations running in-process, and The Grand Stage (User-Faced Extensions - UFE) for community-driven functionality running out-of-process. This architectural pattern enables both high performance and safe extensibility.
+
+\subsection*{Context}
+
+Symphony's extension system must balance competing requirements:
+
+\begin{itemize}
+\item Ultra-low latency for infrastructure operations (microsecond-level response times)
+\item Safety and isolation for community-developed extensions
+\item Scalability to support thousands of concurrent extensions
+\item Reliability where extension failures don't crash the core system
+\item Developer experience enabling rapid extension development and deployment
+\end{itemize}
+
+Traditional IDE architectures either sacrifice performance for safety (all extensions out-of-process) or safety for performance (all extensions in-process). Symphony's AI-first approach requires both characteristics simultaneously.
+
+\subsection*{Decision}
+
+We implemented a Dual Ensemble Architecture with two distinct extension execution environments:
+
+\subsubsection*{The Pit (Infrastructure as Extensions - IaE)}
+Five privileged Rust-powered extensions running in-process with the Conductor:
+\begin{itemize}
+\item Pool Manager: AI model lifecycle and resource management
+\item DAG Tracker: Workflow dependency mapping and execution
+\item Artifact Store: Institutional memory with versioning and quality scoring
+\item Arbitration Engine: Intelligent resource allocation and conflict resolution
+\item Stale Manager: Data lifecycle management and system optimization
+\end{itemize}
+
+\subsubsection*{The Grand Stage (User-Faced Extensions - UFE)}
+Community-driven extensions running out-of-process with IPC communication:
+\begin{itemize}
+\item Instruments: AI/ML models as extensions
+\item Operators: Workflow utilities and data processing
+\item Motifs: UI enhancements and specialized editors
+\end{itemize}
+
+\subsection*{Rationale}
+
+\subsubsection*{Performance Optimization}
+The Pit's in-process execution enables microsecond-level response times for infrastructure operations. Benchmarking showed 100-1000× performance improvement over IPC-based alternatives for critical path operations.
+
+\subsubsection*{Safety Through Isolation}
+The Grand Stage's out-of-process execution provides complete isolation for community extensions. Extension crashes, memory leaks, or security vulnerabilities cannot affect the core system or other extensions.
+
+\subsubsection*{Architectural Clarity}
+Clear separation between infrastructure (The Pit) and user functionality (The Grand Stage) simplifies system reasoning, debugging, and maintenance. Each layer has distinct performance characteristics and development constraints.
+
+\subsubsection*{Scalability Strategy}
+The architecture scales differently for each layer: The Pit maintains fixed, optimized components while The Grand Stage can scale horizontally with additional processes and resources.
+
+\subsubsection*{Development Experience}
+Developers can choose the appropriate execution model based on their requirements: high-performance infrastructure extensions (The Pit) or safe, flexible user extensions (The Grand Stage).
+
+\subsubsection*{Trade-offs Accepted}
+\begin{itemize}
+\item Increased architectural complexity compared to single-layer approaches
+\item Different development models for each layer requiring distinct expertise
+\item IPC overhead for Grand Stage extensions (0.1-0.5ms latency)
+\item Limited number of Pit extensions to maintain performance guarantees
+\end{itemize}
+
+\subsection*{Alternatives Considered}
+
+\subsubsection*{Monolithic In-Process Architecture}
+\textbf{Pros}: Maximum performance, simple communication, unified development model
+\textbf{Cons}: Extension crashes affect entire system, security vulnerabilities, difficult debugging, limited scalability
+\textbf{Rejected because}: Safety and reliability requirements outweigh performance benefits for user-facing functionality
+
+\subsubsection*{Pure Out-of-Process Architecture}
+\textbf{Pros}: Complete isolation, excellent security, independent scaling, simplified debugging
+\textbf{Cons}: IPC overhead for all operations, complex state management, performance bottlenecks
+\textbf{Rejected because}: Performance requirements for infrastructure operations cannot be met with IPC overhead
+
+\subsubsection*{Microservice Architecture}
+\textbf{Pros}: Independent deployment, technology diversity, horizontal scaling, fault isolation
+\textbf{Cons}: Network latency, complex service discovery, distributed system complexity, resource overhead
+\textbf{Rejected because}: Network latency incompatible with microsecond-level performance requirements
+
+\subsection*{Consequences}
+
+\subsubsection*{Positive}
+\begin{itemize}
+\item Achieved target performance: 10-50 microseconds for Pit operations, 0.1-0.5ms for Grand Stage
+\item Zero system crashes from extension failures over 6 months of operation
+\item Successful community adoption with 200+ extensions developed for The Grand Stage
+\item Clear architectural boundaries simplify system maintenance and debugging
+\item Flexible scaling: Pit maintains consistent performance while Grand Stage scales with demand
+\item Enhanced security through process isolation for untrusted community code
+\end{itemize}
+
+\subsubsection*{Negative}
+\begin{itemize}
+\item Increased development complexity requiring expertise in both execution models
+\item IPC overhead limits some use cases for Grand Stage extensions
+\item Resource overhead from multiple processes (50-100MB per Grand Stage extension)
+\item Complex debugging scenarios spanning both execution environments
+\item Limited flexibility for promoting Grand Stage extensions to Pit status
+\end{itemize}
+
+\subsection*{Success Criteria}
+
+\begin{itemize}
+\item Pit operations complete within 100 microseconds (Achieved: 10-50 microseconds)
+\item Grand Stage IPC latency under 1ms (Achieved: 0.1-0.5ms)
+\item Zero system crashes from extension failures (Achieved: 0 crashes)
+\item Support 100+ concurrent Grand Stage extensions (Achieved: 200+ extensions)
+\item Community adoption of extension development (Achieved: Active developer ecosystem)
+\end{itemize}
+
+\subsection*{Risks and Mitigations}
+
+\begin{center}
+\begin{tabular}{@{}p{4cm}p{2cm}p{6cm}@{}}
+\toprule
+\textbf{Risk} & \textbf{Impact} & \textbf{Mitigation} \\
+\midrule
+Architectural complexity & High & Comprehensive documentation and developer tooling \\
+IPC performance bottlenecks & Medium & Optimized IPC implementation and caching strategies \\
+Resource consumption & Medium & Process pooling and resource monitoring \\
+Development model confusion & Medium & Clear guidelines and examples for each layer \\
+Pit extension limitations & Low & Careful selection criteria and upgrade paths \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The Dual Ensemble Architecture successfully balances Symphony's competing requirements for performance and safety, enabling both microsecond-level infrastructure operations and safe community extensibility. This architectural pattern has become a key differentiator for Symphony's AI-first development environment.

@@ -1,0 +1,413 @@
+\section*{User Settings}
+\addcontentsline{toc}{section}{User Settings}
+
+Symphony's user settings provide global configuration that applies across all workspaces and projects. Settings are stored in TOML format for human readability and version control compatibility.
+
+\subsection*{Settings File Location}
+
+User settings are stored in platform-specific locations:
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+\item[\textbf{Windows}] \texttt{\%APPDATA\%\textbackslash Symphony\textbackslash settings.toml}
+\item[\textbf{macOS}] \texttt{\textasciitilde/Library/Application Support/Symphony/settings.toml}
+\item[\textbf{Linux}] \texttt{\textasciitilde/.config/symphony/settings.toml}
+\end{description}
+
+\subsection*{General Settings}
+
+Core system behavior and preferences:
+
+\begin{lstlisting}[language=toml,caption={General Settings Configuration}]
+[general]
+# Application theme
+theme = "dark"  # Options: "light", "dark", "auto"
+
+# Language and localization
+language = "en-US"
+date_format = "YYYY-MM-DD"
+time_format = "24h"  # Options: "12h", "24h"
+
+# Startup behavior
+restore_workspace = true
+show_welcome_screen = false
+check_updates = true
+auto_update = false
+
+# Telemetry and analytics
+telemetry_enabled = true
+crash_reporting = true
+usage_analytics = true
+
+# Performance settings
+max_memory_usage = "4GB"
+max_cpu_cores = 0  # 0 = auto-detect
+enable_gpu_acceleration = true
+\end{lstlisting}
+
+\subsection*{Editor Settings}
+
+Text editor behavior and appearance:
+
+\begin{lstlisting}[language=toml,caption={Editor Settings Configuration}]
+[editor]
+# Font configuration
+font_family = "JetBrains Mono"
+font_size = 14
+font_weight = "normal"
+line_height = 1.5
+
+# Editor behavior
+tab_size = 4
+insert_spaces = true
+trim_trailing_whitespace = true
+insert_final_newline = true
+auto_save = "afterDelay"  # Options: "off", "afterDelay", "onFocusChange"
+auto_save_delay = 1000
+
+# Visual elements
+show_line_numbers = true
+show_relative_line_numbers = false
+show_minimap = true
+show_whitespace = false
+show_indent_guides = true
+highlight_current_line = true
+word_wrap = "off"  # Options: "off", "on", "wordWrapColumn"
+word_wrap_column = 80
+
+# Cursor and selection
+cursor_style = "line"  # Options: "line", "block", "underline"
+cursor_blink = true
+multi_cursor = true
+selection_highlight = true
+
+# Code folding
+enable_folding = true
+fold_imports = false
+fold_comments = false
+\end{lstlisting}
+
+\subsection*{AI and Orchestration Settings}
+
+Configuration for Symphony's AI-first capabilities:
+
+\begin{lstlisting}[language=toml,caption={AI and Orchestration Settings}]
+[ai]
+# Conductor settings
+conductor_enabled = true
+auto_orchestration = true
+learning_mode = true
+function_quest_training = true
+
+# Model preferences
+preferred_models = ["gpt-4", "claude-3", "local-model"]
+model_timeout = 30000  # milliseconds
+max_concurrent_requests = 5
+cache_responses = true
+cache_duration = 3600  # seconds
+
+# Orchestration behavior
+auto_model_selection = true
+adaptive_resource_allocation = true
+workflow_optimization = true
+predictive_preloading = true
+
+# Safety and limits
+max_tokens_per_request = 4000
+rate_limit_requests = 100  # per minute
+enable_content_filtering = true
+require_user_confirmation = false
+
+[ai.models]
+# Model-specific configurations
+[ai.models.gpt-4]
+api_key = "${OPENAI_API_KEY}"
+base_url = "https://api.openai.com/v1"
+max_tokens = 4000
+temperature = 0.7
+
+[ai.models.claude-3]
+api_key = "${ANTHROPIC_API_KEY}"
+base_url = "https://api.anthropic.com"
+max_tokens = 4000
+temperature = 0.7
+
+[ai.models.local-model]
+endpoint = "http://localhost:8080"
+model_name = "custom-model"
+timeout = 60000
+\end{lstlisting}
+
+\subsection*{Extension Settings}
+
+Extension system configuration and marketplace settings:
+
+\begin{lstlisting}[language=toml,caption={Extension Settings}]
+[extensions]
+# Marketplace configuration
+marketplace_url = "https://extensions.symphony.dev"
+auto_update_extensions = true
+check_extension_updates = true
+update_check_interval = 86400  # seconds (24 hours)
+
+# Security settings
+allow_unsigned_extensions = false
+require_code_signing = true
+sandbox_extensions = true
+extension_timeout = 30000  # milliseconds
+
+# Installation preferences
+auto_install_dependencies = true
+prefer_stable_versions = true
+allow_prerelease = false
+max_extension_memory = "512MB"
+
+# Development settings
+enable_extension_debugging = false
+hot_reload_extensions = true
+show_extension_logs = false
+extension_log_level = "info"
+
+# Trusted publishers
+trusted_publishers = [
+    "symphony-team",
+    "verified-publisher-1",
+    "verified-publisher-2"
+]
+
+# Disabled extensions
+disabled_extensions = [
+    "problematic-extension",
+    "deprecated-extension"
+]
+\end{lstlisting}
+
+\subsection*{UI and Appearance Settings}
+
+User interface customization and visual preferences:
+
+\begin{lstlisting}[language=toml,caption={UI and Appearance Settings}]
+[ui]
+# Theme and colors
+theme = "dark"
+accent_color = "#007ACC"
+custom_css = ""
+
+# Layout preferences
+sidebar_position = "left"  # Options: "left", "right"
+panel_position = "bottom"  # Options: "bottom", "right"
+show_activity_bar = true
+show_status_bar = true
+show_menu_bar = true  # Windows/Linux only
+
+# Window behavior
+window_title_format = "${workspaceName} - Symphony"
+new_window_behavior = "inherit"  # Options: "inherit", "default", "maximized"
+close_behavior = "minimize"  # Options: "close", "minimize", "hide"
+
+# Notifications
+show_notifications = true
+notification_position = "bottom-right"
+notification_timeout = 5000  # milliseconds
+sound_notifications = false
+
+# Accessibility
+high_contrast = false
+reduce_motion = false
+screen_reader_support = false
+keyboard_navigation = true
+
+[ui.colors]
+# Custom color overrides
+primary = "#007ACC"
+secondary = "#6C757D"
+success = "#28A745"
+warning = "#FFC107"
+error = "#DC3545"
+info = "#17A2B8"
+\end{lstlisting}
+
+\subsection*{Keyboard Shortcuts}
+
+Customizable keyboard shortcuts and key bindings:
+
+\begin{lstlisting}[language=toml,caption={Keyboard Shortcuts Configuration}]
+[keybindings]
+# File operations
+"ctrl+n" = "workbench.action.files.newUntitledFile"
+"ctrl+o" = "workbench.action.files.openFile"
+"ctrl+s" = "workbench.action.files.save"
+"ctrl+shift+s" = "workbench.action.files.saveAs"
+
+# Editor operations
+"ctrl+z" = "undo"
+"ctrl+y" = "redo"
+"ctrl+x" = "editor.action.clipboardCutAction"
+"ctrl+c" = "editor.action.clipboardCopyAction"
+"ctrl+v" = "editor.action.clipboardPasteAction"
+
+# Navigation
+"ctrl+g" = "workbench.action.gotoLine"
+"ctrl+p" = "workbench.action.quickOpen"
+"ctrl+shift+p" = "workbench.action.showCommands"
+"ctrl+f" = "actions.find"
+"ctrl+h" = "editor.action.startFindReplaceAction"
+
+# AI and orchestration
+"ctrl+shift+a" = "symphony.conductor.activate"
+"ctrl+alt+m" = "symphony.melody.create"
+"ctrl+alt+h" = "symphony.harmonyBoard.show"
+
+# Custom shortcuts
+"f5" = "symphony.workflow.run"
+"shift+f5" = "symphony.workflow.debug"
+"ctrl+f5" = "symphony.workflow.runWithoutDebugging"
+
+[keybindings.when]
+# Conditional key bindings
+"editorTextFocus && !editorReadonly" = {
+    "ctrl+/" = "editor.action.commentLine"
+    "ctrl+shift+/" = "editor.action.blockComment"
+}
+
+"terminalFocus" = {
+    "ctrl+c" = "workbench.action.terminal.copySelection"
+    "ctrl+v" = "workbench.action.terminal.paste"
+}
+\end{lstlisting}
+
+\subsection*{Performance and Resource Settings}
+
+System performance and resource utilization configuration:
+
+\begin{lstlisting}[language=toml,caption={Performance Settings}]
+[performance]
+# Memory management
+max_memory_usage = "4GB"
+garbage_collection_threshold = "1GB"
+cache_size = "512MB"
+artifact_cache_size = "1GB"
+
+# CPU utilization
+max_cpu_cores = 0  # 0 = auto-detect
+background_task_priority = "low"
+ai_processing_priority = "high"
+
+# Disk I/O
+enable_file_watching = true
+file_watch_exclude = ["**/node_modules/**", "**/.git/**"]
+max_file_size = "100MB"
+auto_save_interval = 1000  # milliseconds
+
+# Network settings
+network_timeout = 30000  # milliseconds
+max_concurrent_downloads = 5
+enable_compression = true
+cache_network_requests = true
+
+# Rendering performance
+enable_gpu_acceleration = true
+vsync = true
+max_fps = 60
+reduce_animations = false
+
+[performance.limits]
+# Resource limits for extensions
+extension_memory_limit = "512MB"
+extension_cpu_limit = 50  # percentage
+extension_network_limit = "10MB/s"
+extension_disk_limit = "1GB"
+\end{lstlisting}
+
+\subsection*{Security and Privacy Settings}
+
+Security policies and privacy controls:
+
+\begin{lstlisting}[language=toml,caption={Security and Privacy Settings}]
+[security]
+# Code execution
+allow_unsigned_code = false
+require_code_signing = true
+sandbox_execution = true
+enable_security_warnings = true
+
+# Network security
+allow_http_requests = false
+require_https = true
+certificate_validation = true
+proxy_settings = "system"  # Options: "system", "manual", "none"
+
+# Data protection
+encrypt_local_data = true
+secure_storage = true
+clear_cache_on_exit = false
+anonymous_telemetry = true
+
+# Authentication
+require_authentication = false
+session_timeout = 3600  # seconds
+remember_credentials = true
+two_factor_authentication = false
+
+[security.permissions]
+# Default permissions for extensions
+default_permissions = [
+    "read_workspace",
+    "write_artifacts"
+]
+
+# Restricted permissions requiring user consent
+restricted_permissions = [
+    "network_access",
+    "system_commands",
+    "file_system_write"
+]
+
+# Blocked permissions
+blocked_permissions = [
+    "system_admin",
+    "kernel_access"
+]
+\end{lstlisting}
+
+\subsection*{Logging and Debugging}
+
+Logging configuration and debugging options:
+
+\begin{lstlisting}[language=toml,caption={Logging and Debugging Settings}]
+[logging]
+# Log levels
+default_level = "info"  # Options: "trace", "debug", "info", "warn", "error"
+console_level = "warn"
+file_level = "debug"
+
+# Log output
+log_to_file = true
+log_file_path = "symphony.log"
+max_log_file_size = "10MB"
+max_log_files = 5
+log_rotation = "daily"  # Options: "daily", "weekly", "size"
+
+# Component-specific logging
+[logging.components]
+conductor = "debug"
+extensions = "info"
+ui = "warn"
+ipc = "debug"
+ai_models = "info"
+
+[debugging]
+# Debug options
+enable_debug_mode = false
+show_debug_console = false
+enable_profiling = false
+memory_profiling = false
+performance_monitoring = false
+
+# Development features
+hot_reload = true
+source_maps = true
+verbose_errors = false
+stack_traces = true
+\end{lstlisting}
+
+These user settings provide comprehensive control over Symphony's behavior while maintaining sensible defaults for optimal performance and user experience. Settings can be modified through Symphony's UI or by directly editing the configuration files.

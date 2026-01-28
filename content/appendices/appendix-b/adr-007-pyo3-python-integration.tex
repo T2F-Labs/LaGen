@@ -1,0 +1,46 @@
+\section*{ADR-007: PyO3 for Python Integration}
+\addcontentsline{toc}{section}{ADR-007: PyO3 for Python Integration}
+
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+\item[\textbf{Status}] Accepted
+\item[\textbf{Date}] April 2024
+\item[\textbf{Authors}] Symphony Integration Team
+\end{description}
+
+\subsection*{Summary}
+
+We selected PyO3 for integrating Python-based AI orchestration (Conductor) with Rust infrastructure, enabling near-zero overhead communication between the RL model and performance-critical backend components.
+
+\subsection*{Context}
+
+Symphony's hybrid architecture requires:
+\begin{itemize}
+\item Python for AI/ML capabilities and RL model implementation
+\item Rust for performance-critical infrastructure
+\item Low-latency communication between languages
+\item Shared data structures and memory management
+\item Error handling across language boundaries
+\end{itemize}
+
+\subsection*{Decision}
+
+We implemented PyO3-based integration providing:
+\begin{itemize}
+\item Direct function calls from Python to Rust with FFI
+\item Shared memory structures for large data transfers
+\item Automatic serialization/deserialization for complex types
+\item Error propagation and exception handling
+\item Memory-safe resource management
+\end{itemize}
+
+\subsection*{Rationale}
+
+PyO3 enables the performance benefits of Rust infrastructure while maintaining the AI/ML ecosystem advantages of Python for the Conductor.
+
+\subsection*{Success Criteria}
+
+\begin{itemize}
+\item FFI overhead under 100 microseconds (Achieved)
+\item Memory-safe cross-language operations (Achieved)
+\item Seamless error handling (Achieved)
+\end{itemize}

@@ -1,0 +1,439 @@
+\section*{Workspace Settings}
+\addcontentsline{toc}{section}{Workspace Settings}
+
+Workspace settings provide project-specific configuration that overrides global user settings. These settings are stored within the workspace directory and can be version-controlled alongside project code, enabling reproducible development environments for research validation.
+
+\subsection*{Workspace Configuration File}
+
+Workspace settings are stored in \texttt{.symphony/workspace.toml} within the project root:
+
+\begin{lstlisting}[language=toml,caption={Workspace Configuration Structure}]
+[workspace]
+name = "My Symphony Project"
+version = "1.0.0"
+description = "AI-first development project"
+created = "2024-01-15T10:30:00Z"
+last_modified = "2024-01-20T14:45:00Z"
+
+# Workspace-specific settings
+root_path = "."
+exclude_patterns = [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/target/**",
+    "**/__pycache__/**"
+]
+
+# Project metadata
+[workspace.metadata]
+language = "rust"
+framework = "symphony"
+team = ["developer1", "developer2"]
+tags = ["ai", "development", "research"]
+\end{lstlisting}
+
+\subsection*{Project-Specific Editor Settings}
+
+Override global editor settings for project consistency:
+
+\begin{lstlisting}[language=toml,caption={Project Editor Configuration}]
+[editor]
+# Language-specific settings
+[editor.rust]
+tab_size = 4
+insert_spaces = true
+format_on_save = true
+formatter = "rustfmt"
+
+[editor.python]
+tab_size = 4
+insert_spaces = true
+format_on_save = true
+formatter = "black"
+max_line_length = 88
+
+[editor.javascript]
+tab_size = 2
+insert_spaces = true
+format_on_save = true
+formatter = "prettier"
+
+[editor.markdown]
+tab_size = 2
+insert_spaces = true
+word_wrap = "on"
+trim_trailing_whitespace = false
+
+# File associations
+[editor.associations]
+"*.symphony" = "toml"
+"*.melody" = "yaml"
+"Dockerfile.*" = "dockerfile"
+\end{lstlisting}
+
+\subsection*{AI and Orchestration Workspace Settings}
+
+Project-specific AI configuration and model preferences:
+
+\begin{lstlisting}[language=toml,caption={Workspace AI Configuration}]
+[ai]
+# Project-specific model preferences
+enabled_models = ["gpt-4", "claude-3", "local-rust-model"]
+default_model = "gpt-4"
+fallback_models = ["claude-3", "local-rust-model"]
+
+# Orchestration settings
+auto_orchestration = true
+workflow_templates = [
+    "rust-development",
+    "ai-research",
+    "documentation"
+]
+
+# Project-specific prompts and contexts
+[ai.contexts]
+project_context = """
+This is a Rust-based AI development environment project.
+Focus on performance, safety, and clean architecture.
+Follow Rust best practices and Symphony conventions.
+"""
+
+coding_style = """
+Use idiomatic Rust code with proper error handling.
+Prefer explicit types over inference where clarity helps.
+Write comprehensive tests for all public APIs.
+"""
+
+[ai.workflows]
+# Predefined workflows for this project
+[ai.workflows.code-review]
+models = ["gpt-4", "claude-3"]
+steps = [
+    "analyze-changes",
+    "check-style",
+    "suggest-improvements",
+    "generate-tests"
+]
+
+[ai.workflows.documentation]
+models = ["gpt-4"]
+steps = [
+    "analyze-code",
+    "generate-docs",
+    "create-examples",
+    "validate-accuracy"
+]
+\end{lstlisting}
+
+\subsection*{Extension Configuration}
+
+Workspace-specific extension settings and requirements:
+
+\begin{lstlisting}[language=toml,caption={Workspace Extension Configuration}]
+[extensions]
+# Required extensions for this workspace
+required = [
+    "rust-analyzer",
+    "symphony-ai-assistant",
+    "git-integration"
+]
+
+# Recommended extensions
+recommended = [
+    "markdown-preview",
+    "toml-syntax",
+    "performance-profiler"
+]
+
+# Extension-specific settings
+[extensions.rust-analyzer]
+check_on_save = true
+cargo_features = ["ai", "performance"]
+proc_macro_srv = true
+
+[extensions.symphony-ai-assistant]
+auto_suggestions = true
+context_awareness = true
+learning_mode = true
+
+[extensions.git-integration]
+auto_fetch = true
+show_inline_blame = false
+commit_template = "feat: ${summary}\n\n${description}"
+
+# Workspace-specific extension permissions
+[extensions.permissions]
+"rust-analyzer" = [
+    "read_workspace",
+    "write_artifacts",
+    "execute_commands"
+]
+"symphony-ai-assistant" = [
+    "read_workspace",
+    "write_artifacts",
+    "network_access",
+    "ai_models"
+]
+\end{lstlisting}
+
+\subsection*{Build and Task Configuration}
+
+Project build settings and task definitions:
+
+\begin{lstlisting}[language=toml,caption={Build and Task Configuration}]
+[build]
+# Build system configuration
+system = "cargo"  # Options: "cargo", "npm", "make", "custom"
+target = "x86_64-unknown-linux-gnu"
+profile = "dev"  # Options: "dev", "release", "test"
+
+# Build flags and options
+[build.flags]
+rust = [
+    "--features", "ai,performance",
+    "--target-dir", "target"
+]
+
+# Environment variables for builds
+[build.env]
+RUST_LOG = "debug"
+SYMPHONY_ENV = "development"
+AI_MODEL_PATH = "./models"
+
+# Task definitions
+[tasks]
+[tasks.build]
+command = "cargo build"
+description = "Build the project"
+group = "build"
+
+[tasks.test]
+command = "cargo test"
+description = "Run all tests"
+group = "test"
+depends_on = ["build"]
+
+[tasks.format]
+command = "cargo fmt"
+description = "Format code"
+group = "format"
+
+[tasks.lint]
+command = "cargo clippy"
+description = "Run linter"
+group = "lint"
+
+[tasks.docs]
+command = "cargo doc --open"
+description = "Generate and open documentation"
+group = "docs"
+
+# Custom tasks
+[tasks.ai-train]
+command = "python scripts/train_model.py"
+description = "Train AI model"
+group = "ai"
+env = { PYTHONPATH = "./src" }
+
+[tasks.benchmark]
+command = "cargo bench"
+description = "Run performance benchmarks"
+group = "performance"
+\end{lstlisting}
+
+\subsection*{Debug and Launch Configuration}
+
+Debugging and launch configurations for development:
+
+\begin{lstlisting}[language=toml,caption={Debug Configuration}]
+[debug]
+# Default debug configuration
+default_configuration = "rust-debug"
+
+# Debug configurations
+[debug.configurations]
+[debug.configurations.rust-debug]
+type = "rust"
+request = "launch"
+program = "${workspaceFolder}/target/debug/symphony"
+args = ["--debug", "--workspace", "${workspaceFolder}"]
+env = { RUST_LOG = "debug" }
+console = "integratedTerminal"
+
+[debug.configurations.rust-test]
+type = "rust"
+request = "launch"
+program = "cargo"
+args = ["test", "--", "--nocapture"]
+env = { RUST_LOG = "trace" }
+
+[debug.configurations.python-ai]
+type = "python"
+request = "launch"
+program = "${workspaceFolder}/src/ai/conductor.py"
+args = ["--debug"]
+env = { PYTHONPATH = "${workspaceFolder}/src" }
+
+# Launch configurations
+[launch]
+[launch.configurations]
+[launch.configurations.development]
+name = "Development Server"
+command = "cargo run"
+args = ["--features", "dev"]
+env = { SYMPHONY_ENV = "development" }
+
+[launch.configurations.production]
+name = "Production Build"
+command = "cargo run --release"
+env = { SYMPHONY_ENV = "production" }
+\end{lstlisting}
+
+\subsection*{Testing Configuration}
+
+Test framework and coverage settings:
+
+\begin{lstlisting}[language=toml,caption={Testing Configuration}]
+[testing]
+# Test framework settings
+framework = "cargo-test"
+parallel = true
+timeout = 30000  # milliseconds
+
+# Test discovery
+test_patterns = [
+    "tests/**/*.rs",
+    "src/**/*_test.rs",
+    "src/**/test_*.rs"
+]
+
+exclude_patterns = [
+    "target/**",
+    "examples/**"
+]
+
+# Coverage settings
+[testing.coverage]
+enabled = true
+tool = "tarpaulin"  # Options: "tarpaulin", "grcov", "kcov"
+output_format = ["html", "lcov"]
+output_dir = "coverage"
+minimum_coverage = 80.0
+
+# Test categories
+[testing.categories]
+unit = { pattern = "src/**/*_test.rs" }
+integration = { pattern = "tests/**/*.rs" }
+benchmark = { pattern = "benches/**/*.rs" }
+ai = { pattern = "tests/ai/**/*.rs" }
+
+# Test environment
+[testing.env]
+RUST_LOG = "debug"
+TEST_MODE = "true"
+AI_MODEL_PATH = "./test_models"
+\end{STlisting>
+
+\subsection*{Documentation Settings}
+
+Project documentation configuration:
+
+\begin{lstlisting}[language=toml,caption={Documentation Configuration}]
+[documentation]
+# Documentation generation
+generator = "rustdoc"  # Options: "rustdoc", "sphinx", "mkdocs"
+output_dir = "docs"
+include_private = false
+include_examples = true
+
+# Documentation structure
+[documentation.structure]
+readme = "README.md"
+changelog = "CHANGELOG.md"
+contributing = "CONTRIBUTING.md"
+license = "LICENSE"
+
+# API documentation
+[documentation.api]
+include_source_links = true
+include_examples = true
+cross_crate_links = true
+generate_search_index = true
+
+# Custom documentation sections
+[documentation.sections]
+architecture = "docs/architecture.md"
+getting_started = "docs/getting-started.md"
+api_reference = "docs/api-reference.md"
+examples = "examples/"
+
+# Documentation build settings
+[documentation.build]
+theme = "symphony"
+syntax_highlighting = true
+math_rendering = true
+mermaid_diagrams = true
+\end{lstlisting}
+
+\subsection*{Git and Version Control}
+
+Version control settings and hooks:
+
+\begin{lstlisting}[language=toml,caption={Git Configuration}]
+[git]
+# Git integration settings
+auto_fetch = true
+fetch_interval = 300  # seconds
+show_status = true
+inline_blame = false
+
+# Commit settings
+[git.commit]
+template = """
+${type}: ${summary}
+
+${description}
+
+Co-authored-by: ${co_authors}
+"""
+
+# Commit types
+types = [
+    "feat",     # New feature
+    "fix",      # Bug fix
+    "docs",     # Documentation
+    "style",    # Code style
+    "refactor", # Code refactoring
+    "test",     # Tests
+    "chore"     # Maintenance
+]
+
+# Pre-commit hooks
+[git.hooks]
+pre_commit = [
+    "cargo fmt --check",
+    "cargo clippy -- -D warnings",
+    "cargo test"
+]
+
+pre_push = [
+    "cargo test --release",
+    "cargo doc"
+]
+
+# Branch protection
+[git.branches]
+main = { protected = true, require_pr = true }
+develop = { protected = false, auto_merge = true }
+
+# Ignore patterns (in addition to .gitignore)
+[git.ignore]
+patterns = [
+    "*.tmp",
+    ".symphony/cache/",
+    "coverage/",
+    "docs/build/"
+]
+\end{lstlisting}
+
+Workspace settings enable project-specific customization while maintaining consistency across team members and development environments. These settings support Symphony's research objectives by providing reproducible, version-controlled configuration that can be validated and shared alongside research artifacts.

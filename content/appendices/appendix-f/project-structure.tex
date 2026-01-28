@@ -1,0 +1,113 @@
+\section*{Project Structure}
+\addcontentsline{toc}{section}{Project Structure}
+
+\subsection*{Monorepo Architecture and Research Organization}
+
+Symphony employs a monorepo architecture that facilitates integrated research across multiple domains while maintaining clear separation of concerns. The repository structure reflects our theoretical framework and supports both individual component research and system-wide empirical analysis.
+
+The monorepo approach enables:
+\begin{compactlist}
+    \item Coordinated development across research domains
+    \item Shared tooling and infrastructure for consistent research methodology
+    \item Integrated testing and validation across system components
+    \item Unified documentation and knowledge management
+\end{compactlist}
+
+\subsection*{Core Directory Structure}
+
+The Symphony repository structure embodies our architectural principles and research methodology. Each directory represents a distinct research domain or system component, with clear interfaces and dependencies that support modular development and analysis.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Directory} & \textbf{Purpose} & \textbf{Research Domain} \\
+\midrule
+\texttt{conductor/} & AI orchestration system & Reinforcement learning, PPO \\
+\texttt{infrastructure/} & Core Rust components & Systems architecture, performance \\
+\texttt{extensions/} & Extension framework & Modularity, extensibility \\
+\texttt{frontend/} & User interface & Human-computer interaction \\
+\texttt{research/} & Experimental code & Novel algorithms, prototypes \\
+\texttt{benchmarks/} & Performance testing & Empirical evaluation \\
+\texttt{docs/} & Documentation & Knowledge management \\
+\bottomrule
+\end{tabular}
+\caption{Core Directory Structure and Research Domains}
+\end{table}
+
+\subsection*{Package Dependencies and Research Integration}
+
+Symphony's dependency management reflects our research priorities and architectural constraints. Dependencies are carefully selected to support both research objectives and production deployment requirements, with particular attention to performance, security, and maintainability.
+
+\begin{infobox}[title=Research-Driven Dependency Selection]
+Dependencies are evaluated not only for technical suitability but also for their contribution to research reproducibility and academic validation of our architectural approaches.
+\end{infobox}
+
+Key dependency categories include:
+\begin{expandedlist}
+    \item \textbf{Core Infrastructure}: Rust ecosystem components for high-performance execution
+    \item \textbf{AI/ML Libraries}: Python packages for machine learning and orchestration
+    \item \textbf{Research Tools}: Specialized libraries for empirical analysis and validation
+    \item \textbf{Development Tools}: Build systems, testing frameworks, and development utilities
+\end{expandedlist}
+
+\subsection*{Build System Organization}
+
+The build system architecture supports our research methodology while maintaining practical development efficiency. Build configurations are organized to enable both rapid prototyping for research exploration and optimized production builds for deployment.
+
+Build system components:
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+    \item[\textbf{Cargo.toml}] Rust workspace configuration with research-oriented feature flags
+    \item[\textbf{pyproject.toml}] Python package management for AI/ML components
+    \item[\textbf{package.json}] Frontend build configuration and development tools
+    \item[\textbf{Makefile}] Unified build orchestration and research automation
+\end{description}
+
+\subsection*{Documentation Structure and Knowledge Management}
+
+Symphony's documentation architecture supports both practical usage and academic research dissemination. Documentation is organized to serve multiple audiences while maintaining consistency with academic publication standards.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Documentation Type} & \textbf{Location} & \textbf{Audience} \\
+\midrule
+API Documentation & \texttt{docs/api/} & Extension developers \\
+Architecture Guides & \texttt{docs/architecture/} & Researchers, contributors \\
+Research Papers & \texttt{docs/research/} & Academic community \\
+User Guides & \texttt{docs/user/} & End users, practitioners \\
+Development Guides & \texttt{docs/development/} & Contributors, researchers \\
+\bottomrule
+\end{tabular}
+\caption{Documentation Organization and Target Audiences}
+\end{table}
+
+\subsection*{Testing Infrastructure and Research Validation}
+
+The testing infrastructure supports both software quality assurance and research validation requirements. Test organization enables systematic evaluation of architectural decisions and empirical validation of performance claims.
+
+Testing structure includes:
+\begin{compactlist}
+    \item Unit tests for individual component validation
+    \item Integration tests for system-level behavior verification
+    \item Performance benchmarks for empirical analysis
+    \item Research experiments for theoretical validation
+    \item End-to-end tests for user experience validation
+\end{compactlist}
+
+\subsection*{Research Data and Experimental Results}
+
+Symphony maintains comprehensive research data and experimental results to support academic publication and peer review. Data organization follows research best practices for reproducibility and transparency.
+
+\begin{successbox}
+All research data and experimental results are organized to support academic publication and enable independent verification of our research claims.
+\end{successbox}
+
+Research data organization:
+\begin{expandedlist}
+    \item \textbf{Experimental Data}: Raw data from performance benchmarks and user studies
+    \item \textbf{Analysis Scripts}: Code for statistical analysis and data processing
+    \item \textbf{Visualization Tools}: Scripts for generating research figures and charts
+    \item \textbf{Publication Materials}: LaTeX sources, figures, and supplementary materials
+\end{expandedlist}

@@ -1,0 +1,448 @@
+\section*{UI Extension API}
+\addcontentsline{toc}{section}{UI Extension API}
+
+Symphony's UI Extension API enables out-of-process extensions to create rich user interfaces through a Virtual DOM bridge system. This approach maintains process isolation while providing full access to modern web UI capabilities.
+
+\subsection*{Virtual DOM Bridge}
+
+Extensions describe their UI using Virtual DOM structures that React efficiently renders:
+
+\begin{lstlisting}[language=TypeScript,caption={Virtual DOM Interface}]
+interface VirtualNode {
+  type: string;
+  props: Record<string, any>;
+  children: VirtualNode[];
+  key?: string;
+  ref?: string;
+}
+
+interface UIExtensionAPI {
+  // Render virtual DOM tree
+  render(vdom: VirtualNode): Promise<void>;
+  
+  // Update specific nodes
+  update(nodeId: string, props: Record<string, any>): Promise<void>;
+  
+  // Handle events from UI
+  addEventListener(event: string, handler: EventHandler): void;
+  
+  // Remove event listeners
+  removeEventListener(event: string, handler: EventHandler): void;
+}
+\end{lstlisting}
+
+\subsection*{Component Registration}
+
+Extensions register UI components with the Symphony component system:
+
+\begin{lstlisting}[language=TypeScript,caption={Component Registration}]
+interface ComponentRegistration {
+  name: string;
+  category: ComponentCategory;
+  props: PropDefinition[];
+  events: EventDefinition[];
+  slots: SlotDefinition[];
+  styling: StylingOptions;
+}
+
+enum ComponentCategory {
+  Panel = "panel",
+  Editor = "editor",
+  Sidebar = "sidebar",
+  Modal = "modal",
+  Toolbar = "toolbar",
+  StatusBar = "status_bar"
+}
+
+interface PropDefinition {
+  name: string;
+  type: PropType;
+  required: boolean;
+  default?: any;
+  description: string;
+}
+
+// Register component with Symphony
+const registration: ComponentRegistration = {
+  name: "MyCustomEditor",
+  category: ComponentCategory.Editor,
+  props: [
+    {
+      name: "content",
+      type: PropType.String,
+      required: true,
+      description: "Editor content"
+    },
+    {
+      name: "language",
+      type: PropType.String,
+      required: false,
+      default: "plaintext",
+      description: "Syntax highlighting language"
+    }
+  ],
+  events: [
+    {
+      name: "contentChanged",
+      payload: { content: PropType.String },
+      description: "Fired when content changes"
+    }
+  ],
+  slots: [],
+  styling: {
+    themes: ["light", "dark"],
+    customizable: true
+  }
+};
+\end{lstlisting}
+
+\subsection*{Event Handling}
+
+UI extensions handle user interactions through a structured event system:
+
+\begin{lstlisting}[language=TypeScript,caption={Event Handling System}]
+interface UIEvent {
+  type: string;
+  target: string;
+  data: Record<string, any>;
+  timestamp: number;
+  preventDefault?: boolean;
+  stopPropagation?: boolean;
+}
+
+interface EventHandler {
+  (event: UIEvent): Promise<void> | void;
+}
+
+// Example event handlers
+class MyExtensionUI {
+  private api: UIExtensionAPI;
+  
+  constructor(api: UIExtensionAPI) {
+    this.api = api;
+    this.setupEventHandlers();
+  }
+  
+  private setupEventHandlers() {
+    // Handle button clicks
+    this.api.addEventListener('click', async (event) => {
+      if (event.target === 'save-button') {
+        await this.handleSave(event.data);
+      }
+    });
+    
+    // Handle text input
+    this.api.addEventListener('input', async (event) => {
+      if (event.target === 'editor-content') {
+        await this.handleContentChange(event.data.value);
+      }
+    });
+    
+    // Handle keyboard shortcuts
+    this.api.addEventListener('keydown', async (event) => {
+      if (event.data.ctrlKey && event.data.key === 's') {
+        event.preventDefault = true;
+        await this.handleSave();
+      }
+    });
+  }
+  
+  private async handleSave(data?: any) {
+    // Implementation
+  }
+  
+  private async handleContentChange(content: string) {
+    // Implementation
+  }
+}
+\end{lstlisting}
+
+\subsection*{Layout System}
+
+Extensions can create complex layouts using Symphony's layout primitives:
+
+\begin{lstlisting}[language=TypeScript,caption={Layout System}]
+interface LayoutNode extends VirtualNode {
+  layout: LayoutProperties;
+}
+
+interface LayoutProperties {
+  display: 'flex' | 'grid' | 'block' | 'inline';
+  direction?: 'row' | 'column';
+  justify?: 'start' | 'center' | 'end' | 'space-between' | 'space-around';
+  align?: 'start' | 'center' | 'end' | 'stretch';
+  gap?: number;
+  padding?: Spacing;
+  margin?: Spacing;
+  width?: Size;
+  height?: Size;
+}
+
+interface Spacing {
+  top?: number;
+  right?: number;
+  bottom?: number;
+  left?: number;
+}
+
+type Size = number | 'auto' | 'fit-content' | `${number}%` | `${number}px`;
+
+// Example layout
+const editorLayout: LayoutNode = {
+  type: 'div',
+  props: { className: 'editor-container' },
+  layout: {
+    display: 'flex',
+    direction: 'column',
+    height: '100%'
+  },
+  children: [
+    {
+      type: 'div',
+      props: { className: 'toolbar' },
+      layout: {
+        display: 'flex',
+        direction: 'row',
+        justify: 'space-between',
+        padding: { top: 8, bottom: 8, left: 16, right: 16 }
+      },
+      children: [/* toolbar items */]
+    },
+    {
+      type: 'div',
+      props: { className: 'editor-content' },
+      layout: {
+        display: 'block',
+        height: 'auto'
+      },
+      children: [/* editor content */]
+    }
+  ]
+};
+\end{lstlisting}
+
+\subsection*{Theming and Styling}
+
+Extensions integrate with Symphony's theming system:
+
+\begin{lstlisting}[language=TypeScript,caption={Theming System}]
+interface ThemeAPI {
+  // Get current theme
+  getCurrentTheme(): Promise<Theme>;
+  
+  // Subscribe to theme changes
+  onThemeChanged(callback: (theme: Theme) => void): void;
+  
+  // Get theme variables
+  getThemeVariable(name: string): Promise<string>;
+  
+  // Apply custom styles
+  applyStyles(styles: StyleSheet): Promise<void>;
+}
+
+interface Theme {
+  name: string;
+  type: 'light' | 'dark';
+  colors: ThemeColors;
+  typography: Typography;
+  spacing: SpacingScale;
+  shadows: ShadowScale;
+}
+
+interface ThemeColors {
+  primary: string;
+  secondary: string;
+  accent: string;
+  background: string;
+  surface: string;
+  text: string;
+  textSecondary: string;
+  border: string;
+  error: string;
+  warning: string;
+  success: string;
+  info: string;
+}
+
+// Example theme usage
+class ThemedComponent {
+  private theme: Theme;
+  
+  async render() {
+    this.theme = await themeAPI.getCurrentTheme();
+    
+    const styles = {
+      container: {
+        backgroundColor: this.theme.colors.surface,
+        color: this.theme.colors.text,
+        border: `1px solid ${this.theme.colors.border}`,
+        borderRadius: '4px',
+        padding: this.theme.spacing.medium
+      },
+      button: {
+        backgroundColor: this.theme.colors.primary,
+        color: this.theme.colors.background,
+        border: 'none',
+        borderRadius: '4px',
+        padding: `${this.theme.spacing.small} ${this.theme.spacing.medium}`
+      }
+    };
+    
+    return {
+      type: 'div',
+      props: { style: styles.container },
+      children: [
+        {
+          type: 'button',
+          props: { 
+            style: styles.button,
+            onClick: 'handleClick'
+          },
+          children: ['Click me']
+        }
+      ]
+    };
+  }
+}
+\end{lstlisting}
+
+\subsection*{State Management}
+
+Extensions can manage UI state through Symphony's state management system:
+
+\begin{lstlisting}[language=TypeScript,caption={State Management}]
+interface StateManager {
+  // Get current state
+  getState<T>(key: string): Promise<T | undefined>;
+  
+  // Set state
+  setState<T>(key: string, value: T): Promise<void>;
+  
+  // Subscribe to state changes
+  subscribe<T>(key: string, callback: (value: T) => void): () => void;
+  
+  // Batch state updates
+  batch(updates: Record<string, any>): Promise<void>;
+}
+
+// Example state management
+class StatefulComponent {
+  private stateManager: StateManager;
+  private unsubscribe: (() => void)[] = [];
+  
+  constructor(stateManager: StateManager) {
+    this.stateManager = stateManager;
+    this.setupStateSubscriptions();
+  }
+  
+  private setupStateSubscriptions() {
+    // Subscribe to editor content changes
+    const unsubContent = this.stateManager.subscribe<string>(
+      'editor.content',
+      (content) => this.handleContentChange(content)
+    );
+    this.unsubscribe.push(unsubContent);
+    
+    // Subscribe to selection changes
+    const unsubSelection = this.stateManager.subscribe<Selection>(
+      'editor.selection',
+      (selection) => this.handleSelectionChange(selection)
+    );
+    this.unsubscribe.push(unsubSelection);
+  }
+  
+  private async handleContentChange(content: string) {
+    // Update UI based on content change
+    await this.api.update('editor-content', { value: content });
+  }
+  
+  private async handleSelectionChange(selection: Selection) {
+    // Update UI based on selection change
+    await this.api.update('selection-info', { 
+      text: `Line ${selection.line}, Column ${selection.column}` 
+    });
+  }
+  
+  public cleanup() {
+    this.unsubscribe.forEach(fn => fn());
+  }
+}
+\end{lstlisting}
+
+\subsection*{Performance Optimization}
+
+The UI Extension API includes performance optimization features:
+
+\begin{lstlisting}[language=TypeScript,caption={Performance Optimization}]
+interface PerformanceAPI {
+  // Batch DOM updates
+  batchUpdates(updates: () => void): Promise<void>;
+  
+  // Virtualize large lists
+  createVirtualList(options: VirtualListOptions): VirtualList;
+  
+  // Memoize expensive computations
+  memoize<T>(fn: (...args: any[]) => T, deps: any[]): T;
+  
+  // Debounce frequent updates
+  debounce<T extends (...args: any[]) => any>(fn: T, delay: number): T;
+  
+  // Throttle high-frequency events
+  throttle<T extends (...args: any[]) => any>(fn: T, interval: number): T;
+}
+
+interface VirtualListOptions {
+  itemHeight: number;
+  containerHeight: number;
+  items: any[];
+  renderItem: (item: any, index: number) => VirtualNode;
+  overscan?: number;
+}
+
+// Example performance optimization
+class OptimizedList {
+  private performanceAPI: PerformanceAPI;
+  private debouncedSearch: (query: string) => void;
+  
+  constructor(performanceAPI: PerformanceAPI) {
+    this.performanceAPI = performanceAPI;
+    
+    // Debounce search to avoid excessive API calls
+    this.debouncedSearch = this.performanceAPI.debounce(
+      this.performSearch.bind(this),
+      300
+    );
+  }
+  
+  private async performSearch(query: string) {
+    // Expensive search operation
+    const results = await this.searchAPI.search(query);
+    
+    // Batch UI updates for better performance
+    await this.performanceAPI.batchUpdates(() => {
+      this.updateSearchResults(results);
+      this.updateResultCount(results.length);
+      this.updateLoadingState(false);
+    });
+  }
+  
+  private createVirtualizedList(items: any[]) {
+    return this.performanceAPI.createVirtualList({
+      itemHeight: 40,
+      containerHeight: 400,
+      items: items,
+      renderItem: (item, index) => ({
+        type: 'div',
+        props: { 
+          key: item.id,
+          className: 'list-item'
+        },
+        children: [item.name]
+      }),
+      overscan: 5
+    });
+  }
+}
+\end{lstlisting}
+
+This UI Extension API enables rich, performant user interfaces while maintaining the security and isolation benefits of Symphony's out-of-process extension architecture.

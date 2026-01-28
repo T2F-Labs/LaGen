@@ -1,0 +1,45 @@
+\section*{ADR-008: Hybrid Database Strategy}
+\addcontentsline{toc}{section}{ADR-008: Hybrid Database Strategy}
+
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+\item[\textbf{Status}] Accepted
+\item[\textbf{Date}] May 2024
+\item[\textbf{Authors}] Symphony Data Team
+\end{description}
+
+\subsection*{Summary}
+
+We adopted a hybrid database approach combining SQLite for structured metadata and content-addressable storage for artifacts, rather than a single database solution. This enables both relational queries and efficient content deduplication.
+
+\subsection*{Context}
+
+Symphony's data requirements include:
+\begin{itemize}
+\item Structured metadata for extensions, workflows, and relationships
+\item Large artifact storage with deduplication
+\item Fast search and retrieval capabilities
+\item Version control and lineage tracking
+\item Cross-platform embedded deployment
+\end{itemize}
+
+\subsection*{Decision}
+
+We implemented a hybrid approach with:
+\begin{itemize}
+\item SQLite for structured metadata, relationships, and indexes
+\item Content-addressable storage for artifacts with SHA-256 hashing
+\item Tantivy search engine for full-text search capabilities
+\item Automatic data migration and consistency checking
+\end{itemize}
+
+\subsection*{Rationale}
+
+This hybrid approach optimizes for different data access patterns while maintaining consistency and enabling efficient storage utilization through deduplication.
+
+\subsection*{Success Criteria}
+
+\begin{itemize}
+\item Query performance under 10ms for metadata (Achieved)
+\item Storage deduplication ratio >50\% (Achieved: 70\%)
+\item Search response time under 100ms (Achieved)
+\end{itemize}

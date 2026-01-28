@@ -1,0 +1,44 @@
+\section*{ADR-004: Extension Execution Models}
+\addcontentsline{toc}{section}{ADR-004: Extension Execution Models}
+
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+\item[\textbf{Status}] Accepted
+\item[\textbf{Date}] April 2024
+\item[\textbf{Authors}] Symphony Extension Team
+\end{description}
+
+\subsection*{Summary}
+
+We established distinct execution models for different extension types: in-process execution for infrastructure extensions (The Pit) and out-of-process execution with IPC communication for user-facing extensions (The Grand Stage). This decision defines how extensions interact with Symphony's core and each other.
+
+\subsection*{Context}
+
+Symphony's extension system must support diverse requirements:
+\begin{itemize}
+\item Infrastructure extensions requiring microsecond-level performance
+\item Community extensions needing safety and isolation
+\item AI model integration with varying resource requirements
+\item UI extensions with different security and performance needs
+\end{itemize}
+
+\subsection*{Decision}
+
+We implemented two execution models:
+
+\subsubsection*{In-Process Execution (The Pit)}
+Reserved for five critical infrastructure extensions running within the Conductor process with direct memory access and function calls.
+
+\subsubsection*{Out-of-Process Execution (The Grand Stage)}
+Used for all community-developed extensions running in isolated processes with IPC-based communication through the Orchestra Kit.
+
+\subsection*{Rationale}
+
+This dual approach balances performance requirements for infrastructure with safety requirements for community extensions, enabling both microsecond-level operations and secure extensibility.
+
+\subsection*{Success Criteria}
+
+\begin{itemize}
+\item Infrastructure operations under 100 microseconds (Achieved)
+\item Zero system crashes from extension failures (Achieved)
+\item Support for 100+ concurrent extensions (Achieved)
+\end{itemize}
