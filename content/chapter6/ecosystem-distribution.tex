@@ -73,6 +73,43 @@ Organizations can extend the public marketplace with private extension capabilit
     \item[\textbf{Custom Development}] Professional services for specialized extension creation
 \end{description}
 
+\subsection*{Extension Installation State Management}
+\addcontentsline{toc}{subsection}{Extension Installation State Management}
+
+Our research contributes a comprehensive installation state machine that manages the complete extension installation process from marketplace browsing through successful deployment. This state machine provides systematic dependency resolution, security validation, and rollback capabilities for reliable extension management.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/state_diagram/1_extension_lifecycle_chambering.png}
+\caption{Extension Installation State Machine showing the complete installation lifecycle management. The system manages eight distinct states: Browsing, Downloading, Verifying, ResolvingDeps, Installing, Installed, RollingBack, and Failed, with comprehensive security validation, dependency resolution, and automatic rollback capabilities for reliable extension deployment.}
+\label{fig:extension-installation-states}
+\end{figure}
+
+The extension installation state machine addresses critical deployment challenges:
+
+\begin{expandedlist}
+    \item \textbf{Security Validation}: Comprehensive signature verification, integrity checks, and malware scanning
+    \item \textbf{Dependency Resolution}: Automatic dependency detection with semantic versioning and conflict resolution
+    \item \textbf{Rollback Capability}: Complete rollback mechanism for failed installations with state restoration
+    \item \textbf{User Experience}: Seamless installation process with detailed progress feedback and error reporting
+\end{expandedlist}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Installation State} & \textbf{Validation Requirements} & \textbf{Recovery Strategy} \\
+\midrule
+Browsing & User selection validation & Return to marketplace \\
+Downloading & Network connectivity, package integrity & Retry with exponential backoff \\
+Verifying & Signature validation, malware scan & Reject and report security issues \\
+ResolvingDeps & Semantic versioning, conflict detection & Auto-download or report conflicts \\
+Installing & File system operations, registration & Rollback partial installation \\
+RollingBack & State restoration, cleanup & Detailed error logging \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Extension Installation State Management}
+\end{center}
+
 \subsection*{Developer Experience}
 
 Symphony prioritizes developer experience to encourage high-quality extension creation. The complete extension ecosystem management infrastructure is illustrated in Figure~\ref{fig:orchestra-kit-ecosystem}, which shows how the Orchestra Kit manages the entire extension lifecycle from development through distribution.

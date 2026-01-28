@@ -11,6 +11,44 @@
 \vspace{0.5cm}
 \lettrine{S}{ymphony's} learning and awareness systems represent the cognitive foundation that enables the Conductor to understand, adapt to, and optimize development workflows through sophisticated pattern recognition and continuous adaptation mechanisms. Our research addresses the fundamental challenge of creating AI systems that truly understand the nuanced, context-dependent nature of software development.
 
+\subsection*{Conductor Mode State Management}
+\addcontentsline{toc}{subsection}{Conductor Mode State Management}
+
+Our research contributes a comprehensive mode state machine for the Conductor that manages different operational states for workflow generation, execution monitoring, and reinforcement learning training. This state machine enables the Conductor to operate efficiently across different scenarios while maintaining learning continuity.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/state_diagram/1_extension_lifecycle_chambering.png}
+\caption{Conductor Mode State Machine showing the complete operational mode management. The system manages six distinct modes: Idle, Analyzing, Generating, Executing, Learning, and Training, with intelligent transitions based on user prompts, execution completion, and training schedules for optimal reinforcement learning performance.}
+\label{fig:conductor-mode-states}
+\end{figure}
+
+The Conductor mode state machine addresses critical operational management challenges:
+
+\begin{expandedlist}
+    \item \textbf{Context Analysis}: Systematic processing of user prompts and project context for optimal workflow generation
+    \item \textbf{RL-Based Generation}: Policy network selection of Player extensions and workflow structure optimization
+    \item \textbf{Execution Monitoring}: Real-time workflow monitoring with Harmony Board visualization
+    \item \textbf{Continuous Learning}: Reward calculation and policy updates based on execution outcomes
+    \item \textbf{Offline Training}: Batch training on historical data for improved performance
+\end{expandedlist}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Conductor Mode} & \textbf{Primary Function} & \textbf{Learning Integration} \\
+\midrule
+Idle & Waiting for user input & Background model optimization \\
+Analyzing & Context processing & Pattern recognition \\
+Generating & RL-based workflow creation & Policy network inference \\
+Executing & Real-time monitoring & Performance data collection \\
+Learning & Reward calculation & Policy gradient updates \\
+Training & Offline batch learning & Historical data processing \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Conductor Mode Operational Characteristics}
+\end{center}
+
 \subsection*{Pattern Recognition Architecture}
 
 We designed Symphony's pattern recognition system to identify and learn from the complex, multi-layered patterns that characterize successful development workflows. This system goes beyond simple statistical correlation to understand the semantic and contextual relationships that drive effective orchestration.

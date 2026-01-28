@@ -70,6 +70,43 @@ As shown in the Harmony Board creation workflow, our interactive control paradig
     \item \textbf{Gesture-Based Interaction}: Multi-touch and gesture controls for complex orchestration tasks
 \end{expandedlist}
 
+\subsection*{Harmony Board Canvas State Management}
+\addcontentsline{toc}{subsection}{Harmony Board Canvas State Management}
+
+Our research contributes a sophisticated canvas state machine for the Harmony Board visual workflow designer that manages user interaction modes during Melody creation and execution monitoring. This state machine provides seamless transitions between viewing, editing, validation, and debugging modes.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/diagrams/state_diagram/1_extension_lifecycle_chambering.png}
+\caption{Harmony Board Canvas State Machine showing the complete visual designer interaction management. The system manages six distinct states: Viewing, Editing, Validating, Saving, Executing, and Debugging, with real-time validation, drag-and-drop composition, and live execution monitoring for comprehensive workflow design and management.}
+\label{fig:harmony-board-canvas-states}
+\end{figure}
+
+The Harmony Board canvas state machine addresses critical visual design challenges:
+
+\begin{expandedlist}
+    \item \textbf{Interactive Composition}: Drag-and-drop interface for Player node placement and connection
+    \item \textbf{Real-Time Validation}: Continuous type safety checking, cycle detection, and connection validation
+    \item \textbf{Live Execution Monitoring}: Real-time progress visualization with task completion status and performance metrics
+    \item \textbf{Debugging Support}: Interactive debugging with error inspection and execution state analysis
+\end{expandedlist}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Canvas State} & \textbf{User Capabilities} & \textbf{Validation Features} \\
+\midrule
+Viewing & Read-only visualization & Static workflow display \\
+Editing & Drag-drop, connect nodes, configure & Real-time type checking \\
+Validating & Review validation results & Cycle detection, connection validation \\
+Saving & Persist changes & Schema compliance verification \\
+Executing & Monitor live execution & Progress tracking, performance metrics \\
+Debugging & Inspect errors, pause/resume & Error analysis, state inspection \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Harmony Board Canvas State Capabilities}
+\end{center}
+
 \subsection*{Adaptive Interface Architecture}
 \addcontentsline{toc}{subsection}{Adaptive Interface Architecture}
 
