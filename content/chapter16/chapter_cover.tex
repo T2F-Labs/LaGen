@@ -1,32 +1,44 @@
-% ========== CHAPTER 16 COVER: MULTI-AGENT COLLABORATION ==========
+% ========== CHAPTER 16 COVER: HYBRID DATABASE ARCHITECTURE ==========
 % Creative and elegant chapter introduction with sophisticated visual elements
 % Following the established 4-element pattern
-% Requirements: Academic research focus on multi-agent systems
+% Requirements: Academic research focus on database architecture
 
 \vspace{2cm}
 
-% 1. BIG CHAPTER NUMBER in content-reflective shape (multi-agent network)
+% 1. BIG CHAPTER NUMBER in content-reflective shape (database cylinder pattern)
 \begin{center}
 \begin{tikzpicture}
-    % Multi-agent collaboration network
-    % Central coordination hub
-    \fill[brandPrimary!15] (0,0) circle (1.2cm);
-    \draw[brandPrimary!40, line width=2pt] (0,0) circle (1.2cm);
-    % Specialized agent nodes around the perimeter
-    \foreach \angle/\label in {0/E, 60/F, 120/P, 180/C, 240/V, 300/S} {
-        \fill[brandSecondary!20] ({2.5*cos(\angle)}, {2.5*sin(\angle)}) circle (0.5cm);
-        \draw[brandSecondary!40, line width=1.5pt] ({2.5*cos(\angle)}, {2.5*sin(\angle)}) circle (0.5cm);
-        % Agent labels (E=Enhancer, F=Feature, P=Planner, C=Coordinator, V=Visualizer, S=Editor)
-        \node[brandSecondary, font=\small\bfseries] at ({2.5*cos(\angle)}, {2.5*sin(\angle)}) {\label};
-        % Communication lines to central hub
-        \draw[brandAccent!60, line width=1.5pt, <->] ({0.8*cos(\angle)}, {0.8*sin(\angle)}) -- ({2*cos(\angle)}, {2*sin(\angle)});
+    % Database architecture pattern with hybrid storage layers
+    % Primary database cylinder (left)
+    \fill[brandPrimary!15] (-2,-1.5) ellipse (0.8 and 0.3);
+    \fill[brandPrimary!15] (-2.8,-1.5) rectangle (-1.2,1.5);
+    \fill[brandPrimary!15] (-2,1.5) ellipse (0.8 and 0.3);
+    \draw[brandPrimary!40, line width=2pt] (-2,-1.5) ellipse (0.8 and 0.3);
+    \draw[brandPrimary!40, line width=2pt] (-2.8,-1.5) -- (-2.8,1.5);
+    \draw[brandPrimary!40, line width=2pt] (-1.2,-1.5) -- (-1.2,1.5);
+    \draw[brandPrimary!40, line width=2pt] (-2,1.5) ellipse (0.8 and 0.3);
+    
+    % Cache layer cylinder (right)
+    \fill[brandSecondary!15] (2,-1.5) ellipse (0.8 and 0.3);
+    \fill[brandSecondary!15] (1.2,-1.5) rectangle (2.8,1.5);
+    \fill[brandSecondary!15] (2,1.5) ellipse (0.8 and 0.3);
+    \draw[brandSecondary!40, line width=2pt] (2,-1.5) ellipse (0.8 and 0.3);
+    \draw[brandSecondary!40, line width=2pt] (1.2,-1.5) -- (1.2,1.5);
+    \draw[brandSecondary!40, line width=2pt] (2.8,-1.5) -- (2.8,1.5);
+    \draw[brandSecondary!40, line width=2pt] (2,1.5) ellipse (0.8 and 0.3);
+    
+    % Hybrid connection bridge
+    \draw[brandAccent!60, line width=3pt, <->] (-1.2,0) -- (1.2,0);
+    \node[brandAccent, font=\small\bfseries] at (0,0.3) {HYBRID};
+    
+    % Data flow indicators
+    \foreach \y in {-0.8, -0.4, 0.4, 0.8} {
+        \fill[brandPrimary!30] (-2,\y) circle (0.08);
+        \fill[brandSecondary!30] (2,\y) circle (0.08);
     }
-    % Inter-agent collaboration lines
-    \draw[brandPrimary!30, dashed, line width=1pt] ({2.5*cos(0)}, {2.5*sin(0)}) -- ({2.5*cos(60)}, {2.5*sin(60)});
-    \draw[brandPrimary!30, dashed, line width=1pt] ({2.5*cos(120)}, {2.5*sin(120)}) -- ({2.5*cos(180)}, {2.5*sin(180)});
-    \draw[brandPrimary!30, dashed, line width=1pt] ({2.5*cos(240)}, {2.5*sin(240)}) -- ({2.5*cos(300)}, {2.5*sin(300)});
+    
     % Chapter number
-    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {16};
+    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,-0.3) {17};
 \end{tikzpicture}
 \end{center}
 
@@ -34,9 +46,9 @@
 
 % 2. CHAPTER TOPIC with elegant typography
 \begin{center}
-{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{Multi-Agent}}}\\
+{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{Hybrid Database}}}\\
 \vspace{0.3cm}
-{\fontsize{24}{28}\selectfont\textcolor{brandTertiary}{\textit{Collaboration}}}
+{\fontsize{24}{28}\selectfont\textcolor{brandTertiary}{\textit{Architecture}}}
 \end{center}
 
 \vspace{0.5cm}
@@ -45,9 +57,9 @@
 \begin{center}
 \textcolor{brandAccent}{
 \rule{2cm}{0.8pt} \quad
-\raisebox{-0.2ex}{\Large$\star$} \quad
+\raisebox{-0.2ex}{\Large$\circ$} \quad
 \rule{4cm}{0.8pt} \quad
-\raisebox{-0.2ex}{\Large$\star$} \quad
+\raisebox{-0.2ex}{\Large$\circ$} \quad
 \rule{2cm}{0.8pt}
 }
 \end{center}
@@ -75,12 +87,12 @@
 \vspace{0.8cm}
 
 \begin{compactlist}
-    \item {\large Multi-agent architecture design principles for AI-first development environments}
-    \item {\large Specialized agent roles and responsibilities in software development orchestration}
-    \item {\large Inter-agent communication protocols and coordination mechanisms}
-    \item {\large Agent collaboration patterns for complex development workflows}
-    \item {\large Performance evaluation and optimization of multi-agent systems}
-    \item {\large Research contributions to distributed AI orchestration architectures}
+    \item {\large Hybrid database strategy addressing dual performance requirements of AI systems}
+    \item {\large Entity relationship design for complex AI orchestration data modeling}
+    \item {\large Content-addressable artifact store architecture with quality scoring}
+    \item {\large Performance and scalability analysis of hybrid storage approaches}
+    \item {\large Research contributions to AI system data architecture design}
+    \item {\large Empirical validation of hybrid approaches versus monolithic alternatives}
 \end{compactlist}
 \end{tcolorbox}
 

@@ -1,69 +1,71 @@
-% ========== CHAPTER 19 COVER: FRONTEND IMPLEMENTATION ==========
+% ========== CHAPTER 19 COVER: UI CONSTRUCTION FOR THE TRIO ==========
 % Creative and elegant chapter introduction with sophisticated visual elements
 % Following the established 4-element pattern
-% Requirements: Academic research focus on frontend architecture
+% Requirements: Academic research focus on AI orchestration UI
 
 \vspace{2cm}
 
-% 1. BIG CHAPTER NUMBER in content-reflective shape (component tree for React)
+% 1. BIG CHAPTER NUMBER in content-reflective shape (trio interface pattern)
 \begin{center}
 \begin{tikzpicture}
-    % React component tree structure
-    % Root component (top)
-    \fill[brandPrimary!15] (0,2) rectangle (0.8,2.8);
-    \draw[brandPrimary!40, line width=2pt] (0,2) rectangle (0.8,2.8);
-    \node[brandPrimary, font=\tiny\bfseries] at (0.4,2.4) {APP};
+    % The Trio interface pattern - three interconnected modes
+    % IDE Mode (left triangle)
+    \fill[brandPrimary!15] (-3,0) -- (-2,-1.5) -- (-2,1.5) -- cycle;
+    \draw[brandPrimary!40, line width=2pt] (-3,0) -- (-2,-1.5) -- (-2,1.5) -- cycle;
+    \node[brandPrimary, font=\small\bfseries, rotate=90] at (-2.3,0) {IDE};
     
-    % Second level components
-    \foreach \x/\label in {-2/UI, -0.6/STATE, 0.6/COMP, 2/PERF} {
-        \fill[brandSecondary!15] (\x,0.8) rectangle (\x+0.6,1.4);
-        \draw[brandSecondary!40, line width=1.5pt] (\x,0.8) rectangle (\x+0.6,1.4);
-        \node[brandSecondary, font=\tiny\bfseries] at (\x+0.3,1.1) {\label};
-        % Connection lines from root
-        \draw[brandAccent!50, line width=1pt] (0.4,2) -- (\x+0.3,1.4);
+    % Maestro Mode (top triangle)
+    \fill[brandSecondary!15] (0,2.5) -- (-1.5,1) -- (1.5,1) -- cycle;
+    \draw[brandSecondary!40, line width=2pt] (0,2.5) -- (-1.5,1) -- (1.5,1) -- cycle;
+    \node[brandSecondary, font=\small\bfseries] at (0,1.5) {MAESTRO};
+    
+    % Harmony Board Mode (right triangle)
+    \fill[brandTertiary!15] (3,0) -- (2,-1.5) -- (2,1.5) -- cycle;
+    \draw[brandTertiary!40, line width=2pt] (3,0) -- (2,-1.5) -- (2,1.5) -- cycle;
+    \node[brandTertiary, font=\small\bfseries, rotate=-90] at (2.3,0) {HARMONY};
+    
+    % Central connection hub (The Trio core)
+    \fill[brandAccent!20] (0,0) circle (0.8cm);
+    \draw[brandAccent!60, line width=2pt] (0,0) circle (0.8cm);
+    
+    % Mode transition arrows
+    \draw[brandAccent!60, line width=2pt, <->] (-2,0) -- (-0.8,0);
+    \draw[brandAccent!60, line width=2pt, <->] (0.4,0.7) -- (-0.4,0.7);
+    \draw[brandAccent!60, line width=2pt, <->] (2,0) -- (0.8,0);
+    
+    % Interface elements indicators
+    \foreach \angle in {0, 120, 240} {
+        \fill[brandAccent] ({0.6*cos(\angle)}, {0.6*sin(\angle)}) circle (0.08);
     }
     
-    % Third level components (leaf nodes)
-    \foreach \x in {-2.5, -1.5, -1, -0.2, 0.2, 1, 1.5, 2.5} {
-        \fill[brandTertiary!15] (\x,-0.5) rectangle (\x+0.4,0.1);
-        \draw[brandTertiary!40, line width=1pt] (\x,-0.5) rectangle (\x+0.4,0.1);
-        % Connection lines to parent components
-        \pgfmathsetmacro{\parent}{(\x < -0.8) ? -1.7 : ((\x < 0.4) ? -0.3 : ((\x < 1.2) ? 0.9 : 2.3))}
-        \draw[brandAccent!30, line width=0.8pt] (\parent,0.8) -- (\x+0.2,0.1);
-    }
-    
-    % Virtual DOM representation (dashed overlay)
-    \draw[brandPrimary!20, dashed, line width=1.5pt] (-3,-1) rectangle (3,3.2);
-    \node[brandPrimary!40, font=\small] at (-2.5,3) {Virtual DOM};
-    
-    % Chapter number (centered)
-    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0.8) {19};
+    % Chapter number
+    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {20};
 \end{tikzpicture}
 \end{center}
 
-\vspace{1cm}
+% \vspace{1cm}
 
 % 2. CHAPTER TOPIC with elegant typography
 \begin{center}
-{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{Frontend}}}\\
+{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{UI Construction}}}\\
 \vspace{0.3cm}
-{\fontsize{24}{28}\selectfont\textcolor{brandTertiary}{\textit{Implementation}}}
+{\fontsize{20}{24}\selectfont\textcolor{brandTertiary}{\textit{for The Trio}}}
 \end{center}
 
-\vspace{0.5cm}
+% \vspace{0.5cm}
 
 % 3. NICE SEPARATOR with decorative elements
 \begin{center}
 \textcolor{brandAccent}{
 \rule{2cm}{0.8pt} \quad
-\raisebox{-0.2ex}{\Large$\square$} \quad
+\raisebox{-0.2ex}{\Large$\triangle$} \quad
 \rule{4cm}{0.8pt} \quad
-\raisebox{-0.2ex}{\Large$\square$} \quad
+\raisebox{-0.2ex}{\Large$\triangle$} \quad
 \rule{2cm}{0.8pt}
 }
 \end{center}
 
-\vspace{2cm}
+% \vspace{2cm}
 
 % 4. "THIS CHAPTER EXPLORES" content box
 \begin{tcolorbox}[
@@ -86,12 +88,12 @@
 \vspace{0.8cm}
 
 \begin{compactlist}
-    \item {\large React architecture and component design for AI-first development environments}
-    \item {\large Core UI component implementation and performance optimization}
-    \item {\large Styling system and theming architecture for professional IDEs}
-    \item {\large Tauri integration and native API communication patterns}
-    \item {\large Accessibility considerations and responsive design principles}
-    \item {\large Research contributions to AI-assisted development interface design}
+    \item {\large The Trio architecture: Conductor, Melodies, and Harmony Board integration}
+    \item {\large Conductor UI for intelligent decision visualization and control}
+    \item {\large Melody Designer for visual workflow composition and management}
+    \item {\large Harmony Board for real-time orchestration monitoring and debugging}
+    \item {\large Unified user experience design for AI orchestration interfaces}
+    \item {\large Research contributions to human-AI collaboration interface design}
 \end{compactlist}
 \end{tcolorbox}
 

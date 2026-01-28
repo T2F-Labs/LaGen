@@ -1,28 +1,30 @@
-% ========== CHAPTER 11 COVER: UFE — USER-FIRST EXTENSION ==========
+% ========== CHAPTER 11 COVER: THE GRAND STAGE & THE PIT ==========
 % Creative and elegant chapter introduction with sophisticated visual elements
 % Following the established 4-element pattern
 % Requirements: 7.1, 7.2, 7.3, 7.4, 7.5
 
 \vspace{2cm}
 
-% 1. BIG CHAPTER NUMBER in content-reflective shape (isolated containers for out-of-process)
+% 1. BIG CHAPTER NUMBER in content-reflective shape (theater stage for execution environments)
 \begin{center}
 \begin{tikzpicture}
-    % Container/isolation pattern for out-of-process extensions
-    \fill[brandPrimary!15] (-2,-1.5) rectangle (2,1.5);
-    \draw[brandPrimary!40, line width=2pt] (-2,-1.5) rectangle (2,1.5);
-    % Smaller isolated containers
-    \fill[brandPrimary!10] (-3,-0.8) rectangle (-2.2,0.8);
-    \fill[brandPrimary!10] (2.2,-0.8) rectangle (3,0.8);
-    \fill[brandPrimary!10] (-0.8,-2.5) rectangle (0.8,-1.7);
-    \fill[brandPrimary!10] (-0.8,1.7) rectangle (0.8,2.5);
-    % Isolation boundaries
-    \draw[brandPrimary!30, line width=1pt, dashed] (-3,-0.8) rectangle (-2.2,0.8);
-    \draw[brandPrimary!30, line width=1pt, dashed] (2.2,-0.8) rectangle (3,0.8);
-    \draw[brandPrimary!30, line width=1pt, dashed] (-0.8,-2.5) rectangle (0.8,-1.7);
-    \draw[brandPrimary!30, line width=1pt, dashed] (-0.8,1.7) rectangle (0.8,2.5);
+    % Theater stage pattern with spotlight and orchestra pit
+    % Main stage (Grand Stage)
+    \fill[brandPrimary!15] (-2.5,0.5) rectangle (2.5,2);
+    \draw[brandPrimary!40, line width=2pt] (-2.5,0.5) rectangle (2.5,2);
+    % Orchestra pit (The Pit)
+    \fill[brandPrimary!20] (-2,-0.5) rectangle (2,0.5);
+    \draw[brandPrimary!50, line width=2pt] (-2,-0.5) rectangle (2,0.5);
+    % Spotlight beams
+    \draw[brandPrimary!30, line width=3pt] (-1.5,2.5) -- (-1,2);
+    \draw[brandPrimary!30, line width=3pt] (0,2.5) -- (0,2);
+    \draw[brandPrimary!30, line width=3pt] (1.5,2.5) -- (1,2);
+    % Performance indicators
+    \fill[brandAccent] (-1.8,1.2) circle (0.1cm);
+    \fill[brandAccent] (0,1.2) circle (0.1cm);
+    \fill[brandAccent] (1.8,1.2) circle (0.1cm);
     % Chapter number
-    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {11};
+    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,1.25) {12};
 \end{tikzpicture}
 \end{center}
 
@@ -30,7 +32,7 @@
 
 % 2. CHAPTER TOPIC with elegant typography
 \begin{center}
-{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{UFE — User-First Extension}}}
+{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{The Grand Stage \& The Pit}}}
 \end{center}
 
 % \vspace{0.5cm}
@@ -69,12 +71,12 @@
 \vspace{0.8cm}
 
 \begin{itemize}[leftmargin=1.2cm, itemsep=0.4cm, label={\textcolor{brandAccent}{$\triangleright$}}]
-    \item {\large User-First Extension (UFE) architecture for out-of-process user extensions with safety through isolation}
-    \item {\large Capability-based security model with fine-grained permissions and resource quotas}
-    \item {\large Developer workflow and tooling including the carets CLI for extension development lifecycle}
-    \item {\large Out-of-process implementation strategies for portability, cross-platform compatibility, and performance}
-    \item {\large Sandboxing techniques and isolation mechanisms for secure extension execution}
-    \item {\large Research contributions to extensible development environment security and developer experience}
+    \item {\large The Grand Stage as an orchestration surface for User-Faced Extensions with multi-process coordination}
+    \item {\large The Pit's five core extensions providing ultra-low-latency execution in Rust-only implementation}
+    \item {\large Execution strategy selection criteria for choosing between Pit and Grand Stage architectures}
+    \item {\large Performance characteristics and safety guarantees in unsafe environments}
+    \item {\large Scalability and isolation benefits of dual execution environments}
+    \item {\large Research contributions to high-performance extensible system architectures}
 \end{itemize}
 \end{tcolorbox}
 

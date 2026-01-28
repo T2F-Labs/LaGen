@@ -1,17 +1,18 @@
-% Chapter 21 Cover: Testing & Quality Assurance
-% Content-reflective shape: Testing pyramid with quality gates
+% Chapter 21 Cover: Build, Deployment & Distribution
+% Content-reflective shape: Deployment pipeline with distribution nodes
 
 \begin{center}
 \begin{tikzpicture}
-    % Content-reflective background: Testing pyramid shape
-    \fill[brandPrimary!15] (-2.5,-1.5) -- (2.5,-1.5) -- (1.5,1.5) -- (-1.5,1.5) -- cycle;
+    % Content-reflective background: Pipeline flow pattern
+    \fill[brandPrimary!15] (-3,-1) -- (3,-1) -- (2.5,1) -- (-2.5,1) -- cycle;
     
-    % Testing layers representation
-    \draw[brandPrimary!30, line width=2pt] (-2,0.5) -- (2,0.5);
-    \draw[brandPrimary!30, line width=2pt] (-1.5,1) -- (1.5,1);
+    % Pipeline stages representation
+    \draw[brandPrimary!30, line width=2pt] (-2,-0.5) -- (-0.5,-0.5);
+    \draw[brandPrimary!30, line width=2pt] (0.5,-0.5) -- (2,-0.5);
+    \fill[brandPrimary!30] (-0.5,-0.7) rectangle (0.5,-0.3);
     
     % Large chapter number
-    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {21};
+    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {22};
 \end{tikzpicture}
 \end{center}
 
@@ -19,7 +20,7 @@
 
 % Chapter topic with elegant typography
 \begin{center}
-{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{Testing \& Quality Assurance}}}
+{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{Build, Deployment \& Distribution}}}
 \end{center}
 
 % \vspace{0.5cm}
@@ -58,12 +59,12 @@
 \vspace{0.8cm}
 
 \begin{itemize}[leftmargin=1.2cm, itemsep=0.4cm, label={\textcolor{brandAccent}{$\triangleright$}}]
-    \item {\large Complete testing strategies for AI-first development environments}
-    \item {\large Novel approaches to testing microkernel architectures and extension systems}
-    \item {\large Quality assurance methodologies for multi-agent AI workflows}
-    \item {\large Research contributions in testing AI orchestration and decision-making systems}
-    \item {\large Evaluation frameworks for measuring system reliability and performance}
-    \item {\large Integration of traditional software testing with AI-specific validation approaches}
+    \item {\large Advanced build systems for AI-first development environments}
+    \item {\large Research contributions in cross-platform deployment strategies}
+    \item {\large Novel approaches to packaging and distributing AI-enabled development tools}
+    \item {\large Continuous integration and deployment pipelines for intelligent systems}
+    \item {\large Release management strategies for systems with learning components}
+    \item {\large Evaluation of distribution effectiveness and user adoption patterns}
 \end{itemize}
 \end{tcolorbox}
 

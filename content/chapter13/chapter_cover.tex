@@ -1,29 +1,37 @@
-% ========== CHAPTER 13 COVER: SYSTEM ORCHESTRATION ==========
+% ========== CHAPTER 13 COVER: REINFORCEMENT LEARNING & PPO ==========
 % Creative and elegant chapter introduction with sophisticated visual elements
 % Following the established 4-element pattern
 % Requirements: 7.1, 7.2, 7.3, 7.4, 7.5
 
 \vspace{2cm}
 
-% 1. BIG CHAPTER NUMBER in content-reflective shape (conductor with orchestrated nodes)
+% 1. BIG CHAPTER NUMBER in content-reflective shape (neural network layers)
 \begin{center}
 \begin{tikzpicture}
-    % Central conductor node (orchestration hub)
-    \fill[brandPrimary!15] (0,0) circle (1.5cm);
-    \draw[brandPrimary!40, line width=2pt] (0,0) circle (1.5cm);
-    % Surrounding orchestrated nodes
-    \foreach \angle in {0, 60, 120, 180, 240, 300} {
-        \fill[brandPrimary!10] ({2.5*cos(\angle)}, {2.5*sin(\angle)}) circle (0.5cm);
-        \draw[brandPrimary!30, line width=1pt] ({2.5*cos(\angle)}, {2.5*sin(\angle)}) circle (0.5cm);
-        % Connection lines from conductor to nodes
-        \draw[brandAccent!50, line width=1.5pt, ->] ({0.7*cos(\angle)}, {0.7*sin(\angle)}) -- ({2*cos(\angle)}, {2*sin(\angle)});
+    % Neural network pattern with layered nodes
+    % Input layer (left)
+    \foreach \i in {1,2,3} {
+        \fill[brandPrimary!10] (-2.5, {1.5-\i}) circle (0.4cm);
+        \draw[brandPrimary!30, line width=1pt] (-2.5, {1.5-\i}) circle (0.4cm);
     }
-    % Interconnection arcs between nodes (showing coordination)
-    \draw[brandPrimary!20, dashed, line width=1pt] ({2.5*cos(0)}, {2.5*sin(0)}) -- ({2.5*cos(60)}, {2.5*sin(60)});
-    \draw[brandPrimary!20, dashed, line width=1pt] ({2.5*cos(120)}, {2.5*sin(120)}) -- ({2.5*cos(180)}, {2.5*sin(180)});
-    \draw[brandPrimary!20, dashed, line width=1pt] ({2.5*cos(240)}, {2.5*sin(240)}) -- ({2.5*cos(300)}, {2.5*sin(300)});
+    % Hidden layer (center) - larger, contains chapter number
+    \fill[brandPrimary!15] (0,-1.5) rectangle (0,1.5);
+    \draw[brandPrimary!40, line width=2pt] (-1.2,-1.5) rectangle (1.2,1.5);
+    % Output layer (right)
+    \foreach \i in {1,2,3} {
+        \fill[brandPrimary!10] (2.5, {1.5-\i}) circle (0.4cm);
+        \draw[brandPrimary!30, line width=1pt] (2.5, {1.5-\i}) circle (0.4cm);
+    }
+    % Connections showing learning flow
+    \foreach \i in {1,2,3} {
+        \draw[brandAccent!40, line width=1.5pt, ->] (-2.1, {1.5-\i}) -- (-1.2, 0);
+        \draw[brandAccent!40, line width=1.5pt, ->] (1.2, 0) -- (2.1, {1.5-\i});
+    }
+    % Feedback loop (RL characteristic)
+    \draw[brandPrimary!50, line width=2pt, ->, dashed] (2.5, -0.5) .. controls (3, -2) and (-3, -2) .. (-2.5, -0.5);
+    \node[brandPrimary!70, font=\small\bfseries] at (0, -2.3) {Feedback};
     % Chapter number
-    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {13};
+    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {14};
 \end{tikzpicture}
 \end{center}
 
@@ -31,7 +39,7 @@
 
 % 2. CHAPTER TOPIC with elegant typography
 \begin{center}
-{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{System Orchestration}}}
+{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{Reinforcement Learning \& PPO}}}
 \end{center}
 
 % \vspace{0.5cm}
@@ -70,12 +78,12 @@
 \vspace{0.8cm}
 
 \begin{itemize}[leftmargin=1.2cm, itemsep=0.4cm, label={\textcolor{brandAccent}{$\triangleright$}}]
-    \item {\large Orchestration architecture and intelligent coordination principles for multi-component system management}
-    \item {\large The Conductor's reinforcement learning decision-making system for dynamic resource allocation}
-    \item {\large Melody workflows and visual composition through the Harmony Board interface}
-    \item {\large DAG execution engine with parallel processing capabilities and intelligent checkpointing}
-    \item {\large Resource arbitration strategies and conflict resolution mechanisms for concurrent operations}
-    \item {\large Real-time workflow visualization, debugging capabilities, and performance monitoring tools}
+    \item {\large Proximal Policy Optimization (PPO) algorithm and policy gradient methods for decision-making}
+    \item {\large Reward shaping strategies for code generation quality, correctness, and performance metrics}
+    \item {\large Training infrastructure including dataset generation, evaluation pipelines, and model optimization}
+    \item {\large Learning and awareness systems for pattern recognition and behavioral adaptation}
+    \item {\large Continuous learning mechanisms and online adaptation during development workflows}
+    \item {\large Mathematical formulations of PPO, implementation details, and convergence properties}
 \end{itemize}
 \end{tcolorbox}
 

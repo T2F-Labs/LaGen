@@ -1,26 +1,28 @@
-% ========== CHAPTER 10 COVER: IaE — INTELLIGENCE-AS-EXTENSION ==========
+% ========== CHAPTER 10 COVER: UFE — USER-FIRST EXTENSION ==========
 % Creative and elegant chapter introduction with sophisticated visual elements
 % Following the established 4-element pattern
 % Requirements: 7.1, 7.2, 7.3, 7.4, 7.5
 
 \vspace{2cm}
 
-% 1. BIG CHAPTER NUMBER in content-reflective shape (modular blocks for extension architecture)
+% 1. BIG CHAPTER NUMBER in content-reflective shape (isolated containers for out-of-process)
 \begin{center}
 \begin{tikzpicture}
-    % Modular extension blocks pattern
-    \fill[brandPrimary!15] (-1.5,-1.5) rectangle (1.5,1.5);
-    \fill[brandPrimary!10] (-2.5,-0.5) rectangle (-1.5,0.5);
-    \fill[brandPrimary!10] (1.5,-0.5) rectangle (2.5,0.5);
-    \fill[brandPrimary!10] (-0.5,-2.5) rectangle (0.5,-1.5);
-    \fill[brandPrimary!10] (-0.5,1.5) rectangle (0.5,2.5);
-    % Connection lines showing modularity
-    \draw[brandPrimary!30, line width=2pt] (-1.5,0) -- (-2.5,0);
-    \draw[brandPrimary!30, line width=2pt] (1.5,0) -- (2.5,0);
-    \draw[brandPrimary!30, line width=2pt] (0,-1.5) -- (0,-2.5);
-    \draw[brandPrimary!30, line width=2pt] (0,1.5) -- (0,2.5);
+    % Container/isolation pattern for out-of-process extensions
+    \fill[brandPrimary!15] (-2,-1.5) rectangle (2,1.5);
+    \draw[brandPrimary!40, line width=2pt] (-2,-1.5) rectangle (2,1.5);
+    % Smaller isolated containers
+    \fill[brandPrimary!10] (-3,-0.8) rectangle (-2.2,0.8);
+    \fill[brandPrimary!10] (2.2,-0.8) rectangle (3,0.8);
+    \fill[brandPrimary!10] (-0.8,-2.5) rectangle (0.8,-1.7);
+    \fill[brandPrimary!10] (-0.8,1.7) rectangle (0.8,2.5);
+    % Isolation boundaries
+    \draw[brandPrimary!30, line width=1pt, dashed] (-3,-0.8) rectangle (-2.2,0.8);
+    \draw[brandPrimary!30, line width=1pt, dashed] (2.2,-0.8) rectangle (3,0.8);
+    \draw[brandPrimary!30, line width=1pt, dashed] (-0.8,-2.5) rectangle (0.8,-1.7);
+    \draw[brandPrimary!30, line width=1pt, dashed] (-0.8,1.7) rectangle (0.8,2.5);
     % Chapter number
-    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {10};
+    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {11};
 \end{tikzpicture}
 \end{center}
 
@@ -28,7 +30,7 @@
 
 % 2. CHAPTER TOPIC with elegant typography
 \begin{center}
-{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{IaE — Intelligence-as-Extension}}}
+{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{UFE — User-First Extension}}}
 \end{center}
 
 % \vspace{0.5cm}
@@ -67,12 +69,12 @@
 \vspace{0.8cm}
 
 \begin{itemize}[leftmargin=1.2cm, itemsep=0.4cm, label={\textcolor{brandAccent}{$\triangleright$}}]
-    \item {\large The Intelligence-as-Extension (IaE) paradigm versus Built-in-Extension (BiE) approaches}
-    \item {\large Architectural decisions for treating AI as first-class extensions with modularity and replaceability benefits}
-    \item {\large The Conductor's implementation as a Python-based RL model integrated with Rust infrastructure extensions}
-    \item {\large Performance characteristics and trade-offs of cross-language AI orchestration architectures}
-    \item {\large AI model management strategies for loading, resource allocation, and multi-model coordination}
-    \item {\large Research contributions to extensible AI architectures in development environments}
+    \item {\large User-First Extension (UFE) architecture for out-of-process user extensions with safety through isolation}
+    \item {\large Capability-based security model with fine-grained permissions and resource quotas}
+    \item {\large Developer workflow and tooling including the carets CLI for extension development lifecycle}
+    \item {\large Out-of-process implementation strategies for portability, cross-platform compatibility, and performance}
+    \item {\large Sandboxing techniques and isolation mechanisms for secure extension execution}
+    \item {\large Research contributions to extensible development environment security and developer experience}
 \end{itemize}
 \end{tcolorbox}
 

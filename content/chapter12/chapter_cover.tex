@@ -1,30 +1,29 @@
-% ========== CHAPTER 12 COVER: THE GRAND STAGE & THE PIT ==========
+% ========== CHAPTER 12 COVER: SYSTEM ORCHESTRATION ==========
 % Creative and elegant chapter introduction with sophisticated visual elements
 % Following the established 4-element pattern
 % Requirements: 7.1, 7.2, 7.3, 7.4, 7.5
 
 \vspace{2cm}
 
-% 1. BIG CHAPTER NUMBER in content-reflective shape (theater stage for execution environments)
+% 1. BIG CHAPTER NUMBER in content-reflective shape (conductor with orchestrated nodes)
 \begin{center}
 \begin{tikzpicture}
-    % Theater stage pattern with spotlight and orchestra pit
-    % Main stage (Grand Stage)
-    \fill[brandPrimary!15] (-2.5,0.5) rectangle (2.5,2);
-    \draw[brandPrimary!40, line width=2pt] (-2.5,0.5) rectangle (2.5,2);
-    % Orchestra pit (The Pit)
-    \fill[brandPrimary!20] (-2,-0.5) rectangle (2,0.5);
-    \draw[brandPrimary!50, line width=2pt] (-2,-0.5) rectangle (2,0.5);
-    % Spotlight beams
-    \draw[brandPrimary!30, line width=3pt] (-1.5,2.5) -- (-1,2);
-    \draw[brandPrimary!30, line width=3pt] (0,2.5) -- (0,2);
-    \draw[brandPrimary!30, line width=3pt] (1.5,2.5) -- (1,2);
-    % Performance indicators
-    \fill[brandAccent] (-1.8,1.2) circle (0.1cm);
-    \fill[brandAccent] (0,1.2) circle (0.1cm);
-    \fill[brandAccent] (1.8,1.2) circle (0.1cm);
+    % Central conductor node (orchestration hub)
+    \fill[brandPrimary!15] (0,0) circle (1.5cm);
+    \draw[brandPrimary!40, line width=2pt] (0,0) circle (1.5cm);
+    % Surrounding orchestrated nodes
+    \foreach \angle in {0, 60, 120, 180, 240, 300} {
+        \fill[brandPrimary!10] ({2.5*cos(\angle)}, {2.5*sin(\angle)}) circle (0.5cm);
+        \draw[brandPrimary!30, line width=1pt] ({2.5*cos(\angle)}, {2.5*sin(\angle)}) circle (0.5cm);
+        % Connection lines from conductor to nodes
+        \draw[brandAccent!50, line width=1.5pt, ->] ({0.7*cos(\angle)}, {0.7*sin(\angle)}) -- ({2*cos(\angle)}, {2*sin(\angle)});
+    }
+    % Interconnection arcs between nodes (showing coordination)
+    \draw[brandPrimary!20, dashed, line width=1pt] ({2.5*cos(0)}, {2.5*sin(0)}) -- ({2.5*cos(60)}, {2.5*sin(60)});
+    \draw[brandPrimary!20, dashed, line width=1pt] ({2.5*cos(120)}, {2.5*sin(120)}) -- ({2.5*cos(180)}, {2.5*sin(180)});
+    \draw[brandPrimary!20, dashed, line width=1pt] ({2.5*cos(240)}, {2.5*sin(240)}) -- ({2.5*cos(300)}, {2.5*sin(300)});
     % Chapter number
-    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,1.25) {12};
+    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {13};
 \end{tikzpicture}
 \end{center}
 
@@ -32,7 +31,7 @@
 
 % 2. CHAPTER TOPIC with elegant typography
 \begin{center}
-{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{The Grand Stage \& The Pit}}}
+{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{System Orchestration}}}
 \end{center}
 
 % \vspace{0.5cm}
@@ -71,12 +70,12 @@
 \vspace{0.8cm}
 
 \begin{itemize}[leftmargin=1.2cm, itemsep=0.4cm, label={\textcolor{brandAccent}{$\triangleright$}}]
-    \item {\large The Grand Stage as an orchestration surface for User-Faced Extensions with multi-process coordination}
-    \item {\large The Pit's five core extensions providing ultra-low-latency execution in Rust-only implementation}
-    \item {\large Execution strategy selection criteria for choosing between Pit and Grand Stage architectures}
-    \item {\large Performance characteristics and safety guarantees in unsafe environments}
-    \item {\large Scalability and isolation benefits of dual execution environments}
-    \item {\large Research contributions to high-performance extensible system architectures}
+    \item {\large Orchestration architecture and intelligent coordination principles for multi-component system management}
+    \item {\large The Conductor's reinforcement learning decision-making system for dynamic resource allocation}
+    \item {\large Melody workflows and visual composition through the Harmony Board interface}
+    \item {\large DAG execution engine with parallel processing capabilities and intelligent checkpointing}
+    \item {\large Resource arbitration strategies and conflict resolution mechanisms for concurrent operations}
+    \item {\large Real-time workflow visualization, debugging capabilities, and performance monitoring tools}
 \end{itemize}
 \end{tcolorbox}
 

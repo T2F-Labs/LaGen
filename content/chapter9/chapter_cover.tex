@@ -1,26 +1,26 @@
-% ========== CHAPTER 9 COVER: AIDE & ADD CONCEPTS ==========
+% ========== CHAPTER 9 COVER: IaE — INTELLIGENCE-AS-EXTENSION ==========
 % Creative and elegant chapter introduction with sophisticated visual elements
 % Following the established 4-element pattern
 % Requirements: 7.1, 7.2, 7.3, 7.4, 7.5
 
 \vspace{2cm}
 
-% 1. BIG CHAPTER NUMBER in content-reflective shape (neural network nodes for AI concepts)
+% 1. BIG CHAPTER NUMBER in content-reflective shape (modular blocks for extension architecture)
 \begin{center}
 \begin{tikzpicture}
-    % Neural network node pattern for AI/ML concepts
-    \fill[brandPrimary!15] (0,0) circle (2cm);
-    \fill[brandPrimary!10] (-1.5,-1) circle (0.8cm);
-    \fill[brandPrimary!10] (1.5,-1) circle (0.8cm);
-    \fill[brandPrimary!10] (-1.5,1) circle (0.8cm);
-    \fill[brandPrimary!10] (1.5,1) circle (0.8cm);
-    % Connection lines
-    \draw[brandPrimary!30, line width=2pt] (0,0) -- (-1.5,-1);
-    \draw[brandPrimary!30, line width=2pt] (0,0) -- (1.5,-1);
-    \draw[brandPrimary!30, line width=2pt] (0,0) -- (-1.5,1);
-    \draw[brandPrimary!30, line width=2pt] (0,0) -- (1.5,1);
+    % Modular extension blocks pattern
+    \fill[brandPrimary!15] (-1.5,-1.5) rectangle (1.5,1.5);
+    \fill[brandPrimary!10] (-2.5,-0.5) rectangle (-1.5,0.5);
+    \fill[brandPrimary!10] (1.5,-0.5) rectangle (2.5,0.5);
+    \fill[brandPrimary!10] (-0.5,-2.5) rectangle (0.5,-1.5);
+    \fill[brandPrimary!10] (-0.5,1.5) rectangle (0.5,2.5);
+    % Connection lines showing modularity
+    \draw[brandPrimary!30, line width=2pt] (-1.5,0) -- (-2.5,0);
+    \draw[brandPrimary!30, line width=2pt] (1.5,0) -- (2.5,0);
+    \draw[brandPrimary!30, line width=2pt] (0,-1.5) -- (0,-2.5);
+    \draw[brandPrimary!30, line width=2pt] (0,1.5) -- (0,2.5);
     % Chapter number
-    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {9};
+    \node[font=\fontsize{80}{80}\selectfont\bfseries, color=brandPrimary] at (0,0) {10};
 \end{tikzpicture}
 \end{center}
 
@@ -28,10 +28,10 @@
 
 % 2. CHAPTER TOPIC with elegant typography
 \begin{center}
-{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{AIDE \& ADD Concepts}}}
+{\fontsize{28}{32}\selectfont\textcolor{brandSecondary}{\textit{IaE — Intelligence-as-Extension}}}
 \end{center}
 
-\vspace{0.5cm}
+% \vspace{0.5cm}
 
 % 3. NICE SEPARATOR with decorative elements
 \begin{center}
@@ -64,15 +64,15 @@
 {\Large\textbf{\textcolor{brandPrimary}{This chapter explores}}}
 \end{center}
 
-% \vspace{0.8cm}
+\vspace{0.8cm}
 
 \begin{itemize}[leftmargin=1.2cm, itemsep=0.4cm, label={\textcolor{brandAccent}{$\triangleright$}}]
-    \item {\large The foundational principles of AI-First Development Environments (AIDE)}
-    \item {\large Agent-Driven Development (ADD) as a paradigm shift from human-centric to AI-orchestrated workflows}
-    \item {\large Novel interaction models between human creativity and artificial intelligence in software development}
-    \item {\large Comparative analysis of AIDE versus traditional and AI-assisted development approaches}
-    \item {\large Research contributions to human-computer interaction in AI-augmented development environments}
-    \item {\large Implications for the future of collaborative intelligence in software engineering}
+    \item {\large The Intelligence-as-Extension (IaE) paradigm versus Built-in-Extension (BiE) approaches}
+    \item {\large Architectural decisions for treating AI as first-class extensions with modularity and replaceability benefits}
+    \item {\large The Conductor's implementation as a Python-based RL model integrated with Rust infrastructure extensions}
+    \item {\large Performance characteristics and trade-offs of cross-language AI orchestration architectures}
+    \item {\large AI model management strategies for loading, resource allocation, and multi-model coordination}
+    \item {\large Research contributions to extensible AI architectures in development environments}
 \end{itemize}
 \end{tcolorbox}
 
