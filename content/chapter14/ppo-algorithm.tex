@@ -36,7 +36,7 @@ Where:
 
 Our implementation of PPO adapts the algorithm specifically for system orchestration tasks, where actions represent extension activation decisions and states encode comprehensive system information including resource availability, workflow progress, and quality metrics.
 
-\begin{table}[h]
+\\begin{table}[ht]
 \centering
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -81,7 +81,7 @@ The GAE formula used in Symphony:
 
 Where $\delta_t^V = r_t + \gamma V(s_{t+1}) - V(s_t)$ is the temporal difference error.
 
-\begin{table}[h]
+\\begin{table}[ht]
 \centering
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -135,7 +135,7 @@ Training steps include:
 
 Symphony employs systematic hyperparameter optimization to ensure optimal PPO performance for orchestration tasks. Our approach combines grid search with Bayesian optimization to find effective parameter configurations.
 
-\begin{table}[h]
+\\begin{table}[ht]
 \centering
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -169,7 +169,7 @@ Stability features include:
 
 Symphony tracks comprehensive performance metrics to evaluate PPO's effectiveness in orchestration tasks. These metrics provide insights into both learning progress and practical system improvements.
 
-\begin{table}[h]
+\\begin{table}[ht]
 \centering
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -188,7 +188,7 @@ Stability & Policy KL divergence & <0.01 per update \\
 
 PPO's integration with Function Quest Game training provides a unique foundation for orchestration learning. The game environment enables safe exploration and skill development before deployment to real system orchestration tasks.
 
-\begin{table}[h]
+\\begin{table}[ht]
 \centering
 \begin{tabular}{@{}lll@{}}
 \toprule
