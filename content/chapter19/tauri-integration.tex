@@ -18,10 +18,10 @@ Tauri's integration with Symphony's architecture provides a foundation for cross
 The Tauri integration provides several key advantages for Symphony's architecture:
 
 \begin{expandedlist}
-    \item \\textbf{Native Performance}: Direct access to system resources and APIs without the overhead of traditional web-based desktop frameworks
-    \item \\textbf{Security Model}: Rust-based backend provides memory safety and security guarantees essential for development tools
-    \item \\textbf{Resource Efficiency}: Significantly lower memory and CPU usage compared to Electron-based alternatives
-    \item \\textbf{Cross-Platform Consistency}: Uniform behavior across Windows, macOS, and Linux platforms
+    \item \textbf{Native Performance}: Direct access to system resources and APIs without the overhead of traditional web-based desktop frameworks
+    \item \textbf{Security Model}: Rust-based backend provides memory safety and security guarantees essential for development tools
+    \item \textbf{Resource Efficiency}: Significantly lower memory and CPU usage compared to Electron-based alternatives
+    \item \textbf{Cross-Platform Consistency}: Uniform behavior across Windows, macOS, and Linux platforms
 \end{expandedlist}
 
 \subsubsection*{WebView Integration Strategy}
@@ -59,10 +59,10 @@ The IPC bridge employs JSON-RPC 2.0 protocol with custom extensions for streamin
 IPC performance optimization focuses on minimizing communication overhead while maintaining functionality:
 
 \begin{compactlist}
-    \item \\textbf{Message Batching}: Combining multiple small messages to reduce overhead
-    \item \\textbf{Binary Protocol Support}: Efficient transfer of large data structures
-    \item \\textbf{Streaming Interfaces}: Support for real-time data streams
-    \item \\textbf{Caching Strategies}: Intelligent caching of frequently accessed data
+    \item \textbf{Message Batching}: Combining multiple small messages to reduce overhead
+    \item \textbf{Binary Protocol Support}: Efficient transfer of large data structures
+    \item \textbf{Streaming Interfaces}: Support for real-time data streams
+    \item \textbf{Caching Strategies}: Intelligent caching of frequently accessed data
 \end{compactlist}
 
 \subsubsection*{Error Handling and Reliability}
@@ -72,10 +72,10 @@ The IPC bridge implements comprehensive error handling and reliability mechanism
 \begin{alertbox}
 \textbf{IPC Reliability Features}:
 \begin{compactlist}
-    \item \\textbf{Automatic Retry}: Configurable retry policies for failed communications
-    \item \\textbf{Timeout Management}: Appropriate timeouts for different operation types
-    \item \\textbf{Error Propagation}: Structured error information with context preservation
-    \item \\textbf{Connection Recovery}: Automatic reconnection handling for connection failures
+    \item \textbf{Automatic Retry}: Configurable retry policies for failed communications
+    \item \textbf{Timeout Management}: Appropriate timeouts for different operation types
+    \item \textbf{Error Propagation}: Structured error information with context preservation
+    \item \textbf{Connection Recovery}: Automatic reconnection handling for connection failures
 \end{compactlist}
 \end{alertbox}
 
@@ -107,10 +107,10 @@ Metadata Access & <0.1ms & Cached with invalidation \\
 Native process management capabilities enable Symphony to spawn and manage external development tools:
 
 \begin{expandedlist}
-    \item \\textbf{Process Spawning}: Efficient creation of child processes with environment control
-    \item \\textbf{I/O Redirection}: Capture and processing of process input/output streams
-    \item \\textbf{Signal Handling}: Proper process lifecycle management and termination
-    \item \\textbf{Resource Monitoring}: Tracking of process resource usage and performance
+    \item \textbf{Process Spawning}: Efficient creation of child processes with environment control
+    \item \textbf{I/O Redirection}: Capture and processing of process input/output streams
+    \item \textbf{Signal Handling}: Proper process lifecycle management and termination
+    \item \textbf{Resource Monitoring}: Tracking of process resource usage and performance
 \end{expandedlist}
 
 \subsubsection*{System Integration APIs}
@@ -120,10 +120,10 @@ Symphony leverages native system integration APIs for enhanced functionality:
 \begin{successbox}
 \textbf{System Integration Capabilities}:
 \begin{compactlist}
-    \item \\textbf{Clipboard Access}: Native clipboard integration with format support
-    \item \\textbf{Notification System}: Native desktop notifications with action support
-    \item \\textbf{Menu Integration}: Native menu bar and context menu integration
-    \item \\textbf{Drag and Drop}: Native drag and drop support for files and content
+    \item \textbf{Clipboard Access}: Native clipboard integration with format support
+    \item \textbf{Notification System}: Native desktop notifications with action support
+    \item \textbf{Menu Integration}: Native menu bar and context menu integration
+    \item \textbf{Drag and Drop}: Native drag and drop support for files and content
 \end{compactlist}
 \end{successbox}
 
@@ -137,10 +137,10 @@ Symphony's window management system provides flexible, multi-window support opti
 The multi-window architecture supports complex development scenarios:
 
 \begin{compactlist}
-    \item \\textbf{Primary Window}: Main development interface with full functionality
-    \item \\textbf{Secondary Windows}: Specialized windows for specific tasks (debugging, documentation)
-    \item \\textbf{Floating Panels}: Detachable UI panels for flexible workspace organization
-    \item \\textbf{Modal Dialogs}: Native modal dialogs for system interactions
+    \item \textbf{Primary Window}: Main development interface with full functionality
+    \item \textbf{Secondary Windows}: Specialized windows for specific tasks (debugging, documentation)
+    \item \textbf{Floating Panels}: Detachable UI panels for flexible workspace organization
+    \item \textbf{Modal Dialogs}: Native modal dialogs for system interactions
 \end{compactlist}
 
 \subsubsection*{Window State Management}
@@ -171,9 +171,9 @@ Symphony implements intelligent platform detection and adaptation to provide opt
 Each platform receives targeted optimizations that leverage platform-specific capabilities:
 
 \begin{expandedlist}
-    \item \\textbf{Windows Integration}: Windows-specific features like taskbar integration, jump lists, and Windows Terminal integration
-    \item \\textbf{macOS Integration}: macOS-specific features like Touch Bar support, native menus, and Spotlight integration
-    \item \\textbf{Linux Integration}: Linux-specific features like desktop environment integration and package manager awareness
+    \item \textbf{Windows Integration}: Windows-specific features like taskbar integration, jump lists, and Windows Terminal integration
+    \item \textbf{macOS Integration}: macOS-specific features like Touch Bar support, native menus, and Spotlight integration
+    \item \textbf{Linux Integration}: Linux-specific features like desktop environment integration and package manager awareness
 \end{expandedlist}
 
 \subsubsection*{Adaptive User Interface}
@@ -214,10 +214,10 @@ Symphony implements comprehensive code signing and verification:
 \begin{alertbox}
 \textbf{Code Security Measures}:
 \begin{compactlist}
-    \item \\textbf{Application Signing}: Digital signatures for application integrity
-    \item \\textbf{Update Verification}: Cryptographic verification of application updates
-    \item \\textbf{Extension Validation}: Security scanning and verification of extensions
-    \item \\textbf{Runtime Protection}: Memory protection and exploit mitigation
+    \item \textbf{Application Signing}: Digital signatures for application integrity
+    \item \textbf{Update Verification}: Cryptographic verification of application updates
+    \item \textbf{Extension Validation}: Security scanning and verification of extensions
+    \item \textbf{Runtime Protection}: Memory protection and exploit mitigation
 \end{compactlist}
 \end{alertbox}
 
@@ -249,10 +249,10 @@ Bundle Size & 45MB & 120MB & 63\% smaller \\
 IPC performance analysis demonstrates efficient communication between frontend and backend:
 
 \begin{compactlist}
-    \item \\textbf{Message Latency}: 0.1-0.5ms for typical API calls
-    \item \\textbf{Throughput}: 10,000+ messages per second sustained
-    \item \\textbf{Binary Transfer}: 200-500MB/s for large data transfers
-    \item \\textbf{Memory Overhead}: <2MB for IPC infrastructure
+    \item \textbf{Message Latency}: 0.1-0.5ms for typical API calls
+    \item \textbf{Throughput}: 10,000+ messages per second sustained
+    \item \textbf{Binary Transfer}: 200-500MB/s for large data transfers
+    \item \textbf{Memory Overhead}: <2MB for IPC infrastructure
 \end{compactlist}
 
 \subsection*{Development and Debugging Tools}
@@ -267,10 +267,10 @@ The development workflow leverages Tauri's development tools:
 \begin{successbox}
 \textbf{Development Tools Integration}:
 \begin{compactlist}
-    \item \\textbf{Hot Reload}: Automatic application reload during development
-    \item \\textbf{DevTools Access}: Native browser developer tools integration
-    \item \\textbf{Rust Debugging}: Native Rust debugging support with IDE integration
-    \item \\textbf{Performance Profiling}: Built-in performance analysis and profiling tools
+    \item \textbf{Hot Reload}: Automatic application reload during development
+    \item \textbf{DevTools Access}: Native browser developer tools integration
+    \item \textbf{Rust Debugging}: Native Rust debugging support with IDE integration
+    \item \textbf{Performance Profiling}: Built-in performance analysis and profiling tools
 \end{compactlist}
 \end{successbox}
 
@@ -279,10 +279,10 @@ The development workflow leverages Tauri's development tools:
 Production monitoring capabilities enable ongoing performance optimization:
 
 \begin{expandedlist}
-    \item \\textbf{Crash Reporting}: Automatic crash detection and reporting
-    \item \\textbf{Performance Metrics}: Real-time performance monitoring and alerting
-    \item \\textbf{Usage Analytics}: Anonymous usage pattern analysis for optimization
-    \item \\textbf{Error Tracking}: Complete error logging and analysis
+    \item \textbf{Crash Reporting}: Automatic crash detection and reporting
+    \item \textbf{Performance Metrics}: Real-time performance monitoring and alerting
+    \item \textbf{Usage Analytics}: Anonymous usage pattern analysis for optimization
+    \item \textbf{Error Tracking}: Complete error logging and analysis
 \end{expandedlist}
 
 \subsection*{Research Contributions and Future Directions}
@@ -291,10 +291,10 @@ Production monitoring capabilities enable ongoing performance optimization:
 The Tauri integration makes several significant contributions to hybrid desktop application development:
 
 \begin{expandedlist}
-    \item \\textbf{Hybrid Framework Optimization}: Novel approaches to optimizing web-native hybrid applications for development tools
-    \item \\textbf{IPC Performance Engineering}: Advanced techniques for high-performance inter-process communication
-    \item \\textbf{Cross-Platform Security}: Complete security model for cross-platform desktop applications
-    \item \\textbf{Native Integration Patterns}: Reusable patterns for integrating web technologies with native platform capabilities
+    \item \textbf{Hybrid Framework Optimization}: Novel approaches to optimizing web-native hybrid applications for development tools
+    \item \textbf{IPC Performance Engineering}: Advanced techniques for high-performance inter-process communication
+    \item \textbf{Cross-Platform Security}: Complete security model for cross-platform desktop applications
+    \item \textbf{Native Integration Patterns}: Reusable patterns for integrating web technologies with native platform capabilities
 \end{expandedlist}
 
 Future research directions include exploring WebAssembly integration for performance-critical components, investigating advanced security sandboxing techniques, and developing more sophisticated platform adaptation mechanisms.
