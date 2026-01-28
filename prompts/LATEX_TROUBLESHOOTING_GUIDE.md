@@ -864,3 +864,87 @@ Overfull \hbox (2.23705pt too wide) in paragraph at lines 100--101
 % If still overfull, adjust column types
 \begin{tabular}{@{}lrrrp{2cm}@{}}  % p{width} for last column
 ```
+### 17. **Table Rule Typos**
+
+**Problem**: Undefined table rule commands
+```
+Undefined control sequence.
+./content/chapter13/orchestration-architecture.tex, 125
+l.125 \tomlrule
+```
+
+**Root Cause**: Typos in table rule commands
+
+**Recipe**:
+1. Check for common typos in table rules
+2. Ensure correct booktabs package commands are used
+3. Verify table environment syntax
+
+**Common Typos and Fixes**:
+```latex
+% WRONG (typos)
+\tomlrule → \toprule
+\tabable → \tabular
+\midule → \midrule
+\botomrule → \bottomrule
+
+% CORRECT (booktabs package)
+\toprule    % Top rule
+\midrule    % Middle rule  
+\bottomrule % Bottom rule
+\cmidrule   % Partial rule
+```
+
+**Standard Table Pattern**:
+```latex
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Header 1} & \textbf{Header 2} & \textbf{Header 3} \\
+\midrule
+Data 1 & Data 2 & Data 3 \\
+Data 4 & Data 5 & Data 6 \\
+\bottomrule
+\end{tabular}
+\caption{Table Caption}
+\end{table}
+```
+
+### 18. **Table Environment Mismatches**
+
+**Problem**: Mismatched table environment endings
+```
+LaTeX Error: \begin{tabular} on input line 86 ended by \end{tabable}.
+```
+
+**Root Cause**: Typo in environment ending
+
+**Recipe**:
+1. Check that \begin{environment} matches \end{environment}
+2. Look for common typos in environment names
+3. Ensure proper nesting of environments
+
+**Common Environment Mismatches**:
+```latex
+% WRONG (mismatched)
+\begin{tabular} ... \end{tabable}
+\begin{table} ... \end{tabel}
+\begin{figure} ... \end{figrue}
+
+% CORRECT (matched)
+\begin{tabular} ... \end{tabular}
+\begin{table} ... \end{table}
+\begin{figure} ... \end{figure}
+```
+
+**Automated Check Pattern**:
+```python
+# Find environment mismatches
+import re
+content = open('file.tex').read()
+begins = re.findall(r'\\begin\{([^}]+)\}', content)
+ends = re.findall(r'\\end\{([^}]+)\}', content)
+mismatches = set(begins) - set(ends)
+print("Potential mismatches:", mismatches)
+```
