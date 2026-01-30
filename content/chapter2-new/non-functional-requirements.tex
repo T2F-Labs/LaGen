@@ -1,0 +1,25 @@
+% ========== 2.5 NON-FUNCTIONAL REQUIREMENTS ==========
+% Quality attributes and constraints
+
+\section{Non-Functional Requirements}
+\label{sec:non-functional-requirements}
+
+\lettrine{N}{on-functional requirements} define quality attributes that the system must exhibit to be acceptable for deployment and use. These requirements specify how well the system performs its functions rather than what functions it provides, encompassing performance, reliability, security, and usability characteristics.
+
+Performance requirements ensure that the system remains responsive and efficient during normal operation. The system must respond to user input within acceptable latency thresholds, typically under one hundred milliseconds for immediate feedback and under one second for AI-assisted operations. Startup time must be minimal, allowing developers to begin work quickly without frustrating delays. Memory consumption must remain within reasonable bounds, enabling concurrent operation with other development tools and applications on standard hardware configurations.
+
+Reliability and availability requirements ensure that the system operates consistently without unexpected failures or data loss. The system must implement automatic saving mechanisms to protect developer work, provide recovery capabilities for handling errors gracefully, and maintain stability even when individual components encounter problems. Fault isolation prevents failures in one area from affecting the entire system, ensuring that developers can continue working productively even when specific features become unavailable.
+
+\textbf{Critical Non-Functional Requirements:}
+\begin{compactlist}
+    \item Response latency under one hundred milliseconds for core operations
+    \item System startup within two seconds on standard hardware
+    \item Memory usage not exceeding two gigabytes during typical workflows
+    \item Automatic data protection preventing loss of unsaved work
+    \item Cross-platform compatibility supporting Windows, macOS, and Linux
+    \item Accessibility compliance enabling use by developers with diverse abilities
+\end{compactlist}
+
+Security requirements protect sensitive code and data from unauthorized access or modification. The system must implement appropriate access controls, maintain audit logs of significant activities, and ensure that extensions cannot compromise system security or access resources without explicit permission. Data privacy requirements ensure that code and developer interactions remain confidential, with clear policies about what information is transmitted externally and how it is protected.
+
+Usability requirements ensure that the system is learnable and efficient for its intended users. The interface must follow established conventions for development tools, provide clear feedback about system state and available actions, and support efficient workflows for common tasks. Documentation and help systems must be comprehensive and accessible, enabling users to discover features and resolve issues independently. The learning curve must be manageable, with basic functionality accessible immediately and advanced features discoverable progressively.
