@@ -13,6 +13,8 @@
 \usepackage{xcolor}
 \usepackage{morefloats}
 \usepackage[table]{xcolor}
+% Load chngcntr for counter management (must be early)
+\usepackage{chngcntr}
 % Load TikZ for covers and templates
 \usepackage{tikz}
 \usepackage{eso-pic}
@@ -213,3 +215,22 @@
 \title{Your Document Title Here}
 \author{Author Name}
 \date{\today}
+
+% ========== CHAPTER-BASED COUNTER CONFIGURATION ==========
+% Configure figures and tables to reset and number by chapter
+% This must be done AFTER all packages are loaded
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\typeout{^^J INFO: Configured chapter-based numbering for figures and tables^^J}
+
+% ========== TABLE OF CONTENTS DEPTH ==========
+% Control what appears in the table of contents
+% 0 = chapters only
+% 1 = chapters and sections
+% 2 = chapters, sections, and subsections (default)
+% 3 = chapters, sections, subsections, and subsubsections
+\setcounter{tocdepth}{1}  % Show only chapters and sections
+\setcounter{secnumdepth}{3}  % But number up to subsubsections in the text
+\typeout{^^J INFO: TOC depth set to 1 (chapters and sections only)^^J}

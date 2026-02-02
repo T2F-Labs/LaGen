@@ -1,0 +1,113 @@
+% Section 3.4: Extension System Design
+
+\section{3.4 Extension System Design}
+\label{sec:extension-system}
+
+\lettrine{T}{he} extension system represents the primary mechanism through which Symphony achieves unlimited customization and adaptation to diverse development scenarios. The system delegates specialized functionality to extensions that can be independently developed, tested, and deployed, enabling rapid evolution through community contributions while maintaining a stable core.
+
+\subsection*{3.4.1 Extension Categories: Instruments, Operators, and Motifs}
+
+Symphony defines three distinct extension categories, each serving different purposes with appropriate execution environments and integration patterns:
+
+\begin{description}[leftmargin=3cm,labelwidth=2.5cm]
+    \item[\textbf{Instruments}] AI and ML models providing intelligence capabilities such as code generation, analysis, and transformation
+    \item[\textbf{Operators}] Workflow utilities and data processing functions handling file manipulation, transformation, and external tool integration
+    \item[\textbf{Motifs}] User interface enhancements providing custom visualizations, specialized editors, and interaction patterns
+\end{description}
+
+This categorization enables the system to apply appropriate policies and optimizations based on extension type. Instruments integrate with Symphony's AI orchestration system, Operators provide deterministic operations complementing probabilistic AI models, and Motifs integrate with the web-based user interface leveraging modern web technologies.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Extension Type} & \textbf{Execution Model} & \textbf{Optimization Focus} \\
+\midrule
+Instruments & Isolated processes & Resource management, AI model lifecycle \\
+Operators & Lightweight containers & Fast startup, minimal overhead \\
+Motifs & Web runtime & UI responsiveness, visual performance \\
+\bottomrule
+\end{tabular}
+\caption{Extension Type Execution Optimization}
+\end{table}
+
+\subsection*{3.4.2 Orchestra Kit Framework}
+
+The Orchestra Kit provides comprehensive infrastructure for managing the complete extension lifecycle from discovery through installation, loading, activation, and execution. As shown in Figure 3.4, the framework addresses key challenges in traditional extension systems through specialized components.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/4_orchestra_kit_extension_ecosystem.png}
+\caption{Orchestra Kit Architecture}
+\label{fig:3.4-orchestra-kit}
+\end{figure}
+
+The Orchestra Kit components include:
+
+\begin{compactlist}
+    \item \textbf{Registry}: Metadata management for all available extensions enabling discovery and version management
+    \item \textbf{Marketplace (The Grand Stage)}: Distribution platform with search, ratings, reviews, and automated updates
+    \item \textbf{Installer}: Package download, signature verification, dependency resolution, and installation
+    \item \textbf{Lifecycle Manager}: Chambering state machine governing extension states from installation to execution
+    \item \textbf{Security Manager}: Capability-based permissions and sandboxing policies protecting system integrity
+    \item \textbf{Carets CLI/SDK}: Development toolchain for extension creation, testing, and publication
+\end{compactlist}
+
+
+\subsection*{3.4.3 Extension Lifecycle and Chambering Process}
+
+The extension lifecycle follows a well-defined state machine known as the Chambering process, governing transitions from installation through activation and execution. As illustrated in Figure 3.5, extensions progress through distinct states ensuring proper initialization before use and efficient resource management throughout the lifecycle.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{images/diagrams/state_diagram/1_extension_lifecycle_chambering.png}
+\caption{Extension Lifecycle State Machine}
+\label{fig:3.5-extension-lifecycle}
+\end{figure}
+
+\subsection*{3.4.4 Extension Installation State Management}
+
+The installation process manages eight distinct states ensuring reliable extension deployment with comprehensive security validation, dependency resolution, and automatic rollback capabilities:
+
+\begin{compactlist}
+    \item \textbf{Browsing}: User selection validation in marketplace
+    \item \textbf{Downloading}: Network connectivity and package integrity verification
+    \item \textbf{Verifying}: Signature validation and malware scanning
+    \item \textbf{ResolvingDeps}: Semantic versioning and conflict detection with automatic dependency download
+    \item \textbf{Installing}: File system operations and registration
+    \item \textbf{Installed}: Successfully deployed and ready for loading
+    \item \textbf{RollingBack}: State restoration and cleanup for failed installations
+    \item \textbf{Failed}: Detailed error logging and reporting
+\end{compactlist}
+
+This state machine addresses critical deployment challenges including security validation through comprehensive signature verification and integrity checks, dependency resolution with automatic detection and conflict resolution, rollback capability for failed installations with complete state restoration, and seamless user experience with detailed progress feedback and error reporting.
+
+\subsection*{3.4.5 Extension Development Workflow}
+
+The extension development workflow provides comprehensive tooling support through the Carets command-line interface. As shown in Figure 3.6, developers progress from project scaffolding through testing, validation, signing, and marketplace publication.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/diagrams/activity_diagram/symphony-extension-development.png}
+\caption{Extension Development Workflow}
+\label{fig:3.6-extension-development}
+\end{figure}
+
+The development process emphasizes automated scaffolding with complete project structures and proper manifests, integrated testing with comprehensive frameworks validating functionality before publication, security validation through cryptographic signing and verification ensuring package integrity, and marketplace integration with seamless publication and automated quality checks.
+
+
+% \subsection*{Marketplace and Ecosystem}
+
+% The Grand Stage marketplace serves as the primary distribution channel for community and commercial extensions, implementing discovery through intelligent categorization and search capabilities, trust through comprehensive review processes and security scanning, quality through performance monitoring and user feedback, and sustainability through multiple monetization models supporting extension creator businesses.
+
+% The marketplace supports multiple monetization strategies creating a sustainable ecosystem:
+
+% \begin{compactlist}
+%     \item \textbf{Free and Open Source}: Community-driven development and reputation building
+%     \item \textbf{Freemium}: Basic functionality free with premium features available
+%     \item \textbf{Usage-Based}: Pricing tied to actual consumption of resources or API calls
+%     \item \textbf{Subscription}: Regular access fees for ongoing value delivery
+%     \item \textbf{Enterprise Licensing}: Custom arrangements for organizational deployments
+% \end{compactlist}
+
+% Organizations can extend the public marketplace with private extension capabilities including internal-only extensions for proprietary workflows, role-based permissions for extension installation and usage, audit trails and governance controls for regulated environments, and professional services for specialized extension creation.

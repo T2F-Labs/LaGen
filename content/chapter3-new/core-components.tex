@@ -1,0 +1,37 @@
+% Section 3.2: Core System Components
+
+\section{3.2 Core System Components}
+\label{sec:core-components}
+
+\lettrine{T}{he} minimal core philosophy guides Symphony's design through a systematic selection methodology. Components are included in the core only if they meet specific criteria: universally required by all development workflows, performance-critical where extension boundaries would introduce prohibitive overhead, security-sensitive requiring deep system integration, or foundational as building blocks for extensions. This "extension-first mindset" ensures that the core remains truly minimal while maintaining full functionality through the extension ecosystem.
+
+The benefits of this approach include startup times under one second compared to three to eight seconds for traditional environments, memory footprint below 150 megabytes compared to over 500 megabytes for feature-rich alternatives, and approximately 40 percent faster startup with 25 percent lower memory usage while maintaining equivalent functionality through extensions.
+
+
+\subsection*{3.2.1 Six Essential Core Components}
+
+Based on the selection methodology, six essential components form Symphony's minimal core:
+
+\begin{description}[leftmargin=4cm,labelwidth=3.5cm]
+    \item[\textbf{Text Processing Engine}] Fundamental text manipulation capabilities with extension interfaces for advanced features
+    \item[\textbf{Project Navigation}] Essential file system interaction with extensible visualization and management
+    \item[\textbf{Syntax Analysis}] Core language processing with pluggable grammar and semantic analysis
+    \item[\textbf{Configuration Management}] Centralized preference system with extension integration capabilities
+    \item[\textbf{System Integration}] Native platform interaction with secure extension access patterns
+    \item[\textbf{Extension Orchestration}] Dynamic loading and coordination system enabling unlimited functionality expansion
+\end{description}
+
+Everything beyond these six components is delegated to extensions, allowing users to customize their environment precisely to their needs without carrying unnecessary overhead.
+
+\subsection*{3.2.2 Domain Core and Orchestration}
+
+The Domain Core serves as the central coordination system, managing workflow definitions, enforcing extension policies, and coordinating execution of multi-step processes involving multiple AI agents and tools. The OrchestrationEngine within the Domain Core analyzes developer requests, breaks them into constituent tasks, determines appropriate operation sequences, and coordinates execution across multiple extensions and AI models.
+
+
+\subsection*{3.2.3 Intelligence as Extension Principle}
+
+Symphony treats intelligence as an extension rather than embedding AI capabilities directly into the core. This architectural decision provides several advantages: AI models can be updated without modifying the core system, multiple AI providers and models can operate simultaneously, and different AI capabilities can be selected for different tasks based on specific requirements and performance characteristics. The Conductor, which contains the reinforcement learning model for workflow orchestration, exemplifies this principle by operating as a Python-based extension that communicates with the core through well-defined interfaces.
+
+\subsection*{3.2.4 Generic Primitives Foundation}
+
+The core provides generic primitives that establish the foundation for all extension functionality. These primitives include basic operations for process management, inter-process communication, resource allocation, and event notification. By providing these capabilities as generic primitives rather than specialized features, the core enables extensions to compose complex behaviors from simple building blocks while ensuring robust, well-tested fundamental operations.
