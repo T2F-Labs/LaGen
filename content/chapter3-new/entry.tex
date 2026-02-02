@@ -4,16 +4,17 @@
 % Team: AMR MUHMAED FATHY, MOHAMED, MAHMOUD, MOSTAFA, SALMA
 % Institution: BENHA UNIVERSITY - BFCAI
 
-% \chapter{SYSTEM DESIGN}
-% \label{ch:system-design}
-
-% MANUAL FIGURE NUMBERING FOR CHAPTER 3
-% Override automatic numbering to ensure figures are always 3.x
+% MANUAL CHAPTER NUMBERING FOR CHAPTER 3
+% Set chapter counter and add to TOC manually (no \chapter command to avoid duplicate page)
 \setcounter{chapter}{3}
 \setcounter{figure}{0}
 \setcounter{table}{0}
 
-\vspace{11cm}
+% Add chapter to table of contents manually
+\addcontentsline{toc}{chapter}{3 \hspace{0.5em} SYSTEM DESIGN}
+\label{ch:system-design}
+
+\clearpage
 
 % Chapter Cover
 \input{content/chapter3-new/chapter_cover.tex}
