@@ -11,7 +11,8 @@ Traditional development environments often embed protocol support directly into 
 
 Symphony eliminates these limitations by providing generic primitives that extensions compose to implement whatever communication patterns they need. This composition-over-configuration approach enables extensions to support any protocol without core system changes.
 
-\begin{table}[ht]
+\begin{table}[H]
+\caption{Protocol Support: Traditional vs Generic Approaches}
 \centering
 \begin{tabular}{@{}p{0.45\textwidth}p{0.45\textwidth}@{}}
 \toprule
@@ -24,7 +25,6 @@ Fixed protocol versions & Version-agnostic message handling \\
 Vendor-controlled updates & Community-driven protocol evolution \\
 \bottomrule
 \end{tabular}
-\caption{Protocol Support: Traditional vs Generic Approaches}
 \end{table}
 
 \subsection*{Message Format Abstraction}
@@ -61,7 +61,8 @@ The negotiation process follows these steps: capability advertisement where each
 
 Symphony's UI extensibility framework allows extensions to create custom user interfaces while maintaining consistency and performance. The framework provides four levels of customization:
 
-\begin{table}[ht]
+\begin{table}[H]
+\caption{UI Extensibility Levels and Capabilities}
 \centering
 \begin{tabular}{@{}p{0.3\textwidth}p{0.35\textwidth}p{0.3\textwidth}@{}}
 \toprule
@@ -84,7 +85,6 @@ Direct DOM manipulation, custom rendering, performance optimization &
 Complex visualizations, real-time displays \\
 \bottomrule
 \end{tabular}
-\caption{UI Extensibility Levels and Capabilities}
 \end{table}
 
 The UI framework defines several extensible regions including Editor Area for central editing space with tab management, Sidebar Panels for left and right collapsible panels, Bottom Panel for terminal and output, Top Toolbar for action buttons and menu integration, Status Bar for information and quick actions, and Modal Overlays for dialogs and command palette.

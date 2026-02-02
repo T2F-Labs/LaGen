@@ -1,12 +1,12 @@
-% Section 3.3: Dual Ensemble Architecture
+% Section 3.5: Dual Ensemble Architecture
 
-\section{3.3 Dual Ensemble Architecture}
+\section{3.5 Dual Ensemble Architecture}
 \label{sec:dual-ensemble}
-\addcontentsline{toc}{section}{3.3 Dual Ensemble Architecture}
+\addcontentsline{toc}{section}{3.5 Dual Ensemble Architecture}
 
 \lettrine{T}{he} Dual Ensemble Architecture provides two distinct execution environments optimized for different performance and safety requirements. This dual-layer approach enables ultra-low-latency execution for trusted operations while maintaining robust isolation for community-developed extensions.
 
-\subsection*{3.3.1 The Pit: In-Process Execution}
+\subsection*{3.5.1 The Pit: In-Process Execution}
 
 The Pit constitutes the high-performance in-process execution environment for trusted infrastructure extensions requiring minimal latency and maximum throughput. Five core components operate within The Pit:
 
@@ -27,17 +27,18 @@ Extensions in The Pit execute within the same process as the core system, enabli
 \label{fig:3.3-pit-architecture}
 \end{figure}
 
-\subsection*{3.3.2 The Grand Stage: Out-of-Process Execution}
+\subsection*{3.5.2 The Grand Stage: Out-of-Process Execution}
 
 The Grand Stage provides the out-of-process execution environment for community-developed extensions requiring strong isolation guarantees. Extensions execute in separate processes with well-defined communication channels, ensuring that bugs or malicious behavior cannot compromise system stability or security. The Grand Stage employs an actor-based concurrency model where each extension runs as an independent actor with its own mailbox for receiving messages.
 
 While The Grand Stage incurs additional overhead from inter-process communication resulting in latencies measured in fractions of a millisecond, this overhead remains imperceptible to users for most operations and provides essential protection against risks of running untrusted code.
 
-\subsection*{3.3.3 Security and Trust Framework}
+\subsection*{3.5.3 Security and Trust Framework}
 
 Symphony implements a multi-layered security approach protecting users while enabling innovation:
 
-\begin{table}[ht]
+\begin{table}[H]
+\caption{Multi-Layer Security Framework}
 \centering
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -49,14 +50,13 @@ Code Review & Automated scanning & Vulnerability prevention \\
 Runtime Monitoring & Behavioral analysis & Anomaly detection \\
 \bottomrule
 \end{tabular}
-\caption{Multi-Layer Security Framework}
 \end{table}
 
 The capability-based security framework provides fine-grained control over extension permissions through minimal privilege principle, dynamic capability adjustment based on behavior and trust levels, capability inheritance for controlled privilege escalation, and immediate revocation mechanisms in response to security threats.
 
 The trust-based security model adapts to extension behavior over time through behavioral trust scoring with continuous assessment of patterns, community trust metrics integrating user feedback and ratings, graduated trust levels providing progressive capability access based on demonstrated reliability, and trust decay mechanisms for inactive or problematic extensions.
 
-\subsection*{3.3.4 Player Registration System}
+\subsection*{3.5.4 Player Registration System}
 
 Extensions can register as Players to participate in Conductor orchestration, gaining enhanced capabilities and visibility. The Player system provides:
 
@@ -69,6 +69,6 @@ Extensions can register as Players to participate in Conductor orchestration, ga
 
 Players commit to governance policies including performance standards and security compliance, with continuous SLA monitoring ensuring adherence. The Conductor chooses optimal Players for tasks based on capabilities, performance characteristics, and trust levels.
 
-\subsection*{3.3.5 Execution Strategy Selection}
+\subsection*{3.5.5 Execution Strategy Selection}
 
 The system determines execution environment based on multiple factors including trust level, performance requirements, resource usage patterns, and security considerations. Infrastructure extensions that are part of Symphony's core distribution execute in The Pit for optimal performance, while community-developed extensions and experimental features execute on The Grand Stage for isolation and protection.
