@@ -15,6 +15,12 @@
 \usepackage[table]{xcolor}
 % Load chngcntr for counter management (must be early)
 \usepackage{chngcntr}
+
+% Load tocloft for customizing List of Figures and List of Tables
+\usepackage{tocloft}
+
+% Configure subsection counter to reset with each section
+\counterwithin{subsection}{section}
 % Load TikZ for covers and templates
 \usepackage{tikz}
 \usepackage{eso-pic}
@@ -223,6 +229,13 @@
 \counterwithin{table}{chapter}
 \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
 \renewcommand{\thetable}{\thechapter.\arabic{table}}
+
+% Add "Figure" and "Table" prefix in List of Figures and List of Tables
+\renewcommand{\cftfigpresnum}{Figure }
+\renewcommand{\cfttabpresnum}{Table }
+\setlength{\cftfignumwidth}{5em}  % Adjust width to accommodate "Figure X.Y"
+\setlength{\cfttabnumwidth}{5em}  % Adjust width to accommodate "Table X.Y"
+
 \typeout{^^J INFO: Configured chapter-based numbering for figures and tables^^J}
 
 % ========== TABLE OF CONTENTS DEPTH ==========
@@ -231,6 +244,6 @@
 % 1 = chapters and sections
 % 2 = chapters, sections, and subsections (default)
 % 3 = chapters, sections, subsections, and subsubsections
-\setcounter{tocdepth}{1}  % Show only chapters and sections
+\setcounter{tocdepth}{2}  % Show chapters, sections, and subsections
 \setcounter{secnumdepth}{3}  % But number up to subsubsections in the text
-\typeout{^^J INFO: TOC depth set to 1 (chapters and sections only)^^J}
+\typeout{^^J INFO: TOC depth set to 2 (chapters, sections, and subsections)^^J}

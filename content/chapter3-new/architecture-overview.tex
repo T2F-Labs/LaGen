@@ -4,7 +4,12 @@
 \label{sec:architecture-overview}
 \addcontentsline{toc}{section}{3.1 System Architecture Overview}
 
-\lettrine{T}{he} architecture of Symphony represents a fundamental departure from traditional integrated development environments by embracing a microkernel design philosophy that prioritizes modularity, extensibility, and intelligent orchestration. The system is built upon the principle that development environments should be minimal at their core while providing unlimited extensibility through well-defined interfaces and intelligent coordination mechanisms. This architectural approach enables Symphony to maintain exceptional performance characteristics while supporting the complex requirements of AI-first development workflows.
+\lettrine{T}{his section} presents Symphony's architectural foundation, exploring the design principles and structural patterns that enable AI-first development. We examine the Harmonic Hexagonal Actor Architecture (H²A²) that provides modularity and extensibility, and detail the multi-phase bootstrap process that ensures reliable system initialization. The architecture emphasizes separation of concerns, fault isolation, and intelligent orchestration to support complex AI-assisted workflows while maintaining exceptional performance and stability.
+
+\subsection*{3.1.1 H²A² Architecture and Design Philosophy}
+\addcontentsline{toc}{subsection}{3.1.1 H²A² Architecture and Design Philosophy}
+
+The architecture of Symphony represents a fundamental departure from traditional integrated development environments by embracing a microkernel design philosophy that prioritizes modularity, extensibility, and intelligent orchestration. The system is built upon the principle that development environments should be minimal at their core while providing unlimited extensibility through well-defined interfaces and intelligent coordination mechanisms. This architectural approach enables Symphony to maintain exceptional performance characteristics while supporting the complex requirements of AI-first development workflows.
 
 The foundation of Symphony's architecture rests on the Harmonic Hexagonal Actor Architecture, a novel design pattern that combines the benefits of hexagonal architecture with actor-based concurrency models. This architectural style establishes clear boundaries between the domain logic, which encapsulates the core orchestration and workflow management capabilities, and the infrastructure adapters that interface with external systems such as text editors, AI models, and extension ecosystems. The hexagonal structure ensures that the system remains adaptable to changing requirements and technological advances without requiring fundamental redesigns of the core logic.
 
@@ -22,6 +27,9 @@ As shown in Figure 3.1, the H²A² Architecture establishes a clear separation b
 \end{figure}
 
 The microkernel philosophy that guides Symphony's architecture emphasizes keeping the core system minimal while delegating specialized functionality to extensions. This approach contrasts sharply with monolithic IDE architectures that bundle extensive functionality into the core system, resulting in bloated applications with slow startup times and limited flexibility. Symphony's microkernel contains only the essential primitives required for orchestration, extension management, and basic system coordination, while all other capabilities are provided through dynamically loaded extensions that can be added, removed, or updated without affecting the core system stability.
+
+\subsection*{3.1.2 System Bootstrap and Initialization}
+\addcontentsline{toc}{subsection}{3.1.2 System Bootstrap and Initialization}
 
 The initialization of Symphony follows a carefully orchestrated bootstrap process that brings the system online through five distinct phases, each building upon the foundation established by previous phases. This phased approach ensures that dependencies are satisfied in the correct order and that system health can be verified at each stage before proceeding. The bootstrap process begins with the Foundation phase, which establishes the type system, loads configuration, and initializes the core orchestration engine. This is followed by the IPC phase, which sets up the inter-process communication infrastructure that enables extensions to communicate with the core system and with each other.
 

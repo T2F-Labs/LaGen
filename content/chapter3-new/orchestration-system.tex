@@ -4,7 +4,12 @@
 \label{sec:orchestration-system}
 \addcontentsline{toc}{section}{3.5 Orchestration System Design}
 
-\lettrine{T}{he} orchestration system represents the intelligence layer that enables Symphony to coordinate multiple AI agents and tools to accomplish complex development tasks. This system transforms high-level developer intent into concrete sequences of operations, selecting appropriate tools and models for each step, managing dependencies between tasks, and coordinating parallel execution where possible. The orchestration capabilities distinguish Symphony from simpler AI-assisted development tools by enabling complete workflow automation rather than just providing intelligent suggestions for individual operations.
+\lettrine{T}{his section} explores Symphony's orchestration system, the intelligence layer that coordinates multiple AI agents and tools to accomplish complex development tasks. We examine the Conductor's reinforcement learning approach, the Melody workflow abstraction, and the execution mechanisms that enable Agent-Driven Development. The orchestration system transforms high-level developer intent into concrete, executable workflows while continuously learning and improving from experience.
+
+\subsection*{3.5.1 The Conductor and Reinforcement Learning}
+\addcontentsline{toc}{subsection}{3.5.1 The Conductor and Reinforcement Learning}
+
+The orchestration system represents the intelligence layer that enables Symphony to coordinate multiple AI agents and tools to accomplish complex development tasks. This system transforms high-level developer intent into concrete sequences of operations, selecting appropriate tools and models for each step, managing dependencies between tasks, and coordinating parallel execution where possible. The orchestration capabilities distinguish Symphony from simpler AI-assisted development tools by enabling complete workflow automation rather than just providing intelligent suggestions for individual operations.
 
 The orchestration philosophy embraces the concept of Agent-Driven Development, where specialized AI agents collaborate under intelligent coordination to handle implementation details while developers provide vision and strategic guidance. This paradigm shift recognizes that modern AI capabilities have reached a level where they can reliably handle many routine development tasks, freeing developers to focus on higher-level concerns such as architecture, requirements, and creative problem-solving. The orchestration system serves as the conductor that coordinates these AI agents, ensuring they work together effectively and that their outputs combine to achieve the developer's objectives.
 
@@ -22,6 +27,9 @@ As illustrated in Figure 3.7, the Conductor communicates with the core system th
 The reinforcement learning model within the Conductor learns from every workflow execution, continuously improving its ability to generate effective task sequences. The model treats workflow generation as a sequential decision problem where each decision involves selecting the next task to add to the workflow based on the current state. The state representation includes information about the developer's prompt, the project context, the tasks already in the workflow, and the available extensions and their capabilities. The model outputs a probability distribution over possible next tasks, and the Conductor samples from this distribution to generate diverse workflows that explore different approaches to accomplishing the objective.
 
 The reward signal that drives learning comes from multiple sources including execution success, which indicates whether the workflow accomplished its objective, execution time, which measures efficiency, artifact quality, which assesses the value of generated outputs, and user feedback, which captures developer satisfaction. These reward components are combined into a single scalar value that guides the learning process, with weights adjusted to balance the different objectives. The model updates its parameters after each workflow execution using policy gradient methods that increase the probability of actions that led to high rewards and decrease the probability of actions that led to low rewards.
+
+\subsection*{3.5.2 Melody System and Workflow Generation}
+\addcontentsline{toc}{subsection}{3.5.2 Melody System and Workflow Generation}
 
 The Melody concept provides the abstraction through which developers interact with workflows in Symphony. A Melody represents a complete workflow as a directed acyclic graph where nodes represent individual tasks and edges represent dependencies between tasks. Melodies can be created manually through the visual Harmony Board interface or generated automatically by the Conductor based on natural language prompts. Once created, Melodies can be saved, shared, and reused, building up a library of proven workflows for common development tasks. The Melody abstraction enables developers to think about workflows at a high level without concerning themselves with the details of how individual tasks are implemented or coordinated.
 
@@ -46,6 +54,9 @@ As illustrated in Figure 3.9, the Conductor workflow involves continuous interac
 \caption{Conductor Workflow}
 \label{fig:3.9-conductor-workflow}
 \end{figure}
+
+\subsection*{3.5.3 Workflow Execution and Validation}
+\addcontentsline{toc}{subsection}{3.5.3 Workflow Execution and Validation}
 
 The Melody execution lifecycle follows a well-defined state machine that governs the progression from workflow creation through completion. As shown in Figure 3.10, Melodies begin in the Draft state during composition in the Harmony Board. The Validating state represents the process of checking the workflow for correctness, including cycle detection, type safety verification, and resource constraint validation. The Ready state indicates that the Melody has passed validation and is prepared for execution. The Queued state represents Melodies waiting for resources to become available. The Executing state indicates active workflow execution with tasks being processed. The Paused state enables suspension of long-running workflows for checkpointing or user intervention. The workflow concludes in either the Completed state for successful execution or the Failed state if errors occur.
 

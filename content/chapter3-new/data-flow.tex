@@ -4,6 +4,11 @@
 \label{sec:data-flow}
 \addcontentsline{toc}{section}{3.6 Data Flow and System Integration}
 
+\lettrine{T}{his section} examines how information flows through Symphony's architecture and how components integrate to form a cohesive system. We explore the directed acyclic graph model for workflow dependencies, the integration patterns that enable component collaboration, and the data governance mechanisms that ensure security and consistency. The data flow architecture provides the foundation for coordinating complex multi-step processes while maintaining clarity about data provenance and transformations.
+
+\subsection*{3.6.1 Data Flow Model and Workflow Dependencies}
+\addcontentsline{toc}{subsection}{3.6.1 Data Flow Model and Workflow Dependencies}
+
 \lettrine{T}{he} data flow architecture of Symphony orchestrates the movement of information between components, ensuring that data reaches the right destinations at the right times while maintaining consistency and enabling efficient processing. The system treats data flow as a first-class concern, with explicit representations of how information moves through workflows and well-defined interfaces that govern data exchange between components. This architectural approach enables Symphony to coordinate complex multi-step processes involving numerous components while maintaining clarity about data provenance, transformations, and dependencies.
 
 The conceptual data flow model represents workflows as directed acyclic graphs where nodes represent computational tasks and edges represent data dependencies between tasks. This graph-based representation makes explicit the flow of information through the system, enabling both automated reasoning about execution order and visual presentation that helps developers understand workflow structure. Each edge in the graph carries typed data, with the type system ensuring that data produced by one task is compatible with the expectations of tasks that consume it. This type safety prevents many common errors and enables early detection of incompatibilities before execution begins.
@@ -19,6 +24,9 @@ As illustrated in Figure 3.11, the overall system activity involves multiple com
 \label{fig:3.11-system-activity}
 \end{figure}
 
+\subsection*{3.6.2 Integration Patterns and Component Communication}
+\addcontentsline{toc}{subsection}{3.6.2 Integration Patterns and Component Communication}
+
 The integration patterns employed by Symphony enable components to work together effectively despite being developed independently and potentially using different technologies. The system defines clear interface contracts that specify how components communicate, what data formats they use, and what guarantees they provide. Components interact through these well-defined interfaces rather than depending on implementation details, enabling components to evolve independently as long as they continue to satisfy their interface contracts. This loose coupling between components facilitates system evolution and enables the extension ecosystem to grow without requiring coordination between extension developers.
 
 The message passing infrastructure provides the foundation for component communication, implementing reliable delivery of messages between components regardless of whether they execute in the same process or in separate processes. The infrastructure handles serialization of complex data structures into formats suitable for transmission, routing of messages to appropriate destinations based on addressing information, buffering of messages when recipients are temporarily unavailable, and error handling when communication failures occur. This infrastructure abstracts away the complexities of inter-component communication, enabling components to focus on their domain logic rather than communication mechanics.
@@ -30,6 +38,9 @@ The system coordination principles that guide Symphony's integration architectur
 The event-driven architecture employed by Symphony enables components to react to system events without requiring tight coupling between event producers and consumers. Components can publish events to announce that interesting conditions have occurred, and other components can subscribe to events they care about without the publisher needing to know about subscribers. This publish-subscribe pattern enables flexible composition of behaviors, as new components can be added that react to existing events without modifying event publishers. The event system supports filtering and transformation, enabling subscribers to receive only relevant events in convenient formats.
 
 The resource management system coordinates access to shared resources such as computational capacity, memory, storage, and external services. The system tracks resource availability and usage, enforces limits to prevent any component from monopolizing resources, implements fair allocation policies that ensure all components can make progress, and provides feedback to components about resource availability to enable adaptive behavior. This resource management ensures that the system remains responsive even under heavy load and that resources are allocated efficiently to maximize overall throughput.
+
+\subsection*{3.6.3 Data Consistency and System Reliability}
+\addcontentsline{toc}{subsection}{3.6.3 Data Consistency and System Reliability}
 
 The error handling and recovery mechanisms ensure that the system remains stable and functional even when individual components encounter errors. The system implements fault isolation to prevent errors in one component from affecting others, automatic retry with exponential backoff for transient failures, graceful degradation when components become unavailable, and comprehensive logging to facilitate debugging and root cause analysis. These mechanisms ensure that Symphony provides a reliable platform for development even when dealing with the inherent unreliability of complex distributed systems.
 
