@@ -1,57 +1,167 @@
-% Section 3.8: Data Flow and System Integration
+% Section 3.8: Data Flow Diagrams
 
-\section{3.8 Data Flow and System Integration}
+\section{3.8 Data Flow Diagrams}
 \label{sec:data-flow}
-\addcontentsline{toc}{section}{3.8 Data Flow and System Integration}
+\addcontentsline{toc}{section}{3.8 Data Flow Diagrams}
 
-\lettrine{T}{his section} examines how information flows through Symphony's architecture and how components integrate to form a cohesive system. We explore the directed acyclic graph model for workflow dependencies, the integration patterns that enable component collaboration, and the data governance mechanisms that ensure security and consistency. The data flow architecture provides the foundation for coordinating complex multi-step processes while maintaining clarity about data provenance and transformations.
+\lettrine{T}{his section} presents comprehensive Data Flow Diagrams (DFD) that visualize how information flows through Symphony's architecture. The diagrams illustrate the system at multiple levels of abstraction, from high-level context (Level-0) through complete system architecture (Level-1) to detailed process decompositions (Level-2), providing clear understanding of data movement, component interactions, and system integration patterns.
 
-\subsection*{3.8.1 Data Flow Model and Workflow Dependencies}
-\addcontentsline{toc}{subsection}{3.8.1 Data Flow Model and Workflow Dependencies}
+\subsection*{3.8.1 Data Flow Diagrams - All Levels}
+\addcontentsline{toc}{subsection}{3.8.1 Data Flow Diagrams - All Levels}
 
-\lettrine{T}{he} data flow architecture of Symphony orchestrates the movement of information between components, ensuring that data reaches the right destinations at the right times while maintaining consistency and enabling efficient processing. The system treats data flow as a first-class concern, with explicit representations of how information moves through workflows and well-defined interfaces that govern data exchange between components. This architectural approach enables Symphony to coordinate complex multi-step processes involving numerous components while maintaining clarity about data provenance, transformations, and dependencies.
-
-The conceptual data flow model represents workflows as directed acyclic graphs where nodes represent computational tasks and edges represent data dependencies between tasks. This graph-based representation makes explicit the flow of information through the system, enabling both automated reasoning about execution order and visual presentation that helps developers understand workflow structure. Each edge in the graph carries typed data, with the type system ensuring that data produced by one task is compatible with the expectations of tasks that consume it. This type safety prevents many common errors and enables early detection of incompatibilities before execution begins.
-
-The workflow dependency management system analyzes the directed acyclic graph structure to determine valid execution orders that respect all dependencies. The topological sorting algorithm identifies a sequence in which tasks can execute such that each task runs only after all tasks it depends on have completed. When multiple valid execution orders exist, the system considers factors such as resource availability, task priorities, and opportunities for parallel execution to select an optimal order. This intelligent scheduling ensures that workflows execute efficiently while respecting all constraints and dependencies.
-
-The overall system activity involves multiple components coordinating to process developer requests and generate outputs. The activity begins when a developer submits a prompt or selects a workflow to execute. The system analyzes the request to understand intent and identify required capabilities. The orchestration system generates or retrieves a workflow that accomplishes the objective. The execution engine processes the workflow, coordinating multiple extensions and managing data flow between them. Throughout execution, the system monitors progress, handles errors, and provides feedback to the developer. When execution completes, the system stores generated artifacts and updates its models based on the outcome. As illustrated in Figure 3.13, this complete activity flow demonstrates the coordination between all system components.
+\clearpage
+\textbf{DFD Level-0: System Context}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{images/diagrams/activity_diagram/symphony-activity-diagram.png}
-\caption{Overall System Activity}
-\label{fig:3.13-system-activity}
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level0-context.png}
+\caption{Data Flow Diagram - Level 0 (System Context)}
+\label{fig:3.13a-dfd-level0}
 \end{figure}
 
-\subsection*{3.8.2 Integration Patterns and Component Communication}
-\addcontentsline{toc}{subsection}{3.8.2 Integration Patterns and Component Communication}
+\clearpage
+\textbf{DFD Level-1: Complete System Architecture}
 
-The integration patterns employed by Symphony enable components to work together effectively despite being developed independently and potentially using different technologies. The system defines clear interface contracts that specify how components communicate, what data formats they use, and what guarantees they provide. Components interact through these well-defined interfaces rather than depending on implementation details, enabling components to evolve independently as long as they continue to satisfy their interface contracts. This loose coupling between components facilitates system evolution and enables the extension ecosystem to grow without requiring coordination between extension developers.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level1.png}
+\caption{Data Flow Diagram - Level 1 (Complete System Architecture)}
+\label{fig:3.13b-dfd-level1}
+\end{figure}
 
-The message passing infrastructure provides the foundation for component communication, implementing reliable delivery of messages between components regardless of whether they execute in the same process or in separate processes. The infrastructure handles serialization of complex data structures into formats suitable for transmission, routing of messages to appropriate destinations based on addressing information, buffering of messages when recipients are temporarily unavailable, and error handling when communication failures occur. This infrastructure abstracts away the complexities of inter-component communication, enabling components to focus on their domain logic rather than communication mechanics.
+\clearpage
+\textbf{DFD Level-1: Part1 Left}
 
-The data transformation capabilities enable components to work together even when they produce and consume data in different formats. The system provides a library of common transformations that convert between different representations, such as converting between different text encodings, transforming between different data structure formats, and adapting between different API conventions. Extensions can register custom transformations that handle domain-specific conversions, enabling seamless integration of specialized components. The transformation system applies conversions automatically when needed, making format differences transparent to workflow authors.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level1-part1-left.png}
+\caption*{Data Flow Diagram - Level 1 (Part1 Left)}
+\label{fig:3.13b-dfd-level1-part1-left}
+\end{figure}
 
-The system coordination principles that guide Symphony's integration architecture emphasize autonomy, loose coupling, and explicit contracts. Components should be autonomous, able to function independently without requiring tight coordination with other components. Components should be loosely coupled, depending on abstract interfaces rather than concrete implementations. Components should have explicit contracts that clearly specify their capabilities, requirements, and guarantees. These principles enable the system to scale to large numbers of components while maintaining understandability and reliability.
+\clearpage
+\textbf{DFD Level-1: Part2 Right}
 
-The event-driven architecture employed by Symphony enables components to react to system events without requiring tight coupling between event producers and consumers. Components can publish events to announce that interesting conditions have occurred, and other components can subscribe to events they care about without the publisher needing to know about subscribers. This publish-subscribe pattern enables flexible composition of behaviors, as new components can be added that react to existing events without modifying event publishers. The event system supports filtering and transformation, enabling subscribers to receive only relevant events in convenient formats.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level1-part2-right.png}
+\caption*{Data Flow Diagram - Level 1 (Part2 Right)}
+\label{fig:3.13b-dfd-level1-part2-right}
+\end{figure}
 
-The resource management system coordinates access to shared resources such as computational capacity, memory, storage, and external services. The system tracks resource availability and usage, enforces limits to prevent any component from monopolizing resources, implements fair allocation policies that ensure all components can make progress, and provides feedback to components about resource availability to enable adaptive behavior. This resource management ensures that the system remains responsive even under heavy load and that resources are allocated efficiently to maximize overall throughput.
+\clearpage
+\textbf{DFD Level-2: Process 1.0 - User Interface Layer (React + Tauri)}
 
-\subsection*{3.8.3 Data Consistency and System Reliability}
-\addcontentsline{toc}{subsection}{3.8.3 Data Consistency and System Reliability}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level2-process1.png}
+\caption{DFD Level-2: Process 1.0 - User Interface Layer}
+\label{fig:3.13c-dfd-level2-p1}
+\end{figure}
 
-The error handling and recovery mechanisms ensure that the system remains stable and functional even when individual components encounter errors. The system implements fault isolation to prevent errors in one component from affecting others, automatic retry with exponential backoff for transient failures, graceful degradation when components become unavailable, and comprehensive logging to facilitate debugging and root cause analysis. These mechanisms ensure that Symphony provides a reliable platform for development even when dealing with the inherent unreliability of complex distributed systems.
+\textbf{DFD Level-2: Process 2.0 - Core Engine (JSON-RPC Server)}
 
-The data consistency mechanisms ensure that information remains accurate and coherent as it flows through the system. The system implements transactional semantics for operations that must complete atomically, optimistic concurrency control for operations that rarely conflict, eventual consistency for operations where immediate consistency is not required, and conflict resolution strategies for situations where concurrent updates create inconsistencies. These mechanisms provide appropriate consistency guarantees for different types of operations while enabling high performance and availability.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level2-process2.png}
+\caption*{DFD Level-2: Process 2.0 - Core Engine (JSON-RPC Server)}
+\label{fig:3.13d-dfd-level2-p2}
+\end{figure}
 
-The caching strategies employed throughout the system reduce latency and improve throughput by avoiding redundant computation and data retrieval. The system caches frequently accessed data close to where it is used, invalidates cached data when underlying sources change, implements cache warming to preload data that is likely to be needed, and applies eviction policies to manage cache size when memory is limited. These caching strategies significantly improve system responsiveness while ensuring that cached data remains accurate.
+\clearpage
+\textbf{DFD Level-2: Process 3.0 - Extension Manager (Orchestra Kit)}
 
-The monitoring and observability capabilities enable developers and system administrators to understand system behavior and diagnose issues. The system collects metrics about component performance, resource usage, error rates, and other operational characteristics. These metrics are aggregated and made available through dashboards and APIs that enable real-time monitoring and historical analysis. The system also implements distributed tracing that tracks requests as they flow through multiple components, enabling developers to understand the complete path of execution and identify bottlenecks or errors.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level2-process3.png}
+\caption*{DFD Level-2: Process 3.0 - Extension Manager (Orchestra Kit)}
+\label{fig:3.13e-dfd-level2-p3}
+\end{figure}
 
-The integration testing framework enables verification that components work together correctly despite being developed independently. The framework provides tools for setting up test environments that include multiple components, generating test data that exercises integration points, asserting expected behaviors and outcomes, and cleaning up test environments after tests complete. This testing capability ensures that integration issues are caught early in the development process rather than manifesting as production failures.
+\textbf{DFD Level-2: Process 4.0 - AI Orchestration (Conductor + Pool Manager)}
 
-The versioning and compatibility management system enables the extension ecosystem to evolve while maintaining stability for existing workflows. The system uses semantic versioning to communicate the nature of changes in new extension versions, maintains multiple versions of extensions to support workflows that depend on specific versions, provides compatibility shims that enable old workflows to work with new extension versions, and validates that workflow dependencies can be satisfied before execution begins. This versioning approach enables innovation while protecting existing workflows from breaking changes.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level2-process4.png}
+\caption*{DFD Level-2: Process 4.0 - AI Orchestration (Conductor + Pool Manager)}
+\label{fig:3.13f-dfd-level2-p4}
+\end{figure}
 
-The data governance policies ensure that sensitive information is handled appropriately as it flows through the system. The system implements access controls that restrict which components can access sensitive data, audit logging that records all access to sensitive information, encryption for data at rest and in transit, and data retention policies that ensure information is not kept longer than necessary. These governance mechanisms enable Symphony to be used in environments with strict data handling requirements while maintaining the flexibility and power of the extension ecosystem.
+\clearpage
+\textbf{DFD Level-2: Process 5.0 - Workflow Engine (DAG Tracker + Melody Engine)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level2-process5.png}
+\caption*{DFD Level-2: Process 5.0 - Workflow Engine (DAG Tracker + Melody Engine)}
+\label{fig:3.13g-dfd-level2-p5}
+\end{figure}
+
+\textbf{DFD Level-2: Process 6.0 - File Operations (IDE Layer)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level2-process6.png}
+\caption*{DFD Level-2: Process 6.0 - File Operations (IDE Layer)}
+\label{fig:3.13h-dfd-level2-p6}
+\end{figure}
+
+\clearpage
+\textbf{DFD Level-2: Process 7.0 - IPC Communication (Message Bus)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level2-process7.png}
+\caption*{DFD Level-2: Process 7.0 - IPC Communication (Message Bus)}
+\label{fig:3.13i-dfd-level2-p7}
+\end{figure}
+
+\textbf{DFD Level-2: Process 8.0 - Extension Execution (The Pit)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level2-process8.png}
+\caption*{DFD Level-2: Process 8.0 - Extension Execution (The Pit)}
+\label{fig:3.13h-dfd-level2-p8}
+\end{figure}
+
+\clearpage
+\textbf{DFD Level-2: Process 9.0 - Artifact Management (Artifact Store)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level2-process9.png}
+\caption*{DFD Level-2: Process 9.0 - Artifact Management (Artifact Store)}
+\label{fig:3.13j-dfd-level2-p9}
+\end{figure}
+
+\textbf{DFD Level-2: Process 10.0 - Configuration (Config Manager)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level2-process10.png}
+\caption*{DFD Level-2: Process 10.0 - Configuration (Config Manager)}
+\label{fig:3.13k-dfd-level2-p10}
+\end{figure}
+
+\clearpage
+\textbf{DFD Level-2: Process 11.0 - Security \& Permissions (RBAC + Sandbox)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level2-process11.png}
+\caption*{DFD Level-2: Process 11.0 - Security \& Permissions (RBAC + Sandbox)}
+\label{fig:3.13l-dfd-level2-p11}
+\end{figure}
+
+\textbf{DFD Level-2: Process 12.0 - Marketplace Sync (Discovery)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/New folder/symphony-dfd-level2-process12.png}
+\caption*{DFD Level-2: Process 12.0 - Marketplace Sync (Discovery)}
+\label{fig:3.13m-dfd-level2-p12}
+\end{figure}
+
+\clearpage
+The Data Flow Diagrams presented above provide a complete visual representation of Symphony's information flow architecture. Level-0 shows the system context with external entities, Level-1 reveals the complete system architecture with all major processes, and Level-2 diagrams decompose each process to show detailed internal data flows and component interactions. These diagrams demonstrate how Symphony coordinates complex multi-step workflows while maintaining data consistency and security across all system components.

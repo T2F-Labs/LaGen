@@ -34,17 +34,39 @@ Motifs & Web runtime & UI responsiveness, visual performance \\
 
 \subsection*{3.6.2 Orchestra Kit Framework}
 
-The Orchestra Kit provides comprehensive infrastructure for managing the complete extension lifecycle from discovery through installation, loading, activation, and execution. The framework addresses key challenges in traditional extension systems through specialized components that work together seamlessly.
+The Orchestra Kit provides comprehensive infrastructure for managing the complete extension lifecycle from discovery through installation, loading, activation, and execution. The framework consists of specialized components working together seamlessly, which can be understood through three main groups:
 
-The Orchestra Kit components include Registry for metadata management of all available extensions enabling discovery and version management, Marketplace (The Grand Stage) as distribution platform with search, ratings, reviews, and automated updates, Installer for package download with signature verification and dependency resolution, Lifecycle Manager implementing the Chambering state machine that governs extension states from installation to execution, Security Manager providing capability-based permissions and sandboxing policies to protect system integrity, and Carets CLI/SDK as the development toolchain for extension creation, testing, and publication.
+\textbf{Component Group 1: Discovery and Distribution}
 
-As shown in Figure 3.6, the Orchestra Kit architecture demonstrates how these components interact to provide a robust extension ecosystem. The Registry maintains the catalog of available extensions, the Marketplace facilitates discovery and distribution, the Installer handles secure deployment, the Lifecycle Manager coordinates state transitions, the Security Manager enforces access controls, and the Carets toolchain supports the complete development workflow.
+The first group handles extension discovery and distribution. The Registry manages metadata for all available extensions, enabling discovery and version management through extension registration, search queries, and version tracking. The Marketplace (The Grand Stage) serves as the distribution platform with browsing capabilities, download management, package uploads, ratings, and reviews. The Installer handles secure deployment with package installation, dependency resolution, signature verification, and rollback capabilities.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/4_orchestra_kit_extension_ecosystem.png}
-\caption{Orchestra Kit Architecture}
-\label{fig:3.6-orchestra-kit}
+\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_4_orchestra_kit_extension_ecosystem/Orchestra Kit Part1.png}
+\caption{Orchestra Kit - Discovery and Distribution Components}
+\label{fig:3.6a-orchestra-discovery}
+\end{figure}
+
+\textbf{Component Group 2: Lifecycle and Security Management}
+
+The second group manages extension lifecycle and security. The LifecycleManager implements the Chambering state machine, tracking extension states (Installed, Loading, Loaded, Activated, Running) and coordinating state transitions. The SecurityManager provides protection through sandboxing for process isolation, permission management for capability-based access control, and resource enforcement. The PermissionManager handles role-based access with permission checking, granting, revoking, and action auditing.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_4_orchestra_kit_extension_ecosystem/Orchestra Kit Part2.png}
+\caption{Orchestra Kit - Lifecycle and Security Management Components}
+\label{fig:3.6b-orchestra-lifecycle}
+\end{figure}
+
+\textbf{Component Group 3: Development Toolchain}
+
+The third group provides the development toolchain. CaretsCli offers command-line interface for creating new extensions, running tests, publishing to marketplace, and scaffolding from templates. ExtensionSdk provides the development framework with core SDK functionality, testing framework with mocks and fixtures, and metrics collection for performance monitoring. This toolchain supports the complete development workflow from project creation through marketplace publication.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_4_orchestra_kit_extension_ecosystem/CaretsCLISDK.png}
+\caption{Orchestra Kit - Development Toolchain (Carets CLI and SDK)}
+\label{fig:3.6c-orchestra-toolchain}
 \end{figure}
 
 

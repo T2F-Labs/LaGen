@@ -1,0 +1,1205 @@
+{
+  "data": [
+    {
+      "TaskID": 1,
+      "TaskName": "Symphony IDE Development",
+      "StartDate": "2025-06-15T06:00:00.000Z",
+      "EndDate": "2026-05-15T15:00:00.000Z",
+      "Duration": 245,
+      "Predecessor": null,
+      "resources": [],
+      "Progress": 45,
+      "color": "",
+      "info": "<p>Complete development cycle from concept to beta release</p>",
+      "DurationUnit": "day",
+      "subtasks": [
+        {
+          "TaskID": 2,
+          "TaskName": "Phase 1: Research & Planning",
+          "StartDate": "2025-06-15T06:00:00.000Z",
+          "EndDate": "2025-08-15T15:00:00.000Z",
+          "Duration": 44,
+          "Predecessor": "",
+          "resources": [],
+          "Progress": 100,
+          "color": "121",
+          "info": "<p>Initial research, architecture decisions, and project planning</p>",
+          "DurationUnit": "day",
+          "subtasks": [
+            {
+              "TaskID": 3,
+              "TaskName": "Open Source Repository Analysis",
+              "StartDate": "2025-06-15T06:00:00.000Z",
+              "EndDate": "2025-07-05T15:00:00.000Z",
+              "Duration": 15,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 100,
+              "color": "121",
+              "info": "<p>Evaluated Graviton, migrated to Xi-Editor as base</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 4,
+              "TaskName": "Tech Stack Research",
+              "StartDate": "2025-06-15T06:00:00.000Z",
+              "EndDate": "2025-07-10T15:00:00.000Z",
+              "Duration": 18,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 50
+                },
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 50
+                }
+              ],
+              "Progress": 100,
+              "color": "121",
+              "info": "<p>Research on Rust, Python, Tauri, React, and best practices</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 5,
+              "TaskName": "Conductor Model Architecture Decision",
+              "StartDate": "2025-06-20T06:00:00.000Z",
+              "EndDate": "2025-07-15T15:00:00.000Z",
+              "Duration": 18,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 100,
+              "color": "121",
+              "info": "<p>Decided on microkernel architecture over exokernel</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 6,
+              "TaskName": "System Architecture Design",
+              "StartDate": "2025-07-01T06:00:00.000Z",
+              "EndDate": "2025-07-25T15:00:00.000Z",
+              "Duration": 18,
+              "Predecessor": "5",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 100,
+              "color": "121",
+              "info": "<p>Complete architectural blueprint including The Pit, Grand Stage, and Conductor</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 7,
+              "TaskName": "Project Documentation",
+              "StartDate": "2025-07-10T06:00:00.000Z",
+              "EndDate": "2025-08-15T15:00:00.000Z",
+              "Duration": 26,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 100,
+              "color": "121",
+              "info": "<p>Complete technical documentation and architectural guides</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 8,
+              "TaskName": "Database Strategy Planning",
+              "StartDate": "2025-07-15T06:00:00.000Z",
+              "EndDate": "2025-08-05T15:00:00.000Z",
+              "Duration": 15,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 100
+                }
+              ],
+              "Progress": 100,
+              "color": "121",
+              "info": "<p>Decided on Convex for prototype, FastAPI for production</p>",
+              "DurationUnit": "day"
+            }
+          ]
+        },
+        {
+          "TaskID": 9,
+          "TaskName": "Phase 2: Core Infrastructure (The Pit)",
+          "StartDate": "2025-08-16T06:00:00.000Z",
+          "EndDate": "2025-10-31T15:00:00.000Z",
+          "Duration": 54,
+          "Predecessor": "2",
+          "resources": [],
+          "Progress": 85,
+          "color": "211",
+          "info": "<p>Development of core Rust-based infrastructure extensions</p>",
+          "DurationUnit": "day",
+          "subtasks": [
+            {
+              "TaskID": 10,
+              "TaskName": "Pool Manager Extension",
+              "StartDate": "2025-08-16T06:00:00.000Z",
+              "EndDate": "2025-09-10T15:00:00.000Z",
+              "Duration": 18,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 90,
+              "color": "211",
+              "info": "<p>AI model lifecycle management and resource allocation</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 11,
+              "TaskName": "DAG Tracker Extension",
+              "StartDate": "2025-08-20T06:00:00.000Z",
+              "EndDate": "2025-09-15T15:00:00.000Z",
+              "Duration": 19,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 80
+                }
+              ],
+              "Progress": 85,
+              "color": "211",
+              "info": "<p>Workflow dependency tracking and execution graph management</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 12,
+              "TaskName": "Artifact Store Extension",
+              "StartDate": "2025-09-05T06:00:00.000Z",
+              "EndDate": "2025-09-30T15:00:00.000Z",
+              "Duration": 18,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 100
+                }
+              ],
+              "Progress": 80,
+              "color": "211",
+              "info": "<p>Data persistence, versioning, and quality scoring system</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 13,
+              "TaskName": "Arbitration Engine Extension",
+              "StartDate": "2025-09-15T06:00:00.000Z",
+              "EndDate": "2025-10-10T15:00:00.000Z",
+              "Duration": 18,
+              "Predecessor": "11",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 75,
+              "color": "211",
+              "info": "<p>Resource allocation decisions and conflict resolution</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 14,
+              "TaskName": "Stale Manager Extension",
+              "StartDate": "2025-10-01T06:00:00.000Z",
+              "EndDate": "2025-10-20T15:00:00.000Z",
+              "Duration": 14,
+              "Predecessor": "12",
+              "resources": [
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 100
+                }
+              ],
+              "Progress": 80,
+              "color": "211",
+              "info": "<p>Training data curation and storage lifecycle management</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 15,
+              "TaskName": "Pit Integration Testing",
+              "StartDate": "2025-10-15T06:00:00.000Z",
+              "EndDate": "2025-10-31T15:00:00.000Z",
+              "Duration": 12,
+              "Predecessor": "14",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 50
+                },
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 50
+                }
+              ],
+              "Progress": 90,
+              "color": "211",
+              "info": "<p>Complete integration testing of all Pit components</p>",
+              "DurationUnit": "day"
+            }
+          ]
+        },
+        {
+          "TaskID": 16,
+          "TaskName": "Phase 3: Conductor Core Development",
+          "StartDate": "2025-09-15T06:00:00.000Z",
+          "EndDate": "2025-12-15T15:00:00.000Z",
+          "Duration": 65,
+          "Predecessor": "",
+          "resources": [],
+          "Progress": 70,
+          "color": "301",
+          "info": "<p>Python-based RL orchestration engine with microkernel architecture</p>",
+          "DurationUnit": "day",
+          "subtasks": [
+            {
+              "TaskID": 17,
+              "TaskName": "Microkernel Core Implementation",
+              "StartDate": "2025-09-15T06:00:00.000Z",
+              "EndDate": "2025-10-15T15:00:00.000Z",
+              "Duration": 22,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 85,
+              "color": "301",
+              "info": "<p>Minimal orchestration kernel with extension management</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 18,
+              "TaskName": "Function Quest Game (FQG) Framework",
+              "StartDate": "2025-10-01T06:00:00.000Z",
+              "EndDate": "2025-11-01T15:00:00.000Z",
+              "Duration": 22,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "mostafa",
+                  "resourceName": "Mostafa Mohamed Abdullah Ali",
+                  "unit": 100
+                }
+              ],
+              "Progress": 75,
+              "color": "301",
+              "info": "<p>Training ground for RL model using logic puzzles</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 19,
+              "TaskName": "RL Model Training Pipeline",
+              "StartDate": "2025-10-20T06:00:00.000Z",
+              "EndDate": "2025-11-25T15:00:00.000Z",
+              "Duration": 26,
+              "Predecessor": "18",
+              "resources": [
+                {
+                  "resourceId": "mostafa",
+                  "resourceName": "Mostafa Mohamed Abdullah Ali",
+                  "unit": 80
+                },
+                {
+                  "resourceId": "nour",
+                  "resourceName": "Nour El-Din Osama Fathy",
+                  "unit": 80
+                }
+              ],
+              "Progress": 65,
+              "color": "301",
+              "info": "<p>Reinforcement learning pipeline using PyTorch/TensorFlow</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 20,
+              "TaskName": "Extension Lifecycle Management",
+              "StartDate": "2025-10-25T06:00:00.000Z",
+              "EndDate": "2025-11-20T15:00:00.000Z",
+              "Duration": 19,
+              "Predecessor": "17",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 70,
+              "color": "301",
+              "info": "<p>Chambering flow: requesting, registration, activation, usage, cleanup</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 21,
+              "TaskName": "Orchestration Intelligence Layer",
+              "StartDate": "2025-11-10T06:00:00.000Z",
+              "EndDate": "2025-12-15T15:00:00.000Z",
+              "Duration": 26,
+              "Predecessor": "19,20",
+              "resources": [
+                {
+                  "resourceId": "mostafa",
+                  "resourceName": "Mostafa Mohamed Abdullah Ali",
+                  "unit": 100
+                }
+              ],
+              "Progress": 60,
+              "color": "301",
+              "info": "<p>Adaptive workflow selection and failure recovery strategies</p>",
+              "DurationUnit": "day"
+            }
+          ]
+        },
+        {
+          "TaskID": 22,
+          "TaskName": "Phase 4: Backend Development",
+          "StartDate": "2025-10-01T06:00:00.000Z",
+          "EndDate": "2026-01-31T15:00:00.000Z",
+          "Duration": 85,
+          "Predecessor": "",
+          "resources": [],
+          "Progress": 60,
+          "color": "411",
+          "info": "<p>Backend services, API development, and database integration</p>",
+          "DurationUnit": "day",
+          "subtasks": [
+            {
+              "TaskID": 23,
+              "TaskName": "Convex Prototype Database Setup",
+              "StartDate": "2025-10-01T06:00:00.000Z",
+              "EndDate": "2025-10-20T15:00:00.000Z",
+              "Duration": 14,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 100
+                }
+              ],
+              "Progress": 100,
+              "color": "411",
+              "info": "<p>Rapid prototyping database with Convex</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 24,
+              "TaskName": "FastAPI Production Backend",
+              "StartDate": "2025-10-15T06:00:00.000Z",
+              "EndDate": "2025-12-15T15:00:00.000Z",
+              "Duration": 44,
+              "Predecessor": "23",
+              "resources": [
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 100
+                }
+              ],
+              "Progress": 70,
+              "color": "411",
+              "info": "<p>Production-ready REST API with FastAPI</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 25,
+              "TaskName": "Extension API Endpoints",
+              "StartDate": "2025-11-01T06:00:00.000Z",
+              "EndDate": "2025-12-20T15:00:00.000Z",
+              "Duration": 35,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 80
+                }
+              ],
+              "Progress": 65,
+              "color": "411",
+              "info": "<p>API for extension marketplace, installation, and management</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 26,
+              "TaskName": "AI Model Integration Backend",
+              "StartDate": "2025-11-15T06:00:00.000Z",
+              "EndDate": "2026-01-15T15:00:00.000Z",
+              "Duration": 44,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "mostafa",
+                  "resourceName": "Mostafa Mohamed Abdullah Ali",
+                  "unit": 60
+                },
+                {
+                  "resourceId": "nour",
+                  "resourceName": "Nour El-Din Osama Fathy",
+                  "unit": 60
+                }
+              ],
+              "Progress": 50,
+              "color": "411",
+              "info": "<p>Backend services for AI instrument management and execution</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 27,
+              "TaskName": "Authentication & Authorization",
+              "StartDate": "2025-12-01T06:00:00.000Z",
+              "EndDate": "2026-01-10T15:00:00.000Z",
+              "Duration": 29,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 100
+                }
+              ],
+              "Progress": 55,
+              "color": "411",
+              "info": "<p>User authentication, session management, and permission system</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 28,
+              "TaskName": "Backend Testing & Optimization",
+              "StartDate": "2026-01-05T06:00:00.000Z",
+              "EndDate": "2026-01-31T15:00:00.000Z",
+              "Duration": 19,
+              "Predecessor": "24,25,27",
+              "resources": [
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 100
+                },
+                {
+                  "resourceId": "mostafa",
+                  "resourceName": "Mostafa Mohamed Abdullah Ali",
+                  "unit": 40
+                },
+                {
+                  "resourceId": "nour",
+                  "resourceName": "Nour El-Din Osama Fathy",
+                  "unit": 40
+                }
+              ],
+              "Progress": 40,
+              "color": "411",
+              "info": "<p>Performance optimization, load testing, and API refinement</p>",
+              "DurationUnit": "day"
+            }
+          ]
+        },
+        {
+          "TaskID": 29,
+          "TaskName": "Phase 5: Frontend Development",
+          "StartDate": "2025-11-01T06:00:00.000Z",
+          "EndDate": "2026-03-15T15:00:00.000Z",
+          "Duration": 96,
+          "Predecessor": "",
+          "resources": [],
+          "Progress": 55,
+          "color": "121",
+          "info": "<p>User interface, visualization, and user experience development</p>",
+          "DurationUnit": "day",
+          "subtasks": [
+            {
+              "TaskID": 30,
+              "TaskName": "Xi-Editor Integration & Customization",
+              "StartDate": "2025-11-01T06:00:00.000Z",
+              "EndDate": "2025-12-10T15:00:00.000Z",
+              "Duration": 29,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 80,
+              "color": "121",
+              "info": "<p>Integration of Xi-Editor with custom extensions and theming</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 31,
+              "TaskName": "File Explorer Component",
+              "StartDate": "2025-11-15T06:00:00.000Z",
+              "EndDate": "2025-12-15T15:00:00.000Z",
+              "Duration": 22,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 75,
+              "color": "121",
+              "info": "<p>Project navigation and file management interface</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 32,
+              "TaskName": "Harmony Board (Visual Workflow Designer)",
+              "StartDate": "2025-12-01T06:00:00.000Z",
+              "EndDate": "2026-01-31T15:00:00.000Z",
+              "Duration": 44,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 60,
+              "color": "121",
+              "info": "<p>Node-based visual workflow composition interface</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 33,
+              "TaskName": "Extension Marketplace UI",
+              "StartDate": "2026-01-01T06:00:00.000Z",
+              "EndDate": "2026-02-10T15:00:00.000Z",
+              "Duration": 29,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 50,
+              "color": "121",
+              "info": "<p>Orchestra Kit marketplace browsing, search, and installation UI</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 34,
+              "TaskName": "Configuration Panels Auto-Generation",
+              "StartDate": "2026-01-15T06:00:00.000Z",
+              "EndDate": "2026-02-20T15:00:00.000Z",
+              "Duration": 26,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 45,
+              "color": "121",
+              "info": "<p>Dynamic UI generation from extension manifest schemas</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 35,
+              "TaskName": "Tauri Desktop Integration",
+              "StartDate": "2026-02-01T06:00:00.000Z",
+              "EndDate": "2026-03-01T15:00:00.000Z",
+              "Duration": 21,
+              "Predecessor": "30,31",
+              "resources": [
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 40,
+              "color": "121",
+              "info": "<p>Native desktop app packaging and system integration</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 36,
+              "TaskName": "UI/UX Testing & Refinement",
+              "StartDate": "2026-02-15T06:00:00.000Z",
+              "EndDate": "2026-03-15T15:00:00.000Z",
+              "Duration": 21,
+              "Predecessor": "33,34",
+              "resources": [
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 30,
+              "color": "121",
+              "info": "<p>User testing, accessibility improvements, and UX polish</p>",
+              "DurationUnit": "day"
+            }
+          ]
+        },
+        {
+          "TaskID": 37,
+          "TaskName": "Phase 6: Landing Page & Marketing Website",
+          "StartDate": "2026-01-15T06:00:00.000Z",
+          "EndDate": "2026-03-31T15:00:00.000Z",
+          "Duration": 54,
+          "Predecessor": "",
+          "resources": [],
+          "Progress": 40,
+          "color": "211",
+          "info": "<p>Public-facing website for downloads and documentation</p>",
+          "DurationUnit": "day",
+          "subtasks": [
+            {
+              "TaskID": 38,
+              "TaskName": "Astro Framework Setup",
+              "StartDate": "2026-01-15T06:00:00.000Z",
+              "EndDate": "2026-01-25T15:00:00.000Z",
+              "Duration": 8,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 90,
+              "color": "211",
+              "info": "<p>Project initialization and framework configuration</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 39,
+              "TaskName": "Landing Page Design & Development",
+              "StartDate": "2026-01-20T06:00:00.000Z",
+              "EndDate": "2026-02-20T15:00:00.000Z",
+              "Duration": 22,
+              "Predecessor": "38",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 60,
+              "color": "211",
+              "info": "<p>Hero section, features showcase, and download CTA</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 40,
+              "TaskName": "Documentation Portal",
+              "StartDate": "2026-02-01T06:00:00.000Z",
+              "EndDate": "2026-03-10T15:00:00.000Z",
+              "Duration": 28,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 80
+                }
+              ],
+              "Progress": 35,
+              "color": "211",
+              "info": "<p>Technical documentation, guides, and API references</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 41,
+              "TaskName": "Download & Installation Flow",
+              "StartDate": "2026-02-15T06:00:00.000Z",
+              "EndDate": "2026-03-05T15:00:00.000Z",
+              "Duration": 14,
+              "Predecessor": "39",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 50,
+              "color": "211",
+              "info": "<p>Platform detection, download links, and installation instructions</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 42,
+              "TaskName": "Marketing Content & SEO",
+              "StartDate": "2026-02-20T06:00:00.000Z",
+              "EndDate": "2026-03-25T15:00:00.000Z",
+              "Duration": 25,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 60
+                }
+              ],
+              "Progress": 25,
+              "color": "211",
+              "info": "<p>Content creation, SEO optimization, and social media integration</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 43,
+              "TaskName": "Website Deployment",
+              "StartDate": "2026-03-20T06:00:00.000Z",
+              "EndDate": "2026-03-31T15:00:00.000Z",
+              "Duration": 8,
+              "Predecessor": "40,41",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 20,
+              "color": "211",
+              "info": "<p>Production deployment, CDN setup, and monitoring</p>",
+              "DurationUnit": "day"
+            }
+          ]
+        },
+        {
+          "TaskID": 44,
+          "TaskName": "Phase 7: Integration & Testing",
+          "StartDate": "2026-02-15T06:00:00.000Z",
+          "EndDate": "2026-04-30T15:00:00.000Z",
+          "Duration": 54,
+          "Predecessor": "",
+          "resources": [],
+          "Progress": 25,
+          "color": "301",
+          "info": "<p>System integration, comprehensive testing, and quality assurance</p>",
+          "DurationUnit": "day",
+          "subtasks": [
+            {
+              "TaskID": 45,
+              "TaskName": "End-to-End Integration",
+              "StartDate": "2026-02-15T06:00:00.000Z",
+              "EndDate": "2026-03-20T15:00:00.000Z",
+              "Duration": 25,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                },
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 50
+                }
+              ],
+              "Progress": 40,
+              "color": "301",
+              "info": "<p>Full system integration across all components</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 46,
+              "TaskName": "Conductor 100-Iteration Testing",
+              "StartDate": "2026-03-01T06:00:00.000Z",
+              "EndDate": "2026-03-31T15:00:00.000Z",
+              "Duration": 22,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "mostafa",
+                  "resourceName": "Mostafa Mohamed Abdullah Ali",
+                  "unit": 100
+                },
+                {
+                  "resourceId": "nour",
+                  "resourceName": "Nour El-Din Osama Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 30,
+              "color": "301",
+              "info": "<p>Predictability testing framework for Conductor orchestration</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 47,
+              "TaskName": "Extension System Testing",
+              "StartDate": "2026-03-10T06:00:00.000Z",
+              "EndDate": "2026-04-10T15:00:00.000Z",
+              "Duration": 22,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 80
+                },
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 50
+                }
+              ],
+              "Progress": 20,
+              "color": "301",
+              "info": "<p>Sandbox security, permission system, and lifecycle testing</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 48,
+              "TaskName": "Performance Benchmarking",
+              "StartDate": "2026-03-20T06:00:00.000Z",
+              "EndDate": "2026-04-15T15:00:00.000Z",
+              "Duration": 19,
+              "Predecessor": "45",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 80
+                }
+              ],
+              "Progress": 15,
+              "color": "301",
+              "info": "<p>System performance profiling and optimization</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 49,
+              "TaskName": "Security Audit",
+              "StartDate": "2026-04-01T06:00:00.000Z",
+              "EndDate": "2026-04-20T15:00:00.000Z",
+              "Duration": 14,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 100
+                }
+              ],
+              "Progress": 10,
+              "color": "301",
+              "info": "<p>Comprehensive security review and vulnerability assessment</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 50,
+              "TaskName": "Bug Fixing & Stabilization",
+              "StartDate": "2026-04-05T06:00:00.000Z",
+              "EndDate": "2026-04-30T15:00:00.000Z",
+              "Duration": 18,
+              "Predecessor": "46,47,48",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 80
+                },
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 60
+                },
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 60
+                }
+              ],
+              "Progress": 5,
+              "color": "301",
+              "info": "<p>Critical bug fixes and system stabilization for beta</p>",
+              "DurationUnit": "day"
+            }
+          ]
+        },
+        {
+          "TaskID": 51,
+          "TaskName": "Phase 8: Beta Release Preparation",
+          "StartDate": "2026-04-15T06:00:00.000Z",
+          "EndDate": "2026-05-15T15:00:00.000Z",
+          "Duration": 22,
+          "Predecessor": "44",
+          "resources": [],
+          "Progress": 5,
+          "color": "411",
+          "info": "<p>Final preparations for beta launch</p>",
+          "DurationUnit": "day",
+          "subtasks": [
+            {
+              "TaskID": 52,
+              "TaskName": "Beta Documentation Finalization",
+              "StartDate": "2026-04-15T06:00:00.000Z",
+              "EndDate": "2026-05-01T15:00:00.000Z",
+              "Duration": 12,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 10,
+              "color": "411",
+              "info": "<p>User guides, API docs, and quickstart tutorials</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 53,
+              "TaskName": "Distribution Package Creation",
+              "StartDate": "2026-04-20T06:00:00.000Z",
+              "EndDate": "2026-05-05T15:00:00.000Z",
+              "Duration": 11,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 5,
+              "color": "411",
+              "info": "<p>Cross-platform installers (Windows, macOS, Linux)</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 54,
+              "TaskName": "Beta Tester Onboarding Materials",
+              "StartDate": "2026-04-25T06:00:00.000Z",
+              "EndDate": "2026-05-08T15:00:00.000Z",
+              "Duration": 10,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 60
+                }
+              ],
+              "Progress": 5,
+              "color": "411",
+              "info": "<p>Feedback forms, issue reporting templates, and communication channels</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 55,
+              "TaskName": "Analytics & Telemetry Setup",
+              "StartDate": "2026-04-28T06:00:00.000Z",
+              "EndDate": "2026-05-10T15:00:00.000Z",
+              "Duration": 9,
+              "Predecessor": "",
+              "resources": [
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 100
+                }
+              ],
+              "Progress": 5,
+              "color": "411",
+              "info": "<p>Usage tracking, crash reporting, and performance monitoring</p>",
+              "DurationUnit": "day"
+            },
+            {
+              "TaskID": 56,
+              "TaskName": "Beta Launch",
+              "StartDate": "2026-05-15T15:00:00.000Z",
+              "EndDate": "2026-05-15T15:00:00.000Z",
+              "Duration": 0,
+              "Predecessor": "50,52,53,54,55",
+              "resources": [
+                {
+                  "resourceId": "amr",
+                  "resourceName": "Amr Muhamed Fathy",
+                  "unit": 100
+                },
+                {
+                  "resourceId": "mahmoud",
+                  "resourceName": "Mahmoud Emad Khairy",
+                  "unit": 100
+                },
+                {
+                  "resourceId": "salma",
+                  "resourceName": "Salma Ebrahim Farouk",
+                  "unit": 100
+                },
+                {
+                  "resourceId": "mostafa",
+                  "resourceName": "Mostafa Mohamed Abdullah Ali",
+                  "unit": 100
+                },
+                {
+                  "resourceId": "nour",
+                  "resourceName": "Nour El-Din Osama Fathy",
+                  "unit": 100
+                }
+              ],
+              "Progress": 0,
+              "color": "501",
+              "info": "<p>🎉 Symphony IDE Beta Release - Public Launch!</p>",
+              "DurationUnit": "day"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "resourceId": "amr",
+      "resourceName": "Amr Muhamed Fathy"
+    },
+    {
+      "resourceId": "mahmoud",
+      "resourceName": "Mahmoud Emad Khairy"
+    },
+    {
+      "resourceId": "salma",
+      "resourceName": "Salma Ebrahim Farouk"
+    },
+    {
+      "resourceId": "mostafa",
+      "resourceName": "Mostafa Mohamed Abdullah Ali"
+    },
+    {
+      "resourceId": "nour",
+      "resourceName": "Nour El-Din Osama Fathy"
+    }
+  ],
+  "projectStartDate": "2025-06-15T06:00:00.000Z",
+  "projectEndDate": "2026-05-15T15:00:00.000Z",
+  "advanced": {
+    "columns": [
+      {
+        "name": "Task ID",
+        "width": "70",
+        "show": true
+      },
+      {
+        "name": "Task Name",
+        "width": "350",
+        "show": true
+      },
+      {
+        "name": "Start Date",
+        "width": "130",
+        "show": true
+      },
+      {
+        "name": "End Date",
+        "width": "130",
+        "show": true
+      },
+      {
+        "name": "Duration",
+        "width": "130",
+        "show": true
+      },
+      {
+        "name": "Progress %",
+        "width": "150",
+        "show": true
+      },
+      {
+        "name": "Dependency",
+        "width": "150",
+        "show": true
+      },
+      {
+        "name": "Resources",
+        "width": "200",
+        "show": true
+      },
+      {
+        "name": "Color",
+        "width": "100",
+        "show": false
+      }
+    ],
+    "zoomLevel": 0,
+    "timezone": "Africa/Cairo",
+    "timezoneOffset": -120,
+    "dependencyConflict": "Add Offset to Dependency",
+    "dateFormat": "yyyy-MM-dd",
+    "timeFormat": "HH:mm",
+    "firstDayOfWeek": 0,
+    "workWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "workTime": [
+      {
+        "from": 8,
+        "to": 12
+      },
+      {
+        "from": 13,
+        "to": 17
+      }
+    ],
+    "holidays": []
+  }
+}
