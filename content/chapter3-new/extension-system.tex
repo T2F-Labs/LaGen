@@ -1,12 +1,12 @@
-% Section 3.6: Extension System Design
+% Section 3.7: Extension System Design
 
-\section{3.6 Extension System Design}
+\section{3.7 Extension System Design}
 \label{sec:extension-system}
-\addcontentsline{toc}{section}{3.6 Extension System Design}
+\addcontentsline{toc}{section}{3.7 Extension System Design}
 
 \lettrine{T}{he} extension system represents the primary mechanism through which Symphony achieves unlimited customization and adaptation to diverse development scenarios. The system delegates specialized functionality to extensions that can be independently developed, tested, and deployed, enabling rapid evolution through community contributions while maintaining a stable core.
 
-\subsection*{3.6.1 Extension Categories: Instruments, Operators, and Motifs}
+\subsection*{3.7.1 Extension Categories: Instruments, Operators, and Motifs}
 
 Symphony defines three distinct extension categories, each serving different purposes with appropriate execution environments and integration patterns:
 
@@ -32,58 +32,59 @@ Motifs & Web runtime & UI responsiveness, visual performance \\
 \end{tabular}
 \end{table}
 
-\subsection*{3.6.2 Orchestra Kit Framework}
+\subsection*{3.7.2 Orchestra Kit Framework}
 
 The Orchestra Kit provides comprehensive infrastructure for managing the complete extension lifecycle from discovery through installation, loading, activation, and execution. The framework consists of specialized components working together seamlessly, which can be understood through three main groups:
 
 \textbf{Component Group 1: Discovery and Distribution}
 
-The first group handles extension discovery and distribution. The Registry manages metadata for all available extensions, enabling discovery and version management through extension registration, search queries, and version tracking. The Marketplace (The Grand Stage) serves as the distribution platform with browsing capabilities, download management, package uploads, ratings, and reviews. The Installer handles secure deployment with package installation, dependency resolution, signature verification, and rollback capabilities.
+The first group handles extension discovery and distribution. The Registry manages metadata for all available extensions, enabling discovery and version management through extension registration, search queries, and version tracking. The Marketplace (The Grand Stage) serves as the distribution platform with browsing capabilities, download management, package uploads, ratings, and reviews. The Installer handles secure deployment with package installation, dependency resolution, signature verification, and rollback capabilities as illustrated in Figure 3.8.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_4_orchestra_kit_extension_ecosystem/Orchestra Kit Part1.png}
 \caption{Orchestra Kit - Discovery and Distribution Components}
-\label{fig:3.6a-orchestra-discovery}
+\label{fig:3.12-orchestra-discovery}
 \end{figure}
 
 \textbf{Component Group 2: Lifecycle and Security Management}
 
-The second group manages extension lifecycle and security. The LifecycleManager implements the Chambering state machine, tracking extension states (Installed, Loading, Loaded, Activated, Running) and coordinating state transitions. The SecurityManager provides protection through sandboxing for process isolation, permission management for capability-based access control, and resource enforcement. The PermissionManager handles role-based access with permission checking, granting, revoking, and action auditing.
+The second group manages extension lifecycle and security. The LifecycleManager implements the Chambering state machine, tracking extension states (Installed, Loading, Loaded, Activated, Running) and coordinating state transitions. The SecurityManager provides protection through sandboxing for process isolation, permission management for capability-based access control, and resource enforcement. The PermissionManager handles role-based access with permission checking, granting, revoking, and action auditing as illustrated in Figure 3.9.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_4_orchestra_kit_extension_ecosystem/Orchestra Kit Part2.png}
 \caption{Orchestra Kit - Lifecycle and Security Management Components}
-\label{fig:3.6b-orchestra-lifecycle}
+\label{fig:3.13-orchestra-lifecycle}
 \end{figure}
 
+\clearpage
 \textbf{Component Group 3: Development Toolchain}
 
-The third group provides the development toolchain. CaretsCli offers command-line interface for creating new extensions, running tests, publishing to marketplace, and scaffolding from templates. ExtensionSdk provides the development framework with core SDK functionality, testing framework with mocks and fixtures, and metrics collection for performance monitoring. This toolchain supports the complete development workflow from project creation through marketplace publication.
+The third group provides the development toolchain. CaretsCli offers command-line interface for creating new extensions, running tests, publishing to marketplace, and scaffolding from templates. ExtensionSdk provides the development framework with core SDK functionality, testing framework with mocks and fixtures, and metrics collection for performance monitoring. This toolchain supports the complete development workflow from project creation through marketplace publication as illustrated in Figure 3.10.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_4_orchestra_kit_extension_ecosystem/CaretsCLISDK.png}
 \caption{Orchestra Kit - Development Toolchain (Carets CLI and SDK)}
-\label{fig:3.6c-orchestra-toolchain}
+\label{fig:3.14-orchestra-toolchain}
 \end{figure}
 
 
-\subsection*{3.6.3 Extension Lifecycle and Chambering Process}
+\subsection*{3.7.3 Extension Lifecycle and Chambering Process}
 
 The extension lifecycle follows a well-defined state machine known as the Chambering process, governing transitions from installation through activation and execution. Extensions progress through distinct states including Installed, Loading, Loaded, Activating, Active, Deactivating, Unloading, and Uninstalled. Each state transition is carefully managed to ensure proper initialization before use and efficient resource management throughout the lifecycle.
 
-The Chambering process ensures that extensions are properly validated before activation, resources are allocated efficiently during loading, and cleanup occurs systematically during unloading. State transitions are atomic operations that either complete successfully or roll back to the previous stable state, preventing partial initialization that could compromise system stability. As illustrated in Figure 3.7, the state machine governs all possible transitions and ensures that extensions follow the correct lifecycle path.
+The Chambering process ensures that extensions are properly validated before activation, resources are allocated efficiently during loading, and cleanup occurs systematically during unloading. State transitions are atomic operations that either complete successfully or roll back to the previous stable state, preventing partial initialization that could compromise system stability. The state machine governs all possible transitions and ensures that extensions follow the correct lifecycle path as illustrated in Figure 3.11.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth]{images/diagrams/state_diagram/1_extension_lifecycle_chambering.png}
 \caption{Extension Lifecycle State Machine}
-\label{fig:3.7-extension-lifecycle}
+\label{fig:3.15-extension-lifecycle}
 \end{figure}
 
-\subsection*{3.6.4 Extension Installation State Management}
+\subsection*{3.7.4 Extension Installation State Management}
 
 The installation process manages eight distinct states ensuring reliable extension deployment with comprehensive security validation, dependency resolution, and automatic rollback capabilities:
 
@@ -100,17 +101,17 @@ The installation process manages eight distinct states ensuring reliable extensi
 
 This state machine addresses critical deployment challenges including security validation through comprehensive signature verification and integrity checks, dependency resolution with automatic detection and conflict resolution, rollback capability for failed installations with complete state restoration, and seamless user experience with detailed progress feedback and error reporting.
 
-\subsection*{3.6.5 Extension Development Workflow}
+\subsection*{3.7.5 Extension Development Workflow}
 
 The extension development workflow provides comprehensive tooling support through the Carets command-line interface. The workflow encompasses the complete development lifecycle from initial project creation through marketplace publication. Developers begin by scaffolding new extension projects with proper structure and manifests, then implement functionality using the provided SDK and APIs. The workflow includes integrated testing frameworks for validation, security signing for package integrity, and automated publication to the marketplace.
 
-The development process emphasizes several key aspects. Automated scaffolding generates complete project structures with proper manifests and configuration files. Integrated testing provides comprehensive frameworks that validate functionality before publication. Security validation through cryptographic signing and verification ensures package integrity and authenticity. Marketplace integration enables seamless publication with automated quality checks and version management. As shown in Figure 3.8, the complete workflow guides developers through each stage systematically.
+The development process emphasizes several key aspects. Automated scaffolding generates complete project structures with proper manifests and configuration files. Integrated testing provides comprehensive frameworks that validate functionality before publication. Security validation through cryptographic signing and verification ensures package integrity and authenticity. Marketplace integration enables seamless publication with automated quality checks and version management. The complete workflow guides developers through each stage systematically as illustrated in Figure 3.12.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{images/diagrams/activity_diagram/symphony-extension-development.png}
 \caption{Extension Development Workflow}
-\label{fig:3.8-extension-development}
+\label{fig:3.16-extension-development}
 \end{figure}
 
 
