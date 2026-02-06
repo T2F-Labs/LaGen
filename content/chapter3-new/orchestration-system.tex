@@ -17,7 +17,7 @@ The system architecture consists of two main components that work together seaml
 
 \textbf{Component 1: IPC Communication Infrastructure}
 
-The Conductor communicates with the core system through an inter-process communication infrastructure enabling seamless integration despite being implemented in Python while the core is in Rust. The IpcBus provides reliable message passing with Transport layer supporting Unix sockets (Linux/macOS) and named pipes (Windows). The Protocol layer handles message serialization and deserialization, ensuring safe data transmission between processes. The Security layer implements authentication and rate limiting to protect against malicious extensions. The Message component carries data with unique IDs, sender/receiver process IDs, payload bytes, and timestamps as illustrated in Figure 3.13.
+The Conductor communicates with the core system through an inter-process communication infrastructure enabling seamless integration despite being implemented in Python while the core is in Rust. The IpcBus provides reliable message passing with Transport layer supporting Unix sockets (Linux/macOS) and named pipes (Windows). The Protocol layer handles message serialization and deserialization, ensuring safe data transmission between processes. The Security layer implements authentication and rate limiting to protect against malicious extensions. The Message component carries data with unique IDs, sender/receiver process IDs, payload bytes, and timestamps as illustrated in Figure 3.16.
 
 \begin{figure}[H]
 \centering
@@ -28,7 +28,7 @@ The Conductor communicates with the core system through an inter-process communi
 
 \textbf{Component 2: Conductor Architecture}
 
-The Conductor component integrates the reinforcement learning model with the orchestration system. The RlModel implements the policy and value function, predicting actions from states and updating through experience. The OrchestrationBridge converts between Melody workflows and DAG structures, collecting execution rewards. The PyO3Bindings enable seamless Rust-Python interoperability, converting values between languages and calling Python functions from Rust. This architecture enables the Conductor to leverage Python's ML ecosystem while maintaining Rust core performance as illustrated in Figure 3.14.
+The Conductor component integrates the reinforcement learning model with the orchestration system. The RlModel implements the policy and value function, predicting actions from states and updating through experience. The OrchestrationBridge converts between Melody workflows and DAG structures, collecting execution rewards. The PyO3Bindings enable seamless Rust-Python interoperability, converting values between languages and calling Python functions from Rust. This architecture enables the Conductor to leverage Python's ML ecosystem while maintaining Rust core performance as illustrated in Figure 3.17.
 
 \begin{figure}[H]
 \centering
@@ -53,7 +53,7 @@ The execution of a Melody involves multiple system components working together i
 % \clearpage
 \textbf{Phase 1: Orchestration Flow}
 
-The workflow begins when the developer writes a prompt describing the desired outcome. The Frontend UI submits this prompt to the Core system, which forwards it to the Conductor for processing. The Conductor analyzes the prompt and generates a Melody workflow. In Maestro Mode, the Conductor uses reinforcement learning to automatically generate the workflow. In Manual Mode, the system requests the developer to select from available Melodies through a browser interface. Once the Melody is selected or generated, the Conductor orchestrates its execution as illustrated in Figure 3.15.
+The workflow begins when the developer writes a prompt describing the desired outcome. The Frontend UI submits this prompt to the Core system, which forwards it to the Conductor for processing. The Conductor analyzes the prompt and generates a Melody workflow. In Maestro Mode, the Conductor uses reinforcement learning to automatically generate the workflow. In Manual Mode, the system requests the developer to select from available Melodies through a browser interface. Once the Melody is selected or generated, the Conductor orchestrates its execution as illustrated in Figure 3.18.
 
 \begin{figure}[H]
 \centering
@@ -65,7 +65,7 @@ The workflow begins when the developer writes a prompt describing the desired ou
 \clearpage
 \textbf{Phase 2: Execution Flow}
 
-After orchestration, the Conductor dispatches tasks to The Pit for execution. The Pit coordinates with the Pool Manager to allocate Player extensions, ensuring required AI models and tools are ready. The DAG Tracker manages task execution order based on dependencies, running each task in sequence or parallel as appropriate. As tasks complete, their results are stored in the ArtifactStore with unique identifiers. The Pit monitors execution progress and handles any errors that occur during task processing as illustrated in Figure 3.16.
+After orchestration, the Conductor dispatches tasks to The Pit for execution. The Pit coordinates with the Pool Manager to allocate Player extensions, ensuring required AI models and tools are ready. The DAG Tracker manages task execution order based on dependencies, running each task in sequence or parallel as appropriate. As tasks complete, their results are stored in the ArtifactStore with unique identifiers. The Pit monitors execution progress and handles any errors that occur during task processing as illustrated in Figure 3.19.
 
 \begin{figure}[H]
 \centering
@@ -77,7 +77,7 @@ After orchestration, the Conductor dispatches tasks to The Pit for execution. Th
 \clearpage
 \textbf{Phase 3: Data Retrieval Flow}
 
-Once execution completes, the Core system sends status updates to the Frontend UI, which displays results to the developer. When the developer requests to view artifacts, the UI queries the Core system, which retrieves data from the ArtifactStore. The stored artifacts are returned through the system layers and displayed to the developer. This completes the full Melody execution cycle, with the Conductor calculating rewards and updating its model to improve future workflow generation as illustrated in Figure 3.17.
+Once execution completes, the Core system sends status updates to the Frontend UI, which displays results to the developer. When the developer requests to view artifacts, the UI queries the Core system, which retrieves data from the ArtifactStore. The stored artifacts are returned through the system layers and displayed to the developer. This completes the full Melody execution cycle, with the Conductor calculating rewards and updating its model to improve future workflow generation as illustrated in Figure 3.20.
 
 \begin{figure}[H]
 \centering
@@ -92,7 +92,7 @@ The workflow generation process implemented by the Conductor involves several so
 
 \textbf{Phase 1: Inference \& Generation}
 
-The process begins with intent parsing, where the Conductor receives a complex prompt from the developer through the Frontend UI and Core system. The Conductor analyzes the prompt using natural language understanding techniques to extract key objectives, constraints, and preferences. It then queries the RL Model to get action probabilities through a forward pass. The RL Model generates an action distribution that guides workflow construction. The Conductor uses these probabilities to generate the workflow structure, with the Melody Engine creating a concrete workflow graph where nodes represent extension invocations and edges represent data dependencies. The generated Melody is then previewed to the developer through the UI, displaying the workflow graph for review before execution as illustrated in Figure 3.18.
+The process begins with intent parsing, where the Conductor receives a complex prompt from the developer through the Frontend UI and Core system. The Conductor analyzes the prompt using natural language understanding techniques to extract key objectives, constraints, and preferences. It then queries the RL Model to get action probabilities through a forward pass. The RL Model generates an action distribution that guides workflow construction. The Conductor uses these probabilities to generate the workflow structure, with the Melody Engine creating a concrete workflow graph where nodes represent extension invocations and edges represent data dependencies. The generated Melody is then previewed to the developer through the UI, displaying the workflow graph for review before execution as illustrated in Figure 3.21.
 
 \begin{figure}[H]
 \centering
@@ -104,7 +104,7 @@ The process begins with intent parsing, where the Conductor receives a complex p
 \clearpage
 \textbf{Phase 2: Execution \& Learning}
 
-After the developer approves and executes the Melody, the Core system starts execution and the Conductor dispatches tasks to the Bridge component. During execution, the Conductor collects execution metrics including success rates, execution time, and artifact quality. These metrics are used to update the RL Model through backpropagation, implementing the reinforcement learning cycle where the model learns from experience. The RL Model calculates rewards based on the execution outcome (State → Action → Reward) and updates its parameters to improve future workflow generation. Optionally, the developer can save the successful Melody to the Polyphony marketplace, making it available for reuse by other developers. This continuous learning cycle enables the Conductor to improve its workflow generation capabilities over time as illustrated in Figure 3.19.
+After the developer approves and executes the Melody, the Core system starts execution and the Conductor dispatches tasks to the Bridge component. During execution, the Conductor collects execution metrics including success rates, execution time, and artifact quality. These metrics are used to update the RL Model through backpropagation, implementing the reinforcement learning cycle where the model learns from experience. The RL Model calculates rewards based on the execution outcome (State → Action → Reward) and updates its parameters to improve future workflow generation. Optionally, the developer can save the successful Melody to the Polyphony marketplace, making it available for reuse by other developers. This continuous learning cycle enables the Conductor to improve its workflow generation capabilities over time as illustrated in Figure 3.22.
 
 \begin{figure}[H]
 \centering
@@ -117,7 +117,7 @@ After the developer approves and executes the Melody, the Core system starts exe
 \subsection*{3.8.3 Workflow Execution and Validation}
 \addcontentsline{toc}{subsection}{3.8.3 Workflow Execution and Validation}
 
-The Melody execution lifecycle follows a well-defined state machine governing progression from workflow creation through completion as illustrated in Figure 3.20. Melodies begin in the Draft state during composition, move through Validating for correctness checks (cycle detection, type safety, resource constraints), then Ready when validation passes. During execution, Melodies progress through Queued (waiting for resources), Executing (active processing), and optionally Paused (for checkpointing or intervention), concluding in either Completed or Failed states.
+The Melody execution lifecycle follows a well-defined state machine governing progression from workflow creation through completion as illustrated in Figure 3.23. Melodies begin in the Draft state during composition, move through Validating for correctness checks (cycle detection, type safety, resource constraints), then Ready when validation passes. During execution, Melodies progress through Queued (waiting for resources), Executing (active processing), and optionally Paused (for checkpointing or intervention), concluding in either Completed or Failed states.
 
 \begin{figure}[H]
 \centering
