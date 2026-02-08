@@ -4,33 +4,35 @@
 \label{sec:architecture-overview}
 \addcontentsline{toc}{section}{3.3 System Architecture Overview}
 
-\lettrine{T}{his section} presents Symphony's architectural foundation, exploring the design principles and structural patterns that enable AI-first development. We examine the Harmonic Hexagonal Actor Architecture (H²A²) that provides modularity and extensibility, and detail the multi-phase bootstrap process that ensures reliable system initialization. The architecture emphasizes separation of concerns, fault isolation, and intelligent orchestration to support complex AI-assisted workflows while maintaining exceptional performance and stability.
+\lettrine{T}{his section} presents Symphony's architectural foundation based on the Harmonic Hexagonal Actor Architecture (H²A²) and the multi-phase bootstrap process. The architecture emphasizes separation of concerns, fault isolation, and intelligent orchestration for AI-first development.
 
 \subsection*{3.3.1 H²A² Architecture and Design Philosophy}
 \addcontentsline{toc}{subsection}{3.3.1 H²A² Architecture and Design Philosophy}
 
-The architecture of Symphony represents a fundamental departure from traditional IDEs by embracing a microkernel design philosophy that prioritizes modularity, extensibility, and intelligent orchestration. The foundation rests on the Harmonic Hexagonal Actor Architecture (H²A²), a novel design pattern combining hexagonal architecture with actor-based concurrency models.
+Symphony's architecture embraces a microkernel design philosophy prioritizing modularity and extensibility. The foundation rests on the Harmonic Hexagonal Actor Architecture (H²A²), combining hexagonal architecture with actor-based concurrency models.
 
-The H²A² Architecture establishes clear boundaries between domain logic and infrastructure adapters. At the heart lies the Domain Core, which maintains workflow definitions, extension policies, and orchestration logic. This core operates independently through well-defined port interfaces, enabling system evolution without affecting architectural integrity. The architecture can be understood through four key layers:
+The H²A² Architecture establishes clear boundaries between domain logic and infrastructure adapters. The Domain Core maintains workflow definitions, extension policies, and orchestration logic, operating independently through well-defined port interfaces. The architecture consists of four key layers:
 
 \textbf{Layer 1a: Domain Core Components}
 
-The Domain Core serves as the central orchestration engine containing three essential components. The OrchestrationEngine handles workflow scheduling and task execution coordination. WorkflowDefinitions maintain templates and validation rules for workflow structures. ExtensionPolicies enforce security rules and context-based policies for extension behavior. These components work together to define system behavior at a conceptual level, independent of implementation details as illustrated in Figure 3.2.
+The Domain Core contains three essential components: OrchestrationEngine for workflow scheduling, WorkflowDefinitions for templates and validation, and ExtensionPolicies for security rules. These define system behavior independent of implementation details.
+
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_1_h2a2_architecture_domain_adapters/H²A² Architecture Part1 part1.png}
+\includegraphics[width=1.15\textwidth]{images/diagrams/class_diagram/seperate_1_h2a2_architecture_domain_adapters/H²A² Architecture Part1 part1.png}
 \caption{H²A² Architecture - Domain Core Components}
 \label{fig:3.6a-h2a2-domain-components}
 \end{figure}
 
+\clearpage
 \textbf{Layer 1b: Port Interfaces}
 
 The Domain Core depends on abstract port interfaces that define contracts for external interactions. PitPort handles player allocation, DAG execution, and artifact storage. ExtensionPort manages extension loading, messaging, and topic subscriptions. ConductorPort provides context analysis and melody generation capabilities. TextEditingPort handles text insertion, deletion, and editing operations. These interfaces enable the core to remain independent of concrete implementations as illustrated in Figure 3.3.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_1_h2a2_architecture_domain_adapters/H²A² Architecture Part1 part2.png}
+\includegraphics[width=1.15\textwidth]{images/diagrams/class_diagram/seperate_1_h2a2_architecture_domain_adapters/H²A² Architecture Part1 part2.png}
 \caption{H²A² Architecture - Port Interfaces Layer}
 \label{fig:3.7-h2a2-ports}
 \end{figure}
@@ -52,14 +54,14 @@ The third layer represents the Domain Core with its abstract port interfaces. Th
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_1_h2a2_architecture_domain_adapters/H²A² Architecture Part3.png}
+\includegraphics[width=1.15\textwidth]{images/diagrams/class_diagram/seperate_1_h2a2_architecture_domain_adapters/H²A² Architecture Part3.png}
 \caption{H²A² Architecture - Domain Core and Port Interfaces Layer}
 \label{fig:3.9-h2a2-domain}
 \end{figure}
 
-The microkernel philosophy keeps the core system minimal while delegating specialized functionality to extensions. This contrasts with monolithic IDE architectures that bundle extensive functionality into the core, resulting in bloated applications with slow startup times. Symphony's microkernel contains only essential primitives for orchestration, extension management, and system coordination, while all other capabilities are provided through dynamically loaded extensions.
+% The microkernel philosophy keeps the core system minimal while delegating specialized functionality to extensions. This contrasts with monolithic IDE architectures that bundle extensive functionality into the core, resulting in bloated applications with slow startup times. Symphony's microkernel contains only essential primitives for orchestration, extension management, and system coordination, while all other capabilities are provided through dynamically loaded extensions.
 
-
+\clearpage
 \subsection*{3.3.2 System Bootstrap and Initialization}
 \addcontentsline{toc}{subsection}{3.3.2 System Bootstrap and Initialization}
 
@@ -73,14 +75,15 @@ Symphony's initialization follows a carefully orchestrated bootstrap process thr
     \item \textbf{UI Phase}: Brings up user interface, establishes WebSocket connections, performs comprehensive health checks
 \end{compactlist}
 
+The architectural design incorporates sophisticated error handling and recovery mechanisms. If any bootstrap phase encounters errors, the system automatically initiates rollback procedures, cleanly shutting down successfully initialized components and returning to a safe state. This rollback capability extends to runtime operations, where component failures are isolated to prevent cascading failures.
+
+The H²A² Architecture's separation of concerns provides significant benefits: new capabilities can be added through additional adapters without modifying the Domain Core, infrastructure components can be upgraded by providing new adapter implementations satisfying existing port interfaces, and comprehensive testing is facilitated through isolated Domain Core testing with mock implementations and adapter testing against port interface contracts.
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{images/diagrams/activity_diagram/symphony-system-bootstrap.png}
+\includegraphics[width=1.25\textwidth]{images/diagrams/activity_diagram/symphony-system-bootstrap.png}
 \caption{System Bootstrap Process}
 \label{fig:3.10}
 \end{figure}
 
-The architectural design incorporates sophisticated error handling and recovery mechanisms. If any bootstrap phase encounters errors, the system automatically initiates rollback procedures, cleanly shutting down successfully initialized components and returning to a safe state. This rollback capability extends to runtime operations, where component failures are isolated to prevent cascading failures.
-
-The H²A² Architecture's separation of concerns provides significant benefits: new capabilities can be added through additional adapters without modifying the Domain Core, infrastructure components can be upgraded by providing new adapter implementations satisfying existing port interfaces, and comprehensive testing is facilitated through isolated Domain Core testing with mock implementations and adapter testing against port interface contracts.
 

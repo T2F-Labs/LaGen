@@ -8,23 +8,28 @@
 
 \subsection*{3.6.1 The Pit: In-Process Execution}
 
-The Pit constitutes the high-performance in-process execution environment for trusted infrastructure extensions requiring minimal latency and maximum throughput. Five core components operate within The Pit:
+The Pit constitutes the high-performance in-process execution environment for trusted infrastructure extensions. Five core components operate within The Pit: Pool Manager, DAG Tracker, Artifact Store, Arbitration Engine, and Stale Manager. Extensions execute within the same process as the core system, enabling direct function calls and shared memory access with nanosecond-level latencies.
 
-\begin{description}[leftmargin=3.5cm,labelwidth=3cm]
-    \item[\textbf{Pool Manager}] AI model lifecycle and resource management with predictive pre-warming
-    \item[\textbf{DAG Tracker}] Workflow dependency mapping and execution order coordination
-    \item[\textbf{Artifact Store}] Institutional memory with quality scoring and versioning
-    \item[\textbf{Arbitration Engine}] Intelligent resource allocation and conflict resolution
-    \item[\textbf{Stale Manager}] Training data curation and system optimization
-\end{description}
+\textbf{Core Infrastructure Components}
 
-Extensions in The Pit execute within the same process as the core system, enabling direct function calls and shared memory access that achieve allocation latencies measured in tens to hundreds of nanoseconds. This execution model is appropriate for carefully vetted infrastructure components that form the foundation of Symphony's capabilities as illustrated in Figure 3.10.
+The PitCore manages five essential infrastructure extensions that handle AI model lifecycle, workflow execution, institutional memory, resource allocation, and system optimization. These components achieve ultra-low latency through in-process execution.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/2_the_pit_aide_layer_execution.png}
-\caption{The Pit Architecture}
-\label{fig:3.11-pit-architecture}
+\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_2_the_pit_aide_layer_execution/Cache Eviction Pipeline-2026-02-06-1201701.png}
+\caption{The Pit Architecture - Core Infrastructure Components}
+\label{fig:3.11a-pit-core}
+\end{figure}
+
+\textbf{Pool Manager and DAG Tracker}
+
+The Pool Manager handles AI model lifecycle with predictive pre-warming and player state management. The DAG Tracker coordinates workflow execution through dependency mapping, topological sorting, and parallel execution support. Both components work together to optimize workflow performance.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_2_the_pit_aide_layer_execution/Screenshot 2026-02-06 141408.png}
+\caption{The Pit Architecture - Pool Manager and DAG Tracker}
+\label{fig:3.11b-pit-managers}
 \end{figure}
 
 \subsection*{3.6.2 The Grand Stage: Out-of-Process Execution}
