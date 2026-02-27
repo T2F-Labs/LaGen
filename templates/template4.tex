@@ -1,5 +1,5 @@
 % Template 4: Academic Research Design (Based on raw3)
-% This template provides  academic document styling with consistent design
+% This template provides comprehensive academic document styling with consistent design
 % throughout all pages, including backgrounds, headers, footers, and section formatting.
 
 % ========== TEMPLATE CONFIGURATION ==========
@@ -19,10 +19,6 @@
 \providecommand{\DepartmentPlaceholder}{Your Department}
 \providecommand{\DocumentIDPlaceholder}{DOC-001}
 \providecommand{\VersionPlaceholder}{1.0}
-\providecommand{\ClassificationPlaceholder}{Internal}
-\providecommand{\DistributionPlaceholder}{Restricted}
-\providecommand{\StatusPlaceholder}{Draft}
-\providecommand{\ContactPlaceholder}{contact@institution.edu}
 
 % ========== TEMPLATE COLORS ==========
 % Define template-specific colors that integrate with brand system
@@ -119,7 +115,7 @@
   % #6: University logo path (optional - use empty {} if no logo)
   % #7: College logo path (optional - use empty {} if no logo)
   \begin{titlepage}
-  \newgeometry{margin=0.7in,footskip=40pt}
+  \newgeometry{margin=0.7in}
   \thispagestyle{empty}
   
   % Enhanced background for title page (from raw3)
@@ -211,23 +207,8 @@
   
   \vspace{1.8cm}
   
-  % Classification Information (from raw3)
-  \begin{center}
-  \textbf{\Large\textcolor{templatePrimary}{Document Classification}}\\[0.5cm]
-  \begin{tabular}{p{0.44\textwidth}p{0.44\textwidth}}
-  \textbf{Classification:} & \textbf{Distribution:} \\[0.2cm]
-  \ClassificationPlaceholder & \DistributionPlaceholder \\[0.3cm]
-  \textbf{Status:} & \textbf{Contact:} \\[0.2cm]
-  \StatusPlaceholder & \ContactPlaceholder \\
-  \end{tabular}
-  \end{center}
-  
   \vfill
   
-  % Footer Information (from raw3)
-  \begin{center}
-  \colorbox{templateLight}{\makebox[0.85\textwidth]{\textbf{\InstitutionPlaceholder\ - \ClassificationPlaceholder\ Document}}}
-  \end{center}
   
   \end{titlepage}
   \restoregeometry

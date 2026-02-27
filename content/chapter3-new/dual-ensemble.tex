@@ -1,5 +1,5 @@
 % Section 3.6: Dual Ensemble Architecture
-
+\clearpage
 \section{3.6 Dual Ensemble Architecture}
 \label{sec:dual-ensemble}
 \addcontentsline{toc}{section}{3.6 Dual Ensemble Architecture}
@@ -12,18 +12,19 @@ The Pit constitutes the high-performance in-process execution environment for tr
 
 \textbf{Core Infrastructure Components}
 
-The PitCore manages five essential infrastructure extensions that handle AI model lifecycle, workflow execution, institutional memory, resource allocation, and system optimization. These components achieve ultra-low latency through in-process execution.
+The PitCore manages five essential infrastructure extensions that handle AI model lifecycle,
+workflow execution, institutional memory, resource allocation, and system optimization as shown in ~\ref{fig:3.11a-pit-core}. These components achieve ultra-low latency through in-process execution.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_2_the_pit_aide_layer_execution/Cache Eviction Pipeline-2026-02-06-1201701.png}
+\includegraphics[width=0.91\textwidth]{images/diagrams/class_diagram/seperate_2_the_pit_aide_layer_execution/Cache Eviction Pipeline-2026-02-06-1201701.png}
 \caption{The Pit Architecture - Core Infrastructure Components}
 \label{fig:3.11a-pit-core}
 \end{figure}
-
+\clearpage
 \textbf{Pool Manager and DAG Tracker}
 
-The Pool Manager handles AI model lifecycle with predictive pre-warming and player state management. The DAG Tracker coordinates workflow execution through dependency mapping, topological sorting, and parallel execution support. Both components work together to optimize workflow performance.
+The Pool Manager handles AI model lifecycle with predictive pre-warming and player state management. The DAG Tracker coordinates workflow execution through dependency mapping, topological sorting, and parallel execution support. Both components work together as shown in ~\ref{fig:3.11b-pit-managers} to optimize workflow performance.
 
 \begin{figure}[H]
 \centering
@@ -32,6 +33,7 @@ The Pool Manager handles AI model lifecycle with predictive pre-warming and play
 \label{fig:3.11b-pit-managers}
 \end{figure}
 
+\clearpage
 \subsection*{3.6.2 The Grand Stage: Out-of-Process Execution}
 
 The Grand Stage provides the out-of-process execution environment for community-developed extensions requiring strong isolation guarantees. Extensions execute in separate processes with well-defined communication channels, ensuring that bugs or malicious behavior cannot compromise system stability or security. The Grand Stage employs an actor-based concurrency model where each extension runs as an independent actor with its own mailbox for receiving messages.
@@ -40,10 +42,11 @@ While The Grand Stage incurs additional overhead from inter-process communicatio
 
 \subsection*{3.6.3 Security and Trust Framework}
 
-Symphony implements a multi-layered security approach protecting users while enabling innovation:
+Symphony implements a multi-layered security approach protecting users while enabling innovation as shown in ~\ref{Multi-Layer Security Framework}:
 
 \begin{table}[H]
 \caption{Multi-Layer Security Framework}
+\label{Multi-Layer Security Framework}
 \centering
 \begin{tabular}{@{}lll@{}}
 \toprule

@@ -15,7 +15,7 @@ The H²A² Architecture establishes clear boundaries between domain logic and in
 
 \textbf{Layer 1a: Domain Core Components}
 
-The Domain Core contains three essential components: OrchestrationEngine for workflow scheduling, WorkflowDefinitions for templates and validation, and ExtensionPolicies for security rules. These define system behavior independent of implementation details.
+The Domain Core contains three essential components as shown in ~\ref{fig:3.6a-h2a2-domain-components}: OrchestrationEngine for workflow scheduling, WorkflowDefinitions for templates and validation, and ExtensionPolicies for security rules. These define system behavior independent of implementation details.
 
 
 \begin{figure}[H]
@@ -28,7 +28,7 @@ The Domain Core contains three essential components: OrchestrationEngine for wor
 \clearpage
 \textbf{Layer 1b: Port Interfaces}
 
-The Domain Core depends on abstract port interfaces that define contracts for external interactions. PitPort handles player allocation, DAG execution, and artifact storage. ExtensionPort manages extension loading, messaging, and topic subscriptions. ConductorPort provides context analysis and melody generation capabilities. TextEditingPort handles text insertion, deletion, and editing operations. These interfaces enable the core to remain independent of concrete implementations as illustrated in Figure 3.3.
+The Domain Core depends on abstract port interfaces that define contracts for external interactions. PitPort handles player allocation, DAG execution, and artifact storage. ExtensionPort manages extension loading, messaging, and topic subscriptions. ConductorPort provides context analysis and melody generation capabilities. TextEditingPort handles text insertion, deletion, and editing operations. These interfaces enable the core to remain independent of concrete implementations as illustrated in ~\ref{fig:3.7-h2a2-ports}.
 
 \begin{figure}[H]
 \centering
@@ -39,7 +39,7 @@ The Domain Core depends on abstract port interfaces that define contracts for ex
 
 \textbf{Layer 2: Extension and Orchestration Adapters}
 
-The second layer handles extension management and AI orchestration. The ActorExtensionAdapter manages The Grand Stage actor-based extension system, coordinating instruments, operators, and motifs through the actor registry and supervisor strategy. The ConductorAdapter bridges communication with the Python-based reinforcement learning model, enabling intelligent workflow generation through context analysis and melody generation capabilities as illustrated in Figure 3.4.
+The second layer handles extension management and AI orchestration. The ActorExtensionAdapter manages The Grand Stage actor-based extension system, coordinating instruments, operators, and motifs through the actor registry and supervisor strategy. The ConductorAdapter bridges communication with the Python-based reinforcement learning model, enabling intelligent workflow generation through context analysis and melody generation capabilities as illustrated in ~\ref{fig:3.8-h2a2-orchestration}.
 
 \begin{figure}[H]
 \centering
@@ -50,7 +50,7 @@ The second layer handles extension management and AI orchestration. The ActorExt
 
 \textbf{Layer 3: Domain Core and Port Interfaces}
 
-The third layer represents the Domain Core with its abstract port interfaces. The core contains the OrchestrationEngine, WorkflowDefinitions, and ExtensionPolicies that define system behavior at a conceptual level. Port interfaces (TextEditingPort, PitPort, ExtensionPort, ConductorPort) define contracts for external interactions without specifying implementation details. This separation enables the system to remain adaptable to changing requirements without requiring fundamental redesigns as illustrated in Figure 3.5.
+The third layer represents the Domain Core with its abstract port interfaces. The core contains the OrchestrationEngine, WorkflowDefinitions, and ExtensionPolicies that define system behavior at a conceptual level. Port interfaces (TextEditingPort, PitPort, ExtensionPort, ConductorPort) define contracts for external interactions without specifying implementation details. This separation enables the system to remain adaptable to changing requirements without requiring fundamental redesigns as illustrated in ~\ref{fig:3.9-h2a2-domain}.
 
 \begin{figure}[H]
 \centering
@@ -65,7 +65,7 @@ The third layer represents the Domain Core with its abstract port interfaces. Th
 \subsection*{3.3.2 System Bootstrap and Initialization}
 \addcontentsline{toc}{subsection}{3.3.2 System Bootstrap and Initialization}
 
-Symphony's initialization follows a carefully orchestrated bootstrap process through five distinct phases as shown in Figure 3.6, each building upon previous phases with dependency satisfaction and health verification at each stage:
+Symphony's initialization follows a carefully orchestrated bootstrap process through five distinct phases as shown in ~\ref{fig:3.10}, each building upon previous phases with dependency satisfaction and health verification at each stage:
 
 \begin{compactlist}
     \item \textbf{Foundation Phase}: Establishes type system, loads configuration, initializes core orchestration engine
@@ -80,8 +80,8 @@ The architectural design incorporates sophisticated error handling and recovery 
 The H²A² Architecture's separation of concerns provides significant benefits: new capabilities can be added through additional adapters without modifying the Domain Core, infrastructure components can be upgraded by providing new adapter implementations satisfying existing port interfaces, and comprehensive testing is facilitated through isolated Domain Core testing with mock implementations and adapter testing against port interface contracts.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=1.25\textwidth]{images/diagrams/activity_diagram/symphony-system-bootstrap.png}
+% \centering
+\includegraphics[width=1.15\textwidth]{images/diagrams/activity_diagram/symphony-system-bootstrap.png}
 \caption{System Bootstrap Process}
 \label{fig:3.10}
 \end{figure}

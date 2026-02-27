@@ -1,26 +1,97 @@
 % ========== 2.4 FUNCTIONAL REQUIREMENTS ==========
 % Core system capabilities and features
-
+\clearpage
 \section{2.4 Functional Requirements}
 \addcontentsline{toc}{section}{2.4 Functional Requirements}
 \label{sec:functional-requirements}
 
-\lettrine{F}{unctional requirements} specify the capabilities that the system must provide to support user needs and achieve project objectives. These requirements define what the system does from a user perspective, focusing on observable behaviors and interactions rather than internal implementation details.
+\lettrine{F}{unctional requirements} specify the capabilities that Symphony must provide to support user needs and achieve project objectives. These requirements define observable system behaviors and interactions from a user perspective, directly corresponding to the system features presented in Section 2.2. Each functional requirement category addresses specific capabilities necessary for implementing Symphony's core features.
 
-The system must provide core development environment functionality including text editing with syntax highlighting, file management for organizing project resources, and integration with version control systems. These fundamental capabilities form the foundation for all development activities. The system must support multiple programming languages and project types, enabling developers to work across diverse technology stacks without switching tools.
+% ========== FR Category 1: AI Orchestration & Intelligence ==========
+\subsection*{2.4.1 AI Orchestration \& Intelligence}
+\addcontentsline{toc}{subsection}{2.4.1 AI Orchestration \& Intelligence}
+\label{sec:fr-ai-orchestration}
 
-AI assistance capabilities represent the distinguishing functional requirements of the system. The system must provide intelligent code suggestions based on context and developer patterns, support natural language interaction for expressing development intentions, and generate code that meets professional quality standards. AI features must integrate seamlessly with traditional development workflows, appearing as natural extensions of existing capabilities rather than separate tools requiring mode switches.
+\textbf{FR-1.1 Intelligent Agent Coordination:}
+The Conductor shall coordinate multiple specialized AI agents autonomously, managing task decomposition, agent selection, execution sequencing, and inter-agent communication without manual intervention.
 
-\textbf{Essential Functional Requirements:}
-\begin{compactlist}
-    \item Intelligent code completion and generation based on project context
-    \item Natural language understanding for expressing development intentions
-    \item Automated code quality checks and improvement suggestions
-    \item Context-aware documentation generation and explanation
-    \item Learning and adaptation from developer interactions over time
-    \item Extension system supporting community-contributed capabilities
-\end{compactlist}
+\textbf{FR-1.2 Natural Language Understanding:}
+The system shall accept natural language prompts describing development objectives and translate them into executable workflows with appropriate agent orchestration.
 
-Collaboration features enable multiple developers to work together effectively. The system must support shared project access, maintain consistency across team members, and provide mechanisms for coordinating concurrent work. Version control integration ensures that all changes are tracked appropriately, while communication features facilitate discussion of code and design decisions within the development context.
+\textbf{FR-1.3 Context-Aware Processing:}
+The system shall maintain project context, existing codebase patterns, coding standards, and user preferences to inform orchestration decisions and ensure consistency.
 
-Configuration and customization capabilities allow users to adapt the system to their preferences and requirements. The system must support user-level settings that apply across projects, project-specific configurations that override defaults, and team-wide standards that ensure consistency. These configuration options must be accessible and well-documented, enabling users to tailor system behavior without requiring deep technical knowledge.
+\textbf{FR-1.4 Task Decomposition:}
+The Conductor shall automatically decompose complex development tasks into manageable subtasks, assigning each to the most appropriate specialized agent.
+
+\textbf{FR-1.5 Parallel Execution Optimization:}
+The system shall identify opportunities for parallel agent execution, optimizing workflow performance while respecting task dependencies.
+
+\textbf{FR-1.6 Dependency Resolution:}
+The DAG Tracker shall automatically resolve workflow dependencies, determine optimal execution order, and manage inter-task relationships.
+
+% ========== FR Category 2: Visual Workflow Management ==========
+\subsection*{2.4.2 Visual Workflow Management}
+\addcontentsline{toc}{subsection}{2.4.2 Visual Workflow Management}
+\label{sec:fr-workflow}
+
+\textbf{FR-2.1 Node-Based Workflow Composition:}
+The Harmony Board shall provide intuitive node-based visual interface for creating custom workflows by connecting AI agents and operations without programming knowledge.
+
+\textbf{FR-2.2 Workflow Execution:}
+The system shall execute defined workflows with real-time monitoring, progress tracking, intermediate result visualization, and execution state management.
+
+\textbf{FR-2.3 Workflow Templates (Melodies):}
+The system shall support saving, loading, and sharing workflow templates through the marketplace, enabling reuse and knowledge transfer across projects and teams.
+
+\textbf{FR-2.4 Configurable Parameters:}
+Workflows shall support configurable parameters for fine-tuning agent behavior, setting resource limits, defining timeouts, and specifying error handling strategies.
+
+\textbf{FR-2.5 Real-Time Monitoring:}
+The Harmony Board shall provide real-time visualization of workflow execution, agent activity, and system performance during workflow runs.
+
+% ========== FR Category 3: Extension System ==========
+\subsection*{2.4.3 Extension System}
+\addcontentsline{toc}{subsection}{2.4.3 Extension System}
+\label{sec:fr-extensions}
+
+\textbf{FR-3.1 Extension Categories:}
+The system shall support three extension categories: Instruments (AI Models), Operators (Workflow Utilities), and Addons (Interface Enhancements), each with appropriate isolation and integration mechanisms.
+
+\textbf{FR-3.2 Hot-Swappable AI Models:}
+The system shall support integration of multiple AI models (GPT, Claude, custom models) as interchangeable Instrument extensions, enabling model selection based on task requirements.
+
+\textbf{FR-3.3 Extension Installation and Management:}
+The system shall support extension discovery, installation, configuration, updates, and removal through integrated marketplace interface with automatic dependency resolution.
+
+\textbf{FR-3.4 Extension Isolation:}
+The system shall execute user-facing extensions in isolated processes with sandboxed environments, preventing malicious code from affecting core system stability.
+
+\textbf{FR-3.5 Extension Lifecycle Management:}
+The system shall manage extension activation, deactivation, and hot-reloading without requiring system restart, maintaining system availability during updates.
+
+\textbf{FR-3.6 Extension Marketplace:}
+The system shall host marketplace for extension distribution supporting multiple business models (free, freemium, pay-per-use, enterprise licensing) with revenue sharing mechanisms.
+
+
+% ========== FR Category 4: Error Handling & Reliability ==========
+\subsection*{2.4.4 Error Handling \& Reliability}
+\addcontentsline{toc}{subsection}{2.4.4 Error Handling \& Reliability}
+\label{sec:fr-reliability}
+
+\textbf{FR-4.1 Fault Isolation:}
+The microkernel architecture shall isolate extension failures, preventing individual component crashes from causing system-wide failures or data loss.
+
+\textbf{FR-4.2 Automatic Retry Mechanism:}
+The system shall implement automatic retry with exponential backoff for transient failures, configurable retry limits, and intelligent failure classification.
+
+\textbf{FR-4.3 Alternative Agent Selection:}
+Upon agent failure, the Conductor shall automatically select alternative agents capable of completing the task, maintaining workflow progress without user intervention.
+
+
+\textbf{FR-4.4 Failure Learning:}
+The Conductor shall learn from failure patterns, adjusting orchestration strategies to prevent recurrence and improving system reliability through experience.
+
+\textbf{FR-4.5 Health Monitoring:}
+The system shall continuously monitor component health, detect anomalies, and trigger proactive recovery actions before failures impact user workflows.
+

@@ -5,22 +5,108 @@
 \addcontentsline{toc}{section}{2.5 Non-Functional Requirements}
 \label{sec:non-functional-requirements}
 
-\lettrine{N}{on-functional requirements} define quality attributes that the system must exhibit to be acceptable for deployment and use. These requirements specify how well the system performs its functions rather than what functions it provides, encompassing performance, reliability, security, and usability characteristics.
+\lettrine{N}{on-functional requirements} define quality attributes and constraints that Symphony must satisfy. These requirements specify how well the system performs rather than what it does, addressing performance, reliability, security, and usability characteristics essential for professional development environments.
 
-Performance requirements ensure that the system remains responsive and efficient during normal operation. The system must respond to user input within acceptable latency thresholds. Startup time must be minimal, allowing developers to begin work quickly without frustrating delays. Memory consumption must remain within reasonable bounds, enabling concurrent operation with other development tools and applications on standard hardware configurations.
+% ========== NFR Category 1: Performance ==========
+\subsection*{2.5.1 Performance}
+\addcontentsline{toc}{subsection}{2.5.1 Performance}
 
-Reliability and availability requirements ensure that the system operates consistently without unexpected failures or data loss. The system must implement automatic saving mechanisms to protect developer work, provide recovery capabilities for handling errors gracefully, and maintain stability even when individual components encounter problems. Fault isolation prevents failures in one area from affecting the entire system, ensuring that developers can continue working productively even when specific features become unavailable.
+\textbf{NFR-1.1 Startup Time:}
+System shall achieve rapid startup time on standard hardware configurations, enabling developers to begin work without significant delays.
 
-\textbf{Critical Non-Functional Requirements:}
-\begin{compactlist}
-    \item Core operations should exhibit minimal response latency to maintain a fluid and responsive user experience.
-    \item The system should initialize quickly on commonly used hardware configurations, minimizing waiting time before use.
-    \item Memory consumption should remain within reasonable and sustainable limits during normal development activities.
-    \item Automatic data protection preventing loss of unsaved work
-    \item Cross-platform compatibility supporting Windows, macOS, and Linux
-    \item Accessibility compliance enabling use by developers with diverse abilities
-\end{compactlist}
+\textbf{NFR-1.2 Response Latency:}
+User interface operations shall respond quickly to maintain fluid interaction experience and developer productivity.
 
-Security requirements protect sensitive code and data from unauthorized access or modification. The system must implement appropriate access controls, maintain audit logs of significant activities, and ensure that extensions cannot compromise system security or access resources without explicit permission. Data privacy requirements ensure that code and developer interactions remain confidential, with clear policies about what information is transmitted externally and how it is protected.
+\textbf{NFR-1.3 Infrastructure Operations:}
+The Pit extensions shall maintain low operation latency for critical infrastructure functions through Rust implementation.
 
-Usability requirements ensure that the system is learnable and efficient for its intended users. The interface must follow established conventions for development tools, provide clear feedback about system state and available actions, and support efficient workflows for common tasks. Documentation and help systems must be comprehensive and accessible, enabling users to discover features and resolve issues independently. The learning curve must be manageable, with basic functionality accessible immediately and advanced features discoverable progressively.
+\textbf{NFR-1.4 Workflow Throughput:}
+System shall handle high-volume workflow executions efficiently under normal load conditions.
+
+\textbf{NFR-1.5 Memory Footprint:}
+Core system shall maintain minimal memory consumption, with extensions loading on-demand to optimize resource usage.
+
+% ========== NFR Category 2: Reliability & Availability ==========
+\subsection*{2.5.2 Reliability \& Availability}
+\addcontentsline{toc}{subsection}{2.5.2 Reliability \& Availability}
+
+\textbf{NFR-2.1 System Uptime:}
+System shall maintain high availability during normal operation, excluding planned maintenance windows.
+
+\textbf{NFR-2.2 Fault Isolation:}
+Extension failures shall not cascade to system-wide crashes through microkernel architecture isolation.
+
+\textbf{NFR-2.3 Data Protection:}
+System shall implement automatic saving mechanisms preventing loss of unsaved work during failures.
+
+\textbf{NFR-2.4 Recovery Time:}
+System shall recover quickly from component failures through automatic restart and checkpoint resumption mechanisms.
+
+% ========== NFR Category 3: Scalability ==========
+\subsection*{2.5.3 Scalability}
+\addcontentsline{toc}{subsection}{2.5.3 Scalability}
+
+\textbf{NFR-3.1 Extension Scalability:}
+System shall support extensive extension installation without performance degradation through lazy loading mechanisms.
+
+\textbf{NFR-3.2 Project Size:}
+System shall efficiently handle large-scale projects with numerous files and substantial codebases.
+
+\textbf{NFR-3.3 Concurrent Workflows:}
+System shall support multiple concurrent workflow executions with independent resource allocation.
+
+% ========== NFR Category 4: Security ==========
+\subsection*{2.5.4 Security}
+\addcontentsline{toc}{subsection}{2.5.4 Security}
+
+\textbf{NFR-4.1 Extension Sandboxing:}
+User-facing extensions shall execute in isolated processes with restricted system access.
+
+\textbf{NFR-4.2 Permission System:}
+Extensions shall require explicit user approval for accessing sensitive resources or capabilities.
+
+\textbf{NFR-4.3 Audit Logging:}
+System shall maintain complete audit trails of extension activities and security-relevant operations.
+
+\textbf{NFR-4.4 Data Privacy:}
+System shall provide options for local-only processing without transmitting code to external services.
+
+% ========== NFR Category 5: Usability ==========
+\subsection*{2.5.5 Usability}
+\addcontentsline{toc}{subsection}{2.5.5 Usability}
+
+\textbf{NFR-5.1 Learning Curve:}
+Basic functionality shall be accessible to new users quickly, with intuitive interface design and clear onboarding.
+
+\textbf{NFR-5.2 Interface Consistency:}
+User interface shall follow established IDE conventions and maintain consistent interaction patterns.
+
+\textbf{NFR-5.3 Error Messages:}
+System shall provide clear, actionable error messages with recovery suggestions.
+
+\textbf{NFR-5.4 Documentation:}
+Comprehensive documentation shall be accessible within the system and online.
+
+% ========== NFR Category 6: Compatibility ==========
+\subsection*{2.5.6 Compatibility}
+\addcontentsline{toc}{subsection}{2.5.6 Compatibility}
+
+\textbf{NFR-6.1 Cross-Platform Support:}
+System shall operate on Windows, macOS, and Linux with consistent functionality.
+
+\textbf{NFR-6.2 Language Support:}
+System shall support multiple programming languages through extensible syntax highlighting and language servers.
+
+
+% ========== NFR Category 7: Maintainability ==========
+\subsection*{2.5.7 Maintainability}
+\addcontentsline{toc}{subsection}{2.5.7 Maintainability}
+
+\textbf{NFR-7.1 Modular Architecture:}
+System shall maintain clear separation between core and extensions enabling independent updates.
+
+\textbf{NFR-7.2 Code Quality:}
+Codebase shall maintain high quality standards with comprehensive testing and documentation.
+
+\textbf{NFR-7.3 Extension Updates:}
+Extensions shall support hot-reloading without system restart for seamless updates.

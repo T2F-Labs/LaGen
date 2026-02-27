@@ -28,7 +28,7 @@ Everything beyond these six components is delegated to extensions, allowing user
 
 The Domain Core serves as the central coordination system, managing workflow definitions, enforcing extension policies, and coordinating execution of multi-step processes involving multiple AI agents and tools. The OrchestrationEngine within the Domain Core analyzes developer requests, breaks them into constituent tasks, determines appropriate operation sequences, and coordinates execution across multiple extensions and AI models.
 
-
+\clearpage
 \subsection*{3.5.3 Intelligence as Extension Principle}
 
 Symphony treats intelligence as an extension rather than embedding AI capabilities directly into the core. This architectural decision provides several advantages: AI models can be updated without modifying the core system, multiple AI providers and models can operate simultaneously, and different AI capabilities can be selected for different tasks based on specific requirements and performance characteristics. The Conductor, which contains the reinforcement learning model for workflow orchestration, exemplifies this principle by operating as a Python-based extension that communicates with the core through well-defined interfaces.
