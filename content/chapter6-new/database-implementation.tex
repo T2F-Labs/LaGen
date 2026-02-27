@@ -10,13 +10,13 @@
 \lettrine{T}{he implementation} of Symphony's data architecture represents a fundamental innovation in AI system storage design. Our hybrid database strategy addresses the dual performance requirements of AI orchestration: complex analytical capabilities for workflow management and ultra-fast transactional operations for real-time model coordination.
 
 \subsection*{4.3.1 Hybrid Database Architecture}
-\addcontentsline{toc}{subsection}{6.3.1 Hybrid Database Architecture}
+\addcontentsline{toc}{subsection}{4.3.1 Hybrid Database Architecture}
 
 Traditional single-database approaches force compromises between analytical and transactional performance. Our research demonstrates that AI-first development environments require both capabilities optimized independently.
 
 \subsubsection*{Architectural Design Rationale}
 
-The hybrid architecture separates workloads based on performance characteristics, as shown in Table~\ref{tab:hybrid-workload-distribution}:
+The hybrid architecture separates workloads based on performance characteristics, as shown in ~\ref{tab:hybrid-workload-distribution}:
 
 \begin{center}
 \begin{tabular}{@{}lll@{}}
@@ -49,7 +49,7 @@ We evaluated multiple database combinations and implemented two configurations:
     \item \textbf{Performance-Focused (DuckDB + redb)}: Superior analytical performance through columnar storage and vectorized execution, optimized for advanced analytics workloads
 \end{expandedlist}
 
-Performance evaluation demonstrates the effectiveness of our hybrid approach, as shown in Table~\ref{tab:hybrid-performance-comparison}:
+Performance evaluation demonstrates the effectiveness of our hybrid approach, as shown in ~\ref{tab:hybrid-performance-comparison}:
 
 \begin{center}
 \begin{tabular}{@{}llll@{}}
@@ -65,7 +65,7 @@ DuckDB + redb & 45ms (avg) & 0.2ms & 10× faster aggregations \\
 \end{center}
 
 \subsection*{4.3.2 Content-Addressable Artifact Store}
-\addcontentsline{toc}{subsection}{6.3.2 Content-Addressable Artifact Store}
+\addcontentsline{toc}{subsection}{4.3.2 Content-Addressable Artifact Store}
 
 The Artifact Store implements content-addressable storage (CAS) specifically designed for AI-generated artifacts, providing automatic deduplication and efficient versioning.
 
@@ -82,7 +82,7 @@ Every artifact is identified by its SHA-256 content hash, enabling:
 
 \subsubsection*{Storage Efficiency Results}
 
-Analysis of 100,000 AI-generated artifacts demonstrates significant deduplication benefits, as shown in Table~\ref{tab:content-deduplication-analysis}:
+Analysis of 100,000 AI-generated artifacts demonstrates significant deduplication benefits, as shown in ~\ref{tab:content-deduplication-analysis}:
 
 \begin{center}
 \begin{tabular}{@{}lll@{}}
@@ -116,13 +116,13 @@ The artifact store implements a four-tier storage hierarchy optimized for AI wor
 \end{alertbox}
 
 \subsection*{4.3.3 Quality Scoring and Metadata Management}
-\addcontentsline{toc}{subsection}{6.3.3 Quality Scoring and Metadata Management}
+\addcontentsline{toc}{subsection}{4.3.3 Quality Scoring and Metadata Management}
 
 The artifact store implements sophisticated quality assessment that evaluates AI-generated content across multiple dimensions.
 
 \subsubsection*{Multi-Dimensional Quality Framework}
 
-Quality assessment considers four primary dimensions with weighted scoring, as shown in Table~\ref{tab:quality-assessment-framework}:
+Quality assessment considers four primary dimensions with weighted scoring, as shown in ~\ref{tab:quality-assessment-framework}:
 
 \begin{center}
 \begin{tabular}{@{}lll@{}}
@@ -162,7 +162,7 @@ Evaluation across 50,000 AI-generated artifacts demonstrates:
 \end{successbox}
 
 \subsection*{4.3.4 Resource Optimization Implementation}
-\addcontentsline{toc}{subsection}{6.3.4 Resource Optimization Implementation}
+\addcontentsline{toc}{subsection}{4.3.4 Resource Optimization Implementation}
 
 The Pool Manager implements intelligent resource optimization strategies that balance performance, cost, and availability.
 
@@ -177,7 +177,7 @@ Machine learning-driven resource allocation anticipates model usage patterns:
     \item \textbf{Confidence-Based Decisions}: Allocation aggressiveness based on prediction certainty
 \end{expandedlist}
 
-The predictive allocation system demonstrates significant performance improvements, as shown in Table~\ref{tab:predictive-allocation-performance}:
+The predictive allocation system demonstrates significant performance improvements, as shown in ~\ref{tab:predictive-allocation-performance}:
 
 \begin{center}
 \begin{tabular}{@{}lll@{}}
@@ -205,7 +205,7 @@ The Pool Manager implements a sophisticated state machine for Player extensions 
 \end{compactlist}
 
 \subsection*{4.3.5 Search and Discovery Implementation}
-\addcontentsline{toc}{subsection}{6.3.5 Search and Discovery Implementation}
+\addcontentsline{toc}{subsection}{4.3.5 Search and Discovery Implementation}
 
 Integration with Tantivy full-text search engine provides sophisticated artifact discovery capabilities.
 
@@ -222,7 +222,7 @@ The search system indexes artifacts across multiple dimensions:
 
 \subsubsection*{Search Performance Characteristics}
 
-The implementation meets stringent performance requirements, as demonstrated in Table~\ref{tab:search-performance-metrics}:
+The implementation meets stringent performance requirements, as demonstrated in ~\ref{tab:search-performance-metrics}:
 
 \begin{center}
 \begin{tabular}{@{}lll@{}}
@@ -240,7 +240,7 @@ Semantic Search & <100ms & 45-85ms \\
 \end{center}
 
 \subsection*{4.3.6 Cache Consistency and Data Management}
-\addcontentsline{toc}{subsection}{6.3.6 Cache Consistency and Data Management}
+\addcontentsline{toc}{subsection}{4.3.6 Cache Consistency and Data Management}
 
 The hybrid architecture requires careful consistency management between primary database and cache layer.
 
@@ -255,7 +255,7 @@ We implement a read-through cache pattern with explicit invalidation:
     \item \textbf{Event-Driven Updates}: Immediate invalidation for critical data changes
 \end{expandedlist}
 
-We implement multiple cache invalidation strategies based on data characteristics, as shown in Table~\ref{tab:cache-invalidation-strategies}:
+We implement multiple cache invalidation strategies based on data characteristics, as shown in ~\ref{tab:cache-invalidation-strategies}:
 
 \begin{center}
 \begin{tabular}{@{}lll@{}}
@@ -273,13 +273,13 @@ Session Data & Write-through updates & Strong consistency \\
 \end{center}
 
 \subsection*{4.3.7 Performance Evaluation and Results}
-\addcontentsline{toc}{subsection}{6.3.7 Performance Evaluation and Results}
+\addcontentsline{toc}{subsection}{4.3.7 Performance Evaluation and Results}
 
 Complete performance evaluation validates the effectiveness of the database implementation.
 
 \subsubsection*{Latency Performance}
 
-The implementation meets all performance targets across workload types, as shown in Table~\ref{tab:database-performance-results}:
+The implementation meets all performance targets across workload types, as shown in ~\ref{tab:database-performance-results}:
 
 \begin{center}
 \begin{tabular}{@{}llll@{}}
@@ -308,7 +308,7 @@ The hybrid architecture supports Symphony's throughput requirements:
 \end{compactlist}
 
 \subsection*{4.3.8 Research Contributions}
-\addcontentsline{toc}{subsection}{6.3.8 Research Contributions}
+\addcontentsline{toc}{subsection}{4.3.8 Research Contributions}
 
 The database and storage implementation makes several significant contributions:
 

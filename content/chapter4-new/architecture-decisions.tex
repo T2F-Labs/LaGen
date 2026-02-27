@@ -1,14 +1,14 @@
 % ========== SECTION 4.2: ARCHITECTURE DECISION RECORDS ==========
 
-\section{4.2 Architecture Decision Records}
+\section{5.2 Architecture Decision Records}
 \label{sec:architecture-decisions}
-\addcontentsline{toc}{section}{4.2 Architecture Decision Records}
+\addcontentsline{toc}{section}{5.2 Architecture Decision Records}
 \setcounter{subsection}{0}
 
 \lettrine{T}{his section} documents the key architectural decisions made during Symphony's design phase, including the rationale behind each choice, alternatives considered, and the reasoning that led to the final decision. These records provide insight into the design philosophy and help understand the trade-offs inherent in Symphony's architecture.
 
-\subsection*{4.2.1 Microkernel Architecture}
-\addcontentsline{toc}{subsection}{4.2.1 Decision 1: Microkernel Architecture}
+\subsection*{5.2.1 Microkernel Architecture}
+\addcontentsline{toc}{subsection}{5.2.1 Decision 1: Microkernel Architecture}
 
 \textbf{Context:} Traditional integrated development environments suffer from monolithic architectures where all features are tightly coupled, leading to complexity, fragility, and difficulty in extending functionality.
 
@@ -25,8 +25,8 @@
 
 \textbf{Consequences:} This decision requires sophisticated inter-process communication mechanisms and careful API design to maintain performance while ensuring security. However, the benefits of modularity, reliability, and extensibility outweigh these implementation challenges.
 
-\subsection*{4.2.2 Dual Ensemble Architecture}
-\addcontentsline{toc}{subsection}{4.2.2 Decision 2: Dual Ensemble Architecture}
+\subsection*{5.2.2 Dual Ensemble Architecture}
+\addcontentsline{toc}{subsection}{5.2.2 Decision 2: Dual Ensemble Architecture}
 
 \textbf{Context:} Extension systems must balance competing requirements: performance for critical operations, security for untrusted code, and flexibility for community innovation.
 
@@ -43,8 +43,8 @@
 
 \textbf{Consequences:} This architecture creates clear boundaries between trusted infrastructure and community contributions. It requires careful governance of which components belong in The Pit, but provides optimal balance between performance, security, and extensibility.
 
-\subsection*{4.2.3 Reinforcement Learning for Orchestration}
-\addcontentsline{toc}{subsection}{4.2.3 Decision 3: Reinforcement Learning for Orchestration}
+\subsection*{5.2.3 Reinforcement Learning for Orchestration}
+\addcontentsline{toc}{subsection}{5.2.3 Decision 3: Reinforcement Learning for Orchestration}
 
 \textbf{Context:} Coordinating multiple AI models for complex development tasks requires intelligent decision-making about model selection, resource allocation, and failure recovery.
 
@@ -61,8 +61,8 @@
 
 \textbf{Consequences:} This approach requires significant investment in training infrastructure and careful design of reward functions. However, it provides Symphony with adaptive intelligence that improves over time and can handle novel situations not anticipated during initial development.
 
-\subsection*{4.2.4 Process Isolation for Community Extensions}
-\addcontentsline{toc}{subsection}{4.2.4 Decision 4: Process Isolation for Community Extensions}
+\subsection*{5.2.4 Process Isolation for Community Extensions}
+\addcontentsline{toc}{subsection}{5.2.4 Decision 4: Process Isolation for Community Extensions}
 
 \textbf{Context:} Allowing community-developed extensions introduces security risks, as malicious or poorly written code could compromise user systems or data.
 
@@ -79,8 +79,8 @@
 
 \textbf{Consequences:} Process isolation introduces communication overhead and complexity in the IPC system. However, it provides robust security guarantees essential for a platform accepting arbitrary community code.
 
-\subsection*{4.2.5 Visual Workflow Composition}
-\addcontentsline{toc}{subsection}{4.2.5 Decision 5: Visual Workflow Composition}
+\subsection*{5.2.5 Visual Workflow Composition}
+\addcontentsline{toc}{subsection}{5.2.5 Decision 5: Visual Workflow Composition}
 
 \textbf{Context:} Developers need to create custom workflows combining multiple AI models and tools, but programming these workflows requires significant effort and expertise.
 
@@ -97,8 +97,8 @@
 
 \textbf{Consequences:} Visual workflow systems require sophisticated user interface design and must balance simplicity with expressiveness. However, they democratize access to advanced AI orchestration capabilities.
 
-\subsection*{4.2.6 Three-Tier Access Control}
-\addcontentsline{toc}{subsection}{4.2.6 Decision 6: Three-Tier Access Control}
+\subsection*{5.2.6 Three-Tier Access Control}
+\addcontentsline{toc}{subsection}{5.2.6 Decision 6: Three-Tier Access Control}
 
 \textbf{Context:} Different extensions have different trust levels and requirements, from experimental community projects to enterprise-critical tools.
 
@@ -115,8 +115,8 @@
 
 \textbf{Consequences:} The three-tier system requires clear criteria for tier assignment and ongoing monitoring of trusted extensions. However, it provides appropriate security levels for different use cases while enabling ecosystem growth.
 
-\subsection*{4.2.7 Artifact Store with Quality Scoring}
-\addcontentsline{toc}{subsection}{4.2.7 Decision 7: Artifact Store with Quality Scoring}
+\subsection*{5.2.7 Artifact Store with Quality Scoring}
+\addcontentsline{toc}{subsection}{5.2.7 Decision 7: Artifact Store with Quality Scoring}
 
 \textbf{Context:} Development workflows generate numerous intermediate artifacts, but not all are equally valuable for future reference or reuse.
 
