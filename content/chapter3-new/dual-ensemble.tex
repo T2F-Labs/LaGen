@@ -10,27 +10,39 @@
 
 The Pit constitutes the high-performance in-process execution environment for trusted infrastructure extensions. Five core components operate within The Pit: Pool Manager, DAG Tracker, Artifact Store, Arbitration Engine, and Stale Manager. Extensions execute within the same process as the core system, enabling direct function calls and shared memory access with nanosecond-level latencies.
 
-\textbf{Core Infrastructure Components}
+\textbf{Institutional Memory and Resource Management Components}
 
-The PitCore manages five essential infrastructure extensions that handle AI model lifecycle,
-workflow execution, institutional memory, resource allocation, and system optimization as shown in ~\ref{fig:3.11a-pit-core}. These components achieve ultra-low latency through in-process execution.
+The first architectural view of The Pit focuses on institutional memory, lifecycle management, and resource arbitration capabilities. As illustrated in Figure~\ref{fig:pit-core-memory-arbitration}, the PitCore serves as the central registry managing all in-process extensions through registration, unregistration, and retrieval operations. The PitCore maintains references to five critical infrastructure components, with three highlighted in this view.
+
+The ArtifactStore provides Symphony's institutional memory system, storing artifacts with content-addressable hashing and Tantivy-based full-text indexing. Each artifact contains versioned data, metadata, quality scores, and timestamps, enabling efficient retrieval, search, and deduplication. The quality scoring mechanism ensures high-value artifacts receive priority in storage and retrieval operations.
+
+The StaleManager handles artifact lifecycle transitions across storage tiers based on access patterns and age. The lifecycle management system defines three stages: SSD storage for frequently accessed artifacts (1-7 days), HDD storage for moderately accessed content (8-30 days), and cloud archival for long-term retention (30+ days). The StaleManager monitors artifact usage, triggers transitions between lifecycle stages, and performs cleanup operations to optimize storage utilization.
+
+The ArbitrationEngine resolves resource conflicts when multiple workflows compete for limited resources. The engine maintains fairness policies, resolves conflicts through intelligent resource allocation strategies, applies fairness algorithms to prevent resource starvation, and prioritizes tasks based on urgency, importance, and historical patterns. This ensures optimal resource utilization while maintaining system responsiveness.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.91\textwidth]{images/diagrams/class_diagram/seperate_2_the_pit_aide_layer_execution/Cache Eviction Pipeline-2026-02-06-1201701.png}
-\caption{The Pit Architecture - Core Infrastructure Components}
-\label{fig:3.11a-pit-core}
+\includegraphics[width=1.0\textwidth]{images/diagrams/class_diagram/PitCore/PitCore1.png}
+\caption{The Pit Architecture - Institutional Memory and Resource Management Components}
+\label{fig:pit-core-memory-arbitration}
 \end{figure}
-\clearpage
-\textbf{Pool Manager and DAG Tracker}
 
-The Pool Manager handles AI model lifecycle with predictive pre-warming and player state management. The DAG Tracker coordinates workflow execution through dependency mapping, topological sorting, and parallel execution support. Both components work together as shown in ~\ref{fig:3.11b-pit-managers} to optimize workflow performance.
+\clearpage
+\textbf{Workflow Execution and AI Model Management Components}
+
+The second architectural view, shown in Figure~\ref{fig:pit-core-workflow-pool}, illustrates The Pit's workflow orchestration and AI model lifecycle management capabilities. The PitCore continues to serve as the central coordination point, now highlighting the DagTracker and PoolManager components that enable intelligent workflow execution and model resource optimization.
+
+The DagTracker manages workflow execution through directed acyclic graph (DAG) representation and coordination. The tracker maintains a registry of workflows mapped by MelodyId, executes melodies by coordinating node execution according to dependency constraints, performs topological sorting to determine optimal execution order, supports parallel execution of independent nodes to maximize throughput, and provides checkpoint and resume capabilities for long-running workflows. Each DAG node represents a workflow step with defined inputs, outputs, extension identifiers, and parameter configurations.
+
+The PoolManager handles AI model lifecycle management with intelligent resource optimization. The manager maintains a registry of players (AI models and extensions) mapped by ExtensionId, tracking their current state through the PlayerState enumeration (Unloaded, Loading, Warming, Ready, Active). The LRU cache mechanism optimizes memory utilization by tracking recently used models and evicting least-recently-used entries when memory pressure increases. The predictive pre-warming capability analyzes usage patterns to anticipate which models will be needed next, proactively loading them before requests arrive to minimize perceived latency. The allocation and deallocation methods manage player lifecycle, while state queries enable the system to make informed scheduling decisions.
+
+Together, these components enable The Pit to achieve microsecond-level operation latencies through in-process execution, shared memory access, and zero-copy data transfer between components. This performance profile makes The Pit essential for Symphony's real-time AI orchestration and workflow execution capabilities.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_2_the_pit_aide_layer_execution/Screenshot 2026-02-06 141408.png}
-\caption{The Pit Architecture - Pool Manager and DAG Tracker}
-\label{fig:3.11b-pit-managers}
+\includegraphics[width=1.0\textwidth]{images/diagrams/class_diagram/PitCore/PitCore2.png}
+\caption{The Pit Architecture - Workflow Execution and AI Model Management Components}
+\label{fig:pit-core-workflow-pool}
 \end{figure}
 
 \clearpage

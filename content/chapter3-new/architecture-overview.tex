@@ -11,52 +11,35 @@
 
 Symphony's architecture embraces a microkernel design philosophy prioritizing modularity and extensibility. The foundation rests on the Harmonic Hexagonal Actor Architecture (H²A²), combining hexagonal architecture with actor-based concurrency models.
 
-The H²A² Architecture establishes clear boundaries between domain logic and infrastructure adapters. The Domain Core maintains workflow definitions, extension policies, and orchestration logic, operating independently through well-defined port interfaces. The architecture consists of four key layers:
+The H²A² Architecture establishes clear boundaries between domain logic and infrastructure adapters. The Domain Core maintains workflow definitions, extension policies, and orchestration logic, operating independently through well-defined port interfaces. The architecture consists of two primary structural views that together illustrate the complete system design:
 
-\textbf{Layer 1a: Domain Core Components}
+\textbf{Text Editing Domain Architecture}
 
-The Domain Core contains three essential components as shown in ~\ref{fig:3.6a-h2a2-domain-components}: OrchestrationEngine for workflow scheduling, WorkflowDefinitions for templates and validation, and ExtensionPolicies for security rules. These define system behavior independent of implementation details.
+The first architectural view focuses on Symphony's text editing capabilities and their integration with the Domain Core. As illustrated in Figure~\ref{fig:h2a2-text-editing}, the Domain Core contains three essential components: the OrchestrationEngine for workflow scheduling and task execution, WorkflowDefinitions for template management and validation, and ExtensionPolicies for security rule enforcement. These components define system behavior independent of implementation details.
 
+The TextEditingPort interface establishes the contract for text manipulation operations, providing methods for insertion, deletion, range-based editing, and text retrieval. This port interface enables the Domain Core to request text editing operations without depending on specific editor implementations. The XiCoreAdapter implements this port interface by adapting the Xi-Editor's rope-based text representation and CRDT engine to Symphony's requirements. The adapter manages synchronization between Symphony's buffer identifiers and Xi's RPC client, ensuring efficient text operations while maintaining the Domain Core's independence from editor-specific details.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.15\textwidth]{images/diagrams/class_diagram/seperate_1_h2a2_architecture_domain_adapters/H²A² Architecture Part1 part1.png}
-\caption{H²A² Architecture - Domain Core Components}
-\label{fig:3.6a-h2a2-domain-components}
+\includegraphics[width=1.15\textwidth]{images/diagrams/class_diagram/h2a2_architecture_domain_adapters/h2a2_architecture_2.png}
+\caption{H²A² Architecture - Text Editing Domain and Adapter Layer}
+\label{fig:h2a2-text-editing}
 \end{figure}
 
-\clearpage
-\textbf{Layer 1b: Port Interfaces}
+% \clearpage
+\textbf{Extension and Orchestration Domain Architecture}
 
-The Domain Core depends on abstract port interfaces that define contracts for external interactions. PitPort handles player allocation, DAG execution, and artifact storage. ExtensionPort manages extension loading, messaging, and topic subscriptions. ConductorPort provides context analysis and melody generation capabilities. TextEditingPort handles text insertion, deletion, and editing operations. These interfaces enable the core to remain independent of concrete implementations as illustrated in ~\ref{fig:3.7-h2a2-ports}.
+The second architectural view, shown in Figure~\ref{fig:h2a2-extension-orchestration}, illustrates Symphony's extension management and AI orchestration capabilities. The Domain Core depends on three critical port interfaces that define contracts for external interactions. The PitPort interface handles The Pit's high-performance operations including player allocation, DAG execution, and artifact storage. The ExtensionPort interface manages The Grand Stage extension system through manifest loading, actor messaging, and topic-based subscriptions. The ConductorPort interface provides AI orchestration capabilities through context analysis and melody generation.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.15\textwidth]{images/diagrams/class_diagram/seperate_1_h2a2_architecture_domain_adapters/H²A² Architecture Part1 part2.png}
-\caption{H²A² Architecture - Port Interfaces Layer}
-\label{fig:3.7-h2a2-ports}
-\end{figure}
+Each port interface is implemented by a specialized adapter that bridges the Domain Core to concrete infrastructure components. The PitAdapter connects to The Pit's internal components including the PoolManager for model lifecycle management, DagTracker for workflow dependencies, and ArtifactStore for institutional memory. The ActorExtensionAdapter manages The Grand Stage's actor-based extension system, coordinating instruments, operators, and motifs through the ActorSystem registry and supervisor strategies. The ConductorAdapter bridges communication with the Python-based reinforcement learning model through PyO3 bindings, enabling intelligent workflow generation and optimization.
 
-\textbf{Layer 2: Extension and Orchestration Adapters}
-
-The second layer handles extension management and AI orchestration. The ActorExtensionAdapter manages The Grand Stage actor-based extension system, coordinating instruments, operators, and motifs through the actor registry and supervisor strategy. The ConductorAdapter bridges communication with the Python-based reinforcement learning model, enabling intelligent workflow generation through context analysis and melody generation capabilities as illustrated in ~\ref{fig:3.8-h2a2-orchestration}.
+This architectural separation provides significant benefits: new capabilities can be added through additional adapters without modifying the Domain Core, infrastructure components can be upgraded by providing new adapter implementations satisfying existing port interfaces, and comprehensive testing is facilitated through isolated Domain Core testing with mock implementations and adapter testing against port interface contracts.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{images/diagrams/class_diagram/seperate_1_h2a2_architecture_domain_adapters/H²A² Architecture Part2.png}
-\caption{H²A² Architecture - Extension and Orchestration Adapters Layer}
-\label{fig:3.8-h2a2-orchestration}
-\end{figure}
-
-\textbf{Layer 3: Domain Core and Port Interfaces}
-
-The third layer represents the Domain Core with its abstract port interfaces. The core contains the OrchestrationEngine, WorkflowDefinitions, and ExtensionPolicies that define system behavior at a conceptual level. Port interfaces (TextEditingPort, PitPort, ExtensionPort, ConductorPort) define contracts for external interactions without specifying implementation details. This separation enables the system to remain adaptable to changing requirements without requiring fundamental redesigns as illustrated in ~\ref{fig:3.9-h2a2-domain}.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.15\textwidth]{images/diagrams/class_diagram/seperate_1_h2a2_architecture_domain_adapters/H²A² Architecture Part3.png}
-\caption{H²A² Architecture - Domain Core and Port Interfaces Layer}
-\label{fig:3.9-h2a2-domain}
+\includegraphics[width=1.15\textwidth]{images/diagrams/class_diagram/h2a2_architecture_domain_adapters/h2a2_architecture_1.png}
+\caption{H²A² Architecture - Extension and Orchestration Domain with Adapter Implementations}
+\label{fig:h2a2-extension-orchestration}
 \end{figure}
 
 % The microkernel philosophy keeps the core system minimal while delegating specialized functionality to extensions. This contrasts with monolithic IDE architectures that bundle extensive functionality into the core, resulting in bloated applications with slow startup times. Symphony's microkernel contains only essential primitives for orchestration, extension management, and system coordination, while all other capabilities are provided through dynamically loaded extensions.
