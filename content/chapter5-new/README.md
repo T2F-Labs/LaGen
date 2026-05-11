@@ -1,91 +1,102 @@
-# Chapter 5: BACK MATTERS
+# Chapter 4: APPENDIX
 
 ## Overview
-This chapter provides the conclusion, future work directions, and academic references for the Symphony graduation project. It synthesizes the project's contributions and outlines potential enhancements.
+This chapter provides supplementary materials that support the main content of the graduation project document. It includes terminology definitions, architecture decision rationale, system comparison tables, and acronym references.
 
 ## Structure
 
 ### Files Created
 1. **entry.tex** - Main chapter entry point
-2. **chapter_cover.tex** - Chapter cover page with pentagon shape
-3. **conclusion.tex** - Section 5.1: Comprehensive project conclusion
-4. **future-work.tex** - Section 5.2: Future enhancement directions
-5. **references.tex** - Section 5.3: Academic references
+2. **chapter_cover.tex** - Chapter cover page
+3. **glossary.tex** - Section 4.1: Glossary of Terms
+4. **architecture-decisions.tex** - Section 4.2: Architecture Decision Records
+5. **system-comparisons.tex** - Section 4.3: System Comparison Tables
+6. **acronyms.tex** - Section 4.4: Acronyms and Abbreviations
 
 ## Content Summary
 
-### Section 5.1: Conclusion (2.5 pages)
-Comprehensive summary covering:
-- Problem identification and significance
-- Symphony's three fundamental innovations
-- Architectural contributions and design decisions
-- Objectives achievement
-- Paradigm shift in development practices
-- Broader impact and transferable insights
-- Project significance and contribution
+### Section 4.1: Glossary of Terms
+Comprehensive definitions organized by category:
+- Core Concepts (AIDE, ADD, Microkernel, DEA)
+- System Components (Conductor, The Pit, The Grand Stage, Infrastructure Extensions)
+- Extension Types (Instruments, Operators, Addons, Players)
+- Workflow Concepts (Melody, Harmony Board, FQG, Orchestration)
+- Operational Modes (Maestro, Virtuoso, Solo)
+- Security and Trust (Sandboxing, ACA, Capability-Based Security)
+- Development Concepts (Orchestra Kit, Manifest System, IPC Bus)
 
-### Section 5.2: Future Work (3 pages)
-Nine categories of future enhancements:
-1. Enhanced Orchestration Capabilities
-2. Extension Ecosystem Growth
-3. Security and Trust Enhancements
-4. Performance Optimization
-5. Platform Expansion
-6. User Experience Improvements
-7. Collaboration Features
-8. Enterprise Capabilities
-9. Cross-Domain Applications
+### Section 4.2: Architecture Decision Records
+Seven key architectural decisions documented:
+1. Microkernel Architecture
+2. Dual Ensemble Architecture
+3. Reinforcement Learning for Orchestration
+4. Process Isolation for Community Extensions
+5. Visual Workflow Composition
+6. Three-Tier Access Control
+7. Artifact Store with Quality Scoring
 
-### Section 5.3: References (2 pages)
-26 academic references organized by topic:
-- Artificial Intelligence and Machine Learning (4 refs)
-- Software Architecture and Design Patterns (4 refs)
-- Development Environments and Tools (3 refs)
-- Security and Access Control (3 refs)
-- Human-Computer Interaction (3 refs)
-- Software Engineering Principles (3 refs)
-- Distributed Systems and Concurrency (2 refs)
-- Programming Language Design (2 refs)
-- System Performance and Optimization (2 refs)
+Each decision includes:
+- Context and problem statement
+- Decision made
+- Rationale and reasoning
+- Alternatives considered
+- Consequences and trade-offs
+
+### Section 4.3: System Comparison Tables
+Eight comparison tables:
+1. Symphony vs Traditional IDEs
+2. Symphony vs AI Coding Tools
+3. Extension Types Comparison
+4. Operational Modes Comparison
+5. Security Model Comparison (ACA Tiers)
+6. Development Paradigm Evolution
+7. Architecture Pattern Comparison
+8. Workflow Composition Approaches
+
+### Section 4.4: Acronyms and Abbreviations
+Organized by category:
+- Primary Acronyms (AIDE, ADD, DEA, IaE, UFE, FQG, ACA)
+- Technical Terms (API, IPC, DAG, RL, SDK, UI, UX)
+- System Components (IDE, AI, ML, LLM, NLP)
+- Development Concepts (CI/CD, SLA, QoS, WASM, JSON, YAML)
+- Security and Trust (ACL, RBAC, TLS, PKI)
+- Performance and Optimization (CPU, RAM, I/O, GPU, TPU)
+- Organizational Terms (BFCAI, OSS, SaaS)
 
 ## Key Features
 
 ### Academic Standards
-- Professional, confident tone without exaggeration
-- Clear, concise language
-- No implementation details
-- No "Research" terminology (used "Project", "System", "Study")
-- Realistic future work (no fake claims)
-- Real academic references (no fake sources)
+- Professional academic tone throughout
+- No implementation details or code
+- No performance numbers (nothing implemented yet)
+- Clear cross-references to main chapters
+- Proper LaTeX formatting with brand colors
 
 ### Formatting
 - Drop caps for section openings
-- Proper paragraph structure (no bullet points in main text)
-- Consistent spacing with `\vspace`
-- Subsections with TOC entries
-- Clean reference formatting
+- Professional tables with toprule/midrule/bottomrule
+- Description lists for definitions
+- Compact lists for alternatives
+- Consistent use of brand colors
+- Proper subsection organization with TOC entries
 
-### Chapter Cover
-- Pentagon shape (representing completion/conclusion)
-- Brand primary color scheme
-- Three bullet points describing chapter content
-- Consistent with chapters 1-4 design pattern
-
-## Length
-- **Total**: Approximately 7-8 pages
-- Concise but comprehensive
-- Strong ending without unnecessary length
+### Content Rules Followed
+- No "Research" terminology (replaced with "Project", "System", "Study")
+- Concise, readable academic language
+- No bullet points (used description lists instead)
+- All tables properly numbered and captioned
+- Cross-references to relevant chapters
 
 ## Usage
 
 To include this chapter in the main document:
 ```latex
-\input{content/chapter5-new/entry.tex}
+\input{content/chapter4-new/entry.tex}
 ```
 
 ## Notes
-- All references are real, published academic works
-- Future work is realistic and achievable
-- Conclusion synthesizes all previous chapters
-- Maintains academic tone throughout
-- No promotional language or exaggerated claims
+- All content is conceptual and design-focused
+- No experimental results or performance data included
+- Supports understanding of Chapters 1-3
+- Provides quick reference for terminology and decisions
+- Maintains consistency with academic writing standards
